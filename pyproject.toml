@@ -1,0 +1,15 @@
+[project]
+name = "hypercommon"
+version = "0.0.1"
+description = "Hypergraph-based community detection primitives for complex networks"
+authors = [{name="HyperCommon Lab", email="thehypercommon@gmail.com"}]
+readme = "README.md"
+requires-python = ">=3.12"
+license = {text = "MIT"}
+
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project.optional-dependencies]
+dev = ["pytest"]
