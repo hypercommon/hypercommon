@@ -2,31 +2,29 @@ import networkx as nx
 from .hypernode import HCNode
 
 
-def build_hypergraph(G, f):
+def build_hypergraph(G, commonality_predicate):
     """
     Construct a hypergraph where:
 
-      - Nodes represent triplets (i, j, k)
-      - Edges connect triplets sharing exactly two original nodes
-      - f(u, v) is a boolean function receiving HCNode objects
+      - Nodes represent triplets (i, j, k) that form a triangle in G (all three
+        edges (i,j), (i,k), (j,k) must be present).
+      - Edges connect triplets sharing exactly two original nodes.
+      - commonality_predicate(u, v) is a boolean function receiving HCNode objects.
 
     Returns
     -------
-    H : networkx.Graph
-        Graph whose nodes are triplets (i,j,k).
+    H : networkx.Graph whose nodes are triplets (i,j,k).
     """
 
     # ---- Basic validation ----
     if not isinstance(G, nx.Graph):
         raise TypeError("G must be a networkx.Graph instance")
-    if not callable(f):
-        raise TypeError("f must be callable f(u:HCNode, v:HCNode) -> bool")
+    if not callable(commonality_predicate):
+        raise TypeError("commonality_predicate must be callable commonality_predicate(u:HCNode, v:HCNode) -> bool")
 
     # ---- Reduce to 2-core ----
-    G = nx.k_core(G, k=2)
+    # G = nx.k_core(G, k=2)
     nodes = sorted(G.nodes())
-    if len(nodes) < 3:
-        return nx.Graph()
 
     # ---- Two-step neighborhoods ----
     two_step = {}
@@ -50,19 +48,19 @@ def build_hypergraph(G, f):
 
     # ---- Hypergraph construction ----
     H = nx.Graph()
-    pair_to_hypernodes = {}
+    pair_rep = {}
 
-    f_cache = {}
+    commonality_predicate_cache = {}
 
     def check(a, b):
         # Invariant: a < b always holds by construction (ordered iteration).
         # Nodes are indexed by integers; (a, b) uniquely identifies the unordered pair.
         key = (a, b)
 
-        if key not in f_cache:
-            f_cache[key] = f(hc[a], hc[b])
+        if key not in commonality_predicate_cache:
+            commonality_predicate_cache[key] = commonality_predicate(hc[a], hc[b])
 
-        return f_cache[key]
+        return commonality_predicate_cache[key]
 
     for i in nodes:
         neigh_i = two_step.get(i, [])
@@ -75,8 +73,10 @@ def build_hypergraph(G, f):
             for idx_k in range(idx_j + 1, L):
                 k = neigh_i[idx_k]
 
-                # structural pruning
+                # structural pruning: (i,j,k) must be a triangle (all three edges present)
                 if k not in neigh_j:
+                    continue
+                if j not in hc[i].neighbors or k not in hc[i].neighbors or k not in hc[j].neighbors:
                     continue
 
                 # semantic pruning using f(HCNode, HCNode)
@@ -89,11 +89,10 @@ def build_hypergraph(G, f):
 
                 # connect via shared pairs
                 for key in [(i, j), (i, k), (j, k)]:
-                    if key in pair_to_hypernodes:
-                        for other in pair_to_hypernodes[key]:
-                            H.add_edge(hypernode, other)
-                        pair_to_hypernodes[key].append(hypernode)
+                    rep = pair_rep.get(key)
+                    if rep is None:
+                        pair_rep[key] = hypernode
                     else:
-                        pair_to_hypernodes[key] = [hypernode]
+                        H.add_edge(hypernode, rep)
 
     return H

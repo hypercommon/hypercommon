@@ -4,7 +4,7 @@ from hypercommon.hypergraph import build_hypergraph
 
 def get_communities(
     G: nx.Graph,
-    similarity_fn,
+    commonality_predicate,
 ):
     """
     Compute communities using the Hypercommon method.
@@ -13,7 +13,7 @@ def get_communities(
     ----------
     G : nx.Graph
         Input graph.
-    similarity_fn : callable
+    commonality_predicate : callable
         Function f(u: HCNode, v: HCNode) -> bool.
 
     Returns
@@ -22,7 +22,7 @@ def get_communities(
         List of communities (sets of nodes).
     """
 
-    H = build_hypergraph(G, similarity_fn)
+    H = build_hypergraph(G, commonality_predicate)
 
     communities = []
 
