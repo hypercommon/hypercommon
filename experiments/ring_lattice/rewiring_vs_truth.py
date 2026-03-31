@@ -1,8 +1,8 @@
 import os
 import random
 import time
+from datetime import datetime
 from fractions import Fraction
-from itertools import combinations
 
 import matplotlib.pyplot as plt
 
@@ -58,7 +58,11 @@ def run_experiment(
     if not (0.0 < p_step <= 1.0):
         raise ValueError("p_step must be in (0, 1]")
 
-    os.makedirs(out_dir, exist_ok=True)
+    # ---- Timestamped root output folder (prevents overwrites across runs) ----
+    ts = datetime.now().strftime("%Y%m%d_%H%M%S")
+    root_out_dir = os.path.join(out_dir, f"run_{ts}")
+    os.makedirs(root_out_dir, exist_ok=True)
+
     rng = random.Random(seed)
 
     t_global0 = time.perf_counter()
@@ -67,6 +71,10 @@ def run_experiment(
     for ci, (n, z, rings) in enumerate(configs, start=1):
         t_cfg0 = time.perf_counter()
         print(f"\n[CONFIG {ci}/{total_configs}] n={n}, z={z}, rings={rings}  (start)")
+
+        # ---- Per-config folder ----
+        config_dir = os.path.join(root_out_dir, f"n{n}_z{z}_r{rings}")
+        os.makedirs(config_dir, exist_ok=True)
 
         # ground truth
         truth = ring_ground_truth(n, rings)
@@ -81,10 +89,12 @@ def run_experiment(
         steps, k_step = validate_rewiring_plan(M0, p_step)
         xs = [s / steps for s in range(steps + 1)]
 
-        thresholds = [0.127, 0.128, 0.129, 0.13, 0.131, 0.132, 0.133]
+        # thresholds = [i / 100 for i in range(1, 100)]
+        thresholds =[0.1, 0.11]
         total_thresholds = len(thresholds)
 
         print(f"[CONFIG {ci}] M0={M0}, k_step={k_step}, steps={steps}, thresholds={total_thresholds}")
+        print(f"[CONFIG {ci}] output -> {config_dir}")
 
         for ti, threshold in enumerate(thresholds, start=1):
             t_thr0 = time.perf_counter()
@@ -98,7 +108,6 @@ def run_experiment(
                 G = ring_lattice(n=n, z=z, rings=rings)
 
                 edge_stack = list(G.edges())
-
                 rng.shuffle(edge_stack)
 
                 for s in range(steps):
@@ -156,7 +165,7 @@ def run_experiment(
                 f"_t{safe_sheet_num(threshold)}"
                 f"_pstep{safe_sheet_num(p_step)}_avg{avg_times}.png"
             )
-            path = os.path.join(out_dir, fname)
+            path = os.path.join(config_dir, fname)
 
             plt.tight_layout()
             plt.savefig(path, dpi=220)

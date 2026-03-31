@@ -2,97 +2,86 @@ import networkx as nx
 from .hypernode import HCNode
 
 
-def build_hypergraph(G, commonality_predicate):
+def build_hypergraph(G, commonality_predicate, pair_connection_mode="star"):
     """
     Construct a hypergraph where:
 
-      - Nodes represent triplets (i, j, k) that form a triangle in G (all three
-        edges (i,j), (i,k), (j,k) must be present).
-      - Edges connect triplets sharing exactly two original nodes.
-      - commonality_predicate(u, v) is a boolean function receiving HCNode objects.
+      - Nodes represent unique triplets {i, j, k} where (i,j) and (j,k) are edges in G
+        and all three pairs pass the commonality_predicate.
+      - Edges connect hypernodes that share exactly two original nodes.
+      - commonality_predicate(u, v) is a boolean predicate receiving HCNode objects.
 
     Returns
     -------
-    H : networkx.Graph whose nodes are triplets (i,j,k).
+    H : networkx.Graph whose nodes are sorted triplets (i, j, k).
     """
 
-    # ---- Basic validation ----
     if not isinstance(G, nx.Graph):
         raise TypeError("G must be a networkx.Graph instance")
     if not callable(commonality_predicate):
-        raise TypeError("commonality_predicate must be callable commonality_predicate(u:HCNode, v:HCNode) -> bool")
+        raise TypeError("commonality_predicate must be callable: commonality_predicate(u:HCNode, v:HCNode) -> bool")
+    if pair_connection_mode not in ("star", "clique"):
+        raise ValueError("pair_connection_mode must be 'star' or 'clique'")
 
-    # ---- Reduce to 2-core ----
+    # ---- Reduce to 2-core (kept for future use) ----
     # G = nx.k_core(G, k=2)
-    nodes = sorted(G.nodes())
 
-    # ---- Two-step neighborhoods ----
-    two_step = {}
-    hc = {}
+    nodes = list(G.nodes())
 
-    for u, lengths in nx.all_pairs_shortest_path_length(G, cutoff=2):
-        neighbors_u = set()
-        bigger = []
-
-        for v, dist in lengths.items():
-            if dist == 1:
-                neighbors_u.add(v)
-
-            if v > u:
-                bigger.append(v)
-
-        bigger.sort()
-
-        hc[u] = HCNode(u, neighbors_u)
-        two_step[u] = bigger
+    # ---- HCNode cache ----
+    hc = {u: HCNode(u, set(G.neighbors(u))) for u in nodes}
 
     # ---- Hypergraph construction ----
     H = nx.Graph()
     pair_rep = {}
-
-    commonality_predicate_cache = {}
+    commonality_cache = {}
 
     def check(a, b):
-        # Invariant: a < b always holds by construction (ordered iteration).
-        # Nodes are indexed by integers; (a, b) uniquely identifies the unordered pair.
-        key = (a, b)
+        key = (a, b) if a < b else (b, a)
+        val = commonality_cache.get(key)
+        if val is None:
+            val = commonality_predicate(hc[key[0]], hc[key[1]])
+            commonality_cache[key] = val
+        return val
 
-        if key not in commonality_predicate_cache:
-            commonality_predicate_cache[key] = commonality_predicate(hc[a], hc[b])
+    def pair_key(x, y):
+        return (x, y) if x < y else (y, x)
 
-        return commonality_predicate_cache[key]
+    seen = set()
 
-    for i in nodes:
-        neigh_i = two_step.get(i, [])
-        L = len(neigh_i)
+    for j in nodes:
+        nbrs = list(G.neighbors(j))
+        L = len(nbrs)
+        for idx_a in range(L):
+            i = nbrs[idx_a]
+            for idx_b in range(idx_a + 1, L):
+                k = nbrs[idx_b]
 
-        for idx_j in range(L):
-            j = neigh_i[idx_j]
-            neigh_j = two_step.get(j, [])
-
-            for idx_k in range(idx_j + 1, L):
-                k = neigh_i[idx_k]
-
-                # structural pruning: (i,j,k) must be a triangle (all three edges present)
-                if k not in neigh_j:
+                triple = tuple(sorted((i, j, k)))
+                if triple in seen:
                     continue
-                if j not in hc[i].neighbors or k not in hc[i].neighbors or k not in hc[j].neighbors:
+                seen.add(triple)
+
+                a, b, c = triple
+                if not (check(a, b) and check(a, c) and check(b, c)):
                     continue
 
-                # semantic pruning using f(HCNode, HCNode)
-                if not (check(i, j) and check(i, k) and check(j, k)):
-                    continue
+                H.add_node(triple, members=triple)
 
-                # valid hypernode
-                hypernode = (i, j, k)
-                H.add_node(hypernode, members=hypernode)
-
-                # connect via shared pairs
-                for key in [(i, j), (i, k), (j, k)]:
+                for x, y in ((a, b), (a, c), (b, c)):
+                    key = pair_key(x, y)
                     rep = pair_rep.get(key)
                     if rep is None:
-                        pair_rep[key] = hypernode
+                        if pair_connection_mode == "star":
+                            pair_rep[key] = triple
+                        else:
+                            pair_rep[key] = [triple]
                     else:
-                        H.add_edge(hypernode, rep)
+                        if pair_connection_mode == "star":
+                            H.add_edge(triple, rep)
+                        else:
+                            for node in pair_rep[key]:
+                                H.add_edge(triple, node)
+                            pair_rep[key].append(triple)
 
     return H

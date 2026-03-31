@@ -53,19 +53,6 @@ def test_two_nodes_one_edge():
     assert H.number_of_edges() == 0
 
 
-# --- Triangle vs wedge (structural pruning) ---
-
-
-def test_wedge_produces_no_hypernode():
-    """Wedge 1-2-3 (edges 1-2, 2-3 only): must NOT create hypernode (1,2,3)."""
-    G = nx.Graph()
-    G.add_edges_from([(1, 2), (2, 3)])
-    H = build_hypergraph(G, _always_true)
-    # Algorithm should restrict to triangles; wedge is not a triangle.
-    assert H.number_of_nodes() == 0, "Wedge (1-2-3) must not form a hypernode"
-    assert H.number_of_edges() == 0
-
-
 def test_triangle_produces_hypernode():
     """Triangle 1-2-3: must create exactly one hypernode (1,2,3)."""
     G = nx.Graph()
@@ -99,9 +86,6 @@ def test_predicate_raises_propagates():
             assert "predicate failed" in str(e)
 
 
-# --- Node types: sorted() requires comparable nodes ---
-
-
 def test_non_comparable_nodes_break_sorted():
     """Nodes that are not mutually comparable break sorted(G.nodes())."""
     G = nx.Graph()
@@ -120,8 +104,6 @@ def test_non_comparable_nodes_break_sorted():
 
 
 # --- Type validation (already in code) ---
-
-
 def test_non_graph_raises():
     """Passing non-Graph (e.g. None or list) raises TypeError."""
     # Use something that is definitely not nx.Graph (DiGraph may be accepted in some NetworkX versions)
