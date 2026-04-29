@@ -6,8 +6,9 @@ def build_hypergraph(G, commonality_predicate, pair_connection_mode="star"):
     """
     Construct a hypergraph where:
 
-      - Nodes represent unique triplets {i, j, k} where (i,j) and (j,k) are edges in G
-        and all three pairs pass the commonality_predicate.
+      - Nodes represent unique triplets {i, j, k} where at least one node is a
+        neighbor of the other two (i.e. there exists a center node adjacent to both
+        others), and all three pairs pass the commonality_predicate.
       - Edges connect hypernodes that share exactly two original nodes.
       - commonality_predicate(u, v) is a boolean predicate receiving HCNode objects.
 

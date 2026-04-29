@@ -42,8 +42,8 @@ def get_node_community(G: nx.Graph, commonality_predicate, v):
     Find one community containing node v using local hypergraph expansion.
 
     A community is a set of nodes where every member joined via a valid triple
-    (i, j, k) where (i,j) and (j,k) are edges in G and all three pairs pass
-    the commonality_predicate.
+    (i, j, k) where at least one node is a neighbor of the other two, and all
+    three pairs pass the commonality_predicate.
 
     Parameters
     ----------

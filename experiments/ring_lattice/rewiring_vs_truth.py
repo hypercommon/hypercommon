@@ -90,7 +90,7 @@ def run_experiment(
         xs = [s / steps for s in range(steps + 1)]
 
         # thresholds = [i / 100 for i in range(1, 100)]
-        thresholds =[0.1, 0.11]
+        thresholds = [0.12]
         total_thresholds = len(thresholds)
 
         print(f"[CONFIG {ci}] M0={M0}, k_step={k_step}, steps={steps}, thresholds={total_thresholds}")
