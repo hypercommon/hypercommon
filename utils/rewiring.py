@@ -32,7 +32,7 @@ def rewire_step(
     for _ in range(k):
         u, v = edge_stack.pop()
 
-        if random.getrandbits(1):
+        if rng.getrandbits(1):
             keep_node, replace_node = u, v
         else:
             keep_node, replace_node = v, u

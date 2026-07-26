@@ -60,6 +60,5 @@ def representative_thresholds(
     values.add(1.0)
 
     values.add(avg_threshold(G, commonality_value, threshold_multiplier))
-    values = {avg_threshold(G, commonality_value, threshold_multiplier)}
 
     return sorted(values)

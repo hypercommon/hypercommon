@@ -72,7 +72,11 @@ def all_configs():
 
 
 def remaining_configs():
-    """The 4 configs that did not finish in run_20260423_221250 due to crash."""
+    """Resume helper: the 4 configs that did not finish in run_20260423_221250.
+
+    Not used by default — pass it explicitly as run_experiment(configs=...)
+    to re-run only those.
+    """
     return [
         (0.01, 3000, 16, 200),
         (0.01, 3000, 32,  50),
@@ -358,8 +362,10 @@ def run_config(overlap, n, z, ring_size, rng, search_writer, sweep_writer, summa
 def run_experiment(
     out_dir: str = "results/pcrit_experiment",
     seed: int = 42,
+    configs=None,
 ):
-    configs = remaining_configs()
+    if configs is None:
+        configs = all_configs()
 
     ts = datetime.now().strftime("%Y%m%d_%H%M%S")
     root_dir = os.path.join(out_dir, f"run_{ts}")

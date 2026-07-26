@@ -3,7 +3,7 @@ import pandas as pd
 
 from generators.ring_lattice import ring_lattice
 from hypercommon.hypergraph import build_hypergraph
-from predicates.jaccard import closed_neighborhood_jaccard_predicate
+from predicates.jaccard import closed_neighborhood_jaccard, closed_neighborhood_jaccard_predicate
 from utils.threshold import representative_thresholds
 
 
@@ -37,7 +37,7 @@ def run_experiment(configs, output_path="results/commonality_thresholds.xlsx"):
         E = G.number_of_edges()
 
         # Thresholds
-        thresholds = representative_thresholds(G)
+        thresholds = representative_thresholds(G, closed_neighborhood_jaccard)
 
         rows = []
 
