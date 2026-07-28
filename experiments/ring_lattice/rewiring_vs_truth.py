@@ -105,7 +105,7 @@ def run_experiment(
             for run_i in range(1, avg_times + 1):
                 t_run0 = time.perf_counter()
 
-                G = ring_lattice(n=n, z=z, rings=rings)
+                G = ring_lattice([n // rings] * rings, [z] * rings)
 
                 edge_stack = list(G.edges())
                 rng.shuffle(edge_stack)

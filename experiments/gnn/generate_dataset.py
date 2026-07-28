@@ -1,8 +1,8 @@
 """
 generate_dataset — produce the GNN training corpus for hypercommon t_best prediction.
 
-For each (n, z, ring_size, overlap_pct, run) trajectory:
-  1. Build ring_lattice(n, z, rings) and apply random overlap merge.
+For each (shape, overlap_pct, run) trajectory:
+  1. Build ring_lattice(sizes, zs) and apply random overlap merge.
   2. Walk p = 0..1 in steps of P_STEP. At each p, sweep t over T_GRID and record
      omega(p, t). Then rewire k_step edges and continue.
   3. Save the initial graph + omega grid + per-p argmax labels.
@@ -13,33 +13,36 @@ where it left off across restarts / power loss / kills. Partial output from a
 crashed trajectory is overwritten on its next run.
 
 Output layout:
-  results/gnn/rewire_random/dataset_v1/
+  results/gnn/rewire_random/dataset_v2/
     manifest.csv                  rebuilt on start by scanning 'done' markers
     progress.log                  append-only timing/status log
     trajectories/<traj_id>/
       init.edges.gz               edge list of G after overlap merge, BEFORE rewiring (==p_000)
-      init_meta.json              {n, z, ring, overlap_pct, run, seed, M_actual, k_step, n_actual, merged_pairs}
+      init_meta.json              {shape, sizes, zs, n, rings, overlap_pct, run, seed,
+                                   M_actual, k_step, n_actual, merged_pairs}
       graphs.npz                  101 keys 'p_000'..'p_100', each (E, 2) int32 edge array
       omega_grid.npz              (n_p, n_t) float array, omega[p_idx, t_idx]
       labels.csv                  per-p: p, t_argmax, omega_at_argmax
       done                        written last
 
-Trajectory id format:  n{n}_z{z}_r{ring}_o{overlap_pct:02d}_run{run}
+Trajectory id format:  {shape_name}_o{overlap_pct:02d}_run{run}
   (overlap_pct is the integer percent, so o00..o10)
+
+dataset_v1 holds the earlier uniform-ring corpus, whose ids and meta use the
+(n, z, ring) schema this script no longer emits; it is left untouched.
 
 Run from venv:
   ./.venv/Scripts/python.exe -m experiments.gnn.generate_dataset
+  HC_ONLY_SHAPES=u4x100z8 ./.venv/Scripts/python.exe -m experiments.gnn.generate_dataset
 """
 
 from __future__ import annotations
 
 import os
-import sys
 import csv
 import json
 import gzip
 import glob
-import math
 import time
 import random
 import hashlib
@@ -52,7 +55,8 @@ import numpy as np
 
 warnings.filterwarnings("ignore")
 
-from generators.ring_lattice import ring_lattice
+from generators.overlap import apply_overlap, ground_truth_with_overlap
+from generators.ring_lattice import ring_lattice, ring_lattice_edge_count
 from utils.rewiring import rewire_step
 from metrics.omega import build_pair_counts
 
@@ -61,19 +65,18 @@ from metrics.omega import build_pair_counts
 # Config — what to sweep
 # =====================================================================
 
-NS = [400, 500, 600, 700, 800, 900, 1000]
-ZS = [6, 8, 10, 12, 14, 16]
-
-# valid ring sizes per n (must divide n)
-RING_SIZES_FOR_N: dict[int, list[int]] = {
-    400:  [50, 100, 200],
-    500:  [50, 100, 250],
-    600:  [50, 100, 200, 300],
-    700:  [50, 100, 350],
-    800:  [50, 100, 200],
-    900:  [50, 100, 300],
-    1000: [50, 100, 200, 250],
-}
+# A shape is (name, sizes, zs): ring r has sizes[r] nodes at degree zs[r], so
+# n = sum(sizes) and the ring count is len(sizes). Listing shapes explicitly
+# rather than taking a cartesian product of (n, z, ring_size) is what allows
+# rings to differ from one another within a single graph.
+#
+# Names appear in trajectory ids and output paths, so keep them short, unique,
+# and stable — renaming one orphans everything already computed under it.
+SHAPES: list[tuple[str, list[int], list[int]]] = [
+    # --- uniform baselines, equivalent to the old (n, z, ring_size) grid ---
+    ("u4x100z8",   [100] * 4, [8] * 4),
+    ("u4x100z16",  [100] * 4, [16] * 4),
+]
 
 # overlap as integer percent so traj IDs are clean ints  (0..10 -> 0.00..0.10)
 OVERLAP_PCTS = list(range(0, 11))     # 0, 1, ..., 10  (i.e., 0% .. 10%)
@@ -87,11 +90,11 @@ T_STEP = 0.01     # t in {0, 0.01, ..., 1.00}  -> 101 values
 # (the box this was developed on has 22 logical cores; 7 is ~32%).
 N_WORKERS = int(os.environ.get("HC_WORKERS", "7"))
 
-# Optional: restrict this run to a subset of n, e.g. HC_ONLY_N=400 to finish
-# one graph size before moving on. Empty means "all of NS".
-_ONLY_N = {int(x) for x in os.environ.get("HC_ONLY_N", "").split(",") if x.strip()}
+# Optional: restrict this run to named shapes, e.g. HC_ONLY_SHAPES=u4x100z8,u4x100z16
+# to finish one group before starting the next. Empty means "all of SHAPES".
+_ONLY_SHAPES = {x.strip() for x in os.environ.get("HC_ONLY_SHAPES", "").split(",") if x.strip()}
 
-OUTPUT_ROOT = os.path.join("results", "gnn", "rewire_random", "dataset_v1")
+OUTPUT_ROOT = os.path.join("results", "gnn", "rewire_random", "dataset_v2")
 
 
 # =====================================================================
@@ -103,8 +106,8 @@ def t_grid() -> list[float]:
     return [round(i * T_STEP, 4) for i in range(n_pts)]
 
 
-def trajectory_id(n: int, z: int, ring: int, overlap_pct: int, run: int) -> str:
-    return f"n{n}_z{z}_r{ring}_o{overlap_pct:02d}_run{run}"
+def trajectory_id(shape_name: str, overlap_pct: int, run: int) -> str:
+    return f"{shape_name}_o{overlap_pct:02d}_run{run}"
 
 
 def trajectory_seed(traj_id: str) -> int:
@@ -114,32 +117,25 @@ def trajectory_seed(traj_id: str) -> int:
 
 
 def all_trajectories() -> list[dict]:
-    """All (n, z, ring, overlap_pct, run) tuples in canonical iteration order."""
+    """All (shape, overlap_pct, run) combinations in canonical iteration order."""
     out = []
-    for n in NS:
-        for ring in RING_SIZES_FOR_N[n]:
-            for z in ZS:
-                if z >= ring:
-                    continue
-                for op in OVERLAP_PCTS:
-                    for run in range(1, RUNS_PER_CONFIG + 1):
-                        tid = trajectory_id(n, z, ring, op, run)
-                        out.append({
-                            "id":      tid,
-                            "n":       n,
-                            "z":       z,
-                            "ring":    ring,
-                            "overlap_pct": op,
-                            "overlap": op / 100.0,
-                            "run":     run,
-                            "seed":    trajectory_seed(tid),
-                        })
+    for name, sizes, zs in SHAPES:
+        for op in OVERLAP_PCTS:
+            for run in range(1, RUNS_PER_CONFIG + 1):
+                tid = trajectory_id(name, op, run)
+                out.append({
+                    "id":          tid,
+                    "shape":       name,
+                    "sizes":       list(sizes),
+                    "zs":          list(zs),
+                    "n":           sum(sizes),
+                    "rings":       len(sizes),
+                    "overlap_pct": op,
+                    "overlap":     op / 100.0,
+                    "run":         run,
+                    "seed":        trajectory_seed(tid),
+                })
     return out
-
-
-def ring_lattice_edge_count(n: int, z: int, ring_size: int) -> int:
-    rings = n // ring_size
-    return rings * (ring_size * z // 2)
 
 
 def validate_rewiring_plan(M0: int, p_step: float) -> int:
@@ -150,45 +146,6 @@ def validate_rewiring_plan(M0: int, p_step: float) -> int:
     if M0 % steps != 0:
         raise ValueError(f"M0={M0} not divisible by steps={steps}")
     return steps
-
-
-def apply_overlap(G, n: int, ring_size: int, overlap: float, rng: random.Random) -> dict[int, int]:
-    """Merge floor(overlap*n) inter-ring node pairs by absorbing v into u."""
-    k = math.floor(overlap * n)
-    if k == 0:
-        return {}
-
-    node_ring = [node // ring_size for node in range(n)]
-    merged: dict[int, int] = {}
-    used: set[int] = set()
-    attempts = 0
-    max_attempts = k * 20
-    while len(merged) < k and attempts < max_attempts:
-        attempts += 1
-        u = rng.randrange(n); v = rng.randrange(n)
-        if u == v or node_ring[u] == node_ring[v]:
-            continue
-        if u in used or v in used:
-            continue
-        if not G.has_node(u) or not G.has_node(v):
-            continue
-        for neighbor in list(G.neighbors(v)):
-            if neighbor != u:
-                G.add_edge(u, neighbor)
-        G.remove_node(v)
-        used.add(v); used.add(u)
-        merged[v] = u
-    return merged
-
-
-def ring_ground_truth_with_overlap(n: int, ring_size: int, merged: dict[int, int]) -> list[set[int]]:
-    rings = n // ring_size
-    communities = [set(range(r * ring_size, (r + 1) * ring_size)) for r in range(rings)]
-    for v, u in merged.items():
-        v_ring = v // ring_size
-        communities[v_ring].discard(v)
-        communities[v_ring].add(u)
-    return communities
 
 
 # =====================================================================
@@ -238,16 +195,16 @@ def run_trajectory(traj: dict, root: str, pool: ProcessPoolExecutor) -> dict:
     rng = random.Random(traj["seed"])
 
     # Build initial graph and ground truth
-    rings_count = traj["n"] // traj["ring"]
-    G = ring_lattice(n=traj["n"], z=traj["z"], rings=rings_count)
-    merged = apply_overlap(G, n=traj["n"], ring_size=traj["ring"], overlap=traj["overlap"], rng=rng)
-    truth = ring_ground_truth_with_overlap(traj["n"], traj["ring"], merged)
+    sizes, zs = traj["sizes"], traj["zs"]
+    G = ring_lattice(sizes, zs)
+    merged = apply_overlap(G, sizes, overlap=traj["overlap"], rng=rng)
+    truth = ground_truth_with_overlap(sizes, merged)
     gt_pc = build_pair_counts(truth)
     n_actual = G.number_of_nodes()
     total_pairs = n_actual * (n_actual - 1) // 2
     M_actual = G.number_of_edges()
 
-    M0 = ring_lattice_edge_count(traj["n"], traj["z"], traj["ring"])
+    M0 = ring_lattice_edge_count(sizes, zs)
     steps = validate_rewiring_plan(M0, P_STEP)
     k_step = M_actual // steps
 
@@ -256,9 +213,11 @@ def run_trajectory(traj: dict, root: str, pool: ProcessPoolExecutor) -> dict:
     write_init_graph_gz(os.path.join(traj_dir, "init.edges.gz"), init_edges)
     meta = {
         "id":           traj["id"],
+        "shape":        traj["shape"],
+        "sizes":        sizes,
+        "zs":           zs,
         "n":            traj["n"],
-        "z":            traj["z"],
-        "ring":         traj["ring"],
+        "rings":        traj["rings"],
         "overlap_pct":  traj["overlap_pct"],
         "overlap":      traj["overlap"],
         "run":          traj["run"],
@@ -339,9 +298,11 @@ def run_trajectory(traj: dict, root: str, pool: ProcessPoolExecutor) -> dict:
 
     return {
         "id":            traj["id"],
+        "shape":         traj["shape"],
+        "sizes":         " ".join(map(str, sizes)),
+        "zs":            " ".join(map(str, zs)),
         "n":             traj["n"],
-        "z":             traj["z"],
-        "ring":          traj["ring"],
+        "rings":         traj["rings"],
         "overlap_pct":   traj["overlap_pct"],
         "run":           traj["run"],
         "seed":          traj["seed"],
@@ -376,11 +337,15 @@ def rebuild_manifest_from_disk(root: str) -> list[dict]:
         if not os.path.exists(meta_path):
             continue
         meta = json.load(open(meta_path))
+        sizes = meta.get("sizes") or []
+        zs = meta.get("zs") or []
         rows.append({
             "id":          meta.get("id"),
+            "shape":       meta.get("shape"),
+            "sizes":       " ".join(map(str, sizes)),
+            "zs":          " ".join(map(str, zs)),
             "n":           meta.get("n"),
-            "z":           meta.get("z"),
-            "ring":        meta.get("ring"),
+            "rings":       meta.get("rings"),
             "overlap_pct": meta.get("overlap_pct"),
             "run":         meta.get("run"),
             "seed":        meta.get("seed"),
@@ -393,10 +358,13 @@ def rebuild_manifest_from_disk(root: str) -> list[dict]:
     return rows
 
 
+MANIFEST_FIELDS = ["id", "shape", "sizes", "zs", "n", "rings", "overlap_pct", "run",
+                   "seed", "n_actual", "M_actual", "k_step", "n_p", "n_t"]
+
+
 def write_manifest(root: str, rows: list[dict]) -> None:
     path = os.path.join(root, "manifest.csv")
-    fields = ["id", "n", "z", "ring", "overlap_pct", "run", "seed",
-              "n_actual", "M_actual", "k_step", "n_p", "n_t"]
+    fields = MANIFEST_FIELDS
     with open(path, "w", newline="") as f:
         w = csv.DictWriter(f, fieldnames=fields)
         w.writeheader()
@@ -427,16 +395,20 @@ def run(out_root: str = OUTPUT_ROOT):
     write_manifest(out_root, rebuild_manifest_from_disk(out_root))
 
     pending = [t for t in all_trajs if t["id"] not in completed]
-    if _ONLY_N:
-        skipped = [t for t in pending if t["n"] not in _ONLY_N]
-        pending = [t for t in pending if t["n"] in _ONLY_N]
+    if _ONLY_SHAPES:
+        unknown = _ONLY_SHAPES - {name for name, _, _ in SHAPES}
+        if unknown:
+            raise SystemExit(f"HC_ONLY_SHAPES names no such shape: {sorted(unknown)}")
+        skipped = [t for t in pending if t["shape"] not in _ONLY_SHAPES]
+        pending = [t for t in pending if t["shape"] in _ONLY_SHAPES]
 
     log(f"=== generate_dataset start ===")
     log(f"output: {out_root}")
     log(f"total trajectories: {len(all_trajs)}, completed: {len(completed)}, pending: {len(pending)}")
     log(f"workers: {N_WORKERS}")
-    if _ONLY_N:
-        log(f"restricted to n in {sorted(_ONLY_N)} ({len(skipped)} pending trajectories deferred)")
+    if _ONLY_SHAPES:
+        log(f"restricted to shapes {sorted(_ONLY_SHAPES)} "
+            f"({len(skipped)} pending trajectories deferred)")
 
     if not pending:
         log("nothing to do; everything already complete.")
@@ -460,10 +432,8 @@ def run(out_root: str = OUTPUT_ROOT):
 
             # Append to manifest after every completed trajectory
             with open(os.path.join(out_root, "manifest.csv"), "a", newline="") as f:
-                fields = ["id", "n", "z", "ring", "overlap_pct", "run", "seed",
-                          "n_actual", "M_actual", "k_step", "n_p", "n_t"]
-                w = csv.DictWriter(f, fieldnames=fields)
-                w.writerow({k: row.get(k) for k in fields})
+                w = csv.DictWriter(f, fieldnames=MANIFEST_FIELDS)
+                w.writerow({k: row.get(k) for k in MANIFEST_FIELDS})
 
     log(f"=== generate_dataset done ===  total dt={time.perf_counter()-t_global0:.0f}s")
 

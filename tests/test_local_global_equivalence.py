@@ -114,7 +114,12 @@ def test_equivalence_watts_strogatz(seed, threshold):
 
 @pytest.mark.parametrize("threshold", [0.05, 0.11, 0.2, 0.3])
 def test_equivalence_ring_lattice(threshold):
-    assert_equivalent(ring_lattice(n=60, z=6, rings=3), threshold)
+    assert_equivalent(ring_lattice([20] * 3, [6] * 3), threshold)
+
+
+@pytest.mark.parametrize("threshold", [0.05, 0.11, 0.2, 0.3])
+def test_equivalence_uneven_ring_lattice(threshold):
+    assert_equivalent(ring_lattice([30, 20, 10], [8, 6, 4]), threshold)
 
 
 @pytest.mark.parametrize("threshold", [0.05, 0.1, 0.15, 0.2, 0.3, 0.4])

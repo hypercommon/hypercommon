@@ -30,10 +30,8 @@ def run_experiment(configs, output_path="results/commonality_thresholds.xlsx"):
     writer = pd.ExcelWriter(output_path, engine="openpyxl")
 
     for n, z in configs:
-        rings = 1
-
-        # Generate lattice
-        G = ring_lattice(n=n, z=z, rings=rings)
+        # Single ring holding every node
+        G = ring_lattice([n], [z])
         E = G.number_of_edges()
 
         # Thresholds
