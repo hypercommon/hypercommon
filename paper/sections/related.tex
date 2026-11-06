@@ -1,0 +1,88 @@
+% ---------------------------------------------------------------------------
+\section{Related work}
+\label{sec:related}
+% ---------------------------------------------------------------------------
+
+\emph{Neighbourhood overlap.} That adjacent nodes sharing many neighbours tend to share
+a community underlies the edge clustering coefficient of Radicchi
+\emph{et al.}~\cite{radicchi2004defining}, the structural similarity of
+SCAN~\cite{xu2007scan} and the shared-near-neighbour clustering of Jarvis and
+Patrick~\cite{jarvis1973clustering}, and neighbourhood overlap tracks tie strength in
+social networks~\cite{onnela2007structure}. The same indices -- common neighbours,
+Jaccard, Salton's cosine, resource allocation -- are the local predictors of link
+prediction~\cite{zhou2009predicting,lu2011link}, where no single index is best on every
+network~\cite{ghasemian2020stacking}. Jarvis--Patrick clustering and
+TECTONIC~\cite{tsourakakis2017scalable}, which weights each edge by its triangle count
+divided by the sum of its endpoint degrees, threshold scored edges and take connected
+components, while SCAN grows clusters from core vertices with many similar neighbours;
+Chen and Tsourakakis~\cite{chen2024parallel} base the edge weight on triangle and wedge
+counts to prevent TECTONIC's over-segmentation. Our two-test ablation is of this kind, restricted
+to wedges.
+
+\emph{Clique and truss percolation.} Clique percolation~\cite{palla2005uncovering}
+joins $k$-cliques sharing $k-1$ nodes, and Palla \emph{et al.} already applied it to
+weighted networks after removing links below a weight threshold; the sequential
+algorithm of Kumpula \emph{et al.}~\cite{kumpula2008sequential} obtains the communities
+for every threshold in one sweep, and CPMw~\cite{farkas2007weighted} thresholds a
+clique's intensity, the geometric mean of its link weights, instead. For $k=3$,
+triangles connected through shared edges are also the truss
+communities~\cite{cohen2008trusses,huang2014querying}, which nucleus decompositions
+organise into a hierarchy~\cite{sariyuce2015finding}. Our triangles-only ablation is
+3-clique percolation on the graph thresholded at $J\ge t$ (closed-neighbourhood
+Jaccard), which we call J-thresholded 3-clique percolation (not the intensity-based
+CPMw). Triad percolation~\cite{zhang2018triad}, motivated by the scarcity of $k$-cliques in
+sparse online social networks, already admits open triads, expanding seeds until a
+stopping threshold is met; HyperCommon instead admits a wedge only when all three of its
+pairs pass a commonality threshold and returns the connected components of all
+admitted triples, without seeds or a stopping rule.
+
+\emph{Link communities.} Ahn, Bagrow and Lehmann~\cite{ahn2010link} cluster edges:
+two edges $\{c,i\}$ and $\{c,j\}$ are similar when the closed neighbourhoods of $i$ and
+$j$ overlap, with similarity $J(i,j)$, and single-linkage clustering, cut where the
+partition density is largest, gives overlapping node communities; hyperlink communities
+extend this to higher-order networks~\cite{lotito2024hyperlink}. In our language,
+$J(i,j)$ is the commonality of the third pair of the triple $\{i,c,j\}$, the pair that
+is not an edge when the wedge is open. Line graphs and clique
+graphs~\cite{evans2009line,evans2010clique} frame such edge- and clique-level
+clusterings, and the two-node-overlap graph $L_t$ of our construction is the $2$-line
+graph of the hypergraph $\mathcal H_t$~\cite{aksoy2020hypernetwork}.
+
+\emph{What HyperCommon combines.} HyperCommon tests all three pairs of every wedge:
+the two edges, as thresholded clique percolation and SCAN do, and the non-adjacent pair,
+as link communities do. It then connects the admitted triples through shared pairs,
+including non-adjacent ones; this changes the accuracy little on rings when the
+parameter is chosen per graph and lowers it slightly on overlapping LFR graphs
+(Sec.~\ref{sec:ablations}), and we keep it because then all admitted triples through any
+pair, not only through an edge, lie in one community (Corollary~\ref{cor:pairdisjoint}).
+Each ingredient is tested separately in Sec.~\ref{sec:results}, with link communities
+cut at every level of our threshold grid and a variant joining triples through shared
+edges only beside the two ablations above. Determinism and
+nesting in the threshold are shared with thresholded clique
+percolation~\cite{kumpula2008sequential} and single-linkage link
+communities~\cite{ahn2010link}, and local queries of the same kind are answered for
+$k$-truss communities~\cite{huang2014querying}; what HyperCommon adds is the
+exact-recovery window (Theorem~\ref{thm:window}), which ties the threshold to the
+structure it recovers.
+
+\emph{Resolution and threshold choice.} Modularity has a resolution
+limit~\cite{fortunato2007resolution}; the absolute Potts model of Ronhovde and
+Nussinov~\cite{ronhovde2010local} and the Constant Potts Model~\cite{traag2011narrow},
+equivalent to it on unweighted graphs, avoid it while keeping one global parameter. To
+choose the threshold without labels we use the overlapping modularity of Shen
+\emph{et al.}~\cite{shen2009detect}, introduced to select a level of a hierarchy of
+overlapping communities; overlapping modularity measures peak close to the critical
+point of $k$-clique percolation~\cite{toth2013overlapping}. We apply the same rule to
+every method; for a partition it is the Newman--Girvan modularity, so we also score
+every method at its own default or selection rule (Sec.~\ref{sec:protocol}). Besides Leiden with modularity and the Constant Potts Model, we compare
+with label propagation~\cite{raghavan2007near}, SLPA~\cite{xie2011slpa}, the ego-network
+methods DEMON and ANGEL~\cite{coscia2012demon,rossetti2020angel},
+Walktrap~\cite{pons2006walktrap}, Infomap~\cite{rosvall2008maps}, whose Markov time sets
+its scale~\cite{schaub2012markov,kheirkhahzadeh2016efficient}, and, among
+statistical-inference
+methods~\cite{peixoto2014hierarchical,peixoto2015model,ball2011efficient,yang2013overlapping},
+the nested stochastic block model~\cite{peixoto2014hierarchical}, which selects its own
+number of groups; label propagation, Walktrap and Infomap return partitions. Overlapping
+inference (BigClam~\cite{yang2013overlapping}), OSLOM~\cite{lancichinetti2011finding} and
+ego-splitting~\cite{epasto2017ego} are not among the methods compared
+(Sec.~\ref{sec:protocol}). The construction was first formulated, in an order-dependent
+form, in Ref.~\cite{deinega2023thesis}.

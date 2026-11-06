@@ -3,7 +3,7 @@ Tests for the ring_lattice generator and its layout helpers.
 
 Rings may differ in both size and degree, so the invariants worth pinning are:
 every ring is a separate connected component, every node in ring r has degree
-zs[r], and the node ids of ring r are exactly the ground-truth community r.
+ks[r], and the node ids of ring r are exactly the ground-truth community r.
 """
 
 import networkx as nx
@@ -23,7 +23,7 @@ from generators.ring_lattice import (
 # ================================================================
 
 @pytest.mark.parametrize(
-    "sizes,zs",
+    "sizes,ks",
     [
         ([100] * 4, [16] * 4),
         ([50, 100, 250], [8, 8, 8]),
@@ -32,37 +32,37 @@ from generators.ring_lattice import (
         ([10, 10], [2, 8]),
     ],
 )
-def test_node_and_edge_counts(sizes, zs):
-    G = ring_lattice(sizes, zs)
+def test_node_and_edge_counts(sizes, ks):
+    G = ring_lattice(sizes, ks)
     assert G.number_of_nodes() == sum(sizes)
-    assert G.number_of_edges() == ring_lattice_edge_count(sizes, zs)
+    assert G.number_of_edges() == ring_lattice_edge_count(sizes, ks)
 
 
 @pytest.mark.parametrize(
-    "sizes,zs",
+    "sizes,ks",
     [
         ([100] * 4, [16] * 4),
         ([200, 120, 80], [16, 12, 8]),
         ([40, 25, 15], [10, 6, 4]),
     ],
 )
-def test_every_node_has_its_rings_degree(sizes, zs):
-    G = ring_lattice(sizes, zs)
-    for community, z in zip(ring_communities(sizes), zs):
+def test_every_node_has_its_rings_degree(sizes, ks):
+    G = ring_lattice(sizes, ks)
+    for community, k in zip(ring_communities(sizes), ks):
         degrees = {G.degree(v) for v in community}
-        assert degrees == {z}
+        assert degrees == {k}
 
 
 @pytest.mark.parametrize(
-    "sizes,zs",
+    "sizes,ks",
     [
         ([100] * 4, [16] * 4),
         ([200, 120, 80], [16, 12, 8]),
         ([30, 20, 10], [8, 6, 4]),
     ],
 )
-def test_rings_are_disjoint_components(sizes, zs):
-    G = ring_lattice(sizes, zs)
+def test_rings_are_disjoint_components(sizes, ks):
+    G = ring_lattice(sizes, ks)
     assert nx.number_connected_components(G) == len(sizes)
     found = {frozenset(c) for c in nx.connected_components(G)}
     expected = {frozenset(c) for c in ring_communities(sizes)}
@@ -110,12 +110,12 @@ def test_empty_sizes_rejected():
 
 
 def test_odd_degree_rejected():
-    with pytest.raises(ValueError, match="z must be even"):
+    with pytest.raises(ValueError, match="k must be even"):
         ring_lattice([100, 100], [16, 7])
 
 
 def test_degree_not_smaller_than_ring_rejected():
-    """A ring of 30 cannot carry z=32 even when a larger ring in the same
+    """A ring of 30 cannot carry k=32 even when a larger ring in the same
     graph can — the check is per ring, not global."""
     with pytest.raises(ValueError, match="less than the ring size"):
         ring_lattice([200, 30], [16, 32])
@@ -130,19 +130,19 @@ def test_nonpositive_size_rejected():
 # Uniform rings still behave like the classic construction
 # ================================================================
 
-@pytest.mark.parametrize("n,z,rings", [(400, 16, 4), (500, 8, 10), (60, 6, 3)])
-def test_uniform_case_matches_classic_layout(n, z, rings):
-    """Equal sizes reproduce the original ring_lattice(n, z, rings) graph."""
+@pytest.mark.parametrize("n,k,rings", [(400, 16, 4), (500, 8, 10), (60, 6, 3)])
+def test_uniform_case_matches_classic_layout(n, k, rings):
+    """Equal sizes reproduce the original ring_lattice(n, k, rings) graph."""
     per_ring = n // rings
-    G = ring_lattice([per_ring] * rings, [z] * rings)
+    G = ring_lattice([per_ring] * rings, [k] * rings)
 
     expected = nx.Graph()
     expected.add_nodes_from(range(n))
     for r in range(rings):
         offset = r * per_ring
         for i in range(per_ring):
-            for k in range(1, z // 2 + 1):
-                expected.add_edge(offset + i, offset + (i + k) % per_ring)
+            for step in range(1, k // 2 + 1):
+                expected.add_edge(offset + i, offset + (i + step) % per_ring)
 
     assert set(G.nodes()) == set(expected.nodes())
     assert {frozenset(e) for e in G.edges()} == {frozenset(e) for e in expected.edges()}

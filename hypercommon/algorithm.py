@@ -56,8 +56,14 @@ def get_node_community(G: nx.Graph, commonality_predicate, v):
     set of nodes, or None if v is not in any community
     """
 
-    # HCNode cache — built from original G, never mutated
-    hc = {u: HCNode(u, set(G.neighbors(u))) for u in G.nodes()}
+    # HCNode cache — filled on demand from original G, never mutated, so the query reads
+    # only the neighbourhoods of the nodes it examines
+    class _Lazy(dict):
+        def __missing__(self, u):
+            node = self[u] = HCNode(u, set(G.neighbors(u)))
+            return node
+
+    hc = _Lazy()
 
     # Predicate cache
     predicate_cache = {}

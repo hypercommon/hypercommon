@@ -1,0 +1,65 @@
+\begin{table*}[p]
+\caption{Numbers quoted in the text that are not read directly off a table, and where they
+are produced (scripts under \texttt{paper/}, data in \texttt{paper/figures/data/}).}
+\label{tab:S-diagnostics}
+\scriptsize
+\begin{ruledtabular}
+\begin{tabular}{p{0.52\textwidth}p{0.42\textwidth}}
+Quantity & Source \\
+\hline
+Recovery windows of Sec.~\ref{sec:theory} and Appendix~\ref{app:proofs} (Eq.~5, mixed families, emptiness, three-ring
+and $m$-ring windows, separation and small-ring conditions), exact rational arithmetic &
+\texttt{analysis/exact\_windows.py} (every check passes) \\
+Shares of rings in a shared pair and fused just above the lower window edge
+($6\%$--$61\%$ at $o_n=0.05$) & \texttt{analysis/double\_bonds.py}; \texttt{double\_bonds.csv} \\
+Curve values of Fig.~\ref{fig:omegat} ($0.92$--$0.99$; $0.39$, $0.89$, $0.95$) &
+\texttt{analysis/fig\_omega\_t.py} \\
+Label-free against best threshold (27 and 31 of 36 settings); counts of settings by
+paired mark for $\Omega$, ONMI and all-community recovery under the four protocols;
+ablation and link-community counts & \texttt{analysis/numbers3.py}; \texttt{numbers3.csv},
+\texttt{scorecard3\_counts.csv} \\
+Selector on the gradient (113 of 170 graphs above the oracle threshold; 181 against 147
+communities) & \texttt{analysis/make\_tables3.py}; Tables~\ref{tab:S-ncomms-oracle}
+and~\ref{tab:S-ncomms-label-free} \\
+Isolated-merge recovery ($\Omega=1$; $1.000$ and $0.991$ at $p=0.2$; pair rule $0.74$) &
+\texttt{bench/results2/rings\_isolated.csv}, best threshold per graph \\
+The gradient at $p=0$ (Leiden $0.28$, and $0.26$ at about ten communities; HyperCommon
+$0.99$ and $0.97$) & \texttt{bench/results2/rings\_hetero.csv}, family
+\texttt{gradient10}, $p=0$ \\
+Per-community recovery of large and small rings on the gradient, oracle values to three
+decimals, and the other family values quoted from the summaries &
+\texttt{bench/results2/<exp>\_summary2.csv} (metrics \texttt{omega}, \texttt{rec\_small},
+\texttt{rec\_large}) \\
+LFR at $\mu=0.1$ (Fig.~\ref{fig:benchmarksoracle}(f)) &
+\texttt{analysis/fig\_benchmarks2.py}; \texttt{benchmarks\_curves2.csv} \\
+Geometry values of Sec.~\ref{sec:geometry} (communities, coverage, per-community recovery,
+ONMI, triangles per edge) & \texttt{bench/results2/rings\_geometry\_summary2.csv};
+\texttt{analysis/make\_tables2.py geometry} \\
+Pair against triple rule on the real networks (base rates, precision at matched recall,
+pure triples) & \texttt{analysis/real\_networks\_v2.py}; \texttt{analysis/out/<net>\_v2.json} \\
+Label-free covers of the fourteen smaller networks (e.g.\ the number of communities on
+political blogs) & \texttt{bench/real\_more\_detection\_v3.py};
+\texttt{bench/results/real\_more\_v3.csv} \\
+Native against label-free choices (communities and $\Omega$ of link communities and of the
+Constant Potts Model) & \texttt{bench/results2/<exp>\_summary2.csv} (protocols
+\texttt{native}, \texttt{label\_free}) \\
+Controls and null graphs & \texttt{analysis/make\_tables3\_controls.py};
+\texttt{controls3.csv} \\
+Commonality signal on LFR graphs (AUC $0.97$; passing wedges by community size) &
+\texttt{analysis/lfr\_signal.py}; \texttt{lfr\_signal.csv} \\
+Triangles across LFR communities ($2\%$, $19\%$, $32\%$) & \texttt{analysis/lfr\_triangles.py};
+\texttt{lfr\_triangles.csv} \\
+Label-free retention of F1 on real networks (median $94\%$) & \texttt{analysis/derived\_numbers.py};
+\texttt{real\_label\_free\_retention.csv} \\
+Degree-ratio pruning: identical covers at all 30 thresholds on Amazon and DBLP &
+\texttt{bench/check\_pruning.py}; \texttt{bench/results/check\_pruning.csv} \\
+Running times and fitted exponents (Fig.~\ref{fig:runtime}) & \texttt{bench/runtime.py},
+\texttt{analysis/fig\_runtime.py}; \texttt{runtime\_summary.csv}, \texttt{runtime\_exponents.csv} \\
+Single-thread re-timing on Amazon and DBLP & \texttt{bench/retime\_big.py};
+\texttt{bench/results/retime\_big.csv} \\
+YouTube wedges and pruning share & \texttt{analysis/youtube\_wedges.py}; \texttt{youtube\_wedges.csv} \\
+SBM graphs identical to those of the other methods (edge counts of every graph) &
+\texttt{bench/run\_sbm.py} rows against \texttt{bench/run2.py} rows \\
+\end{tabular}
+\end{ruledtabular}
+\end{table*}

@@ -6,3 +6,21 @@ __pycache__/
 .env
 results/
 .claude/
+# raw benchmark rows: shipped compressed in paper/bench/results2_gz/
+paper/bench/results2/
+# public data, downloaded by the commands in paper/README.md
+paper/analysis/snap/*
+!paper/analysis/snap/com-amazon.all.dedup.cmty.txt.gz
+paper/analysis/data_small/netz_catalog.json
+# LFR graph cache: shipped as paper/bench/lfr_cache.tar.xz
+paper/bench/lfr_cache/
+# LaTeX build files
+paper/*.aux
+paper/*.bbl
+paper/*.blg
+paper/*.log
+paper/*.out
+paper/*Notes.bib
+
+# internal planning notes (kept locally, not released)
+paper/PLAN.md

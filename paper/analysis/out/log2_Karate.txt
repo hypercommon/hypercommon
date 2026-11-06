@@ -1,0 +1,3 @@
+== Karate
+  measures {'jaccard': 0.815, 'count': 0.758, 'min_norm': 0.887, 'f3': 0.815} stratified {'jaccard': nan, 'count': nan, 'min_norm': nan, 'f3': nan}
+  wedge auc pair 0.848 triple 0.798 base 0.676 triangle-only P=0.911 R=0.138

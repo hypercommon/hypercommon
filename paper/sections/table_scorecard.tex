@@ -1,0 +1,59 @@
+\begin{table*}[t]
+\caption{Scorecard of the benchmarks under the four protocols: $\Omega$ of HyperCommon minus that of the best other method (ablations excluded), mean over the noise range ($p\in[0,0.8]$ for rings, $\mu\in[0.1,0.6]$ for LFR), ten test graphs per noise level, with the best other method in brackets when HyperCommon is not significantly ahead of it and its difference rounds to 0.00 or below. Mark: the paired 95\% bootstrap interval of the difference over the ten test seeds lies above zero ($+$), contains zero ($=$) or lies below zero ($-$); intervals and the second-best method in Table~\ref{tab:S-intervals}. Oracle: best parameter per graph; label-free: largest overlapping modularity, Eq.~\eqref{eq:qov}; frozen: one parameter per family from calibration graphs; native: each method's own default or selection rule where it has one (Sec.~\ref{sec:protocol}), the label-free choice otherwise. Counts are not corrected for multiplicity. Method abbreviations as in Table~\ref{tab:labelfree}; the full tables are Tables~\ref{tab:labelfree} and~\ref{tab:oracle}--\ref{tab:native}.}
+\label{tab:scorecard}
+\scriptsize\setlength{\tabcolsep}{3pt}
+\begin{ruledtabular}
+\begin{tabular}{llcccc}
+Family & $o_n$ & oracle & label-free & frozen & native \\
+\hline
+uniform, $k{=}8$ & 0.00 & $-0.05^{-}$ (Leiden) & $-0.00^{=}$ (Leiden) & $-0.08^{-}$ (Leiden) & $-0.00^{=}$ (Leiden) \\
+ & 0.05 & $+0.00^{+}$ & $+0.02^{+}$ & $-0.03^{-}$ (Leiden) & $+0.06^{+}$ \\
+ & 0.10 & $+0.01^{+}$ & $+0.05^{+}$ & $+0.01^{=}$ & $+0.06^{+}$ \\
+\hline
+uniform, $k{=}16$ & 0.00 & $-0.08^{-}$ (Leiden) & $-0.06^{-}$ (Leiden) & $-0.10^{-}$ (Leiden) & $-0.06^{-}$ (Leiden) \\
+ & 0.05 & $-0.04^{-}$ (Leiden) & $-0.03^{-}$ (Leiden) & $-0.19^{-}$ (Leiden) & $-0.04^{-}$ (Leiden) \\
+ & 0.10 & $-0.01^{=}$ (Leiden) & $+0.00^{=}$ (Leiden) & $-0.32^{-}$ (Leiden) & $+0.00^{=}$ (Leiden) \\
+\hline
+equal $k$, unequal $s$, $k{=}8$ & 0.00 & $-0.03^{-}$ (Leiden) & $+0.01^{+}$ & $-0.04^{-}$ (Leiden) & $+0.01^{+}$ \\
+ & 0.05 & $+0.01^{+}$ & $+0.03^{+}$ & $+0.00^{=}$ (Link) & $+0.09^{+}$ \\
+ & 0.10 & $+0.00^{=}$ (Link) & $+0.04^{+}$ & $+0.00^{=}$ (CPM) & $+0.08^{+}$ \\
+\hline
+equal $k$, unequal $s$, $k{=}16$ & 0.00 & $-0.07^{-}$ (Leiden) & $-0.04^{-}$ (Leiden) & $-0.10^{-}$ (Leiden) & $-0.04^{-}$ (Leiden) \\
+ & 0.05 & $-0.04^{-}$ (Leiden) & $+0.00^{=}$ (Leiden) & $-0.17^{-}$ (Leiden) & $+0.01^{+}$ \\
+ & 0.10 & $+0.01^{+}$ & $+0.04^{+}$ & $-0.31^{-}$ (Leiden) & $+0.04^{+}$ \\
+\hline
+equal $s$, unequal $k$ & 0.00 & $-0.03^{-}$ (Leiden) & $-0.01^{=}$ (L-CPM) & $-0.07^{-}$ (Leiden) & $+0.00^{=}$ (Leiden) \\
+ & 0.05 & $-0.01^{-}$ (L-CPM) & $-0.01^{=}$ (L-CPM) & $-0.18^{-}$ (Leiden) & $+0.02^{+}$ \\
+ & 0.10 & $-0.03^{-}$ (L-CPM) & $-0.02^{-}$ (L-CPM) & $-0.33^{-}$ (L-CPM) & $+0.03^{+}$ \\
+\hline
+two worlds & 0.00 & $-0.00^{-}$ (L-CPM) & $+0.03^{+}$ & $-0.05^{-}$ (L-CPM) & $+0.01^{+}$ \\
+ & 0.05 & $-0.01^{-}$ (L-CPM) & $+0.10^{+}$ & $-0.25^{-}$ (L-CPM) & $+0.00^{=}$ (L-CPM) \\
+ & 0.10 & $-0.00^{=}$ (L-CPM) & $+0.06^{+}$ & $-0.38^{-}$ (L-CPM) & $+0.01^{=}$ \\
+\hline
+three big, many small & 0.00 & $+0.01^{+}$ & $+0.03^{+}$ & $+0.03^{+}$ & $+0.09^{+}$ \\
+ & 0.05 & $+0.07^{+}$ & $+0.10^{+}$ & $-0.16^{-}$ (CPM) & $+0.10^{+}$ \\
+ & 0.10 & $+0.04^{+}$ & $+0.06^{+}$ & $-0.23^{-}$ (CPM) & $+0.06^{+}$ \\
+\hline
+gradient & 0.00 & $-0.01^{-}$ (Link) & $-0.19^{-}$ (Link) & $-0.00^{=}$ (Link) & $-0.14^{-}$ (CPM) \\
+ & 0.05 & $+0.03^{+}$ & $-0.16^{-}$ (Link) & $-0.02^{=}$ (ANGEL) & $-0.11^{-}$ (ANGEL) \\
+ & 0.10 & $+0.03^{+}$ & $-0.15^{-}$ (Link) & $-0.14^{-}$ (DEMON) & $-0.12^{-}$ (CPM) \\
+\hline
+uniform $k{=}8$, $\alpha{=}1$ & 0.05 & $+0.01^{+}$ & $+0.04^{+}$ & $-0.03^{-}$ (Leiden) & $+0.08^{+}$ \\
+uniform $k{=}8$, $\alpha{=}2$ & 0.05 & $+0.01^{+}$ & $+0.02^{+}$ & $-0.02^{-}$ (Leiden) & $+0.08^{+}$ \\
+two worlds, $\alpha{=}1$ & 0.05 & $-0.05^{-}$ (L-CPM) & $+0.11^{+}$ & $-0.29^{-}$ (L-CPM) & $+0.12^{+}$ \\
+two worlds, $\alpha{=}2$ & 0.05 & $+0.00^{=}$ (L-CPM) & $+0.13^{+}$ & $-0.20^{-}$ (L-CPM) & $+0.15^{+}$ \\
+\hline
+LFR, $o_n{=}0$ &  & $-0.14^{-}$ (Leiden) & $-0.16^{-}$ (Info.) & $-0.18^{-}$ (Leiden) & $-0.16^{-}$ (Info.) \\
+LFR, $o_n{=}0.1$ &  & $-0.15^{-}$ (L-CPM) & $-0.18^{-}$ (Info.) & $-0.24^{-}$ (Info.) & $-0.19^{-}$ (Info.) \\
+LFR, $o_n{=}0.3$ &  & $-0.21^{-}$ (SLPA) & $-0.19^{-}$ (Info.) & $-0.40^{-}$ (Leiden) & $-0.21^{-}$ (SLPA) \\
+LFR, $\langle k\rangle{=}10$ &  & $-0.33^{-}$ (Leiden) & $-0.28^{-}$ (Info.) & $-0.37^{-}$ (Leiden) & $-0.28^{-}$ (Info.) \\
+LFR, $o_m{=}4$ &  & $-0.15^{-}$ (SLPA) & $-0.09^{-}$ (Info.) & $-0.18^{-}$ (SLPA) & $-0.10^{-}$ (SLPA) \\
+LFR, sizes 50--250 &  & $-0.45^{-}$ (Leiden) & $-0.45^{-}$ (Leiden) & $-0.55^{-}$ (Leiden) & $-0.43^{-}$ (Leiden) \\
+LFR, $C_{\rm LFR}{=}0.3$ &  & $-0.23^{-}$ (Leiden) & $-0.23^{-}$ (SLPA) & $-0.31^{-}$ (Leiden) & $-0.25^{-}$ (SLPA) \\
+LFR, $C_{\rm LFR}{=}0.5$ &  & $-0.08^{-}$ (Leiden) & $-0.11^{-}$ (LPA) & $-0.14^{-}$ (SLPA) & $-0.12^{-}$ (SLPA) \\
+\hline
+$+/{=}/-$, rings & & 11/4/13 of 28 & 16/5/7 of 28 & 1/5/22 of 28 & 17/5/6 of 28 \\
+$+/{=}/-$, LFR & & 0/0/8 of 8 & 0/0/8 of 8 & 0/0/8 of 8 & 0/0/8 of 8 \\
+\end{tabular}
+\end{ruledtabular}
+\end{table*}

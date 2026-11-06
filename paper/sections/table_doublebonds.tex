@@ -1,0 +1,27 @@
+\begin{table}[t]
+\caption{Shared pairs in the ring benchmarks without noise (mean over ten graphs): merges, ring pairs sharing at least one node, ring pairs sharing two merged nodes within ring distance $k$ on both rings (Proposition~\ref{prop:sharedpairs}), the share of rings in such a pair, and the share of rings that exact HyperCommon fuses with another ring just above the lower edge $1/(2k_{\min}+1)$ of the recovery window (a detected community holding at least three unshared nodes of each of two rings; analysis/double\_bonds.py).}
+\label{tab:doublebonds}
+\scriptsize\setlength{\tabcolsep}{2pt}
+\begin{ruledtabular}
+\begin{tabular}{lcrrrrr}
+Family & $o_n$ & merges & sharing & pair & rings & fused \\
+\hline
+uniform $(50,8)$ & 0.05 & 100 & 94.2 & 0.8 & 0.04 & 0.11 \\
+uniform $(50,8)$ & 0.10 & 200 & 180.0 & 2.2 & 0.11 & 0.38 \\
+uniform $(100,16)$ & 0.05 & 100 & 77.2 & 2.6 & 0.24 & 0.61 \\
+uniform $(100,16)$ & 0.10 & 200 & 126.9 & 8.7 & 0.61 & 1.00 \\
+two worlds & 0.05 & 100 & 74.7 & 3.8 & 0.22 & 0.35 \\
+three big, many small & 0.05 & 100 & 51.7 & 3.8 & 0.25 & 0.40 \\
+gradient & 0.05 & 100 & 27.5 & 1.2 & 0.20 & 0.37 \\
+equal $k$, unequal $s$ ($k{=}16$) & 0.05 & 100 & 86.8 & 2.8 & 0.17 & 0.42 \\
+equal $k$, unequal $s$ ($k{=}8$) & 0.05 & 100 & 88.7 & 0.3 & 0.02 & 0.06 \\
+equal $s$, unequal $k$ & 0.05 & 100 & 79.3 & 3.0 & 0.25 & 0.54 \\
+two worlds & 0.10 & 200 & 117.6 & 11.7 & 0.43 & 0.75 \\
+three big, many small & 0.10 & 200 & 74.6 & 8.8 & 0.47 & 0.81 \\
+gradient & 0.10 & 200 & 34.3 & 5.0 & 0.53 & 0.75 \\
+equal $k$, unequal $s$ ($k{=}8$) & 0.10 & 200 & 153.1 & 2.5 & 0.16 & 0.42 \\
+equal $k$, unequal $s$ ($k{=}16$) & 0.10 & 200 & 154.6 & 9.6 & 0.50 & 0.95 \\
+equal $s$, unequal $k$ & 0.10 & 200 & 124.0 & 12.2 & 0.68 & 0.98 \\
+\end{tabular}
+\end{ruledtabular}
+\end{table}

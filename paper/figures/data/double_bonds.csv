@@ -1,0 +1,17 @@
+experiment,family,merges,ring_pairs_sharing,double_bonded_pairs,rings,rings_in_double_bond,rings_fused,share_rings_double_bonded,share_rings_fused
+rings_uniform,k8_s50_o05,100.0,94.2,0.8,40.0,1.5,4.3,0.038,0.108
+rings_uniform,k8_s50_o10,200.0,180.0,2.2,40.0,4.4,15.1,0.11,0.378
+rings_uniform,k16_s100_o05,100.0,77.2,2.6,20.0,4.8,12.2,0.24,0.61
+rings_uniform,k16_s100_o10,200.0,126.9,8.7,20.0,12.3,20.0,0.615,1.0
+rings_hetero,two_worlds,100.0,74.7,3.8,25.0,5.4,8.8,0.216,0.352
+rings_hetero,three_big_many_small,100.0,51.7,3.8,19.0,4.7,7.5,0.247,0.395
+rings_hetero,gradient10,100.0,27.5,1.2,10.0,2.0,3.7,0.2,0.37
+rings_hetero,dense_even,100.0,86.8,2.8,30.0,5.2,12.5,0.173,0.417
+rings_hetero,sizes_only_k8,100.0,88.7,0.3,30.0,0.6,1.7,0.02,0.057
+rings_hetero,k_only_s100,100.0,79.3,3.0,20.0,5.0,10.7,0.25,0.535
+rings_hetero_overlap,two_worlds_o10,200.0,117.6,11.7,25.0,10.7,18.7,0.428,0.748
+rings_hetero_overlap,three_big_many_small_o10,200.0,74.6,8.8,19.0,8.9,15.4,0.468,0.811
+rings_hetero_overlap,gradient10_o10,200.0,34.3,5.0,10.0,5.3,7.5,0.53,0.75
+rings_hetero_overlap,sizes_only_k8_o10,200.0,153.1,2.5,30.0,4.7,12.6,0.157,0.42
+rings_hetero_overlap,dense_even_o10,200.0,154.6,9.6,30.0,15.0,28.5,0.5,0.95
+rings_hetero_overlap,k_only_s100_o10,200.0,124.0,12.2,20.0,13.5,19.6,0.675,0.98

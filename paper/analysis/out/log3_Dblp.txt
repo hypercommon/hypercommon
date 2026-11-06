@@ -1,0 +1,3 @@
+== Dblp
+  measures {'jaccard': 0.618, 'count': 0.782, 'min_norm': 0.759, 'f3': 0.705} stratified {'jaccard': 0.791, 'count': 0.788, 'min_norm': 0.786, 'f3': 0.799}
+  wedge auc pair 0.604 triple 0.579 base 0.517 triangle-only P=0.993 R=0.255

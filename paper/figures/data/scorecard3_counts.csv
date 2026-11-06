@@ -1,0 +1,9 @@
+set,protocol,ahead,level,behind,n
+rings,oracle,11,4,13,28
+rings,label_free,16,5,7,28
+rings,frozen,1,5,22,28
+rings,native,17,5,6,28
+lfr,oracle,0,0,8,8
+lfr,label_free,0,0,8,8
+lfr,frozen,0,0,8,8
+lfr,native,0,0,8,8

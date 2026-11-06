@@ -1,0 +1,61 @@
+family,method,param
+k16_s100_o00,angel,0.5
+k16_s100_o00,cpm,3
+k16_s100_o00,demon,0.5
+k16_s100_o00,hc,0.1
+k16_s100_o00,hc_2test,0.14
+k16_s100_o00,hc_tri,0.1
+k16_s100_o00,leiden,1.0
+k16_s100_o00,scan,"(0.3, 2)"
+k16_s100_o00,scan_j,"(0.2, 2)"
+k16_s100_o00,slpa,0.02
+k16_s100_o05,angel,0.5
+k16_s100_o05,cpm,4
+k16_s100_o05,demon,0.5
+k16_s100_o05,hc,0.12
+k16_s100_o05,hc_2test,0.48
+k16_s100_o05,hc_tri,0.12
+k16_s100_o05,leiden,1.0
+k16_s100_o05,scan,"(0.7, 2)"
+k16_s100_o05,scan_j,"(0.5, 2)"
+k16_s100_o05,slpa,0.02
+k16_s100_o10,angel,0.5
+k16_s100_o10,cpm,4
+k16_s100_o10,demon,0.5
+k16_s100_o10,hc,0.2
+k16_s100_o10,hc_2test,0.48
+k16_s100_o10,hc_tri,0.18
+k16_s100_o10,leiden,1.0
+k16_s100_o10,scan,"(0.7, 2)"
+k16_s100_o10,scan_j,"(0.5, 2)"
+k16_s100_o10,slpa,0.01
+k8_s50_o00,angel,0.25
+k8_s50_o00,cpm,3
+k8_s50_o00,demon,0.25
+k8_s50_o00,hc,0.14
+k8_s50_o00,hc_2test,0.2
+k8_s50_o00,hc_tri,0.02
+k8_s50_o00,leiden,2.0
+k8_s50_o00,scan,"(0.4, 2)"
+k8_s50_o00,scan_j,"(0.2, 2)"
+k8_s50_o00,slpa,0.01
+k8_s50_o05,angel,0.5
+k8_s50_o05,cpm,3
+k8_s50_o05,demon,0.5
+k8_s50_o05,hc,0.14
+k8_s50_o05,hc_2test,0.46
+k8_s50_o05,hc_tri,0.1
+k8_s50_o05,leiden,2.0
+k8_s50_o05,scan,"(0.7, 2)"
+k8_s50_o05,scan_j,"(0.5, 2)"
+k8_s50_o05,slpa,0.01
+k8_s50_o10,angel,0.5
+k8_s50_o10,cpm,3
+k8_s50_o10,demon,0.5
+k8_s50_o10,hc,0.14
+k8_s50_o10,hc_2test,0.46
+k8_s50_o10,hc_tri,0.1
+k8_s50_o10,leiden,2.0
+k8_s50_o10,scan,"(0.7, 2)"
+k8_s50_o10,scan_j,"(0.5, 2)"
+k8_s50_o10,slpa,0.01

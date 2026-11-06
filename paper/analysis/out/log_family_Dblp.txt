@@ -1,0 +1,8 @@
+  Dblp     jaccard         AUC 0.618  stratified 0.826
+  Dblp     count           AUC 0.782  stratified 0.833
+  Dblp     i2_over_u       AUC 0.705  stratified 0.833
+  Dblp     i_over_sqrtu    AUC 0.705  stratified 0.833
+  Dblp     cosine          AUC 0.663  stratified 0.840
+  Dblp     min_norm        AUC 0.759  stratified 0.849
+  Dblp     max_norm        AUC 0.585  stratified 0.814
+  Dblp     resource_alloc  AUC 0.656  stratified 0.696

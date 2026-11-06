@@ -1,0 +1,4 @@
+== Amazon
+  basic {'nodes': 334863, 'edges': 925872, 'mean_degree': 5.529855493141971, 'median_degree': 4.0, 'max_degree': 549, 'frac_labelled': 0.9472351379519386, 'frac_multi_membership_of_labelled': 0.9508187418425317, 'communities': 75149}
+  edges done
+  wedges done

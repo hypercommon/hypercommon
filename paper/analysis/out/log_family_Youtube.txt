@@ -1,0 +1,8 @@
+  Youtube  jaccard         AUC 0.610  stratified 0.604
+  Youtube  count           AUC 0.471  stratified 0.614
+  Youtube  i2_over_u       AUC 0.568  stratified 0.621
+  Youtube  i_over_sqrtu    AUC 0.568  stratified 0.621
+  Youtube  cosine          AUC 0.665  stratified 0.623
+  Youtube  min_norm        AUC 0.694  stratified 0.626
+  Youtube  max_norm        AUC 0.593  stratified 0.597
+  Youtube  resource_alloc  AUC 0.524  stratified 0.610

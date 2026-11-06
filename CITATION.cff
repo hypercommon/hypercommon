@@ -1,0 +1,27 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite the paper below."
+title: "HyperCommon"
+type: software
+license: MIT
+repository-code: "https://github.com/hypercommon/hypercommon"
+authors:
+  - family-names: Deinega
+    given-names: Dmitri
+    affiliation: "Department of Mathematics, Bar-Ilan University"
+  - family-names: Kanovsky
+    given-names: Igor
+    affiliation: "Max Stern Yezreel Valley College"
+  - family-names: Barzel
+    given-names: Baruch
+    affiliation: "Department of Mathematics, Bar-Ilan University"
+preferred-citation:
+  type: article
+  title: "Overlapping communities as connected components of a commonality hypergraph"
+  authors:
+    - family-names: Deinega
+      given-names: Dmitri
+    - family-names: Kanovsky
+      given-names: Igor
+    - family-names: Barzel
+      given-names: Baruch
+  status: submitted

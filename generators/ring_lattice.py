@@ -3,12 +3,12 @@ import networkx as nx
 
 def ring_lattice(
         sizes: list[int],
-        zs: list[int],
+        ks: list[int],
 ) -> nx.Graph:
     """
     Generate a set of disjoint ring lattices, one per entry of `sizes`.
 
-    Ring r has sizes[r] nodes, each joined to its zs[r]/2 nearest neighbours on
+    Ring r has sizes[r] nodes, each joined to its ks[r]/2 nearest neighbours on
     either side. Rings are laid out consecutively, so ring r owns the node ids
     [offset_r, offset_r + sizes[r]) where offset_r is the sum of the preceding
     sizes. Total node count is sum(sizes).
@@ -17,9 +17,9 @@ def ring_lattice(
     ----------
     sizes : list[int]
         Nodes per ring. Length is the number of rings.
-    zs : list[int]
+    ks : list[int]
         Even degree for each ring; must be the same length as `sizes`.
-        A ring of size s requires zs[r] < s.
+        A ring of size s requires ks[r] < s.
 
     Returns
     -------
@@ -36,32 +36,32 @@ def ring_lattice(
     >>> G = ring_lattice([200, 120, 80], [16, 12, 8])
     """
 
-    if len(sizes) != len(zs):
-        raise ValueError(f"sizes and zs must be the same length: {len(sizes)} != {len(zs)}")
+    if len(sizes) != len(ks):
+        raise ValueError(f"sizes and ks must be the same length: {len(sizes)} != {len(ks)}")
 
     if not sizes:
         raise ValueError("sizes must contain at least one ring")
 
-    for r, (size, z) in enumerate(zip(sizes, zs)):
+    for r, (size, k) in enumerate(zip(sizes, ks)):
         if size < 1:
             raise ValueError(f"ring {r}: size must be >= 1, got {size}")
-        if z % 2 != 0:
-            raise ValueError(f"ring {r}: z must be even, got {z}")
-        if z < 0:
-            raise ValueError(f"ring {r}: z must be >= 0, got {z}")
-        if z >= size:
-            raise ValueError(f"ring {r}: z must be less than the ring size, got z={z} size={size}")
+        if k % 2 != 0:
+            raise ValueError(f"ring {r}: k must be even, got {k}")
+        if k < 0:
+            raise ValueError(f"ring {r}: k must be >= 0, got {k}")
+        if k >= size:
+            raise ValueError(f"ring {r}: k must be less than the ring size, got k={k} size={size}")
 
     G = nx.Graph()
     G.add_nodes_from(range(sum(sizes)))
 
     offset = 0
-    for size, z in zip(sizes, zs):
-        half = z // 2
+    for size, k in zip(sizes, ks):
+        half = k // 2
         for i in range(size):
             u = offset + i
-            for k in range(1, half + 1):
-                G.add_edge(u, offset + (i + k) % size)
+            for step in range(1, half + 1):
+                G.add_edge(u, offset + (i + step) % size)
         offset += size
 
     return G
@@ -95,6 +95,6 @@ def ring_communities(sizes: list[int]) -> list[set[int]]:
     return communities
 
 
-def ring_lattice_edge_count(sizes: list[int], zs: list[int]) -> int:
-    """Edges in `ring_lattice(sizes, zs)`, without building the graph."""
-    return sum(size * z // 2 for size, z in zip(sizes, zs))
+def ring_lattice_edge_count(sizes: list[int], ks: list[int]) -> int:
+    """Edges in `ring_lattice(sizes, ks)`, without building the graph."""
+    return sum(size * k // 2 for size, k in zip(sizes, ks))

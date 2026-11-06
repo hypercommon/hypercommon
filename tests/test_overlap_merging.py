@@ -13,8 +13,8 @@ from generators.overlap import apply_overlap, ground_truth_with_overlap
 from generators.ring_lattice import ring_lattice, ring_of_node
 
 
-def build(sizes, zs):
-    return ring_lattice(sizes, zs)
+def build(sizes, ks):
+    return ring_lattice(sizes, ks)
 
 
 # ================================================================
@@ -22,7 +22,7 @@ def build(sizes, zs):
 # ================================================================
 
 @pytest.mark.parametrize(
-    "sizes,zs,overlap,expected",
+    "sizes,ks,overlap,expected",
     [
         ([100] * 4, [16] * 4, 0.0, 0),
         ([100] * 4, [16] * 4, 0.01, 4),
@@ -31,15 +31,15 @@ def build(sizes, zs):
         ([200, 120, 80], [16, 12, 8], 0.10, 40),
     ],
 )
-def test_merge_count(sizes, zs, overlap, expected):
-    G = build(sizes, zs)
+def test_merge_count(sizes, ks, overlap, expected):
+    G = build(sizes, ks)
     merged = apply_overlap(G, sizes, overlap, random.Random(42))
     assert len(merged) == expected
 
 
 def test_absorbed_nodes_are_removed_from_the_graph():
-    sizes, zs = [200, 120, 80], [16, 12, 8]
-    G = build(sizes, zs)
+    sizes, ks = [200, 120, 80], [16, 12, 8]
+    G = build(sizes, ks)
     before = G.number_of_nodes()
 
     merged = apply_overlap(G, sizes, 0.05, random.Random(1))
@@ -52,8 +52,8 @@ def test_absorbed_nodes_are_removed_from_the_graph():
 
 def test_merges_only_ever_cross_rings():
     """A merge inside one ring would not create overlap, so it must not happen."""
-    sizes, zs = [200, 120, 80], [16, 12, 8]
-    G = build(sizes, zs)
+    sizes, ks = [200, 120, 80], [16, 12, 8]
+    G = build(sizes, ks)
     node_ring = ring_of_node(sizes)
 
     merged = apply_overlap(G, sizes, 0.08, random.Random(3))
@@ -64,8 +64,8 @@ def test_merges_only_ever_cross_rings():
 
 
 def test_each_node_participates_in_at_most_one_merge():
-    sizes, zs = [150, 150, 100], [12, 12, 8]
-    G = build(sizes, zs)
+    sizes, ks = [150, 150, 100], [12, 12, 8]
+    G = build(sizes, ks)
 
     merged = apply_overlap(G, sizes, 0.10, random.Random(5))
 
@@ -74,8 +74,8 @@ def test_each_node_participates_in_at_most_one_merge():
 
 
 def test_surviving_node_inherits_the_absorbed_neighbourhood():
-    sizes, zs = [60, 40], [6, 4]
-    G = build(sizes, zs)
+    sizes, ks = [60, 40], [6, 4]
+    G = build(sizes, ks)
     original = {v: set(G.neighbors(v)) for v in G.nodes()}
 
     merged = apply_overlap(G, sizes, 0.10, random.Random(11))
@@ -91,8 +91,8 @@ def test_surviving_node_inherits_the_absorbed_neighbourhood():
 # ================================================================
 
 def test_ground_truth_places_survivor_in_both_rings():
-    sizes, zs = [200, 120, 80], [16, 12, 8]
-    G = build(sizes, zs)
+    sizes, ks = [200, 120, 80], [16, 12, 8]
+    G = build(sizes, ks)
     node_ring = ring_of_node(sizes)
 
     merged = apply_overlap(G, sizes, 0.05, random.Random(7))
@@ -114,8 +114,8 @@ def test_ground_truth_without_overlap_is_the_plain_rings():
 
 def test_ground_truth_total_membership_is_conserved():
     """Each merge moves one member; it never changes the total count."""
-    sizes, zs = [150, 150, 100], [12, 12, 8]
-    G = build(sizes, zs)
+    sizes, ks = [150, 150, 100], [12, 12, 8]
+    G = build(sizes, ks)
 
     merged = apply_overlap(G, sizes, 0.06, random.Random(13))
     truth = ground_truth_with_overlap(sizes, merged)
@@ -128,14 +128,14 @@ def test_ground_truth_total_membership_is_conserved():
 # ================================================================
 
 def test_same_seed_gives_the_same_merge():
-    sizes, zs = [200, 120, 80], [16, 12, 8]
-    a = apply_overlap(build(sizes, zs), sizes, 0.05, random.Random(99))
-    b = apply_overlap(build(sizes, zs), sizes, 0.05, random.Random(99))
+    sizes, ks = [200, 120, 80], [16, 12, 8]
+    a = apply_overlap(build(sizes, ks), sizes, 0.05, random.Random(99))
+    b = apply_overlap(build(sizes, ks), sizes, 0.05, random.Random(99))
     assert a == b
 
 
 def test_different_seeds_give_different_merges():
-    sizes, zs = [200, 120, 80], [16, 12, 8]
-    a = apply_overlap(build(sizes, zs), sizes, 0.05, random.Random(1))
-    b = apply_overlap(build(sizes, zs), sizes, 0.05, random.Random(2))
+    sizes, ks = [200, 120, 80], [16, 12, 8]
+    a = apply_overlap(build(sizes, ks), sizes, 0.05, random.Random(1))
+    b = apply_overlap(build(sizes, ks), sizes, 0.05, random.Random(2))
     assert a != b

@@ -1,0 +1,10 @@
+family,series,exponent
+rings_k8,hc_build_s,1.1690339240782248
+rings_k8,leiden_s,1.2268202417414462
+rings_k8,infomap_s,1.2509037912010554
+rings_k16,hc_build_s,1.1439491060259046
+rings_k16,leiden_s,1.2480635168730865
+rings_k16,infomap_s,1.2290847508055796
+lfr,hc_build_s,1.20147927388841
+lfr,leiden_s,1.231485763913915
+lfr,infomap_s,1.1770997212887901

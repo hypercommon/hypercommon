@@ -1,0 +1,3 @@
+== Amazon
+  measures {'jaccard': 0.599, 'count': 0.58, 'min_norm': 0.616, 'f3': 0.602} stratified {'jaccard': 0.605, 'count': 0.59, 'min_norm': 0.614, 'f3': 0.603}
+  wedge auc pair 0.571 triple 0.582 base 0.862 triangle-only P=0.919 R=0.086

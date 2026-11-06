@@ -1,0 +1,163 @@
+\begin{table*}[t]
+\caption{As Table~\ref{tab:real}, with F1 scored against the distinct node sets of the recorded communities rather than against the top-5000 lists, which repeat some sets.}
+\label{tab:S-realnet-dedup}
+\scriptsize\setlength{\tabcolsep}{2pt}
+\begin{ruledtabular}
+\begin{tabular}{lccccccccccccccc}
+ & \multicolumn{5}{c}{Amazon} & \multicolumn{5}{c}{DBLP} & \multicolumn{5}{c}{YouTube} \\
+ & F1 best & F1 free & $\Omega$ best & $\Omega$ free & cov. & F1 best & F1 free & $\Omega$ best & $\Omega$ free & cov. & F1 best & F1 free & $\Omega$ best & $\Omega$ free & cov. \\
+\hline
+components & 0.020 & 0.020 & 0.000 & 0.000 & 1.00 & 0.075 & 0.075 & 0.000 & 0.000 & 1.00 & 0.060 & 0.060 & 0.000 & 0.000 & 1.00 \\
+HC & 0.848 & 0.847 & 0.459 & 0.459 & 0.99 & 0.515 & 0.486 & 0.024 & 0.024 & 0.94 & 0.321 & 0.288 & 0.017 & $-0.007$ & 0.67 \\
+HC$_f$ & 0.874 & 0.844 & 0.477 & 0.477 & 1.00 & 0.520 & 0.486 & 0.037 & 0.024 & 0.94 & -- & -- & -- & -- & -- \\
+e-conn. & 0.851 & 0.851 & 0.485 & 0.485 & 0.99 & 0.515 & 0.487 & 0.024 & 0.024 & 0.94 & 0.322 & 0.291 & 0.016 & $-0.007$ & 0.67 \\
+tri. & 0.830 & 0.828 & 0.415 & 0.415 & 0.95 & 0.513 & 0.484 & 0.030 & 0.019 & 0.89 & 0.308 & 0.299 & 0.015 & 0.006 & 0.49 \\
+2-test & 0.878 & 0.878 & 0.424 & 0.424 & 0.95 & 0.507 & 0.459 & 0.014 & 0.014 & 0.83 & 0.279 & 0.215 & 0.005 & $-0.011$ & 0.53 \\
+Link & 0.838 & 0.820 & 0.487 & 0.487 & 1.00 & 0.490 & 0.446 & 0.031 & 0.024 & 1.00 & -- & -- & -- & -- & -- \\
+Leiden & 0.923 & 0.563 & 0.600 & 0.392 & 1.00 & 0.542 & 0.285 & \textbf{0.154} & \textbf{0.152} & 1.00 & \textbf{0.362} & 0.192 & \textbf{0.142} & 0.074 & 1.00 \\
+Leiden, $\gamma{=}1$ & 0.563 & 0.563 & 0.392 & 0.392 & 1.00 & 0.285 & 0.285 & 0.152 & \textbf{0.152} & 1.00 & 0.192 & 0.192 & 0.074 & 0.074 & 1.00 \\
+L-CPM & 0.927 & 0.587 & \textbf{0.617} & 0.385 & 1.00 & 0.532 & 0.237 & 0.150 & 0.150 & 1.00 & 0.337 & 0.252 & 0.113 & 0.104 & 1.00 \\
+Infomap & \textbf{0.935} & 0.903 & 0.577 & \textbf{0.576} & 1.00 & \textbf{0.547} & 0.505 & 0.041 & 0.030 & 1.00 & 0.354 & \textbf{0.338} & 0.128 & \textbf{0.128} & 1.00 \\
+Infomap, Markov time 1 & 0.915 & \textbf{0.915} & 0.488 & 0.488 & 1.00 & \textbf{0.547} & \textbf{0.547} & 0.013 & 0.013 & 1.00 & 0.338 & \textbf{0.338} & 0.128 & \textbf{0.128} & 1.00 \\
+LPA & 0.807 & 0.807 & 0.373 & 0.373 & 1.00 & 0.507 & 0.507 & 0.010 & 0.010 & 1.00 & 0.217 & 0.217 & 0.007 & 0.007 & 1.00 \\
+\end{tabular}
+\end{ruledtabular}
+\end{table*}
+
+\begin{table*}[p]
+\caption{Every method on the fourteen smaller networks: best-match F1 at the best parameter (stochastic methods: mean over five seeds), with each method's rank among the methods shown (ablations included) in the last row as the mean rank over the fourteen networks. Bold: best in row, within 0.005.}
+\label{tab:S-realnet-f1-best}
+\tiny\setlength{\tabcolsep}{2pt}
+\begin{ruledtabular}
+\begin{tabular}{lcccccccccccccccc}
+Network & HC & e-conn. & tri. & 2-test & Link & CPM & Leiden & L-CPM & Infomap & LPA & Walktrap & SLPA & DEMON & ANGEL & SCAN & SCAN-J \\
+\hline
+College football & 0.91 & 0.91 & 0.91 & \textbf{0.91} & 0.68 & 0.85 & 0.89 & 0.89 & 0.89 & 0.83 & 0.87 & 0.77 & 0.81 & 0.75 & 0.89 & 0.89 \\
+Political books & \textbf{0.78} & 0.74 & 0.66 & 0.78 & 0.71 & 0.65 & \textbf{0.79} & \textbf{0.79} & 0.77 & 0.62 & 0.65 & 0.71 & 0.75 & 0.75 & 0.77 & 0.66 \\
+Political blogs & \textbf{0.64} & \textbf{0.64} & 0.35 & \textbf{0.64} & \textbf{0.64} & -- & 0.43 & 0.37 & 0.53 & 0.43 & 0.42 & 0.57 & 0.60 & 0.59 & 0.62 & 0.54 \\
+Primary school & 0.40 & 0.40 & 0.44 & 0.42 & 0.52 & -- & \textbf{0.89} & \textbf{0.89} & 0.19 & 0.19 & 0.55 & 0.19 & 0.68 & 0.64 & 0.51 & 0.46 \\
+Facebook ego 0 & 0.40 & 0.40 & 0.40 & \textbf{0.41} & 0.38 & 0.40 & 0.38 & 0.36 & 0.40 & 0.36 & 0.34 & 0.39 & \textbf{0.42} & 0.39 & \textbf{0.42} & 0.41 \\
+Facebook ego 107 & 0.55 & 0.53 & 0.52 & 0.60 & 0.48 & -- & 0.62 & 0.59 & 0.69 & 0.64 & 0.62 & \textbf{0.71} & 0.59 & 0.55 & 0.63 & 0.62 \\
+Facebook ego 348 & 0.65 & 0.65 & 0.63 & 0.66 & 0.61 & 0.66 & 0.66 & 0.66 & 0.66 & 0.51 & 0.46 & \textbf{0.67} & 0.61 & 0.66 & 0.66 & 0.65 \\
+Facebook ego 414 & 0.73 & 0.73 & \textbf{0.76} & 0.75 & 0.62 & 0.75 & \textbf{0.76} & \textbf{0.76} & \textbf{0.76} & \textbf{0.76} & 0.67 & \textbf{0.76} & 0.70 & 0.73 & \textbf{0.76} & 0.75 \\
+Facebook ego 686 & 0.58 & 0.58 & \textbf{0.68} & 0.62 & 0.55 & 0.55 & 0.61 & 0.55 & 0.61 & 0.55 & 0.42 & 0.55 & 0.62 & 0.63 & 0.62 & 0.61 \\
+Facebook ego 698 & 0.83 & 0.83 & 0.83 & 0.82 & 0.76 & \textbf{0.85} & 0.81 & 0.81 & 0.82 & 0.81 & 0.77 & 0.80 & 0.82 & 0.76 & 0.82 & 0.83 \\
+Facebook ego 1684 & 0.61 & 0.61 & 0.59 & 0.63 & 0.42 & -- & 0.62 & 0.56 & \textbf{0.64} & 0.57 & 0.55 & 0.62 & 0.54 & 0.57 & 0.63 & 0.62 \\
+Facebook ego 1912 & 0.46 & 0.46 & 0.41 & 0.45 & 0.42 & -- & \textbf{0.53} & 0.45 & 0.50 & 0.47 & 0.47 & 0.52 & 0.49 & 0.48 & 0.44 & 0.44 \\
+Facebook ego 3437 & 0.56 & 0.56 & 0.56 & 0.61 & 0.52 & 0.51 & \textbf{0.70} & \textbf{0.70} & 0.67 & 0.54 & 0.56 & 0.54 & 0.62 & 0.59 & 0.61 & 0.61 \\
+Facebook ego 3980 & 0.68 & 0.68 & 0.68 & 0.68 & 0.68 & 0.61 & 0.71 & 0.68 & 0.68 & \textbf{0.73} & 0.62 & 0.66 & 0.63 & 0.63 & 0.68 & 0.68 \\
+\hline
+mean rank & 7.3 & 7.9 & 8.6 & 5.9 & 12.4 & 10.1 & 5.5 & 8.0 & 6.3 & 10.7 & 12.3 & 8.6 & 8.1 & 9.3 & 5.4 & 7.6 \\
+\end{tabular}
+\end{ruledtabular}
+\end{table*}
+
+\begin{table*}[p]
+\caption{Every method on the fourteen smaller networks: best-match F1 at the label-free parameter (stochastic methods: mean over five seeds), with each method's rank among the methods shown (ablations included) in the last row as the mean rank over the fourteen networks. Bold: best in row, within 0.005.}
+\label{tab:S-realnet-f1-free}
+\tiny\setlength{\tabcolsep}{2pt}
+\begin{ruledtabular}
+\begin{tabular}{lcccccccccccccccc}
+Network & HC & e-conn. & tri. & 2-test & Link & CPM & Leiden & L-CPM & Infomap & LPA & Walktrap & SLPA & DEMON & ANGEL & SCAN & SCAN-J \\
+\hline
+College football & 0.88 & 0.88 & 0.86 & \textbf{0.89} & 0.42 & 0.85 & 0.87 & 0.83 & 0.88 & 0.83 & 0.87 & 0.77 & 0.69 & 0.74 & \textbf{0.89} & \textbf{0.89} \\
+Political books & 0.71 & 0.70 & 0.59 & \textbf{0.78} & 0.71 & 0.65 & 0.66 & 0.72 & 0.66 & 0.62 & 0.65 & 0.69 & 0.71 & 0.62 & 0.77 & 0.66 \\
+Political blogs & 0.20 & 0.19 & 0.18 & 0.18 & 0.29 & -- & 0.42 & 0.37 & 0.50 & 0.43 & 0.42 & \textbf{0.57} & 0.43 & 0.49 & 0.19 & 0.12 \\
+Primary school & 0.40 & 0.40 & 0.44 & 0.40 & 0.31 & -- & 0.77 & \textbf{0.89} & 0.19 & 0.19 & 0.55 & 0.19 & 0.35 & 0.64 & 0.48 & 0.46 \\
+Facebook ego 0 & 0.39 & 0.38 & 0.38 & 0.39 & 0.35 & 0.38 & 0.37 & 0.35 & 0.38 & 0.36 & 0.34 & 0.38 & 0.40 & 0.35 & 0.40 & \textbf{0.41} \\
+Facebook ego 107 & 0.55 & 0.53 & 0.52 & 0.52 & 0.35 & -- & 0.60 & 0.55 & 0.63 & 0.64 & 0.62 & \textbf{0.70} & 0.59 & 0.45 & 0.44 & 0.48 \\
+Facebook ego 348 & 0.48 & 0.48 & 0.48 & 0.53 & 0.50 & 0.47 & 0.53 & 0.46 & 0.58 & 0.51 & 0.46 & \textbf{0.64} & 0.58 & 0.56 & 0.51 & 0.51 \\
+Facebook ego 414 & 0.68 & 0.68 & \textbf{0.75} & 0.70 & 0.58 & 0.75 & 0.67 & \textbf{0.76} & 0.69 & \textbf{0.76} & 0.67 & \textbf{0.76} & 0.70 & 0.73 & 0.70 & 0.70 \\
+Facebook ego 686 & 0.56 & 0.56 & 0.58 & 0.61 & 0.42 & 0.46 & 0.54 & 0.37 & 0.30 & 0.55 & 0.42 & 0.54 & \textbf{0.62} & 0.50 & \textbf{0.62} & 0.61 \\
+Facebook ego 698 & 0.83 & 0.83 & 0.83 & 0.82 & 0.76 & \textbf{0.85} & 0.73 & 0.81 & 0.72 & 0.81 & 0.77 & 0.80 & 0.82 & 0.73 & 0.81 & 0.82 \\
+Facebook ego 1684 & 0.60 & 0.59 & 0.58 & 0.60 & 0.26 & -- & 0.61 & 0.50 & \textbf{0.64} & 0.57 & 0.55 & 0.61 & 0.52 & 0.57 & 0.62 & 0.62 \\
+Facebook ego 1912 & 0.37 & 0.37 & 0.36 & 0.42 & 0.32 & -- & \textbf{0.53} & 0.40 & 0.49 & 0.47 & 0.47 & 0.51 & 0.44 & 0.36 & 0.38 & 0.38 \\
+Facebook ego 3437 & 0.53 & 0.53 & 0.53 & 0.53 & 0.45 & 0.51 & \textbf{0.64} & 0.56 & 0.56 & 0.54 & 0.56 & 0.54 & 0.56 & 0.52 & 0.57 & 0.55 \\
+Facebook ego 3980 & 0.57 & 0.57 & 0.57 & 0.50 & 0.60 & 0.61 & 0.68 & 0.53 & 0.61 & \textbf{0.73} & 0.62 & 0.66 & 0.57 & 0.50 & 0.51 & 0.50 \\
+\hline
+mean rank & 8.3 & 8.9 & 9.4 & 7.6 & 12.5 & 9.2 & 6.8 & 8.8 & 7.3 & 8.0 & 9.3 & 6.0 & 6.5 & 10.8 & 6.6 & 7.5 \\
+\end{tabular}
+\end{ruledtabular}
+\end{table*}
+
+\begin{table*}[p]
+\caption{Every method on the fourteen smaller networks: $\Omega$ at the best parameter (stochastic methods: mean over five seeds), with each method's rank among the methods shown (ablations included) in the last row as the mean rank over the fourteen networks. Bold: best in row, within 0.005.}
+\label{tab:S-realnet-omega-best}
+\tiny\setlength{\tabcolsep}{2pt}
+\begin{ruledtabular}
+\begin{tabular}{lcccccccccccccccc}
+Network & HC & e-conn. & tri. & 2-test & Link & CPM & Leiden & L-CPM & Infomap & LPA & Walktrap & SLPA & DEMON & ANGEL & SCAN & SCAN-J \\
+\hline
+College football & 0.92 & 0.92 & 0.92 & \textbf{0.93} & 0.75 & 0.84 & 0.90 & 0.90 & 0.88 & 0.75 & 0.82 & 0.63 & 0.42 & 0.56 & 0.85 & 0.85 \\
+Political books & 0.69 & \textbf{0.70} & 0.66 & 0.65 & 0.65 & 0.60 & 0.67 & 0.68 & 0.67 & 0.59 & 0.65 & 0.69 & 0.41 & 0.65 & 0.60 & 0.58 \\
+Political blogs & 0.04 & 0.04 & 0.03 & 0.03 & 0.06 & -- & \textbf{0.55} & 0.32 & 0.54 & 0.53 & 0.51 & 0.54 & 0.10 & 0.15 & 0.04 & 0.01 \\
+Primary school & 0.06 & 0.06 & 0.24 & 0.06 & 0.32 & -- & \textbf{0.81} & \textbf{0.81} & 0.00 & 0.00 & 0.38 & 0.00 & 0.00 & 0.00 & 0.36 & 0.23 \\
+Facebook ego 0 & 0.29 & 0.29 & 0.29 & 0.27 & 0.29 & 0.30 & 0.31 & 0.31 & \textbf{0.34} & 0.29 & 0.26 & 0.33 & 0.14 & 0.29 & 0.29 & 0.25 \\
+Facebook ego 107 & 0.51 & 0.48 & 0.47 & 0.53 & 0.48 & -- & 0.75 & \textbf{0.84} & 0.74 & 0.74 & 0.53 & 0.73 & 0.23 & 0.55 & 0.40 & 0.41 \\
+Facebook ego 348 & 0.16 & 0.16 & 0.13 & 0.15 & 0.16 & 0.13 & 0.18 & 0.18 & 0.18 & 0.01 & $-$0.09 & 0.05 & \textbf{0.29} & 0.16 & 0.16 & 0.14 \\
+Facebook ego 414 & 0.86 & 0.86 & 0.85 & 0.85 & 0.80 & 0.83 & 0.84 & \textbf{0.87} & 0.83 & 0.81 & 0.83 & 0.82 & 0.57 & 0.72 & 0.85 & 0.80 \\
+Facebook ego 686 & \textbf{0.11} & \textbf{0.11} & \textbf{0.11} & 0.10 & \textbf{0.11} & 0.10 & 0.05 & \textbf{0.11} & 0.04 & 0.00 & 0.02 & $-$0.01 & 0.09 & 0.09 & 0.09 & 0.09 \\
+Facebook ego 698 & 0.59 & 0.59 & 0.59 & 0.58 & \textbf{0.69} & 0.58 & 0.66 & 0.61 & 0.62 & 0.61 & 0.60 & 0.58 & 0.64 & 0.61 & 0.55 & 0.58 \\
+Facebook ego 1684 & 0.74 & 0.75 & 0.74 & 0.75 & 0.61 & -- & 0.68 & 0.69 & \textbf{0.81} & 0.40 & 0.67 & 0.48 & 0.31 & 0.39 & 0.73 & 0.73 \\
+Facebook ego 1912 & 0.58 & 0.58 & 0.58 & 0.58 & 0.35 & -- & 0.64 & \textbf{0.67} & 0.66 & 0.61 & 0.60 & 0.61 & 0.27 & 0.35 & 0.58 & 0.58 \\
+Facebook ego 3437 & 0.46 & 0.46 & 0.46 & 0.37 & 0.46 & 0.47 & 0.47 & 0.49 & 0.46 & 0.39 & \textbf{0.50} & 0.39 & 0.26 & 0.49 & 0.27 & 0.34 \\
+Facebook ego 3980 & 0.19 & 0.19 & 0.17 & 0.19 & 0.19 & 0.10 & 0.42 & 0.21 & 0.33 & \textbf{0.53} & 0.28 & 0.17 & 0.04 & 0.02 & 0.19 & 0.19 \\
+\hline
+mean rank & 7.2 & 7.1 & 8.3 & 8.4 & 8.8 & 10.1 & 4.4 & 3.6 & 5.5 & 9.6 & 8.4 & 9.6 & 12.5 & 9.8 & 9.6 & 11.1 \\
+\end{tabular}
+\end{ruledtabular}
+\end{table*}
+
+\begin{table*}[p]
+\caption{Every method on the fourteen smaller networks: $\Omega$ at the label-free parameter (stochastic methods: mean over five seeds), with each method's rank among the methods shown (ablations included) in the last row as the mean rank over the fourteen networks. Bold: best in row, within 0.005.}
+\label{tab:S-realnet-omega-free}
+\tiny\setlength{\tabcolsep}{2pt}
+\begin{ruledtabular}
+\begin{tabular}{lcccccccccccccccc}
+Network & HC & e-conn. & tri. & 2-test & Link & CPM & Leiden & L-CPM & Infomap & LPA & Walktrap & SLPA & DEMON & ANGEL & SCAN & SCAN-J \\
+\hline
+College football & 0.84 & 0.84 & \textbf{0.89} & 0.85 & 0.24 & 0.84 & 0.81 & 0.71 & 0.85 & 0.75 & 0.82 & 0.63 & 0.42 & 0.56 & 0.85 & 0.85 \\
+Political books & 0.66 & \textbf{0.68} & 0.65 & 0.65 & 0.61 & 0.60 & 0.59 & \textbf{0.68} & 0.66 & 0.59 & 0.65 & \textbf{0.68} & 0.41 & 0.64 & 0.60 & 0.58 \\
+Political blogs & 0.04 & 0.04 & 0.03 & 0.03 & 0.00 & -- & 0.52 & 0.32 & 0.53 & 0.53 & 0.51 & \textbf{0.54} & 0.01 & 0.15 & 0.04 & 0.01 \\
+Primary school & 0.06 & 0.06 & 0.24 & 0.06 & $-$0.01 & -- & 0.62 & \textbf{0.81} & 0.00 & 0.00 & 0.38 & 0.00 & 0.00 & 0.00 & 0.36 & 0.23 \\
+Facebook ego 0 & 0.25 & 0.29 & 0.29 & 0.27 & 0.27 & 0.25 & 0.16 & 0.27 & \textbf{0.33} & 0.29 & 0.26 & 0.32 & 0.12 & 0.28 & 0.17 & 0.22 \\
+Facebook ego 107 & 0.51 & 0.48 & 0.47 & 0.41 & 0.41 & -- & 0.51 & 0.54 & 0.58 & \textbf{0.74} & 0.53 & 0.73 & 0.19 & 0.55 & 0.40 & 0.41 \\
+Facebook ego 348 & $-$0.08 & $-$0.08 & $-$0.08 & $-$0.08 & 0.00 & $-$0.07 & $-$0.04 & $-$0.10 & $-$0.10 & 0.01 & $-$0.09 & 0.04 & \textbf{0.14} & 0.02 & $-$0.07 & $-$0.07 \\
+Facebook ego 414 & \textbf{0.86} & \textbf{0.86} & 0.82 & 0.85 & 0.80 & 0.82 & 0.83 & 0.81 & 0.83 & 0.81 & 0.83 & 0.81 & 0.57 & 0.72 & 0.85 & 0.80 \\
+Facebook ego 686 & 0.08 & 0.08 & 0.08 & 0.07 & \textbf{0.09} & 0.08 & 0.04 & 0.04 & 0.01 & 0.00 & 0.02 & $-$0.02 & 0.09 & 0.06 & 0.06 & \textbf{0.09} \\
+Facebook ego 698 & 0.59 & 0.59 & 0.59 & 0.58 & 0.55 & 0.58 & \textbf{0.65} & 0.61 & 0.59 & 0.61 & 0.60 & 0.58 & \textbf{0.64} & 0.61 & 0.55 & 0.58 \\
+Facebook ego 1684 & 0.74 & 0.75 & 0.74 & 0.73 & 0.34 & -- & 0.63 & 0.69 & \textbf{0.81} & 0.40 & 0.67 & 0.48 & 0.26 & 0.37 & 0.73 & 0.73 \\
+Facebook ego 1912 & 0.57 & 0.57 & 0.57 & 0.58 & 0.27 & -- & 0.60 & 0.60 & \textbf{0.66} & 0.61 & 0.60 & 0.60 & 0.27 & 0.33 & 0.58 & 0.58 \\
+Facebook ego 3437 & 0.46 & 0.46 & 0.44 & 0.26 & 0.46 & 0.47 & 0.41 & 0.48 & 0.45 & 0.39 & \textbf{0.50} & 0.36 & 0.26 & 0.49 & 0.21 & 0.19 \\
+Facebook ego 3980 & 0.04 & 0.04 & 0.06 & 0.04 & 0.11 & 0.06 & 0.40 & 0.20 & 0.29 & \textbf{0.53} & 0.28 & 0.17 & 0.01 & $-$0.05 & 0.03 & 0.04 \\
+\hline
+mean rank & 7.6 & 7.0 & 7.4 & 8.9 & 11.3 & 8.3 & 7.5 & 7.0 & 5.9 & 7.5 & 6.9 & 7.6 & 12.1 & 8.9 & 9.4 & 9.9 \\
+\end{tabular}
+\end{ruledtabular}
+\end{table*}
+
+\begin{table*}[p]
+\caption{Every method on the fourteen smaller networks: coverage at the label-free parameter (stochastic methods: mean over five seeds).}
+\label{tab:S-realnet-coverage-free}
+\tiny\setlength{\tabcolsep}{2pt}
+\begin{ruledtabular}
+\begin{tabular}{lcccccccccccccccc}
+Network & HC & e-conn. & tri. & 2-test & Link & CPM & Leiden & L-CPM & Infomap & LPA & Walktrap & SLPA & DEMON & ANGEL & SCAN & SCAN-J \\
+\hline
+College football & 1.00 & 1.00 & 1.00 & 0.94 & 1.00 & 0.98 & 1.00 & 1.00 & 1.00 & 1.00 & 1.00 & 1.00 & 1.00 & 1.00 & 0.94 & 0.94 \\
+Political books & 0.95 & 0.96 & 0.95 & 0.97 & 0.99 & 0.99 & 1.00 & 1.00 & 1.00 & 1.00 & 1.00 & 1.00 & 0.97 & 0.97 & 0.94 & 0.88 \\
+Political blogs & 0.23 & 0.23 & 0.21 & 0.22 & 0.78 & -- & 1.00 & 1.00 & 0.82 & 1.00 & 1.00 & 0.82 & 0.67 & 0.63 & 0.26 & 0.13 \\
+Primary school & 0.93 & 0.93 & 0.66 & 0.91 & 1.00 & -- & 1.00 & 1.00 & 1.00 & 1.00 & 1.00 & 1.00 & 1.00 & 1.00 & 0.59 & 0.80 \\
+Facebook ego 0 & 0.83 & 0.87 & 0.80 & 0.86 & 0.97 & 0.72 & 1.00 & 1.00 & 1.00 & 1.00 & 1.00 & 1.00 & 0.84 & 0.83 & 0.76 & 0.75 \\
+Facebook ego 107 & 0.88 & 0.88 & 0.87 & 0.80 & 0.97 & -- & 1.00 & 1.00 & 1.00 & 1.00 & 1.00 & 1.00 & 0.99 & 0.97 & 0.84 & 0.86 \\
+Facebook ego 348 & 0.74 & 0.74 & 0.74 & 0.79 & 0.97 & 0.81 & 1.00 & 1.00 & 1.00 & 1.00 & 1.00 & 1.00 & 0.97 & 0.94 & 0.71 & 0.72 \\
+Facebook ego 414 & 0.97 & 0.97 & 0.93 & 0.97 & 0.99 & 0.91 & 1.00 & 1.00 & 1.00 & 1.00 & 1.00 & 1.00 & 0.99 & 0.97 & 0.99 & 0.93 \\
+Facebook ego 686 & 0.92 & 0.92 & 0.90 & 0.90 & 0.96 & 0.81 & 1.00 & 1.00 & 1.00 & 1.00 & 1.00 & 1.00 & 0.95 & 0.91 & 0.93 & 0.85 \\
+Facebook ego 698 & 0.98 & 0.98 & 0.98 & 0.98 & 1.00 & 0.88 & 1.00 & 1.00 & 1.00 & 1.00 & 1.00 & 1.00 & 1.00 & 0.90 & 0.92 & 0.98 \\
+Facebook ego 1684 & 0.81 & 0.81 & 0.80 & 0.81 & 0.98 & -- & 1.00 & 1.00 & 1.00 & 1.00 & 1.00 & 1.00 & 0.97 & 0.97 & 0.78 & 0.77 \\
+Facebook ego 1912 & 0.82 & 0.82 & 0.81 & 0.83 & 1.00 & -- & 1.00 & 1.00 & 1.00 & 1.00 & 1.00 & 1.00 & 0.98 & 0.97 & 0.79 & 0.81 \\
+Facebook ego 3437 & 0.95 & 0.95 & 0.94 & 0.87 & 0.99 & 0.90 & 1.00 & 1.00 & 1.00 & 1.00 & 1.00 & 1.00 & 0.99 & 0.99 & 0.81 & 0.82 \\
+Facebook ego 3980 & 0.78 & 0.78 & 0.78 & 0.80 & 0.85 & 0.68 & 1.00 & 1.00 & 1.00 & 1.00 & 1.00 & 1.00 & 0.78 & 0.72 & 0.78 & 0.80 \\
+\end{tabular}
+\end{ruledtabular}
+\end{table*}

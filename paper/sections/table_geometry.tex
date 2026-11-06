@@ -1,0 +1,35 @@
+\begin{table*}[t]
+\caption{Internal geometry: before the noise, a fraction $q$ of each ring's edges is rewired inside the ring, from lattice rings ($q=0$) to rings that are random graphs ($q=1$), at fixed size and mean degree; $o_n=0.05$. Uniform: 40 rings of 50 nodes, $k=8$; two worlds: five rings of 200 nodes ($k=32$) and twenty of 50 ($k=8$); three big, many small: three of 400 ($k=32$) and sixteen of 50 ($k=8$); gradient: ten rings of 600 to 30 nodes ($k=16$ to 8). Mean $\Omega$ over $p\in\{0,0.1,\dots,0.6\}$, ten test graphs per noise level, under the oracle and label-free protocols, for HyperCommon (HC), its triangles-only variant and the best other method; $C$: mean clustering of the noiseless graphs (ten seeds); cov.: coverage of HC's label-free cover. Superscripts on HC: paired 95\% interval of its difference from the best other method excludes zero ($^+$ HC ahead, $^-$ behind). Bold: HC best or within 0.005 of the best other method. Means are over $p\in\{0,0.1,\dots,0.6\}$, so the $q=0$ entries differ from those of Tables~\ref{tab:labelfree} and~\ref{tab:oracle} for the same families, which average over $p\in[0,0.8]$.}
+\label{tab:geometry}
+\footnotesize\setlength{\tabcolsep}{3pt}
+\begin{ruledtabular}
+\begin{tabular}{lcccccccccc}
+ & & & \multicolumn{3}{c}{oracle} & \multicolumn{4}{c}{label-free} \\
+Family & $q$ & $C$ & HC & tri. & best other & HC & tri. & best other & cov. \\
+\hline
+uniform, $k{=}8$ & 0.0 & 0.62 & \textbf{0.73$^+$} & 0.65 & 0.73 (Link) & \textbf{0.70$^+$} & 0.64 & 0.67 (Link) & 0.98 \\
+ & 0.1 & 0.48 & 0.68$^-$ & 0.56 & 0.81 (Leiden) & 0.65 & 0.56 & 0.66 (Leiden) & 0.97 \\
+ & 0.3 & 0.28 & 0.62$^-$ & 0.41 & 0.85 (Leiden) & 0.57$^-$ & 0.41 & 0.73 (Infomap) & 0.95 \\
+ & 0.6 & 0.16 & 0.61$^-$ & 0.28 & 0.86 (Leiden) & 0.55$^-$ & 0.28 & 0.77 (Infomap) & 0.96 \\
+ & 1.0 & 0.15 & 0.60$^-$ & 0.29 & 0.85 (Leiden) & 0.55$^-$ & 0.28 & 0.77 (Infomap) & 0.95 \\
+\hline
+two worlds & 0.0 & 0.67 & \textbf{0.91} & 0.90 & 0.91 (L-CPM) & \textbf{0.89$^+$} & 0.89 & 0.82 (CPM) & 0.94 \\
+ & 0.1 & 0.51 & 0.88$^-$ & 0.87 & 0.94 (L-CPM) & 0.86$^-$ & 0.86 & 0.91 (L-CPM) & 0.93 \\
+ & 0.3 & 0.30 & 0.84$^-$ & 0.81 & 0.95 (L-CPM) & 0.82$^-$ & 0.80 & 0.92 (L-CPM) & 0.94 \\
+ & 0.6 & 0.17 & 0.72$^-$ & 0.68 & 0.95 (L-CPM) & 0.69$^-$ & 0.66 & 0.92 (L-CPM) & 0.91 \\
+ & 1.0 & 0.16 & 0.66$^-$ & 0.66 & 0.95 (L-CPM) & 0.62$^-$ & 0.66 & 0.92 (L-CPM) & 0.92 \\
+\hline
+three big, many small & 0.0 & 0.68 & \textbf{0.94$^+$} & 0.93 & 0.87 (CPM) & \textbf{0.93$^+$} & 0.91 & 0.85 (CPM) & 0.90 \\
+ & 0.1 & 0.51 & 0.92$^-$ & 0.91 & 0.95 (L-CPM) & \textbf{0.91$^+$} & 0.91 & 0.83 (CPM) & 0.91 \\
+ & 0.3 & 0.28 & 0.84$^-$ & 0.80 & 0.96 (L-CPM) & 0.83$^-$ & 0.79 & 0.95 (L-CPM) & 0.91 \\
+ & 0.6 & 0.13 & 0.51$^-$ & 0.61 & 0.96 (L-CPM) & 0.50$^-$ & 0.56 & 0.95 (L-CPM) & 0.83 \\
+ & 1.0 & 0.11 & 0.28$^-$ & 0.54 & 0.96 (L-CPM) & 0.27$^-$ & 0.45 & 0.95 (L-CPM) & 0.80 \\
+\hline
+gradient of ten rings & 0.0 & 0.66 & \textbf{0.74$^+$} & 0.72 & 0.70 (Link) & 0.42$^-$ & 0.37 & 0.64 (Link) & 0.93 \\
+ & 0.1 & 0.49 & 0.65$^-$ & 0.63 & 0.73 (L-CPM) & 0.43$^-$ & 0.38 & 0.55 (Link) & 0.93 \\
+ & 0.3 & 0.25 & 0.44$^-$ & 0.43 & 0.86 (L-CPM) & 0.40$^-$ & 0.34 & 0.76 (Walktrap) & 0.93 \\
+ & 0.6 & 0.08 & 0.16$^-$ & 0.11 & 0.88 (L-CPM) & 0.16$^-$ & 0.09 & 0.86 (L-CPM) & 0.87 \\
+ & 1.0 & 0.04 & 0.11$^-$ & 0.02 & 0.87 (L-CPM) & 0.09$^-$ & 0.01 & 0.85 (L-CPM) & 0.89 \\
+\end{tabular}
+\end{ruledtabular}
+\end{table*}

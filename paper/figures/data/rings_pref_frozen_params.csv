@@ -1,0 +1,41 @@
+family,method,param
+k8_s50_o05_preferential,angel,0.5
+k8_s50_o05_preferential,cpm,3
+k8_s50_o05_preferential,demon,0.5
+k8_s50_o05_preferential,hc,0.14
+k8_s50_o05_preferential,hc_2test,0.46
+k8_s50_o05_preferential,hc_tri,0.02
+k8_s50_o05_preferential,leiden,2.0
+k8_s50_o05_preferential,scan,"(0.7, 2)"
+k8_s50_o05_preferential,scan_j,"(0.5, 2)"
+k8_s50_o05_preferential,slpa,0.02
+k8_s50_o05_preferential2,angel,0.5
+k8_s50_o05_preferential2,cpm,3
+k8_s50_o05_preferential2,demon,0.5
+k8_s50_o05_preferential2,hc,0.14
+k8_s50_o05_preferential2,hc_2test,0.46
+k8_s50_o05_preferential2,hc_tri,0.02
+k8_s50_o05_preferential2,leiden,2.0
+k8_s50_o05_preferential2,scan,"(0.7, 2)"
+k8_s50_o05_preferential2,scan_j,"(0.5, 2)"
+k8_s50_o05_preferential2,slpa,0.02
+two_worlds_preferential,angel,0.75
+two_worlds_preferential,cpm,4
+two_worlds_preferential,demon,0.75
+two_worlds_preferential,hc,0.1
+two_worlds_preferential,hc_2test,0.5
+two_worlds_preferential,hc_tri,0.1
+two_worlds_preferential,leiden,1.0
+two_worlds_preferential,scan,"(0.7, 2)"
+two_worlds_preferential,scan_j,"(0.5, 2)"
+two_worlds_preferential,slpa,0.02
+two_worlds_preferential2,angel,0.75
+two_worlds_preferential2,cpm,4
+two_worlds_preferential2,demon,0.75
+two_worlds_preferential2,hc,0.14
+two_worlds_preferential2,hc_2test,0.24
+two_worlds_preferential2,hc_tri,0.1
+two_worlds_preferential2,leiden,1.0
+two_worlds_preferential2,scan,"(0.5, 2)"
+two_worlds_preferential2,scan_j,"(0.5, 2)"
+two_worlds_preferential2,slpa,0.01

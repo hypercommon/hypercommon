@@ -1,0 +1,54 @@
+\begin{table*}[t]
+\caption{Detection on fourteen further networks with recorded groups (Netzschleuder repository~\cite{peixoto2020netzschleuder}; sizes in Table~\ref{tab:datamore}), scored by best-match F1 on the labelled nodes, to which detected communities are restricted; each method at its best parameter (best) and at the parameter of largest overlapping modularity (free); stochastic methods: mean over five seeds. HC: HyperCommon with Jaccard; HC$_f$: the seven commonality functions together, each on 100 quantile levels of its own triple scores (in brackets the function chosen; J when Jaccard ties), the free choice taken over all of them; with labels it chooses among 700 (function, threshold) pairs per network, so its best-parameter column is an upper bound for the family, not one method's parameter grid (with 30 quantile levels per function its four wins are unchanged). ``Best other'': the most accurate of the twelve other methods under that protocol. Bold: best of HC, HC$_f$ and the other methods under each protocol. Functions: J, Jaccard; cos, cosine; $I/\min$ and $I/\max$, overlap normalised by the smaller or larger neighbourhood; $I$, overlap count; RA, resource allocation. College football: the conference labels of Ref.~\cite{girvan2002community} are those of the 2001 season while the games are from the 2000 season; corrected labels are given in Ref.~\cite{evans2010clique}. Every method on every network is in Tables~\ref{tab:S-realnet-f1-best}--\ref{tab:S-realnet-coverage-free}.}
+\label{tab:realmore}
+\footnotesize
+\begin{ruledtabular}
+\begin{tabular}{l|ccl|ccl}
+ & \multicolumn{3}{c|}{best parameter} & \multicolumn{3}{c}{free (label-free)} \\
+Network & HC & HC$_f$ & best other & HC & HC$_f$ & best other \\
+\hline
+College football & 0.909 & \textbf{0.914} (RA) & 0.893 (SCAN) & 0.875 & 0.886 ($I/\min$) & \textbf{0.893} (SCAN) \\
+Political books & 0.784 & 0.786 ($I/\min$) & \textbf{0.788} (L-CPM) & 0.705 & 0.699 (cos) & \textbf{0.767} (SCAN) \\
+Political blogs & \textbf{0.636} & \textbf{0.636} (J) & \textbf{0.636} (Link) & 0.195 & 0.211 (cos) & \textbf{0.571} (SLPA) \\
+Primary school & 0.405 & 0.826 ($I/\min$) & \textbf{0.893} (Leiden) & 0.405 & 0.826 ($I/\min$) & \textbf{0.893} (L-CPM) \\
+Facebook ego 0 & 0.399 & \textbf{0.442} ($I^2/U$) & 0.419 (SCAN) & 0.390 & 0.378 (cos) & \textbf{0.410} (SCAN-J) \\
+Facebook ego 107 & 0.552 & 0.616 (RA) & \textbf{0.708} (SLPA) & 0.552 & 0.522 (cos) & \textbf{0.697} (SLPA) \\
+Facebook ego 348 & 0.651 & 0.661 ($I/\min$) & \textbf{0.668} (SLPA) & 0.479 & 0.479 (J) & \textbf{0.644} (SLPA) \\
+Facebook ego 414 & 0.733 & 0.758 ($I/\min$) & \textbf{0.760} (SCAN) & 0.680 & \textbf{0.757} ($I/\min$) & \textbf{0.757} (L-CPM) \\
+Facebook ego 686 & 0.578 & \textbf{0.674} ($I^2/U$) & 0.633 (ANGEL) & 0.556 & 0.556 (J) & \textbf{0.620} (DEMON) \\
+Facebook ego 698 & 0.826 & \textbf{0.866} ($I^2/U$) & 0.849 (CPM) & 0.826 & 0.831 ($I/\min$) & \textbf{0.849} (CPM) \\
+Facebook ego 1684 & 0.612 & 0.624 ($I/\min$) & \textbf{0.645} (Infomap) & 0.605 & 0.619 (cos) & \textbf{0.645} (Infomap) \\
+Facebook ego 1912 & 0.463 & 0.484 (cos) & \textbf{0.532} (Leiden) & 0.369 & 0.400 ($I/\max$) & \textbf{0.525} (Leiden) \\
+Facebook ego 3437 & 0.564 & 0.586 (cos) & \textbf{0.698} (Leiden) & 0.526 & 0.551 (cos) & \textbf{0.644} (Leiden) \\
+Facebook ego 3980 & 0.681 & 0.692 (cos) & \textbf{0.734} (LPA) & 0.567 & 0.605 (cos) & \textbf{0.734} (LPA) \\
+\end{tabular}
+\end{ruledtabular}
+\end{table*}
+
+\begin{table*}[t]
+\caption{As Table~\ref{tab:realmore}, scored by $\Omega$ on the labelled nodes.}
+\label{tab:realmoreomega}
+\footnotesize
+\begin{ruledtabular}
+\begin{tabular}{l|ccl|ccl}
+ & \multicolumn{3}{c|}{best parameter} & \multicolumn{3}{c}{free (label-free)} \\
+Network & HC & HC$_f$ & best other & HC & HC$_f$ & best other \\
+\hline
+College football & 0.919 & \textbf{0.927} (RA) & 0.897 (Leiden) & 0.836 & \textbf{0.889} ($I/\min$) & 0.852 (SCAN) \\
+Political books & 0.687 & \textbf{0.709} (cos) & 0.693 (SLPA) & 0.659 & \textbf{0.680} (cos) & 0.676 (SLPA) \\
+Political blogs & 0.041 & 0.053 (cos) & \textbf{0.552} (Leiden) & 0.041 & 0.053 (cos) & \textbf{0.540} (SLPA) \\
+Primary school & 0.060 & 0.713 ($I/\min$) & \textbf{0.812} (Leiden) & 0.060 & 0.713 ($I/\min$) & \textbf{0.812} (L-CPM) \\
+Facebook ego 0 & 0.286 & 0.339 ($I/\min$) & \textbf{0.342} (Infomap) & 0.251 & 0.258 (cos) & \textbf{0.326} (Infomap) \\
+Facebook ego 107 & 0.513 & 0.542 (cos) & \textbf{0.844} (L-CPM) & 0.513 & 0.526 (cos) & \textbf{0.736} (LPA) \\
+Facebook ego 348 & 0.161 & 0.184 ($I$) & \textbf{0.291} (DEMON) & $-$0.082 & $-$0.082 (J) & \textbf{0.142} (DEMON) \\
+Facebook ego 414 & 0.861 & 0.861 (J) & \textbf{0.872} (L-CPM) & \textbf{0.861} & 0.810 ($I/\min$) & 0.853 (SCAN) \\
+Facebook ego 686 & 0.107 & \textbf{0.163} (RA) & 0.110 (Link) & 0.075 & 0.075 (J) & \textbf{0.093} (SCAN-J) \\
+Facebook ego 698 & 0.588 & \textbf{0.712} ($I/\min$) & 0.687 (Link) & 0.588 & 0.621 ($I/\min$) & \textbf{0.647} (Leiden) \\
+Facebook ego 1684 & 0.744 & 0.785 ($I/\min$) & \textbf{0.814} (Infomap) & 0.744 & 0.767 (cos) & \textbf{0.814} (Infomap) \\
+Facebook ego 1912 & 0.576 & 0.590 ($I/\max$) & \textbf{0.668} (L-CPM) & 0.574 & 0.590 ($I/\max$) & \textbf{0.657} (Infomap) \\
+Facebook ego 3437 & 0.462 & 0.486 ($I^2/U$) & \textbf{0.504} (Walktrap) & 0.462 & 0.450 (cos) & \textbf{0.504} (Walktrap) \\
+Facebook ego 3980 & 0.190 & 0.190 (J) & \textbf{0.535} (LPA) & 0.043 & 0.130 (cos) & \textbf{0.535} (LPA) \\
+\end{tabular}
+\end{ruledtabular}
+\end{table*}
+

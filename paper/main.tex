@@ -1,0 +1,76 @@
+\documentclass[pre,twocolumn,superscriptaddress,longbibliography,nofootinbib,floatfix]{revtex4-2}
+
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{bm}
+\usepackage{placeins}
+\usepackage{xr-hyper}
+\usepackage[colorlinks=true,citecolor=blue,linkcolor=blue,urlcolor=blue]{hyperref}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}{Proposition}
+\newtheorem{lemma}{Lemma}
+\newtheorem{corollary}{Corollary}
+
+% labels of the Supplemental Material (Tables S1-..., Figs. S1-...); compile supp.tex too
+\externaldocument{supp}
+
+\begin{document}
+
+\title{Overlapping communities as connected components of a commonality hypergraph}
+
+% Author order confirmed: Deinega, Kanovsky, Barzel (as in the M.Sc. thesis with Barzel in place of Levit).
+% TODO(Dima): Kanovsky's department at Yezreel Valley College.
+\author{Dmitri Deinega}
+\affiliation{Department of Mathematics, Bar-Ilan University, Ramat Gan 5290002, Israel}
+\author{Igor Kanovsky}
+\affiliation{Max Stern Yezreel Valley College, Emek Yezreel, Israel}
+\author{Baruch Barzel}
+\affiliation{Department of Mathematics, Bar-Ilan University, Ramat Gan 5290002, Israel}
+
+\begin{abstract}
+\input{sections/abstract}
+\end{abstract}
+
+\maketitle
+
+\input{sections/introduction}
+\input{sections/related}
+\input{sections/commonality}
+\input{sections/method}
+\input{sections/theory}
+\input{sections/protocol}
+\input{sections/results}
+\input{sections/discussion}
+
+\section*{Data and code availability}
+% TODO(Dima): archive the tagged release on Zenodo and put its DOI here.
+The implementation (including the vectorised code with degree-ratio pruning used for
+the timings), the benchmark generators, the script behind every number, table and
+figure, the raw results (one row per graph, method and parameter) and the per-setting
+paired bootstrap intervals are in release \texttt{pre-submission} of
+\url{https://github.com/hypercommon/hypercommon}, under the MIT licence; its \texttt{paper/README.md}
+lists the command that regenerates each table and figure, together with the software
+versions, the seeds and the hardware and load of every timing.
+Table~\ref{tab:S-diagnostics} of the Supplemental Material lists the source of every
+number quoted in the text that appears in no table. The real networks are
+public: SNAP (\url{https://snap.stanford.edu/data}) and the Netzschleuder
+repository~\cite{peixoto2020netzschleuder}.
+
+\begin{acknowledgments}
+D.D.\ acknowledges the support of the Friedrich and Ira Sachs scholarship at Bar-Ilan
+University.
+% TODO(Dima): check the English spelling ("Sachs") against the award letter.
+\end{acknowledgments}
+
+\FloatBarrier
+\appendix
+\input{sections/appendix}
+\input{sections/appendix_proofs}
+
+% place every pending table and figure before the reference list starts
+\clearpage
+\bibliography{references}
+
+\end{document}

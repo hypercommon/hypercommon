@@ -1,0 +1,162 @@
+\section{Data}
+\label{app:data}
+
+Table~\ref{tab:data} lists the four networks with recorded memberships, and
+Table~\ref{tab:datamore} the fourteen Netzschleuder networks of Table~\ref{tab:realmore}.
+Groups of fewer than three nodes are discarded; the SNAP top-5000 lists repeat some node
+sets, and $\Omega$ is scored against the distinct sets.
+
+\begin{table}[h]
+\caption{Networks with recorded memberships. Groups: the lines of the SNAP files
+\texttt{all.cmty} (Amazon: \texttt{all.dedup.cmty}), as used in Sec.~\ref{sec:commonality};
+detection is scored against the top-5000 lists, which repeat some node sets (1\,517
+distinct sets for Amazon, 4\,961 for DBLP); $\Omega$ is scored against the distinct
+sets. On YouTube detection is scored against every group of at least three nodes
+(8\,385 groups on 47\,135 nodes). $f_{\rm lab}$: fraction of nodes with at least one
+recorded membership.}
+\label{tab:data}
+\begin{ruledtabular}
+\begin{tabular}{lrrrr}
+Network & Nodes & Edges & Groups & $f_{\rm lab}$ \\
+\hline
+Karate club & 34 & 78 & 2 & 1.00 \\
+DBLP & 317\,080 & 1\,049\,866 & 13\,477 & 0.82 \\
+Amazon & 334\,863 & 925\,872 & 75\,149 & 0.95 \\
+YouTube & 1\,134\,890 & 2\,987\,624 & 16\,386 & 0.046 \\
+\end{tabular}
+\end{ruledtabular}
+\end{table}
+
+\input{sections/table_data_more}
+
+\section{Benchmark design, grids and settings}
+\label{app:design}
+
+Table~\ref{tab:shapes} lists the ring families, Table~\ref{tab:grids} the parameter grids
+and Table~\ref{tab:doublebonds} the shared nodes and fused rings of the ring benchmarks.
+
+\emph{Ring generator.} Rings are generated independently. The two nodes of each merged pair are drawn uniformly among all
+nodes and redrawn when they lie on the same ring or either has already been merged; the
+absorbed node's edges are moved to the survivor, so the graph has
+$n_0-\lfloor o_n n_0\rfloor$ nodes, $\lfloor o_n n_0\rfloor$ of them in two rings. A
+rewired edge keeps one endpoint, chosen at random, and moves the other to a non-neighbour
+$w$ chosen either uniformly or preferentially, with probability proportional to
+$(d_w+1)^\alpha$ under the current degrees ($\alpha=1$, linear; $\alpha=2$,
+superlinear, which grows hubs); as $p\to1$ the planted structure is erased. The geometry
+families rewire inside each ring before the merges and the noise, moving one endpoint of
+each chosen edge to a uniformly random non-neighbour in the same ring; a control family
+rewires by double-edge swaps inside each ring instead, which keeps every node's degree.
+In the hub families each node draws its own even degree $k_i$ from a power law
+$P(k)\propto k^{-2.5}$ on $\{k_r,\dots,8k_r\}$ and is joined to its $k_i/2$ nearest
+neighbours on either side, so that communities keep their lattice neighbourhoods but
+contain hubs. In the split-overlap families each of the two merged nodes first drops a
+random half of its edges. Each random geometric community is a random geometric graph on
+the unit torus with the size and mean degree of a ring, clustered (about $0.58$) but not
+a lattice.
+
+\emph{LFR graphs.} The reference implementation~\cite{lancichinetti2009benchmarks}
+(\texttt{unweighted\_undirected}, compiled unmodified) with average degree
+$\langle k\rangle=20$, maximum degree $k_{\max}=50$, degree and community-size exponents
+$\tau_1=2$ and $\tau_2=1$, and community sizes between 20 and 100. The three slices at
+$o_n=0.1$ use $\langle k\rangle=10$, $o_m=4$, and community sizes between 50 and 250,
+respectively; the two clustered families, also at $o_n=0.1$, use the generator's
+clustering option \texttt{-C} ($C_{\rm LFR}=0.3$, $0.5$).
+
+\emph{Methods, software and settings.} Implementations are those of
+\textsc{cdlib}~\cite{rossetti2019cdlib} (version 0.4.0),
+\textsc{leidenalg}~\cite{traag_leidenalg} (0.11.0, with python-igraph 1.0.0),
+\textsc{infomap}~\cite{edler_infomap} (2.10.1) and
+\textsc{graph-tool}~\cite{peixoto_graphtool} (3.9), except SCAN and link communities,
+which we implemented to expose the similarity and the cut; the stochastic block model was
+run under Linux on the same graphs, checked edge for edge. We also use networkx 3.6.1,
+numpy 2.4.1 and scipy 1.17.1. Leiden: iterated to convergence
+(\texttt{n\_iterations}$=-1$), three restarts per resolution on the benchmarks and the
+fourteen smaller networks, the restart kept being the one of highest objective value
+under every protocol, so that no label enters the choice of restart, and one run per
+resolution on Amazon, DBLP and YouTube; under the native protocol the L-CPM resolution
+equals the edge density, at which the Constant Potts Model compares a group with an
+Erd\H{o}s--R\'enyi graph of the same density~\cite{traag2011narrow}. Infomap:
+two-level, one trial. Link communities: single linkage on closed-neighbourhood Jaccard,
+cut at every value of HyperCommon's threshold grid, communities of fewer than three
+nodes discarded; under the native protocol, cut where the partition density is largest
+over the same grid, the criterion of Ref.~\cite{ahn2010link}. SCAN: cosine similarity on
+closed neighbourhoods (SCAN-J: the same algorithm with Jaccard similarity); border nodes
+reachable from several clusters are kept in all of them. Walktrap: walks of length 4,
+dendrogram cut at maximum modularity (\textsc{cdlib}'s default). Stochastic block model:
+run under Ubuntu (WSL), \texttt{minimize\_nested\_blockmodel\_dl} with default settings,
+seeded from the graph seed (environment in \texttt{paper/environment-sbm.yml}).
+Stochastic methods are seeded from the graph seed on the benchmarks, use five seeds on
+the fourteen smaller networks (means reported) and one on Amazon, DBLP and YouTube.
+
+\begin{table*}[tbp]
+\caption{Ring-lattice families: rings of size $s$ and degree $k$, written
+$(s,k)\times$count; $n_0=2000$ nodes before the merges, $o_n=0.05$ unless stated. All six
+unequal families were also run at $o_n=0$ and $0.10$. Geometry families: uniform
+$(50,8)\times40$, two worlds, three big, many small, and the gradient, each with a
+fraction $q\in\{0,0.1,0.3,0.6,1\}$ of every ring's edges rewired inside the ring (one
+endpoint moved), noise $p\in\{0,0.1,\dots,0.6\}$; the degree-preserving control uses
+double-edge swaps on uniform $(50,8)\times40$ and three big, many small at
+$q\in\{0.1,0.3\}$. Isolated-merge families: uniform $(50,8)\times40$ and
+$(100,16)\times20$ at $o_n=0.01$, merges more than $2k$ apart on every ring,
+$p\in\{0,0.05,0.1,0.2\}$. Hubs: $(50,k_i)\times40$ with $k_i\in\{4,\dots,32\}$,
+$(100,k_i)\times20$ with $k_i\in\{8,\dots,64\}$, and two worlds with $k_i\in\{16,\dots,128\}$
+on the five large rings and $\{4,\dots,32\}$ on the twenty small ones, $P(k_i)\propto
+k_i^{-2.5}$ (mean degrees 9.2, 20.6 and 26.5). Split overlap: two worlds and three big,
+many small at $o_n\in\{0.05,0.10\}$. Random geometric communities: the sizes and mean
+degrees of uniform $(50,8)\times40$ and of two worlds. These control families use
+$p\in\{0,0.1,\dots,0.8\}$. Null graphs: random geometric (2000 nodes, mean degree 8) and
+Holme--Kim (2000 nodes, $m=4$, triangle probability $0.9$), $p=0$.}
+\label{tab:shapes}
+\begin{ruledtabular}
+\begin{tabular}{ll}
+Family & Rings \\
+\hline
+uniform & $(50,8)\times40$ or $(100,16)\times20$; $o_n\in\{0,0.05,0.10\}$ \\
+two worlds & $(200,32)\times5$, $(50,8)\times20$ \\
+three big, many small & $(400,32)\times3$, $(50,8)\times16$ \\
+gradient & $(600,16)$, $(400,12)$, $(300,12)$, $(200,8)$, $(150,8)$, \\
+ & $(120,8)$, $(100,8)$, $(60,8)$, $(40,8)$, $(30,8)$ \\
+equal $k$, unequal $s$ & $(100,16)\times10$, $(50,16)\times20$ \\
+ & $(100,8)\times10$, $(50,8)\times20$ \\
+equal $s$, unequal $k$ & $(100,k)\times5$, $k\in\{32,24,16,8\}$ \\
+preferential & uniform $(50,8)\times40$ and two worlds, $\alpha\in\{1,2\}$ \\
+\end{tabular}
+\end{ruledtabular}
+\end{table*}
+
+\begin{table*}[tbp]
+\caption{Parameter grids (Sec.~\ref{sec:protocol}; the grids of clique percolation,
+SLPA, DEMON, ANGEL and SCAN are the widened ones).
+Logarithmically spaced grids list their end points and number of values. On Amazon,
+DBLP and YouTube, Leiden's RB resolution runs over $\{0.01, 0.02, 0.05, 0.1, 0.25, 0.5,
+1, 2, 4, 8, \dots, 4096\}$ (19 values, doubling from 1), its Constant Potts Model
+resolution over 20 values from $10^{-5}$ to $0.5$, Infomap over the same Markov times
+and the HyperCommon variants over the same $t$ grid; on Amazon and DBLP, link
+communities also use the $t$ grid, and each commonality function 50 quantile levels of
+its own triple scores. On the fourteen smaller networks the HyperCommon variants and
+link communities search 100 quantile levels and the other methods the grids below; on
+the benchmarks each commonality function searches 29 levels ($0,0.04,\dots,0.96$ and
+$0.97,0.98,0.99,0.995$).}
+\label{tab:grids}
+\begin{ruledtabular}
+\begin{tabular}{ll}
+Method & Grid \\
+\hline
+HyperCommon, ablations, link communities & $t\in\{0.02,0.04,\dots,0.60\}$ (30) \\
+Leiden, RB modularity & $\gamma$ from $1/16$ to $32$ (30, logarithmic), best of 3 restarts \\
+Leiden, Constant Potts Model & $\gamma$ from $0.002$ to $0.5$ (30, logarithmic), best of 3 restarts \\
+Infomap & Markov time from $0.25$ to $16$ (13, logarithmic) \\
+CPM & clique size $\in\{3,\dots,7\}$ \\
+SLPA & $r\in\{0.01,0.02,0.05,0.1,0.2,0.3,0.45\}$, 100 iterations \\
+DEMON & $\epsilon\in\{0.1,0.25,0.5,0.75,0.9,1\}$ \\
+ANGEL & threshold $\in\{0.1,0.25,0.5,0.75,0.9,1\}$ \\
+SCAN (cosine) & $\epsilon\in\{0.1,\dots,0.8\}$, $\mu_{\rm SCAN}\in\{2,3,5\}$ \\
+SCAN (Jaccard) & $\epsilon\in\{0.1,\dots,0.6\}$, $\mu_{\rm SCAN}\in\{2,3,5\}$ \\
+Walktrap & walks of length 4, dendrogram cut at maximum modularity \\
+label propagation & parameter-free \\
+stochastic block model & level of the nested hierarchy (finest first; 1--6 levels with more than one group) \\
+\end{tabular}
+\end{ruledtabular}
+\end{table*}
+
+\input{sections/table_doublebonds}

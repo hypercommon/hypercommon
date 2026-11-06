@@ -1,0 +1,21 @@
+family,method,param
+on10_C03,angel,0.75
+on10_C03,cpm,5
+on10_C03,demon,0.75
+on10_C03,hc,0.22
+on10_C03,hc_2test,0.3
+on10_C03,hc_tri,0.22
+on10_C03,leiden,4.0
+on10_C03,scan,"(0.5, 5)"
+on10_C03,scan_j,"(0.3, 5)"
+on10_C03,slpa,0.05|t100
+on10_C05,angel,0.75
+on10_C05,cpm,5
+on10_C05,demon,0.75
+on10_C05,hc,0.34
+on10_C05,hc_2test,0.4
+on10_C05,hc_tri,0.34
+on10_C05,leiden,4.0
+on10_C05,scan,"(0.6, 5)"
+on10_C05,scan_j,"(0.4, 5)"
+on10_C05,slpa,0.02|t100

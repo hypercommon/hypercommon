@@ -1,0 +1,8 @@
+  Amazon   jaccard         AUC 0.599  stratified 0.610
+  Amazon   count           AUC 0.580  stratified 0.601
+  Amazon   i2_over_u       AUC 0.602  stratified 0.610
+  Amazon   i_over_sqrtu    AUC 0.602  stratified 0.610
+  Amazon   cosine          AUC 0.609  stratified 0.616
+  Amazon   min_norm        AUC 0.616  stratified 0.617
+  Amazon   max_norm        AUC 0.589  stratified 0.602
+  Amazon   resource_alloc  AUC 0.568  stratified 0.579

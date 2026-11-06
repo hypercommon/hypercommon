@@ -1,0 +1,13 @@
+family,overlap,hc,best_other,best_other_val,vs_best,tri,vs_tri,leiden
+gradient10,0,0.652,cpm,0.574,ahead,0.603,ahead,0.306
+gradient10,5,0.57,angel,0.467,ahead,0.544,ahead,0.147
+gradient10,10,0.48,cpm,0.407,ahead,0.469,ahead,0.1
+sizes_only_k8,0,0.575,leiden,0.585,behind,0.461,ahead,0.585
+sizes_only_k8,5,0.525,cpm,0.43,ahead,0.448,ahead,0.38
+sizes_only_k8,10,0.458,cpm,0.374,ahead,0.409,ahead,0.28
+three_big_many_small,0,0.844,scan,0.751,ahead,0.838,tie,0.431
+three_big_many_small,5,0.797,cpm,0.712,ahead,0.79,tie,0.319
+three_big_many_small,10,0.712,cpm,0.669,ahead,0.693,ahead,0.237
+two_worlds,0,0.836,scan,0.724,ahead,0.821,ahead,0.616
+two_worlds,5,0.775,cpm,0.685,ahead,0.768,tie,0.472
+two_worlds,10,0.718,cpm,0.657,ahead,0.71,tie,0.391

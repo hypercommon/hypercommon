@@ -1,0 +1,1558 @@
+15288 tasks to run (0 already done) -> D:\Python Projects\hypercommon\paper\bench\results\rings_pref.csv
+  25/15288  0.1 min  eta 83.5 min
+  50/15288  0.2 min  eta 50.6 min
+  75/15288  0.2 min  eta 41.3 min
+  100/15288  0.2 min  eta 36.5 min
+  125/15288  0.3 min  eta 34.2 min
+  150/15288  0.3 min  eta 32.6 min
+  175/15288  0.4 min  eta 32.2 min
+  200/15288  0.4 min  eta 31.5 min
+  225/15288  0.5 min  eta 32.1 min
+  250/15288  0.5 min  eta 32.1 min
+  275/15288  0.6 min  eta 31.5 min
+  300/15288  0.6 min  eta 30.2 min
+  325/15288  0.6 min  eta 29.4 min
+  350/15288  0.7 min  eta 28.6 min
+  375/15288  0.7 min  eta 28.3 min
+  400/15288  0.8 min  eta 28.1 min
+  425/15288  0.8 min  eta 28.0 min
+  450/15288  0.9 min  eta 28.1 min
+  475/15288  0.9 min  eta 28.2 min
+  500/15288  1.0 min  eta 28.6 min
+  525/15288  1.0 min  eta 29.3 min
+  550/15288  1.3 min  eta 33.7 min
+  575/15288  1.5 min  eta 38.7 min
+  600/15288  1.8 min  eta 44.1 min
+  625/15288  2.1 min  eta 49.6 min
+  650/15288  2.4 min  eta 54.6 min
+  675/15288  2.7 min  eta 59.3 min
+  700/15288  3.2 min  eta 66.3 min
+  725/15288  3.5 min  eta 70.4 min
+  750/15288  3.9 min  eta 75.5 min
+  775/15288  4.3 min  eta 79.7 min
+  800/15288  4.7 min  eta 85.5 min
+  825/15288  5.0 min  eta 87.3 min
+  850/15288  5.4 min  eta 91.1 min
+  875/15288  5.7 min  eta 93.3 min
+  900/15288  6.0 min  eta 95.7 min
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'graph_tool', 'wurlitzer', 'bayanpy'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'pyclustering', 'ASLPAw'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer', 'graph_tool', 'bayanpy'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'ASLPAw', 'pyclustering'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer', 'bayanpy', 'graph_tool'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'pyclustering', 'ASLPAw'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'bayanpy', 'wurlitzer', 'graph_tool'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'pyclustering', 'ASLPAw'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer', 'graph_tool', 'bayanpy'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'pyclustering', 'ASLPAw'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer', 'bayanpy', 'graph_tool'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'ASLPAw', 'pyclustering'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+  925/15288  6.4 min  eta 99.1 min
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'bayanpy', 'wurlitzer', 'graph_tool'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'pyclustering', 'ASLPAw'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'bayanpy', 'wurlitzer', 'graph_tool'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'ASLPAw', 'pyclustering'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer', 'graph_tool', 'bayanpy'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'pyclustering', 'ASLPAw'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'graph_tool', 'wurlitzer', 'bayanpy'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'ASLPAw', 'pyclustering'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+  950/15288  6.8 min  eta 102.7 min
+  975/15288  7.3 min  eta 106.4 min
+  1000/15288  7.8 min  eta 110.9 min
+  1025/15288  8.2 min  eta 113.6 min
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer', 'graph_tool', 'bayanpy'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'ASLPAw', 'pyclustering'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer', 'bayanpy', 'graph_tool'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'pyclustering', 'ASLPAw'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'bayanpy', 'graph_tool', 'wurlitzer'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'pyclustering', 'ASLPAw'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+  1050/15288  8.7 min  eta 117.3 min
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer', 'graph_tool', 'bayanpy'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'pyclustering', 'ASLPAw'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer', 'bayanpy', 'graph_tool'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'ASLPAw', 'pyclustering'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'bayanpy', 'graph_tool', 'wurlitzer'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'ASLPAw', 'pyclustering'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'bayanpy', 'graph_tool', 'wurlitzer'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'pyclustering', 'ASLPAw'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer', 'bayanpy', 'graph_tool'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'ASLPAw', 'pyclustering'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'bayanpy', 'graph_tool', 'wurlitzer'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'pyclustering', 'ASLPAw'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+  1075/15288  9.3 min  eta 123.1 min
+  1100/15288  9.4 min  eta 120.7 min
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'bayanpy', 'graph_tool', 'wurlitzer'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'ASLPAw', 'pyclustering'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+  1125/15288  9.4 min  eta 118.4 min
+  1150/15288  9.5 min  eta 116.3 min
+  1175/15288  9.5 min  eta 114.1 min
+  1200/15288  9.5 min  eta 112.1 min
+  1225/15288  9.6 min  eta 110.0 min
+  1250/15288  9.6 min  eta 108.2 min
+  1275/15288  9.7 min  eta 106.3 min
+  1300/15288  9.7 min  eta 104.6 min
+  1325/15288  9.8 min  eta 102.8 min
+  1350/15288  9.8 min  eta 101.2 min
+  1375/15288  9.8 min  eta 99.3 min
+  1400/15288  9.8 min  eta 97.5 min
+  1425/15288  9.8 min  eta 95.8 min
+  1450/15288  9.9 min  eta 94.1 min
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'bayanpy', 'wurlitzer', 'graph_tool'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'ASLPAw', 'pyclustering'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+  1475/15288  9.9 min  eta 92.6 min
+  1500/15288  9.9 min  eta 91.2 min
+  1525/15288  10.0 min  eta 89.8 min
+  1550/15288  10.0 min  eta 88.5 min
+  1575/15288  10.0 min  eta 87.3 min
+  1600/15288  10.1 min  eta 86.1 min
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer', 'graph_tool', 'bayanpy'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'pyclustering', 'ASLPAw'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'bayanpy', 'graph_tool', 'wurlitzer'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'pyclustering', 'ASLPAw'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+  1625/15288  10.1 min  eta 85.0 min
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer', 'bayanpy', 'graph_tool'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'pyclustering', 'ASLPAw'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+  1650/15288  10.1 min  eta 83.7 min
+  1675/15288  10.2 min  eta 82.6 min
+  1700/15288  10.2 min  eta 81.6 min
+  1725/15288  10.3 min  eta 80.7 min
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer', 'graph_tool', 'bayanpy'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'pyclustering', 'ASLPAw'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+  1750/15288  10.3 min  eta 79.7 min
+  1775/15288  10.4 min  eta 79.0 min
+  1800/15288  10.5 min  eta 78.3 min
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'bayanpy', 'wurlitzer', 'graph_tool'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'pyclustering', 'ASLPAw'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+  1825/15288  10.5 min  eta 77.7 min
+  1850/15288  10.6 min  eta 77.1 min
+  1875/15288  10.7 min  eta 76.7 min
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer', 'bayanpy', 'graph_tool'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'pyclustering', 'ASLPAw'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'graph_tool', 'bayanpy', 'wurlitzer'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'pyclustering', 'ASLPAw'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+  1900/15288  10.8 min  eta 76.2 min
+  1925/15288  10.8 min  eta 75.3 min
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer', 'graph_tool', 'bayanpy'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'ASLPAw', 'pyclustering'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+  1950/15288  10.9 min  eta 74.4 min
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'bayanpy', 'wurlitzer', 'graph_tool'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'ASLPAw', 'pyclustering'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+  1975/15288  10.9 min  eta 73.6 min
+  2000/15288  11.0 min  eta 72.9 min
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'bayanpy', 'graph_tool', 'wurlitzer'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'ASLPAw', 'pyclustering'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+  2025/15288  11.0 min  eta 72.2 min
+  2050/15288  11.1 min  eta 71.7 min
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'bayanpy', 'wurlitzer', 'graph_tool'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'ASLPAw', 'pyclustering'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer', 'bayanpy', 'graph_tool'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'ASLPAw', 'pyclustering'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+  2075/15288  11.2 min  eta 71.1 min
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'bayanpy', 'graph_tool', 'wurlitzer'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'pyclustering', 'ASLPAw'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+  2100/15288  11.3 min  eta 70.7 min
+  2125/15288  11.4 min  eta 70.4 min
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer', 'bayanpy', 'graph_tool'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'ASLPAw', 'pyclustering'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+  2150/15288  11.5 min  eta 70.1 min
+  2175/15288  11.6 min  eta 69.7 min
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'bayanpy', 'graph_tool', 'wurlitzer'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'pyclustering', 'ASLPAw'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+  2200/15288  11.7 min  eta 69.7 min
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'bayanpy', 'graph_tool', 'wurlitzer'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'ASLPAw', 'pyclustering'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+  2225/15288  11.9 min  eta 69.8 min
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer', 'bayanpy', 'graph_tool'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'pyclustering', 'ASLPAw'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+  2250/15288  12.1 min  eta 69.9 min
+  2275/15288  12.2 min  eta 69.9 min
+  2300/15288  12.3 min  eta 69.6 min
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'bayanpy', 'wurlitzer', 'graph_tool'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'ASLPAw', 'pyclustering'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+  2325/15288  12.4 min  eta 69.1 min
+  2350/15288  12.5 min  eta 68.6 min
+  2375/15288  12.5 min  eta 68.1 min
+  2400/15288  12.6 min  eta 67.6 min
+  2425/15288  12.6 min  eta 67.1 min
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'bayanpy', 'wurlitzer', 'graph_tool'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'pyclustering', 'ASLPAw'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+  2450/15288  12.7 min  eta 66.6 min
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer', 'bayanpy', 'graph_tool'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'pyclustering', 'ASLPAw'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+  2475/15288  12.9 min  eta 66.6 min
+  2500/15288  13.0 min  eta 66.7 min
+  2525/15288  13.2 min  eta 66.7 min
+  2550/15288  13.4 min  eta 66.8 min
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'bayanpy', 'wurlitzer', 'graph_tool'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'pyclustering', 'ASLPAw'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+  2575/15288  13.5 min  eta 66.6 min
+  2600/15288  13.5 min  eta 66.1 min
+  2625/15288  13.6 min  eta 65.7 min
+  2650/15288  13.7 min  eta 65.2 min
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'bayanpy', 'wurlitzer', 'graph_tool'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'ASLPAw', 'pyclustering'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+  2675/15288  13.7 min  eta 64.8 min
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'graph_tool', 'wurlitzer', 'bayanpy'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'ASLPAw', 'pyclustering'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+  2700/15288  13.8 min  eta 64.4 min
+  2725/15288  13.9 min  eta 64.0 min
+  2750/15288  14.4 min  eta 65.5 min
+  2775/15288  14.9 min  eta 67.1 min
+  2800/15288  15.2 min  eta 68.0 min
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'bayanpy', 'graph_tool', 'wurlitzer'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'ASLPAw', 'pyclustering'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+  2825/15288  15.8 min  eta 69.6 min
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer', 'graph_tool', 'bayanpy'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'ASLPAw', 'pyclustering'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+  2850/15288  16.1 min  eta 70.4 min
+  2875/15288  16.5 min  eta 71.2 min
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer', 'graph_tool', 'bayanpy'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'pyclustering', 'ASLPAw'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+  2900/15288  16.9 min  eta 72.3 min
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'graph_tool', 'wurlitzer', 'bayanpy'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'ASLPAw', 'pyclustering'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+  2925/15288  17.5 min  eta 74.2 min
+  2950/15288  18.2 min  eta 76.3 min
+  2975/15288  19.3 min  eta 80.0 min
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'graph_tool', 'bayanpy', 'wurlitzer'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'pyclustering', 'ASLPAw'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+  3000/15288  20.1 min  eta 82.2 min
+  3025/15288  20.6 min  eta 83.4 min
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'graph_tool', 'bayanpy', 'wurlitzer'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'ASLPAw', 'pyclustering'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+  3050/15288  21.0 min  eta 84.3 min
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'graph_tool', 'bayanpy', 'wurlitzer'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'ASLPAw', 'pyclustering'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'bayanpy', 'wurlitzer', 'graph_tool'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'ASLPAw', 'pyclustering'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+  3075/15288  21.5 min  eta 85.3 min
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'bayanpy', 'graph_tool', 'wurlitzer'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'ASLPAw', 'pyclustering'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer', 'graph_tool', 'bayanpy'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'ASLPAw', 'pyclustering'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+  3100/15288  21.9 min  eta 86.2 min
+  3125/15288  22.4 min  eta 87.0 min
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'bayanpy', 'wurlitzer', 'graph_tool'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'ASLPAw', 'pyclustering'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+  3150/15288  22.8 min  eta 87.8 min
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer', 'graph_tool', 'bayanpy'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'pyclustering', 'ASLPAw'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+  3175/15288  23.2 min  eta 88.6 min
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer', 'graph_tool', 'bayanpy'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'pyclustering', 'ASLPAw'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+  3200/15288  23.8 min  eta 90.0 min
+  3225/15288  24.6 min  eta 92.1 min
+  3250/15288  25.4 min  eta 94.0 min
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'graph_tool', 'bayanpy', 'wurlitzer'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'pyclustering', 'ASLPAw'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+  3275/15288  26.0 min  eta 95.2 min
+  3300/15288  26.2 min  eta 95.3 min
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'bayanpy', 'wurlitzer', 'graph_tool'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'pyclustering', 'ASLPAw'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+  3325/15288  26.4 min  eta 95.1 min
+  3350/15288  26.6 min  eta 94.9 min
+  3375/15288  26.8 min  eta 94.6 min
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'graph_tool', 'wurlitzer', 'bayanpy'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'ASLPAw', 'pyclustering'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+  3400/15288  26.9 min  eta 94.2 min
+  3425/15288  27.1 min  eta 93.8 min
+  3450/15288  27.2 min  eta 93.2 min
+  3475/15288  27.3 min  eta 92.7 min
+  3500/15288  27.4 min  eta 92.2 min
+  3525/15288  27.5 min  eta 91.7 min
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer', 'graph_tool', 'bayanpy'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'ASLPAw', 'pyclustering'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer', 'bayanpy', 'graph_tool'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'pyclustering', 'ASLPAw'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+  3550/15288  27.7 min  eta 91.4 min
+  3575/15288  27.8 min  eta 91.2 min
+  3600/15288  28.0 min  eta 91.0 min
+  3625/15288  28.2 min  eta 90.8 min
+  3650/15288  28.4 min  eta 90.5 min
+  3675/15288  28.5 min  eta 90.2 min
+  3700/15288  28.7 min  eta 89.8 min
+  3725/15288  28.8 min  eta 89.3 min
+  3750/15288  28.9 min  eta 88.8 min
+  3775/15288  29.0 min  eta 88.4 min
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'graph_tool', 'wurlitzer', 'bayanpy'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'pyclustering', 'ASLPAw'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer', 'bayanpy', 'graph_tool'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'ASLPAw', 'pyclustering'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer', 'bayanpy', 'graph_tool'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'ASLPAw', 'pyclustering'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+  3800/15288  29.1 min  eta 87.9 min
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'bayanpy', 'wurlitzer', 'graph_tool'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'ASLPAw', 'pyclustering'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+  3825/15288  29.7 min  eta 89.0 min
+  3850/15288  30.3 min  eta 90.1 min
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'graph_tool', 'bayanpy', 'wurlitzer'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'pyclustering', 'ASLPAw'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+  3875/15288  31.0 min  eta 91.3 min
+  3900/15288  31.6 min  eta 92.3 min
+  3925/15288  32.1 min  eta 93.0 min
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'bayanpy', 'wurlitzer', 'graph_tool'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'ASLPAw', 'pyclustering'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'bayanpy', 'wurlitzer', 'graph_tool'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'ASLPAw', 'pyclustering'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+  3950/15288  32.7 min  eta 93.8 min
+  3975/15288  33.4 min  eta 94.9 min
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer', 'graph_tool', 'bayanpy'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'ASLPAw', 'pyclustering'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'bayanpy', 'graph_tool', 'wurlitzer'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'pyclustering', 'ASLPAw'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+  4000/15288  33.9 min  eta 95.7 min
+  4025/15288  34.5 min  eta 96.5 min
+  4050/15288  34.9 min  eta 96.9 min
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer', 'bayanpy', 'graph_tool'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'ASLPAw', 'pyclustering'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer', 'bayanpy', 'graph_tool'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'ASLPAw', 'pyclustering'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+  4075/15288  35.4 min  eta 97.3 min
+  4100/15288  36.1 min  eta 98.5 min
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer', 'bayanpy', 'graph_tool'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'ASLPAw', 'pyclustering'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+  4125/15288  36.8 min  eta 99.5 min
+  4150/15288  37.4 min  eta 100.5 min
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'graph_tool', 'wurlitzer', 'bayanpy'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'pyclustering', 'ASLPAw'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+  4175/15288  38.1 min  eta 101.4 min
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer', 'graph_tool', 'bayanpy'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'ASLPAw', 'pyclustering'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+  4200/15288  38.6 min  eta 102.0 min
+  4225/15288  39.3 min  eta 103.0 min
+  4250/15288  40.0 min  eta 103.8 min
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer', 'bayanpy', 'graph_tool'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'pyclustering', 'ASLPAw'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer', 'bayanpy', 'graph_tool'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'pyclustering', 'ASLPAw'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+  4275/15288  40.6 min  eta 104.6 min
+  4300/15288  41.4 min  eta 105.8 min
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'graph_tool', 'bayanpy', 'wurlitzer'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'pyclustering', 'ASLPAw'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+  4325/15288  42.0 min  eta 106.5 min
+  4350/15288  42.7 min  eta 107.3 min
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer', 'graph_tool', 'bayanpy'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'pyclustering', 'ASLPAw'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+  4375/15288  43.2 min  eta 107.7 min
+  4400/15288  43.6 min  eta 107.8 min
+  4425/15288  43.9 min  eta 107.7 min
+  4450/15288  44.3 min  eta 107.8 min
+  4475/15288  44.6 min  eta 107.7 min
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer', 'bayanpy', 'graph_tool'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'ASLPAw', 'pyclustering'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+  4500/15288  45.0 min  eta 107.9 min
+  4525/15288  45.4 min  eta 107.9 min
+  4550/15288  45.7 min  eta 107.9 min
+  4575/15288  46.1 min  eta 107.9 min
+  4600/15288  46.5 min  eta 108.0 min
+  4625/15288  46.8 min  eta 107.9 min
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'bayanpy', 'wurlitzer', 'graph_tool'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'pyclustering', 'ASLPAw'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+  4650/15288  47.2 min  eta 107.9 min
+  4675/15288  47.6 min  eta 107.9 min
+  4700/15288  47.9 min  eta 107.8 min
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'graph_tool', 'wurlitzer', 'bayanpy'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'ASLPAw', 'pyclustering'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'graph_tool', 'bayanpy', 'wurlitzer'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'pyclustering', 'ASLPAw'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+  4725/15288  48.2 min  eta 107.8 min
+  4750/15288  48.6 min  eta 107.8 min
+  4775/15288  48.9 min  eta 107.7 min
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'graph_tool', 'wurlitzer', 'bayanpy'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'pyclustering', 'ASLPAw'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+  4800/15288  49.4 min  eta 107.8 min
+  4825/15288  49.7 min  eta 107.8 min
+  4850/15288  50.1 min  eta 107.8 min
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'bayanpy', 'graph_tool', 'wurlitzer'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'ASLPAw', 'pyclustering'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+  4875/15288  50.4 min  eta 107.7 min
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'bayanpy', 'graph_tool', 'wurlitzer'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'ASLPAw', 'pyclustering'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer', 'bayanpy', 'graph_tool'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'pyclustering', 'ASLPAw'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+  4900/15288  50.8 min  eta 107.7 min
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'graph_tool', 'wurlitzer', 'bayanpy'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'ASLPAw', 'pyclustering'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+  4925/15288  51.5 min  eta 108.4 min
+  4950/15288  52.2 min  eta 109.1 min
+  4975/15288  53.1 min  eta 110.1 min
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'bayanpy', 'wurlitzer', 'graph_tool'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'pyclustering', 'ASLPAw'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+  5000/15288  53.9 min  eta 110.9 min
+  5025/15288  54.8 min  eta 111.9 min
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer', 'graph_tool', 'bayanpy'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'pyclustering', 'ASLPAw'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+  5050/15288  55.6 min  eta 112.8 min
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer', 'graph_tool', 'bayanpy'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'pyclustering', 'ASLPAw'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+  5075/15288  56.4 min  eta 113.5 min
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer', 'graph_tool', 'bayanpy'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'ASLPAw', 'pyclustering'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+  5100/15288  57.2 min  eta 114.3 min
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'graph_tool', 'wurlitzer', 'bayanpy'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'pyclustering', 'ASLPAw'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+  5125/15288  58.6 min  eta 116.1 min
+  5150/15288  59.6 min  eta 117.3 min
+  5175/15288  60.7 min  eta 118.6 min
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'graph_tool', 'wurlitzer', 'bayanpy'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'ASLPAw', 'pyclustering'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'graph_tool', 'bayanpy', 'wurlitzer'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'ASLPAw', 'pyclustering'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+  5200/15288  61.5 min  eta 119.3 min
+  5225/15288  62.2 min  eta 119.8 min
+  5250/15288  62.9 min  eta 120.3 min
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'graph_tool', 'wurlitzer', 'bayanpy'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'pyclustering', 'ASLPAw'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+  5275/15288  63.8 min  eta 121.2 min
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'graph_tool', 'bayanpy', 'wurlitzer'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'pyclustering', 'ASLPAw'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+  5300/15288  64.6 min  eta 121.8 min
+  5325/15288  65.4 min  eta 122.3 min
+  5350/15288  66.3 min  eta 123.2 min
+  5375/15288  67.3 min  eta 124.1 min
+  5400/15288  68.2 min  eta 124.8 min
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'bayanpy', 'wurlitzer', 'graph_tool'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'pyclustering', 'ASLPAw'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'graph_tool', 'wurlitzer', 'bayanpy'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'ASLPAw', 'pyclustering'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+  5425/15288  69.4 min  eta 126.2 min
+  5450/15288  70.2 min  eta 126.7 min
+  5475/15288  70.4 min  eta 126.3 min
+  5500/15288  70.6 min  eta 125.7 min
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer', 'bayanpy', 'graph_tool'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'pyclustering', 'ASLPAw'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'bayanpy', 'graph_tool', 'wurlitzer'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'pyclustering', 'ASLPAw'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+  5525/15288  71.0 min  eta 125.4 min
+  5550/15288  71.2 min  eta 125.0 min
+  5575/15288  71.5 min  eta 124.6 min
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer', 'bayanpy', 'graph_tool'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'ASLPAw', 'pyclustering'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+  5600/15288  71.8 min  eta 124.3 min
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer', 'graph_tool', 'bayanpy'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'pyclustering', 'ASLPAw'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+  5625/15288  72.1 min  eta 123.8 min
+  5650/15288  72.3 min  eta 123.4 min
+  5675/15288  72.5 min  eta 122.9 min
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'bayanpy', 'graph_tool', 'wurlitzer'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'ASLPAw', 'pyclustering'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+  5700/15288  72.8 min  eta 122.5 min
+  5725/15288  73.0 min  eta 122.0 min
+  5750/15288  73.3 min  eta 121.5 min
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'bayanpy', 'graph_tool', 'wurlitzer'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'pyclustering', 'ASLPAw'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+  5775/15288  73.4 min  eta 121.0 min
+  5800/15288  73.7 min  eta 120.5 min
+  5825/15288  73.9 min  eta 120.0 min
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer', 'bayanpy', 'graph_tool'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'pyclustering', 'ASLPAw'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'graph_tool', 'bayanpy', 'wurlitzer'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'pyclustering', 'ASLPAw'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+  5850/15288  74.1 min  eta 119.6 min
+  5875/15288  74.3 min  eta 119.1 min
+  5900/15288  74.5 min  eta 118.6 min
+  5925/15288  74.8 min  eta 118.1 min
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'graph_tool', 'bayanpy', 'wurlitzer'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'ASLPAw', 'pyclustering'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'bayanpy', 'graph_tool', 'wurlitzer'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'pyclustering', 'ASLPAw'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+  5950/15288  75.0 min  eta 117.7 min
+  5975/15288  75.1 min  eta 117.1 min
+  6000/15288  75.3 min  eta 116.6 min
+  6025/15288  75.5 min  eta 116.1 min
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'graph_tool', 'wurlitzer', 'bayanpy'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'pyclustering', 'ASLPAw'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+  6050/15288  75.7 min  eta 115.6 min
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer', 'graph_tool', 'bayanpy'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'pyclustering', 'ASLPAw'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'bayanpy', 'wurlitzer', 'graph_tool'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'ASLPAw', 'pyclustering'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+  6075/15288  75.9 min  eta 115.1 min
+  6100/15288  76.1 min  eta 114.6 min
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'bayanpy', 'graph_tool', 'wurlitzer'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'ASLPAw', 'pyclustering'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+  6125/15288  76.3 min  eta 114.1 min
+  6150/15288  76.5 min  eta 113.6 min
+  6175/15288  76.6 min  eta 113.1 min
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'bayanpy', 'graph_tool', 'wurlitzer'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'pyclustering', 'ASLPAw'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+  6200/15288  76.8 min  eta 112.5 min
+  6225/15288  77.0 min  eta 112.0 min
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'bayanpy', 'graph_tool', 'wurlitzer'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'ASLPAw', 'pyclustering'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+  6250/15288  77.1 min  eta 111.5 min
+  6275/15288  77.3 min  eta 111.0 min
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'graph_tool', 'wurlitzer', 'bayanpy'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'ASLPAw', 'pyclustering'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'graph_tool', 'wurlitzer', 'bayanpy'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'ASLPAw', 'pyclustering'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+  6300/15288  77.4 min  eta 110.5 min
+  6325/15288  77.6 min  eta 110.0 min
+  6350/15288  77.7 min  eta 109.4 min
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'bayanpy', 'wurlitzer', 'graph_tool'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'pyclustering', 'ASLPAw'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+  6375/15288  77.9 min  eta 108.9 min
+  6400/15288  78.0 min  eta 108.4 min
+  6425/15288  78.2 min  eta 107.8 min
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'graph_tool', 'wurlitzer', 'bayanpy'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'ASLPAw', 'pyclustering'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+  6450/15288  78.3 min  eta 107.3 min
+  6475/15288  78.4 min  eta 106.7 min
+  6500/15288  78.6 min  eta 106.2 min
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'bayanpy', 'graph_tool', 'wurlitzer'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'pyclustering', 'ASLPAw'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+  6525/15288  78.7 min  eta 105.7 min
+  6550/15288  78.8 min  eta 105.1 min
+  6575/15288  78.9 min  eta 104.6 min
+  6600/15288  79.1 min  eta 104.1 min
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer', 'bayanpy', 'graph_tool'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'pyclustering', 'ASLPAw'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'bayanpy', 'graph_tool', 'wurlitzer'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'pyclustering', 'ASLPAw'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+  6625/15288  79.2 min  eta 103.6 min
+  6650/15288  79.3 min  eta 103.0 min
+  6675/15288  79.5 min  eta 102.5 min
+  6700/15288  79.6 min  eta 102.0 min
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer', 'graph_tool', 'bayanpy'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'pyclustering', 'ASLPAw'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+  6725/15288  79.7 min  eta 101.5 min
+  6750/15288  79.9 min  eta 101.0 min
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer', 'bayanpy', 'graph_tool'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'pyclustering', 'ASLPAw'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer', 'bayanpy', 'graph_tool'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'pyclustering', 'ASLPAw'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'graph_tool', 'wurlitzer', 'bayanpy'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'ASLPAw', 'pyclustering'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer', 'bayanpy', 'graph_tool'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'ASLPAw', 'pyclustering'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+  6775/15288  80.0 min  eta 100.5 min
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'graph_tool', 'wurlitzer', 'bayanpy'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'ASLPAw', 'pyclustering'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+  6800/15288  80.2 min  eta 100.0 min
+  6825/15288  80.3 min  eta 99.6 min
+  6850/15288  80.4 min  eta 99.1 min
+  6875/15288  80.6 min  eta 98.6 min
+  6900/15288  80.7 min  eta 98.1 min
+  6925/15288  80.8 min  eta 97.6 min
+  6950/15288  80.9 min  eta 97.1 min
+  6975/15288  81.1 min  eta 96.7 min
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer', 'bayanpy', 'graph_tool'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'ASLPAw', 'pyclustering'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+  7000/15288  81.2 min  eta 96.1 min
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'bayanpy', 'graph_tool', 'wurlitzer'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'ASLPAw', 'pyclustering'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+  7025/15288  81.3 min  eta 95.7 min
+  7050/15288  81.5 min  eta 95.2 min
+  7075/15288  81.6 min  eta 94.7 min
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'bayanpy', 'wurlitzer', 'graph_tool'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'ASLPAw', 'pyclustering'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'bayanpy', 'graph_tool', 'wurlitzer'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'pyclustering', 'ASLPAw'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+  7100/15288  81.7 min  eta 94.3 min
+  7125/15288  81.9 min  eta 93.8 min
+  7150/15288  82.0 min  eta 93.3 min
+  7175/15288  82.1 min  eta 92.8 min
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'bayanpy', 'wurlitzer', 'graph_tool'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'ASLPAw', 'pyclustering'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+  7200/15288  82.2 min  eta 92.4 min
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer', 'graph_tool', 'bayanpy'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'pyclustering', 'ASLPAw'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+  7225/15288  82.4 min  eta 91.9 min
+  7250/15288  82.5 min  eta 91.5 min
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'graph_tool', 'wurlitzer', 'bayanpy'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'ASLPAw', 'pyclustering'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+  7275/15288  82.6 min  eta 91.0 min
+  7300/15288  82.8 min  eta 90.6 min
+  7325/15288  82.9 min  eta 90.1 min
+  7350/15288  83.0 min  eta 89.6 min
+  7375/15288  83.1 min  eta 89.2 min
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer', 'bayanpy', 'graph_tool'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'ASLPAw', 'pyclustering'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+  7400/15288  83.3 min  eta 88.7 min
+  7425/15288  83.4 min  eta 88.3 min
+  7450/15288  83.5 min  eta 87.9 min
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'bayanpy', 'graph_tool', 'wurlitzer'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'pyclustering', 'ASLPAw'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+  7475/15288  83.6 min  eta 87.4 min
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer', 'bayanpy', 'graph_tool'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'ASLPAw', 'pyclustering'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+  7500/15288  83.8 min  eta 87.0 min
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer', 'graph_tool', 'bayanpy'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'pyclustering', 'ASLPAw'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'graph_tool', 'bayanpy', 'wurlitzer'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'pyclustering', 'ASLPAw'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+  7525/15288  83.9 min  eta 86.6 min
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'graph_tool', 'wurlitzer', 'bayanpy'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'pyclustering', 'ASLPAw'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+  7550/15288  84.0 min  eta 86.1 min
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'graph_tool', 'wurlitzer', 'bayanpy'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'ASLPAw', 'pyclustering'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+  7575/15288  84.2 min  eta 85.7 min
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer', 'bayanpy', 'graph_tool'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'pyclustering', 'ASLPAw'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+  7600/15288  84.3 min  eta 85.3 min
+  7625/15288  84.4 min  eta 84.9 min
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'graph_tool', 'wurlitzer', 'bayanpy'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'ASLPAw', 'pyclustering'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+  7650/15288  84.6 min  eta 84.4 min
+  7675/15288  84.7 min  eta 84.1 min
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer', 'bayanpy', 'graph_tool'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'ASLPAw', 'pyclustering'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+  7700/15288  84.8 min  eta 83.6 min
+  7725/15288  85.0 min  eta 83.2 min
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer', 'graph_tool', 'bayanpy'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'pyclustering', 'ASLPAw'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+  7750/15288  85.1 min  eta 82.8 min
+  7775/15288  85.3 min  eta 82.4 min
+  7800/15288  85.4 min  eta 82.0 min
+  7825/15288  85.5 min  eta 81.6 min
+  7850/15288  85.7 min  eta 81.2 min
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer', 'bayanpy', 'graph_tool'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'ASLPAw', 'pyclustering'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+  7875/15288  85.8 min  eta 80.7 min
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'graph_tool', 'wurlitzer', 'bayanpy'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'ASLPAw', 'pyclustering'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+  7900/15288  85.9 min  eta 80.3 min
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'graph_tool', 'wurlitzer', 'bayanpy'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'pyclustering', 'ASLPAw'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+  7925/15288  86.0 min  eta 79.9 min
+  7950/15288  86.2 min  eta 79.5 min
+  7975/15288  86.5 min  eta 79.4 min
+  8000/15288  86.9 min  eta 79.1 min
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer', 'bayanpy', 'graph_tool'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'pyclustering', 'ASLPAw'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+  8025/15288  87.1 min  eta 78.8 min
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer', 'graph_tool', 'bayanpy'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'ASLPAw', 'pyclustering'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+  8050/15288  87.4 min  eta 78.5 min
+  8075/15288  87.7 min  eta 78.3 min
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'bayanpy', 'wurlitzer', 'graph_tool'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'ASLPAw', 'pyclustering'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+  8100/15288  87.9 min  eta 78.0 min
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'graph_tool', 'wurlitzer', 'bayanpy'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'ASLPAw', 'pyclustering'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+  8125/15288  88.1 min  eta 77.7 min
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'bayanpy', 'wurlitzer', 'graph_tool'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'pyclustering', 'ASLPAw'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+  8150/15288  88.4 min  eta 77.4 min
+  8175/15288  88.6 min  eta 77.1 min
+  8200/15288  88.8 min  eta 76.8 min
+  8225/15288  89.1 min  eta 76.5 min
+  8250/15288  89.3 min  eta 76.2 min
+  8275/15288  89.5 min  eta 75.9 min
+  8300/15288  89.7 min  eta 75.5 min
+  8325/15288  90.0 min  eta 75.2 min
+  8350/15288  90.1 min  eta 74.9 min
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'bayanpy', 'wurlitzer', 'graph_tool'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'pyclustering', 'ASLPAw'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+  8375/15288  90.3 min  eta 74.6 min
+  8400/15288  90.5 min  eta 74.2 min
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'graph_tool', 'bayanpy', 'wurlitzer'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'ASLPAw', 'pyclustering'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'graph_tool', 'wurlitzer', 'bayanpy'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'ASLPAw', 'pyclustering'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+  8425/15288  90.8 min  eta 73.9 min
+  8450/15288  90.9 min  eta 73.5 min
+  8475/15288  91.1 min  eta 73.2 min
+  8500/15288  91.2 min  eta 72.9 min
+  8525/15288  91.4 min  eta 72.5 min
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'bayanpy', 'wurlitzer', 'graph_tool'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'ASLPAw', 'pyclustering'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+  8550/15288  91.6 min  eta 72.2 min
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer', 'graph_tool', 'bayanpy'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'ASLPAw', 'pyclustering'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+  8575/15288  91.8 min  eta 71.8 min
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'bayanpy', 'wurlitzer', 'graph_tool'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'ASLPAw', 'pyclustering'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'bayanpy', 'graph_tool', 'wurlitzer'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'pyclustering', 'ASLPAw'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer', 'graph_tool', 'bayanpy'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'pyclustering', 'ASLPAw'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'bayanpy', 'wurlitzer', 'graph_tool'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'pyclustering', 'ASLPAw'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+  8600/15288  92.0 min  eta 71.5 min
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'graph_tool', 'bayanpy', 'wurlitzer'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'pyclustering', 'ASLPAw'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+  8625/15288  92.2 min  eta 71.2 min
+  8650/15288  92.3 min  eta 70.8 min
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'graph_tool', 'bayanpy', 'wurlitzer'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'ASLPAw', 'pyclustering'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+  8675/15288  92.5 min  eta 70.5 min
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'graph_tool', 'wurlitzer', 'bayanpy'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'ASLPAw', 'pyclustering'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer', 'graph_tool', 'bayanpy'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'ASLPAw', 'pyclustering'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+  8700/15288  92.7 min  eta 70.2 min
+  8725/15288  92.8 min  eta 69.8 min
+  8750/15288  93.0 min  eta 69.5 min
+  8775/15288  93.1 min  eta 69.1 min
+  8800/15288  93.3 min  eta 68.8 min
+  8825/15288  93.4 min  eta 68.4 min
+  8850/15288  93.6 min  eta 68.1 min
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'graph_tool', 'wurlitzer', 'bayanpy'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'pyclustering', 'ASLPAw'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+  8875/15288  93.7 min  eta 67.7 min
+  8900/15288  93.8 min  eta 67.3 min
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'bayanpy', 'graph_tool', 'wurlitzer'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'ASLPAw', 'pyclustering'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer', 'graph_tool', 'bayanpy'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'ASLPAw', 'pyclustering'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+  8925/15288  94.0 min  eta 67.0 min
+  8950/15288  94.1 min  eta 66.6 min
+  8975/15288  94.2 min  eta 66.3 min
+  9000/15288  94.3 min  eta 65.9 min
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer', 'graph_tool', 'bayanpy'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'pyclustering', 'ASLPAw'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+  9025/15288  94.5 min  eta 65.6 min
+  9050/15288  94.7 min  eta 65.2 min
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer', 'graph_tool', 'bayanpy'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'ASLPAw', 'pyclustering'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+  9075/15288  94.8 min  eta 64.9 min
+  9100/15288  94.9 min  eta 64.5 min
+  9125/15288  95.1 min  eta 64.2 min
+  9150/15288  95.2 min  eta 63.8 min
+  9175/15288  95.3 min  eta 63.5 min
+  9200/15288  95.4 min  eta 63.2 min
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'bayanpy', 'wurlitzer', 'graph_tool'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'pyclustering', 'ASLPAw'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+  9225/15288  95.6 min  eta 62.8 min
+  9250/15288  95.7 min  eta 62.5 min
+  9275/15288  95.8 min  eta 62.1 min
+  9300/15288  96.0 min  eta 61.8 min
+  9325/15288  96.1 min  eta 61.5 min
+  9350/15288  96.2 min  eta 61.1 min
+  9375/15288  96.3 min  eta 60.8 min
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'bayanpy', 'graph_tool', 'wurlitzer'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'pyclustering', 'ASLPAw'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'graph_tool', 'wurlitzer', 'bayanpy'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'ASLPAw', 'pyclustering'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+  9400/15288  96.5 min  eta 60.4 min
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'bayanpy', 'graph_tool', 'wurlitzer'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'ASLPAw', 'pyclustering'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+  9425/15288  96.6 min  eta 60.1 min
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'graph_tool', 'bayanpy', 'wurlitzer'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'pyclustering', 'ASLPAw'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+  9450/15288  96.7 min  eta 59.8 min
+  9475/15288  96.9 min  eta 59.4 min
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'graph_tool', 'bayanpy', 'wurlitzer'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'pyclustering', 'ASLPAw'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+  9500/15288  97.0 min  eta 59.1 min
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer', 'graph_tool', 'bayanpy'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'pyclustering', 'ASLPAw'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+  9525/15288  97.2 min  eta 58.8 min
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'graph_tool', 'wurlitzer', 'bayanpy'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'ASLPAw', 'pyclustering'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer', 'bayanpy', 'graph_tool'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'ASLPAw', 'pyclustering'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'bayanpy', 'wurlitzer', 'graph_tool'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'pyclustering', 'ASLPAw'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+  9550/15288  97.3 min  eta 58.5 min
+  9575/15288  97.4 min  eta 58.1 min
+  9600/15288  97.5 min  eta 57.8 min
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'bayanpy', 'graph_tool', 'wurlitzer'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'pyclustering', 'ASLPAw'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+  9625/15288  97.7 min  eta 57.5 min
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer', 'bayanpy', 'graph_tool'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'pyclustering', 'ASLPAw'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+  9650/15288  97.8 min  eta 57.1 min
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'bayanpy', 'wurlitzer', 'graph_tool'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'pyclustering', 'ASLPAw'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+  9675/15288  97.9 min  eta 56.8 min
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer', 'bayanpy', 'graph_tool'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'pyclustering', 'ASLPAw'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+  9700/15288  98.1 min  eta 56.5 min
+  9725/15288  98.2 min  eta 56.2 min
+  9750/15288  98.3 min  eta 55.9 min
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'graph_tool', 'bayanpy', 'wurlitzer'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'pyclustering', 'ASLPAw'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+  9775/15288  98.5 min  eta 55.5 min
+  9800/15288  98.6 min  eta 55.2 min
+  9825/15288  98.7 min  eta 54.9 min
+  9850/15288  98.9 min  eta 54.6 min
+  9875/15288  99.0 min  eta 54.3 min
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'graph_tool', 'bayanpy', 'wurlitzer'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'pyclustering', 'ASLPAw'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+  9900/15288  99.2 min  eta 54.0 min
+  9925/15288  99.3 min  eta 53.7 min
+  9950/15288  99.4 min  eta 53.3 min
+  9975/15288  99.5 min  eta 53.0 min
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer', 'graph_tool', 'bayanpy'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'pyclustering', 'ASLPAw'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+  10000/15288  99.7 min  eta 52.7 min
+  10025/15288  99.8 min  eta 52.4 min
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'graph_tool', 'wurlitzer', 'bayanpy'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'ASLPAw', 'pyclustering'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+  10050/15288  99.9 min  eta 52.1 min
+  10075/15288  100.1 min  eta 51.8 min
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'bayanpy', 'graph_tool', 'wurlitzer'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'ASLPAw', 'pyclustering'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+  10100/15288  100.2 min  eta 51.5 min
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer', 'bayanpy', 'graph_tool'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'ASLPAw', 'pyclustering'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'graph_tool', 'bayanpy', 'wurlitzer'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'ASLPAw', 'pyclustering'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+  10125/15288  100.3 min  eta 51.2 min
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'bayanpy', 'graph_tool', 'wurlitzer'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'pyclustering', 'ASLPAw'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+  10150/15288  100.5 min  eta 50.9 min
+  10175/15288  100.6 min  eta 50.6 min
+  10200/15288  100.7 min  eta 50.2 min
+  10225/15288  100.9 min  eta 49.9 min
+  10250/15288  101.0 min  eta 49.7 min
+  10275/15288  101.1 min  eta 49.3 min
+  10300/15288  101.3 min  eta 49.0 min
+  10325/15288  101.4 min  eta 48.7 min
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'bayanpy', 'graph_tool', 'wurlitzer'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'pyclustering', 'ASLPAw'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+  10350/15288  101.6 min  eta 48.5 min
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'bayanpy', 'wurlitzer', 'graph_tool'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'ASLPAw', 'pyclustering'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+  10375/15288  101.7 min  eta 48.1 min
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'graph_tool', 'wurlitzer', 'bayanpy'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'pyclustering', 'ASLPAw'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+  10400/15288  101.9 min  eta 47.9 min
+  10425/15288  102.2 min  eta 47.7 min
+  10450/15288  102.5 min  eta 47.5 min
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'graph_tool', 'wurlitzer', 'bayanpy'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'ASLPAw', 'pyclustering'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+  10475/15288  102.8 min  eta 47.2 min
+  10500/15288  103.1 min  eta 47.0 min
+  10525/15288  103.4 min  eta 46.8 min
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'graph_tool', 'bayanpy', 'wurlitzer'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'pyclustering', 'ASLPAw'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'graph_tool', 'wurlitzer', 'bayanpy'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'pyclustering', 'ASLPAw'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+  10550/15288  103.8 min  eta 46.6 min
+  10575/15288  104.1 min  eta 46.4 min
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer', 'bayanpy', 'graph_tool'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'ASLPAw', 'pyclustering'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+  10600/15288  104.4 min  eta 46.2 min
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'bayanpy', 'wurlitzer', 'graph_tool'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'pyclustering', 'ASLPAw'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+  10625/15288  104.7 min  eta 46.0 min
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'graph_tool', 'bayanpy', 'wurlitzer'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'ASLPAw', 'pyclustering'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+  10650/15288  105.2 min  eta 45.8 min
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'bayanpy', 'graph_tool', 'wurlitzer'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'ASLPAw', 'pyclustering'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer', 'bayanpy', 'graph_tool'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'pyclustering', 'ASLPAw'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'bayanpy', 'wurlitzer', 'graph_tool'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'ASLPAw', 'pyclustering'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+  10675/15288  105.6 min  eta 45.6 min
+  10700/15288  106.0 min  eta 45.4 min
+  10725/15288  106.3 min  eta 45.2 min
+  10750/15288  106.7 min  eta 45.0 min
+  10775/15288  107.1 min  eta 44.8 min
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer', 'bayanpy', 'graph_tool'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'pyclustering', 'ASLPAw'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+  10800/15288  107.4 min  eta 44.6 min
+  10825/15288  107.7 min  eta 44.4 min
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer', 'graph_tool', 'bayanpy'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'ASLPAw', 'pyclustering'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+  10850/15288  108.1 min  eta 44.2 min
+  10875/15288  108.5 min  eta 44.0 min
+  10900/15288  108.8 min  eta 43.8 min
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'bayanpy', 'graph_tool', 'wurlitzer'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'ASLPAw', 'pyclustering'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+  10925/15288  109.1 min  eta 43.6 min
+  10950/15288  109.4 min  eta 43.3 min
+  10975/15288  109.7 min  eta 43.1 min
+  11000/15288  110.0 min  eta 42.9 min
+  11025/15288  110.3 min  eta 42.6 min
+  11050/15288  110.6 min  eta 42.4 min
+  11075/15288  110.9 min  eta 42.2 min
+  11100/15288  111.1 min  eta 41.9 min
+  11125/15288  111.4 min  eta 41.7 min
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer', 'graph_tool', 'bayanpy'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'ASLPAw', 'pyclustering'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+  11150/15288  111.6 min  eta 41.4 min
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer', 'bayanpy', 'graph_tool'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'pyclustering', 'ASLPAw'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+  11175/15288  111.8 min  eta 41.2 min
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'graph_tool', 'wurlitzer', 'bayanpy'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'pyclustering', 'ASLPAw'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer', 'graph_tool', 'bayanpy'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'ASLPAw', 'pyclustering'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+  11200/15288  112.0 min  eta 40.9 min
+  11225/15288  112.3 min  eta 40.6 min
+  11250/15288  112.5 min  eta 40.4 min
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'bayanpy', 'wurlitzer', 'graph_tool'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'pyclustering', 'ASLPAw'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+  11275/15288  112.8 min  eta 40.1 min
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer', 'graph_tool', 'bayanpy'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'pyclustering', 'ASLPAw'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+  11300/15288  113.0 min  eta 39.9 min
+  11325/15288  113.2 min  eta 39.6 min
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'bayanpy', 'graph_tool', 'wurlitzer'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'ASLPAw', 'pyclustering'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+  11350/15288  113.4 min  eta 39.4 min
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'graph_tool', 'wurlitzer', 'bayanpy'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'ASLPAw', 'pyclustering'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+  11375/15288  113.6 min  eta 39.1 min
+  11400/15288  113.9 min  eta 38.8 min
+  11425/15288  114.1 min  eta 38.6 min
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'graph_tool', 'wurlitzer', 'bayanpy'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'ASLPAw', 'pyclustering'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'bayanpy', 'graph_tool', 'wurlitzer'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'pyclustering', 'ASLPAw'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+  11450/15288  114.3 min  eta 38.3 min
+  11475/15288  114.5 min  eta 38.0 min
+  11500/15288  114.7 min  eta 37.8 min
+  11525/15288  114.9 min  eta 37.5 min
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'bayanpy', 'wurlitzer', 'graph_tool'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'ASLPAw', 'pyclustering'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'graph_tool', 'bayanpy', 'wurlitzer'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'pyclustering', 'ASLPAw'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+  11550/15288  115.1 min  eta 37.3 min
+  11575/15288  115.3 min  eta 37.0 min
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer', 'bayanpy', 'graph_tool'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'pyclustering', 'ASLPAw'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'graph_tool', 'wurlitzer', 'bayanpy'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'pyclustering', 'ASLPAw'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+  11600/15288  115.5 min  eta 36.7 min
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'graph_tool', 'wurlitzer', 'bayanpy'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'pyclustering', 'ASLPAw'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer', 'bayanpy', 'graph_tool'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'ASLPAw', 'pyclustering'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+  11625/15288  115.7 min  eta 36.5 min
+  11650/15288  116.0 min  eta 36.2 min
+  11675/15288  116.2 min  eta 36.0 min
+  11700/15288  116.4 min  eta 35.7 min
+  11725/15288  116.6 min  eta 35.4 min
+  11750/15288  116.8 min  eta 35.2 min
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'graph_tool', 'wurlitzer', 'bayanpy'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'ASLPAw', 'pyclustering'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+  11775/15288  117.0 min  eta 34.9 min
+  11800/15288  117.1 min  eta 34.6 min
+  11825/15288  117.3 min  eta 34.4 min
+  11850/15288  117.5 min  eta 34.1 min
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'bayanpy', 'wurlitzer', 'graph_tool'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'pyclustering', 'ASLPAw'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer', 'bayanpy', 'graph_tool'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'ASLPAw', 'pyclustering'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+  11875/15288  117.7 min  eta 33.8 min
+  11900/15288  117.9 min  eta 33.6 min
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'graph_tool', 'bayanpy', 'wurlitzer'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'ASLPAw', 'pyclustering'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+  11925/15288  118.1 min  eta 33.3 min
+  11950/15288  118.3 min  eta 33.1 min
+  11975/15288  118.5 min  eta 32.8 min
+  12000/15288  118.7 min  eta 32.5 min
+  12025/15288  118.9 min  eta 32.3 min
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'graph_tool', 'bayanpy', 'wurlitzer'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'ASLPAw', 'pyclustering'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+  12050/15288  119.1 min  eta 32.0 min
+  12075/15288  119.3 min  eta 31.7 min
+  12100/15288  119.5 min  eta 31.5 min
+  12125/15288  119.7 min  eta 31.2 min
+  12150/15288  119.9 min  eta 31.0 min
+  12175/15288  120.1 min  eta 30.7 min
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'bayanpy', 'wurlitzer', 'graph_tool'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'pyclustering', 'ASLPAw'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'graph_tool', 'bayanpy', 'wurlitzer'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'ASLPAw', 'pyclustering'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+  12200/15288  120.3 min  eta 30.4 min
+  12225/15288  120.4 min  eta 30.2 min
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer', 'graph_tool', 'bayanpy'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'ASLPAw', 'pyclustering'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+  12250/15288  120.6 min  eta 29.9 min
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'graph_tool', 'bayanpy', 'wurlitzer'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'pyclustering', 'ASLPAw'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+  12275/15288  120.8 min  eta 29.7 min
+  12300/15288  121.0 min  eta 29.4 min
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer', 'bayanpy', 'graph_tool'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'pyclustering', 'ASLPAw'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'graph_tool', 'bayanpy', 'wurlitzer'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'ASLPAw', 'pyclustering'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+  12325/15288  121.2 min  eta 29.1 min
+  12350/15288  121.4 min  eta 28.9 min
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer', 'graph_tool', 'bayanpy'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'pyclustering', 'ASLPAw'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+  12375/15288  121.6 min  eta 28.6 min
+  12400/15288  121.8 min  eta 28.4 min
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'graph_tool', 'wurlitzer', 'bayanpy'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'ASLPAw', 'pyclustering'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+  12425/15288  122.0 min  eta 28.1 min
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'graph_tool', 'wurlitzer', 'bayanpy'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'ASLPAw', 'pyclustering'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+  12450/15288  122.1 min  eta 27.8 min
+  12475/15288  122.3 min  eta 27.6 min
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'graph_tool', 'wurlitzer', 'bayanpy'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'pyclustering', 'ASLPAw'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+  12500/15288  122.5 min  eta 27.3 min
+  12525/15288  122.7 min  eta 27.1 min
+  12550/15288  122.9 min  eta 26.8 min
+  12575/15288  123.1 min  eta 26.6 min
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'bayanpy', 'wurlitzer', 'graph_tool'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'pyclustering', 'ASLPAw'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer', 'bayanpy', 'graph_tool'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'pyclustering', 'ASLPAw'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+  12600/15288  123.3 min  eta 26.3 min
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'bayanpy', 'graph_tool', 'wurlitzer'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'pyclustering', 'ASLPAw'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer', 'graph_tool', 'bayanpy'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'pyclustering', 'ASLPAw'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+  12625/15288  123.5 min  eta 26.0 min
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'graph_tool', 'bayanpy', 'wurlitzer'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'pyclustering', 'ASLPAw'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+  12650/15288  123.7 min  eta 25.8 min
+  12675/15288  123.9 min  eta 25.5 min
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'bayanpy', 'wurlitzer', 'graph_tool'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'ASLPAw', 'pyclustering'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+  12700/15288  124.1 min  eta 25.3 min
+  12725/15288  124.3 min  eta 25.0 min
+  12750/15288  124.5 min  eta 24.8 min
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'graph_tool', 'wurlitzer', 'bayanpy'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'ASLPAw', 'pyclustering'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+  12775/15288  124.7 min  eta 24.5 min
+  12800/15288  124.8 min  eta 24.3 min
+  12825/15288  125.0 min  eta 24.0 min
+  12850/15288  125.2 min  eta 23.8 min
+  12875/15288  125.5 min  eta 23.5 min
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'bayanpy', 'wurlitzer', 'graph_tool'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'ASLPAw', 'pyclustering'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+  12900/15288  125.8 min  eta 23.3 min
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'bayanpy', 'graph_tool', 'wurlitzer'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'pyclustering', 'ASLPAw'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+  12925/15288  126.1 min  eta 23.1 min
+  12950/15288  126.5 min  eta 22.8 min
+  12975/15288  126.8 min  eta 22.6 min
+  13000/15288  127.2 min  eta 22.4 min
+  13025/15288  127.5 min  eta 22.2 min
+  13050/15288  127.8 min  eta 21.9 min
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'graph_tool', 'bayanpy', 'wurlitzer'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'ASLPAw', 'pyclustering'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+  13075/15288  128.2 min  eta 21.7 min
+  13100/15288  128.5 min  eta 21.5 min
+  13125/15288  128.9 min  eta 21.2 min
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer', 'bayanpy', 'graph_tool'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'pyclustering', 'ASLPAw'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+  13150/15288  129.3 min  eta 21.0 min
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'graph_tool', 'wurlitzer', 'bayanpy'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'ASLPAw', 'pyclustering'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+  13175/15288  129.6 min  eta 20.8 min
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'bayanpy', 'wurlitzer', 'graph_tool'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'ASLPAw', 'pyclustering'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+  13200/15288  130.0 min  eta 20.6 min
+  13225/15288  130.4 min  eta 20.3 min
+  13250/15288  130.7 min  eta 20.1 min
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'graph_tool', 'bayanpy', 'wurlitzer'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'pyclustering', 'ASLPAw'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+  13275/15288  131.1 min  eta 19.9 min
+  13300/15288  131.4 min  eta 19.6 min
+  13325/15288  131.7 min  eta 19.4 min
+  13350/15288  132.1 min  eta 19.2 min
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'graph_tool', 'wurlitzer', 'bayanpy'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'ASLPAw', 'pyclustering'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+  13375/15288  132.4 min  eta 18.9 min
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'graph_tool', 'bayanpy', 'wurlitzer'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'pyclustering', 'ASLPAw'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'graph_tool', 'wurlitzer', 'bayanpy'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'ASLPAw', 'pyclustering'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+  13400/15288  132.7 min  eta 18.7 min
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer', 'graph_tool', 'bayanpy'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'ASLPAw', 'pyclustering'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'graph_tool', 'wurlitzer', 'bayanpy'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'pyclustering', 'ASLPAw'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+  13425/15288  133.0 min  eta 18.5 min
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'graph_tool', 'wurlitzer', 'bayanpy'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'ASLPAw', 'pyclustering'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+  13450/15288  133.3 min  eta 18.2 min
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'graph_tool', 'bayanpy', 'wurlitzer'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'ASLPAw', 'pyclustering'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+  13475/15288  133.6 min  eta 18.0 min
+  13500/15288  133.8 min  eta 17.7 min
+  13525/15288  134.1 min  eta 17.5 min
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'bayanpy', 'wurlitzer', 'graph_tool'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'ASLPAw', 'pyclustering'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+  13550/15288  134.4 min  eta 17.2 min
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer', 'graph_tool', 'bayanpy'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'pyclustering', 'ASLPAw'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+  13575/15288  134.6 min  eta 17.0 min
+  13600/15288  134.8 min  eta 16.7 min
+  13625/15288  135.1 min  eta 16.5 min
+  13650/15288  135.3 min  eta 16.2 min
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'bayanpy', 'graph_tool', 'wurlitzer'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'pyclustering', 'ASLPAw'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+  13675/15288  135.5 min  eta 16.0 min
+  13700/15288  135.8 min  eta 15.7 min
+  13725/15288  136.0 min  eta 15.5 min
+  13750/15288  136.2 min  eta 15.2 min
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer', 'graph_tool', 'bayanpy'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'ASLPAw', 'pyclustering'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+  13775/15288  136.4 min  eta 15.0 min
+  13800/15288  136.7 min  eta 14.7 min
+  13825/15288  136.9 min  eta 14.5 min
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer', 'graph_tool', 'bayanpy'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'pyclustering', 'ASLPAw'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+  13850/15288  137.1 min  eta 14.2 min
+  13875/15288  137.3 min  eta 14.0 min
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer', 'graph_tool', 'bayanpy'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'ASLPAw', 'pyclustering'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+  13900/15288  137.5 min  eta 13.7 min
+  13925/15288  137.8 min  eta 13.5 min
+  13950/15288  138.0 min  eta 13.2 min
+  13975/15288  138.2 min  eta 13.0 min
+  14000/15288  138.4 min  eta 12.7 min
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'graph_tool', 'wurlitzer', 'bayanpy'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'pyclustering', 'ASLPAw'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'graph_tool', 'wurlitzer', 'bayanpy'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'pyclustering', 'ASLPAw'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+  14025/15288  138.6 min  eta 12.5 min
+  14050/15288  138.8 min  eta 12.2 min
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer', 'bayanpy', 'graph_tool'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'ASLPAw', 'pyclustering'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+  14075/15288  139.0 min  eta 12.0 min
+  14100/15288  139.2 min  eta 11.7 min
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'graph_tool', 'bayanpy', 'wurlitzer'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'pyclustering', 'ASLPAw'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer', 'graph_tool', 'bayanpy'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'pyclustering', 'ASLPAw'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+  14125/15288  139.4 min  eta 11.5 min
+  14150/15288  139.7 min  eta 11.2 min
+  14175/15288  139.8 min  eta 11.0 min
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'bayanpy', 'graph_tool', 'wurlitzer'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'pyclustering', 'ASLPAw'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'graph_tool', 'wurlitzer', 'bayanpy'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'ASLPAw', 'pyclustering'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'bayanpy', 'graph_tool', 'wurlitzer'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'ASLPAw', 'pyclustering'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+  14200/15288  140.0 min  eta 10.7 min
+  14225/15288  140.3 min  eta 10.5 min
+  14250/15288  140.5 min  eta 10.2 min
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'graph_tool', 'wurlitzer', 'bayanpy'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'ASLPAw', 'pyclustering'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+  14275/15288  140.7 min  eta 10.0 min
+  14300/15288  140.9 min  eta 9.7 min
+  14325/15288  141.1 min  eta 9.5 min
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'bayanpy', 'graph_tool', 'wurlitzer'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'pyclustering', 'ASLPAw'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+  14350/15288  141.3 min  eta 9.2 min
+  14375/15288  141.5 min  eta 9.0 min
+  14400/15288  141.7 min  eta 8.7 min
+  14425/15288  141.9 min  eta 8.5 min
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer', 'graph_tool', 'bayanpy'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'ASLPAw', 'pyclustering'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+  14450/15288  142.1 min  eta 8.2 min
+  14475/15288  142.3 min  eta 8.0 min
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'graph_tool', 'wurlitzer', 'bayanpy'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'ASLPAw', 'pyclustering'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+  14500/15288  142.5 min  eta 7.7 min
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'bayanpy', 'graph_tool', 'wurlitzer'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'pyclustering', 'ASLPAw'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+  14525/15288  142.7 min  eta 7.5 min
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer', 'bayanpy', 'graph_tool'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'pyclustering', 'ASLPAw'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer', 'graph_tool', 'bayanpy'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'pyclustering', 'ASLPAw'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+  14550/15288  142.9 min  eta 7.2 min
+  14575/15288  143.1 min  eta 7.0 min
+  14600/15288  143.3 min  eta 6.8 min
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'bayanpy', 'wurlitzer', 'graph_tool'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'pyclustering', 'ASLPAw'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+  14625/15288  143.5 min  eta 6.5 min
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'bayanpy', 'wurlitzer', 'graph_tool'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'pyclustering', 'ASLPAw'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+  14650/15288  143.7 min  eta 6.3 min
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'graph_tool', 'bayanpy', 'wurlitzer'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'ASLPAw', 'pyclustering'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+  14675/15288  143.9 min  eta 6.0 min
+  14700/15288  144.1 min  eta 5.8 min
+  14725/15288  144.3 min  eta 5.5 min
+  14750/15288  144.5 min  eta 5.3 min
+  14775/15288  144.7 min  eta 5.0 min
+  14800/15288  144.9 min  eta 4.8 min
+  14825/15288  145.1 min  eta 4.5 min
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'graph_tool', 'bayanpy', 'wurlitzer'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'ASLPAw', 'pyclustering'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+  14850/15288  145.3 min  eta 4.3 min
+  14875/15288  145.5 min  eta 4.0 min
+  14900/15288  145.7 min  eta 3.8 min
+  14925/15288  145.9 min  eta 3.5 min
+  14950/15288  146.1 min  eta 3.3 min
+  14975/15288  146.3 min  eta 3.1 min
+  15000/15288  146.5 min  eta 2.8 min
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer', 'bayanpy', 'graph_tool'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'ASLPAw', 'pyclustering'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'graph_tool', 'bayanpy', 'wurlitzer'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'ASLPAw', 'pyclustering'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+  15025/15288  146.7 min  eta 2.6 min
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'bayanpy', 'graph_tool', 'wurlitzer'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'ASLPAw', 'pyclustering'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'graph_tool', 'wurlitzer', 'bayanpy'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'ASLPAw', 'pyclustering'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+  15050/15288  147.0 min  eta 2.3 min
+  15075/15288  147.2 min  eta 2.1 min
+  15100/15288  147.4 min  eta 1.8 min
+  15125/15288  147.6 min  eta 1.6 min
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'bayanpy', 'graph_tool', 'wurlitzer'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'pyclustering', 'ASLPAw'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+  15150/15288  147.8 min  eta 1.3 min
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'graph_tool', 'wurlitzer', 'bayanpy'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'ASLPAw', 'pyclustering'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer', 'graph_tool', 'bayanpy'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'ASLPAw', 'pyclustering'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+  15175/15288  148.1 min  eta 1.1 min
+  15200/15288  148.3 min  eta 0.9 min
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'bayanpy', 'wurlitzer', 'graph_tool'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'pyclustering', 'ASLPAw'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+  15225/15288  148.5 min  eta 0.6 min
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer', 'graph_tool', 'bayanpy'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'pyclustering', 'ASLPAw'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+  15250/15288  148.7 min  eta 0.4 min
+  15275/15288  149.0 min  eta 0.1 min
+  15288/15288  149.1 min  eta 0.0 min
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'bayanpy', 'graph_tool', 'wurlitzer'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'pyclustering', 'ASLPAw'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'graph_tool', 'bayanpy', 'wurlitzer'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'pyclustering', 'ASLPAw'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'bayanpy', 'graph_tool', 'wurlitzer'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'pyclustering', 'ASLPAw'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'bayanpy', 'wurlitzer', 'graph_tool'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'pyclustering', 'ASLPAw'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'graph_tool', 'bayanpy', 'wurlitzer'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'pyclustering', 'ASLPAw'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'graph_tool', 'bayanpy', 'wurlitzer'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'pyclustering', 'ASLPAw'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'graph_tool', 'wurlitzer', 'bayanpy'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'ASLPAw', 'pyclustering'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer', 'bayanpy', 'graph_tool'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'pyclustering', 'ASLPAw'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'bayanpy', 'graph_tool', 'wurlitzer'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'pyclustering', 'ASLPAw'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'bayanpy', 'graph_tool', 'wurlitzer'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'pyclustering', 'ASLPAw'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'graph_tool', 'bayanpy', 'wurlitzer'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'ASLPAw', 'pyclustering'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'graph_tool', 'bayanpy', 'wurlitzer'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'ASLPAw', 'pyclustering'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer', 'graph_tool', 'bayanpy'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'pyclustering', 'ASLPAw'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer', 'graph_tool', 'bayanpy'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'pyclustering', 'ASLPAw'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer', 'bayanpy', 'graph_tool'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'pyclustering', 'ASLPAw'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer', 'graph_tool', 'bayanpy'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'ASLPAw', 'pyclustering'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'graph_tool', 'wurlitzer', 'bayanpy'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'ASLPAw', 'pyclustering'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'graph_tool', 'wurlitzer', 'bayanpy'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'pyclustering', 'ASLPAw'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer', 'graph_tool', 'bayanpy'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'pyclustering', 'ASLPAw'}
+Note: to be able to use all crisp methods, you need to install some additional packages:  {'wurlitzer'}

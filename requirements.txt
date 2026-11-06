@@ -1,4 +1,1 @@
-networkx
-pandas
-matplotlib
-pytest
+-r paper/requirements-paper.txt

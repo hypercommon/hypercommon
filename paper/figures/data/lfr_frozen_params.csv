@@ -1,0 +1,31 @@
+family,method,param
+on00,angel,0.5
+on00,cpm,4
+on00,demon,0.5
+on00,hc,0.08
+on00,hc_2test,0.14
+on00,hc_tri,0.08
+on00,leiden,2.0
+on00,scan,"(0.3, 2)"
+on00,scan_j,"(0.2, 2)"
+on00,slpa,0.3
+on10,angel,0.5
+on10,cpm,4
+on10,demon,0.5
+on10,hc,0.1
+on10,hc_2test,0.26
+on10,hc_tri,0.08
+on10,leiden,4.0
+on10,scan,"(0.4, 5)"
+on10,scan_j,"(0.2, 2)"
+on10,slpa,0.1|t100
+on30,angel,0.5
+on30,cpm,4
+on30,demon,0.5
+on30,hc,0.14
+on30,hc_2test,0.28
+on30,hc_tri,0.12
+on30,leiden,4.0
+on30,scan,"(0.4, 5)"
+on30,scan_j,"(0.3, 2)"
+on30,slpa,0.1|t100

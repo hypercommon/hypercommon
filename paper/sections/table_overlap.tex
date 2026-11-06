@@ -1,0 +1,39 @@
+\begin{table*}[t]
+\caption{Unequal rings at overlap $o_n=0$ and $0.10$ (Table~\ref{tab:oracle} uses $0.05$): $\Omega$ under the oracle protocol, mean over the noise range ($p\in[0,0.8]$ for rings, $\mu\in[0.1,0.6]$ for LFR), ten test graphs per noise level.}
+\label{tab:overlaplevels}
+\scriptsize\setlength{\tabcolsep}{2pt}
+\begin{ruledtabular}
+\begin{tabular}{lccccccccccccccc}
+Family & $o_n$ & HC & e-conn. & tri. & 2-test & Link & CPM & Leiden & L-CPM & Infomap & LPA & SLPA & ANGEL & DEMON & SCAN \\
+\hline
+two worlds & 0.00 & \textbf{0.84} & \textbf{0.83} & 0.82 & 0.75 & 0.82 & 0.70 & 0.67 & \textbf{0.84} & 0.40 & 0.13 & 0.32 & 0.66 & 0.53 & 0.72 \\
+ & 0.10 & \textbf{0.72} & \textbf{0.72} & 0.71 & 0.50 & 0.61 & 0.66 & 0.45 & \textbf{0.72} & 0.26 & 0.08 & 0.24 & 0.49 & 0.35 & 0.43 \\
+three big, many small & 0.00 & \textbf{0.84} & \textbf{0.84} & 0.84 & 0.77 & 0.83 & 0.74 & 0.49 & 0.81 & 0.24 & 0.07 & 0.18 & 0.65 & 0.50 & 0.75 \\
+ & 0.10 & 0.71 & \textbf{0.72} & 0.69 & 0.48 & 0.61 & 0.67 & 0.26 & 0.48 & 0.14 & 0.05 & 0.13 & 0.45 & 0.33 & 0.42 \\
+gradient of ten rings & 0.00 & 0.65 & 0.64 & 0.60 & 0.57 & \textbf{0.66} & 0.57 & 0.35 & 0.44 & 0.14 & 0.03 & 0.11 & 0.54 & 0.54 & 0.54 \\
+ & 0.10 & \textbf{0.48} & \textbf{0.48} & 0.47 & 0.25 & 0.45 & 0.41 & 0.10 & 0.18 & 0.06 & 0.02 & 0.08 & 0.37 & 0.37 & 0.16 \\
+equal $k$, unequal $s$ ($k{=}8$) & 0.00 & 0.58 & 0.57 & 0.46 & 0.51 & 0.57 & 0.46 & \textbf{0.60} & \textbf{0.60} & 0.36 & 0.10 & 0.35 & 0.49 & 0.49 & 0.49 \\
+ & 0.10 & \textbf{0.46} & 0.45 & 0.41 & 0.19 & \textbf{0.46} & 0.37 & 0.29 & 0.29 & 0.20 & 0.08 & 0.29 & 0.34 & 0.35 & 0.16 \\
+\end{tabular}
+\end{ruledtabular}
+\end{table*}
+
+\begin{table*}[t]
+\caption{As Table~\ref{tab:overlaplevels}, label-free protocol.}
+\label{tab:overlaplevelsfree}
+\scriptsize\setlength{\tabcolsep}{2pt}
+\begin{ruledtabular}
+\begin{tabular}{lccccccccccccccc}
+Family & $o_n$ & HC & e-conn. & tri. & 2-test & Link & CPM & Leiden & L-CPM & Infomap & LPA & SLPA & ANGEL & DEMON & SCAN \\
+\hline
+two worlds & 0.00 & \textbf{0.83} & \textbf{0.82} & 0.82 & 0.71 & 0.78 & 0.70 & 0.58 & 0.79 & 0.40 & 0.13 & 0.28 & 0.65 & 0.48 & 0.72 \\
+ & 0.10 & \textbf{0.71} & \textbf{0.71} & 0.70 & 0.49 & 0.53 & 0.65 & 0.38 & 0.50 & 0.26 & 0.08 & 0.22 & 0.43 & 0.28 & 0.42 \\
+three big, many small & 0.00 & \textbf{0.83} & \textbf{0.83} & 0.82 & 0.76 & 0.81 & 0.72 & 0.33 & 0.40 & 0.21 & 0.07 & 0.15 & 0.64 & 0.47 & 0.74 \\
+ & 0.10 & \textbf{0.67} & 0.66 & 0.62 & 0.36 & 0.55 & 0.61 & 0.23 & 0.29 & 0.14 & 0.05 & 0.12 & 0.43 & 0.29 & 0.33 \\
+gradient of ten rings & 0.00 & 0.42 & 0.40 & 0.39 & 0.36 & \textbf{0.61} & 0.56 & 0.21 & 0.21 & 0.11 & 0.03 & 0.07 & 0.48 & 0.50 & 0.41 \\
+ & 0.10 & 0.23 & 0.24 & 0.22 & 0.13 & \textbf{0.39} & 0.35 & 0.09 & 0.11 & 0.06 & 0.02 & 0.06 & 0.33 & 0.27 & 0.12 \\
+equal $k$, unequal $s$ ($k{=}8$) & 0.00 & \textbf{0.57} & 0.57 & 0.46 & 0.49 & 0.56 & 0.46 & 0.56 & 0.56 & 0.36 & 0.10 & 0.25 & 0.49 & 0.48 & 0.47 \\
+ & 0.10 & \textbf{0.45} & \textbf{0.45} & 0.40 & 0.17 & 0.41 & 0.37 & 0.24 & 0.24 & 0.19 & 0.08 & 0.21 & 0.33 & 0.33 & 0.15 \\
+\end{tabular}
+\end{ruledtabular}
+\end{table*}

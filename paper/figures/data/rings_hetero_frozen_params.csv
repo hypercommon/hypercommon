@@ -1,0 +1,61 @@
+family,method,param
+dense_even,angel,0.5
+dense_even,cpm,4
+dense_even,demon,0.5
+dense_even,hc,0.12
+dense_even,hc_2test,0.48
+dense_even,hc_tri,0.12
+dense_even,leiden,1.0
+dense_even,scan,"(0.7, 2)"
+dense_even,scan_j,"(0.5, 2)"
+dense_even,slpa,0.02
+gradient10,angel,0.5
+gradient10,cpm,4
+gradient10,demon,0.5
+gradient10,hc,0.16
+gradient10,hc_2test,0.42
+gradient10,hc_tri,0.16
+gradient10,leiden,1.0
+gradient10,scan,"(0.7, 2)"
+gradient10,scan_j,"(0.5, 2)"
+gradient10,slpa,0.01
+k_only_s100,angel,0.5
+k_only_s100,cpm,4
+k_only_s100,demon,0.75
+k_only_s100,hc,0.14
+k_only_s100,hc_2test,0.44
+k_only_s100,hc_tri,0.1
+k_only_s100,leiden,2.0
+k_only_s100,scan,"(0.7, 2)"
+k_only_s100,scan_j,"(0.5, 2)"
+k_only_s100,slpa,0.05
+sizes_only_k8,angel,0.5
+sizes_only_k8,cpm,3
+sizes_only_k8,demon,0.5
+sizes_only_k8,hc,0.14
+sizes_only_k8,hc_2test,0.46
+sizes_only_k8,hc_tri,0.08
+sizes_only_k8,leiden,2.0
+sizes_only_k8,scan,"(0.7, 2)"
+sizes_only_k8,scan_j,"(0.5, 2)"
+sizes_only_k8,slpa,0.02
+three_big_many_small,angel,0.5
+three_big_many_small,cpm,4
+three_big_many_small,demon,0.75
+three_big_many_small,hc,0.12
+three_big_many_small,hc_2test,0.22
+three_big_many_small,hc_tri,0.1
+three_big_many_small,leiden,1.0
+three_big_many_small,scan,"(0.5, 5)"
+three_big_many_small,scan_j,"(0.5, 2)"
+three_big_many_small,slpa,0.2
+two_worlds,angel,0.5
+two_worlds,cpm,4
+two_worlds,demon,0.75
+two_worlds,hc,0.1
+two_worlds,hc_2test,0.5
+two_worlds,hc_tri,0.1
+two_worlds,leiden,1.0
+two_worlds,scan,"(0.7, 2)"
+two_worlds,scan_j,"(0.5, 2)"
+two_worlds,slpa,0.2

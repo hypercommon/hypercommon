@@ -1,0 +1,25 @@
+\begin{table*}[t]
+\caption{Detection on the full SNAP Amazon (334\,863 nodes), DBLP (317\,080) and YouTube (1\,134\,890) graphs, scored on the nodes of their ground-truth communities (top 5000 for Amazon and DBLP, all groups of at least three nodes for YouTube), to which every detected community is restricted. Best-match F1 against the recorded communities and $\Omega$ against their distinct node sets, at each method's best parameter by that metric (best) and at the parameter chosen without labels by maximal overlapping modularity on the full graph (free); cov.: fraction of the scored nodes in at least one community at the free parameter. HC$_f$: the seven commonality functions together, the free choice taken over all of them. Leiden at $\gamma=1$ and Infomap at Markov time 1 are the two methods at their defaults (one parameter, so best and free coincide). Connected components are a trivial reference. On YouTube HyperCommon uses degree-ratio pruning, exact for every $t\ge0.02$ (Sec.~\ref{sec:cost}), which excludes link communities and the other functions; clique percolation and SLPA are compared on the induced subgraphs (Table~\ref{tab:realinduced}), and SCAN, Walktrap, DEMON and ANGEL were not run on these graphs, to bound the computing time of the large runs. Stochastic methods: one seed. F1 against the distinct node sets is in Table~\ref{tab:S-realnet-dedup}; it changes F1 by at most 0.03 (at most 0.01 for HyperCommon and its variants) and reverses the order of no two methods in a column. The top-5000 lists of Amazon and DBLP frequently consist of near-cliques~\cite{chen2024parallel}, which can favour methods that find small dense groups. Bold: best in column.}
+\label{tab:real}
+\scriptsize\setlength{\tabcolsep}{2pt}
+\begin{ruledtabular}
+\begin{tabular}{lccccccccccccccc}
+ & \multicolumn{5}{c}{Amazon} & \multicolumn{5}{c}{DBLP} & \multicolumn{5}{c}{YouTube} \\
+ & F1 best & F1 free & $\Omega$ best & $\Omega$ free & cov. & F1 best & F1 free & $\Omega$ best & $\Omega$ free & cov. & F1 best & F1 free & $\Omega$ best & $\Omega$ free & cov. \\
+\hline
+components & 0.020 & 0.020 & 0.000 & 0.000 & 1.00 & 0.075 & 0.075 & 0.000 & 0.000 & 1.00 & 0.060 & 0.060 & 0.000 & 0.000 & 1.00 \\
+HC & 0.856 & 0.854 & 0.459 & 0.459 & 0.99 & 0.516 & 0.486 & 0.024 & 0.024 & 0.94 & 0.322 & 0.289 & 0.017 & $-0.007$ & 0.67 \\
+HC$_f$ & 0.884 & 0.852 & 0.477 & 0.477 & 1.00 & 0.520 & 0.486 & 0.037 & 0.024 & 0.94 & -- & -- & -- & -- & -- \\
+e-conn. & 0.857 & 0.857 & 0.485 & 0.485 & 0.99 & 0.516 & 0.487 & 0.024 & 0.024 & 0.94 & 0.323 & 0.292 & 0.016 & $-0.007$ & 0.67 \\
+tri. & 0.840 & 0.838 & 0.415 & 0.415 & 0.95 & 0.513 & 0.485 & 0.030 & 0.019 & 0.89 & 0.309 & 0.300 & 0.015 & 0.006 & 0.49 \\
+2-test & 0.887 & 0.887 & 0.424 & 0.424 & 0.95 & 0.507 & 0.459 & 0.014 & 0.014 & 0.83 & 0.280 & 0.215 & 0.005 & $-0.011$ & 0.53 \\
+Link & 0.842 & 0.827 & 0.487 & 0.487 & 1.00 & 0.490 & 0.446 & 0.031 & 0.024 & 1.00 & -- & -- & -- & -- & -- \\
+Leiden & 0.924 & 0.534 & 0.600 & 0.392 & 1.00 & 0.542 & 0.285 & \textbf{0.154} & \textbf{0.152} & 1.00 & \textbf{0.363} & 0.192 & \textbf{0.142} & 0.074 & 1.00 \\
+Leiden, $\gamma{=}1$ & 0.534 & 0.534 & 0.392 & 0.392 & 1.00 & 0.285 & 0.285 & 0.152 & \textbf{0.152} & 1.00 & 0.192 & 0.192 & 0.074 & 0.074 & 1.00 \\
+L-CPM & 0.929 & 0.561 & \textbf{0.617} & 0.385 & 1.00 & 0.532 & 0.237 & 0.150 & 0.150 & 1.00 & 0.337 & 0.252 & 0.113 & 0.104 & 1.00 \\
+Infomap & \textbf{0.934} & 0.890 & 0.577 & \textbf{0.576} & 1.00 & \textbf{0.547} & 0.505 & 0.041 & 0.030 & 1.00 & 0.356 & \textbf{0.338} & 0.128 & \textbf{0.128} & 1.00 \\
+Infomap, Markov time 1 & 0.921 & \textbf{0.921} & 0.488 & 0.488 & 1.00 & \textbf{0.547} & \textbf{0.547} & 0.013 & 0.013 & 1.00 & 0.338 & \textbf{0.338} & 0.128 & \textbf{0.128} & 1.00 \\
+LPA & 0.820 & 0.820 & 0.373 & 0.373 & 1.00 & 0.508 & 0.508 & 0.010 & 0.010 & 1.00 & 0.216 & 0.216 & 0.007 & 0.007 & 1.00 \\
+\end{tabular}
+\end{ruledtabular}
+\end{table*}

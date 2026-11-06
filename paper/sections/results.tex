@@ -1,0 +1,345 @@
+% ---------------------------------------------------------------------------
+\section{Results}
+\label{sec:results}
+% ---------------------------------------------------------------------------
+
+\subsection{Exact recovery and the threshold}
+\label{sec:recovery}
+
+An exact implementation confirms Theorem~\ref{thm:window}. On rings whose merges satisfy
+its isolation hypothesis ($n_0=2000$, $o_n=0.01$, merges more than $2k$ apart), without
+noise HyperCommon returns the planted rings exactly, $\Omega=1$ on every test graph, at
+each of the 20 thresholds of our grid inside the window for $k=8$ and the 22 inside it
+for $k=16$, and at no threshold outside it ($\Omega<0.98$). With a fifth of the edges
+rewired, the mean $\Omega$ at the best threshold of each graph is still $1.000$ for
+$k=16$ and $0.991$ for $k=8$. Without the third-pair test the same graphs are never
+recovered exactly ($\Omega<0.98$ without noise, a mean of $0.74$ at $p=0.2$ for $k=8$):
+the two edges of the wedge that crosses a merge have commonality $J_u(1)$, which is at
+least every threshold of the window, so the pair rule admits that wedge throughout it.
+
+\begin{figure*}[t]
+  \centering
+  \includegraphics[width=\textwidth]{figures/fig_omega_t.pdf}
+  \caption{Accuracy of HyperCommon as a function of the threshold on overlapping
+  uniform rings ($n_0=2000$, $o_n=0.05$), one curve per rewiring level $p$, each the mean
+  over ten test graphs. Shaded: the exact-recovery window that
+  Theorem~\ref{thm:window} predicts for $p=0$ when merges are isolated; the plotted
+  graphs' random merges do not satisfy the isolation hypothesis. Black dashed: graphs
+  with isolated merges ($o_n=0.01$, merges more than $2k$ apart) at $p=0$, which reach
+  $\Omega=1$ at every grid threshold inside the window and at none outside it.}
+  \label{fig:omegat}
+\end{figure*}
+
+When merges fall at random, the isolation hypothesis fails: at $o_n=0.05$ each ring
+carries on average 5 ($k=8$) or 10 ($k=16$) merge positions, whereas at most five
+positions more than $k$ apart fit on a ring of 50 nodes with $k=8$ or of 100 nodes with
+$k=16$. Rings are then fused inside the window through nearby merged nodes
+(Proposition~\ref{prop:sharedpairs}; Table~\ref{tab:doublebonds}), which keeps the
+noise-free curve of Fig.~\ref{fig:omegat}(a) ($k=8$) between $0.92$ and $0.99$ across
+the window, while for $k=16$ [Fig.~\ref{fig:omegat}(b)] it reaches $0.95$ only for
+$t\ge0.30$. Otherwise each curve rises from near zero at small $t$, where communities
+coalesce, to a maximum and decays as they fragment, its covers nested
+(Theorem~\ref{thm:nesting}). As noise grows the
+best threshold moves down towards $t\approx0.1$, so a threshold has to be chosen per
+graph, and the overlapping modularity of the cover chooses it well for HyperCommon: the
+label-free threshold attains at least $95\%$ of the best threshold's mean $\Omega$ on
+27 of the 36 benchmark settings and at least $90\%$ on 31 (Supplemental
+Material~\cite{supplement}, Tables~\ref{tab:labelfree} and~\ref{tab:oracle}).
+
+\subsection{Planted rings}
+\label{sec:planted}
+
+\input{sections/table_scorecard}
+
+\begin{figure*}[t]
+  \centering
+  \includegraphics[width=\textwidth]{figures/fig_benchmarks.pdf}
+  \caption{Accuracy against noise with every method's parameter chosen without labels
+  (largest overlapping modularity on each graph); lines are means over ten test graphs
+  and bands 95\% bootstrap intervals. (a,b)~Uniform rings; (c--e)~rings of unequal size
+  and density ($o_n=0.05$); (f)~overlapping LFR graphs, against the mixing parameter. In
+  (e) the selector picks too fine a cover for HyperCommon (Sec.~\ref{sec:planted}). The
+  same panels under the oracle protocol are in Fig.~\ref{fig:benchmarksoracle}.}
+  \label{fig:benchmarks}
+\end{figure*}
+
+\emph{Label-free protocol.} Table~\ref{tab:scorecard} summarises the four protocols of
+Sec.~\ref{sec:protocols}. Under the label-free one, every parameter is chosen from the
+graph alone by the overlapping modularity of Eq.~\eqref{eq:qov}, which for a partition
+is the Newman--Girvan modularity (Table~\ref{tab:labelfree}). Over the 28 ring
+settings HyperCommon has the highest $\Omega$ in 16, by paired 95\% intervals that exclude zero (ablations not counted), is
+not significantly different from the best other method in 5 and trails in 7: on dense
+rings with little overlap, where Leiden leads ($0.84$ against $0.78$ at $k=16$,
+$o_n=0$); on rings of equal size and unequal degree at $o_n=0.10$, where the Constant
+Potts Model leads ($0.63$ against $0.61$); and on the gradient at all three overlap
+levels, where link communities lead. The margins are largest where community sizes
+differ most and the communities overlap: $\Omega=0.78$ against $0.68$ for clique
+percolation on three big, many small, and $0.76$ against $0.66$ on two worlds
+[Fig.~\ref{fig:benchmarks}(c,d)].
+
+\emph{Selector and native protocol.} Part of these margins lies in the selection of the
+parameter rather than in the objectives: at its best resolution the Constant Potts Model
+reaches $0.71$ on three big, many small and $0.78$ on two worlds
+(Table~\ref{tab:oracle}), against $0.34$ and $0.64$ when its resolution is chosen by
+modularity, while HyperCommon goes from $0.80$ to $0.78$ and from $0.78$ to $0.76$
+(Table~\ref{tab:S-selector}). The native protocol runs each method at its own default
+or selection rule, while HyperCommon keeps its label-free threshold
+(Table~\ref{tab:native}). Under it HyperCommon is ahead
+in 17 of the 28 ring settings, level in 5 and behind in 6, on the dense rings with little
+overlap and on the gradient. The Constant Potts Model gains most from its own rule and is
+level with HyperCommon on two worlds at $o_n=0.05$ and $0.10$; under preferential noise,
+by contrast, the edge density serves it worse than the resolution of largest modularity
+($0.52$--$0.56$ against $0.66$), and HyperCommon stays well ahead ($0.77$--$0.79$).
+
+\emph{Oracle protocol.} Credited with its best parameter on each graph
+(Table~\ref{tab:oracle}), every method narrows the gap: over the 28 ring settings
+HyperCommon is ahead in 11, level with the best other method in 4 and behind in 13. It
+stays ahead on three big, many small at every overlap level ($0.80$ against $0.72$ for
+link communities at $o_n=0.05$) and on the gradient with overlap ($0.57$ against
+$0.54$); where it is behind, Leiden with one objective or the other leads, except on the
+gradient without overlap, where link communities do. Modularity optimisation with a
+single resolution fails on the gradient even without noise: at $p=0$ Leiden attains
+$\Omega=0.28$ there, and $0.26$ at the resolution at which it returns the right number
+of communities, because small rings are merged while large ones are
+split~\cite{fortunato2007resolution,lancichinetti2011limits}; HyperCommon attains
+$0.99$.
+
+\emph{Frozen protocol.} With one parameter per family fixed on calibration graphs, all
+noise levels pooled (Table~\ref{tab:frozen}), the two Leiden objectives, whose best
+resolutions vary little with noise, are the most accurate on most ring families, and
+HyperCommon is ahead in 1 of the 28 settings and not significantly different in 5: its
+best threshold moves with noise (Fig.~\ref{fig:omegat}), so a single threshold fits the
+noise-free graphs or the noisy ones but not both. Choosing the threshold per graph, as the
+label-free protocol does, removes this limitation without labels on every ring family
+except the gradient.
+
+\emph{The gradient.} Here, at $o_n=0.05$, the selector picks a threshold above the
+oracle's on 113 of the 170 test graphs and below it on one, so the selected cover is too
+fine ($181$ communities on average over the noise range against $147$ at the best
+threshold and $10$ planted; Tables~\ref{tab:S-ncomms-oracle}
+and~\ref{tab:S-ncomms-label-free}); at every overlap level it attains only
+$49\%$--$64\%$ of the best threshold's $\Omega$.
+
+\emph{Per-community recovery and ONMI.} Because $\Omega$ counts node pairs, it is
+dominated by the largest communities. On the two families with a few large dense rings
+and many small sparse ones, at $o_n=0.05$, HyperCommon recovers the large rings best ($0.84$--$0.85$
+against $0.72$--$0.83$ for the Constant Potts Model; Tables~\ref{tab:recsmall}
+and~\ref{tab:reclarge}) but splits the small sparse rings, which the Constant Potts Model
+recovers best ($0.53$--$0.54$ against $0.33$--$0.38$); with labels the Constant Potts
+Model therefore leads there by ONMI and by recovery averaged over all communities (Tables~\ref{tab:onmi-oracle}
+and~\ref{tab:S-allcomm-oracle}). Over the 28 ring
+settings HyperCommon leads by ONMI on 10 with labels and on 15 without
+(Table~\ref{tab:onmi-label-free}).
+
+\emph{Overlap level.} With labels, HyperCommon's margin over the Constant Potts Model
+grows with overlap on three big, many small ($0.03$, $0.09$ and $0.23$ at $o_n=0$,
+$0.05$ and $0.10$), while on two worlds the Constant Potts Model is ahead by less than
+$0.01$ at every overlap level (significantly at $o_n\le0.05$).
+
+\emph{Robustness to noise.} Without labels, HyperCommon's $p_{1/2}$, the rewired fraction
+at which its mean $\Omega$ first falls below one half (Table~\ref{tab:robust}), is the
+latest of all methods, or within $0.01$ of it, in ten of the sixteen ring families; on
+the four families whose large rings have degree 32 and small rings degree 8 it has the
+highest mean $\Omega$ over the high-noise half, $p\in[0.4,0.8]$ ($0.60$ against $0.49$
+for link communities on three big, many small), and on the gradient it is the least
+robust of the leading methods. Degree-biased noise affects it little, as it does most
+other methods.
+
+\subsection{Ablations and the closest relatives}
+\label{sec:ablations}
+
+Each ingredient of the construction was removed in turn (Sec.~\ref{sec:methods}); a
+difference is counted when its paired 95\% interval over the test graphs excludes zero.
+Testing the third, non-adjacent pair of a wedge matters most: without it $\Omega$ falls
+in all 36 benchmark settings under the oracle and the label-free protocol, by
+$0.06$--$0.34$ on rings and up to $0.42$ on LFR graphs, because a wedge whose two edges
+pass then reaches into another community whenever its centre has a neighbour there.
+Admitting open wedges improves on admitting only triangles (J-thresholded 3-clique
+percolation) in 26 and 25 of the 36 settings under the oracle and the label-free protocol, most where triangles are
+scarce ($0.04$--$0.11$ on sparse rings and $0.08$--$0.10$ on the sparse LFR slice);
+triangles alone are better in one setting under the oracle protocol and in none under
+the label-free one. With a single threshold frozen per family (Table~\ref{tab:frozen})
+the order reverses on the unequal families: triangles alone have the higher mean
+$\Omega$ in 15 of the 36 settings, including two worlds under the three noise models
+and three big, many small. Joining triples only through shared edges makes little difference on
+rings when the parameter is chosen per graph (within $0.02$ in mean $\Omega$) and is
+mostly slightly better on the LFR graphs (by up to $0.03$ with labels and $0.05$
+without).
+
+Link communities with the same similarity cut at every threshold~\cite{ahn2010link},
+whose edge similarity is the commonality of the wedge's third pair, are less accurate
+than HyperCommon in 25 of the 28 ring settings under the oracle and the label-free
+protocol. With labels they are level with it on uniform rings with $k=16$ without
+overlap and on rings of equal degree and unequal size with $k=8$ at $o_n=0.10$, and more
+accurate on the gradient without overlap; without labels they are more accurate on the
+gradient at every overlap level. Requiring the wedge's two edges to pass as well, as the
+triple rule does, is what separates the two methods most where communities overlap
+($0.10$--$0.23$ in label-free $\Omega$ on overlapping rings of degree 16 or of unequal
+density, the gradient excepted). On Amazon, by contrast, the two-test variant is the
+more accurate by F1 (Sec.~\ref{sec:real}).
+
+\emph{Commonality function.} Among the members of the commonality family, with the best
+threshold per graph, Jaccard is the best, or within $0.01$ of it at the precision of
+Table~\ref{tab:familyoracle}, on seventeen of eighteen benchmark settings; the
+label-free comparison is in Table~\ref{tab:familyfree}.
+
+\subsection{LFR graphs}
+
+Overlapping LFR graphs are the complementary regime [Fig.~\ref{fig:benchmarks}(f)]:
+Leiden, Infomap, SLPA and, without labels, the stochastic block model are the most
+accurate there, and HyperCommon trails on all eight LFR families under every protocol,
+matching Leiden and Infomap only at low mixing and with its best threshold. The pairwise
+signal is not what fails: the area under the ROC curve of the commonality of edges
+inside against across planted communities is $0.97$ at $\mu=0.3$, and wedges that span
+two communities pass the three-pair test at $t=0.1$ with probability below $10^{-4}$.
+What fails is connectivity inside large communities. LFR communities are random graphs
+internally, with degree independent of size, so a large community is sparse and its members share few
+neighbours: at $\mu=0.3$, $89\%$ of the wedges inside communities of at most 40 nodes
+pass at $t=0.1$, but only $21\%$ of those inside communities of at least 80 nodes.
+Percolation then breaks large communities into pieces at any threshold that keeps
+communities apart, which is why HyperCommon's deficit is largest with large communities
+($0.42$ against $0.87$ for Leiden). Raising the clustering with the generator's own
+rewiring does not help, since it adds triangles across communities as well.
+
+\subsection{Lattice and random communities}
+\label{sec:geometry}
+
+\input{sections/table_geometry}
+
+The LFR results suggest that the internal geometry of communities, more than their
+size, limits where HyperCommon is the right description. The geometry families test
+this (Table~\ref{tab:geometry}): sizes, mean degrees and overlap are held fixed while a
+fraction $q$ of each ring's edges is rewired inside the ring, so that each community
+moves from a lattice, in which two adjacent members share up to $k-2$ neighbours, to a
+random graph, in which they share about $(k-1)^2/s$.
+
+On lattice communities HyperCommon is ahead of every other method with labels in three
+of the four families and level with the best in the fourth, and without labels it is
+ahead on three. The advantage is specific to this geometry. With labels it is gone once
+a tenth of each community's edges are rewired internally, while the communities are
+still strongly clustered (about $0.5$); without labels HyperCommon is still ahead on
+three big, many small at $q=0.1$. From $q=0.3$ on, the best other method is ahead in
+every family under both protocols, with labels by $0.25$ on the uniform rings at $q=1$
+($0.60$ against $0.85$). As on LFR graphs, members of a random community share few neighbours,
+so few triples pass at a threshold that keeps communities apart, and the communities
+break into pieces. The change of degrees that moving edge endpoints causes is not the
+reason: with degree-preserving double-edge swaps instead (Table~\ref{tab:S-controls}),
+HyperCommon's $\Omega$ is within $0.01$ of its value under endpoint moves at $q=0.1$
+and $0.3$, on the
+uniform rings and on three big, many small, under both protocols. Open wedges slow the
+decline: with labels, on the uniform rings triangles alone fall from $0.65$ to $0.29$ as
+$q$ goes from 0 to 1, and HyperCommon from $0.73$ to $0.60$.
+
+Three further controls change one assumption at a time (Table~\ref{tab:S-controls}):
+hubs inside the communities move HyperCommon's $\Omega$ by at most $0.03$, though Leiden
+gains and leads on the dense hub rings, and the Constant Potts Model on two worlds with
+hubs; split overlap, in
+which a shared node divides its edges between its rings as in LFR graphs, keeps it
+within $0.05$ of the merged-node families, so the way LFR graphs share nodes is not what
+limits it on two worlds and three big, many small; random geometric communities, clustered but not lattices, leave it behind or
+level with the best other method. On graphs with triadic closure but no planted
+communities (Table~\ref{tab:S-nulls}) every method reports communities, label-free
+HyperCommon $101$ on the random geometric graph and $175$ on the Holme--Kim graph:
+neither it nor its label-free threshold tells such a graph from one with planted
+communities, and a test against randomised graphs that keep the degrees and the
+clustering would have to be added.
+
+\subsection{Real networks}
+\label{sec:real}
+
+\input{sections/table_real}
+
+Table~\ref{tab:real} reports detection on the full Amazon, DBLP and YouTube
+graphs~\cite{yang2015defining}; SCAN,
+Walktrap, DEMON and ANGEL were not run on these graphs, and clique percolation and SLPA
+only on the induced subgraphs (Table~\ref{tab:realinduced}). Scored against the distinct
+node sets instead (Table~\ref{tab:S-realnet-dedup}), F1 changes by at most $0.03$ (at
+most $0.01$ for HyperCommon and its variants) and the order of the methods in each
+column is unchanged. HyperCommon's threshold is chosen without labels at little cost in
+F1: the label-free F1 is $99.9\%$, $94\%$ and $89\%$ of its best F1 on the three graphs
+(ratios of the unrounded values). The same selector serves the modularity-based methods
+less well: Leiden falls to $0.53$, $0.29$ and $0.19$ in F1, about half of its best
+values, and the Constant Potts Model to $0.56$, $0.24$ and $0.25$. Under this selector
+Infomap is the most accurate on Amazon and YouTube (F1 $0.89$ and $0.34$) and label
+propagation on DBLP ($0.51$), with label-free HyperCommon within $0.02$--$0.05$ on
+each. By $\Omega$ the
+modularity- and flow-based partitions lead on all three. Detecting on the subgraph
+induced by the labelled nodes, as is common~\cite{yang2015defining}, makes F1
+uninformative on Amazon and YouTube: there the connected components already score
+within $0.005$ of the best method, while $\Omega$ still separates them.
+
+\input{sections/table_real_more}
+
+Table~\ref{tab:realmore} extends the comparison to fourteen smaller networks from the
+Netzschleuder repository~\cite{peixoto2020netzschleuder}: ten Facebook ego networks
+whose ground truth is the user's own, overlapping, social
+circles~\cite{mcauley2012learning}, college football conferences~\cite{girvan2002community},
+the leaning of political books~\cite{krebs_polbooks,newman2006modularity} and of
+political blogs~\cite{adamic2005political}, and the classes of a primary
+school~\cite{stehle2011high}; recorded groups of fewer than three nodes are discarded.
+With Jaccard commonality and its best threshold, HyperCommon is more accurate than every
+other method on college football and tied on political blogs. Its mean rank among the
+sixteen methods of
+Tables~\ref{tab:S-realnet-f1-best}--\ref{tab:S-realnet-coverage-free} is $8.3$ without
+labels and $7.3$ with labels, mid-field, and the most accurate method varies from
+network to network, consistent with the absence of a universally best
+method~\cite{peel2017ground}. With labels choosing among 700 (function, threshold) pairs
+per network -- an upper bound rather than the analogue of one parameter grid -- HC$_f$
+is the most accurate method on four networks by F1 and on four by $\Omega$
+(Table~\ref{tab:realmoreomega}), and on the primary school the choice of function alone
+raises HyperCommon's F1 from $0.41$ to $0.83$. Testing the third pair helps less here
+than on the benchmarks: with the best threshold the two-test variant has the higher F1
+on nine of the fourteen networks. Without labels, overlapping modularity is a weaker
+guide on these small networks than on the large ones: the label-free threshold retains
+$95\%$ of the best F1 or more on seven of the fourteen, and on political blogs, a
+two-group network in which HyperCommon's best cover is the giant component, it selects
+fifteen small communities instead. Over all seventeen real networks the label-free
+threshold retains a median $94\%$ of the best F1.
+
+\subsection{Running time and scale}
+\label{sec:runtime}
+
+\begin{figure*}[t]
+  \centering
+  \includegraphics[width=\textwidth]{figures/fig_runtime.pdf}
+  \caption{Running time against network size on one core, mean of three graphs per
+  size: ring lattices with $k=8$ and $16$ ($o_n=0.05$, $p=0.2$) and LFR graphs
+  ($\langle k\rangle=20$, $o_n=0.1$, $\mu=0.3$). HyperCommon's cost is split into the
+  enumeration and scoring of all wedges, done once, the communities at one threshold,
+  and one local query: the community grown, by the search of
+  Proposition~\ref{prop:local}, from the first admissible triple found through a seed
+  node drawn uniformly at random (best of three repetitions).}
+  \label{fig:runtime}
+\end{figure*}
+
+HyperCommon scores every wedge once and then reads off the cover at any threshold, so a
+sweep of its threshold costs one scoring plus one component search per threshold. On a
+personal computer (Intel Core Ultra 9 185H, 32\,GB; Fig.~\ref{fig:runtime}) our
+vectorised implementation (Python with NumPy and SciPy) scales as nearly linearly as the
+C++ implementations of Leiden and Infomap (fitted exponents of the time against $n$:
+$1.14$--$1.20$ for the scoring of the wedges, $1.23$--$1.25$ for Leiden and
+$1.18$--$1.25$ for Infomap), consistent with Eq.~\eqref{eq:cost}. Once the wedges are
+scored, a threshold costs less than a run of Infomap at every size and less than a run of
+Leiden above about $2\times10^4$ nodes: on rings of 190\,000 nodes with $k=16$ the
+one-off scoring takes $45$\,s, after which each threshold costs $1.8$\,s, against
+$3.7$\,s for Leiden and $15$\,s for Infomap. A single cover is therefore more expensive
+with HyperCommon than with Leiden; the advantage is specific to sweeps, which every
+method needs in order to be tuned or to be chosen without labels. The local query takes
+less than $0.1$\,s on average at every size, from $10^3$ to $1.9\times10^5$ nodes.
+
+On the full Amazon and DBLP graphs ($3.3\times10^5$ and $3.2\times10^5$ nodes), timed
+alone on one core of the same computer (\texttt{bench/retime\_big.py}),
+HyperCommon's scoring and its covers at all 30 thresholds take $71$ and $68$\,s, of
+which $38$ and $40$\,s are the scoring, with a peak of $3.3$ and $6.3$\,GB of memory;
+Leiden's 19 resolutions take $22$ and $27$ minutes and Infomap's 13 Markov times $4.3$
+and $3.4$ minutes. The overlapping
+modularity of the 30 covers, which the label-free choice needs, adds $9.0$ and
+$7.7$ minutes in our Python implementation; the modularity of the partitions, which the
+same choice needs for Leiden and Infomap, is in neither of their times. On the full
+YouTube graph ($1.1\times10^6$ nodes, $1.5\times10^9$ wedges), the degree-ratio pruning
+of Sec.~\ref{sec:cost}, exact for every threshold $t\ge0.02$, discards nine wedges in
+ten, and the scoring and all thresholds, with the overlapping modularity of every cover,
+take $10$ minutes on a workstation with 28 logical processors, with a peak of
+$25.7$\,GB of memory. Leiden's resolutions took six hours and Infomap's Markov times
+$25$ minutes on the same machine, timed without the modularity while sharing its cores
+with up to fifteen other jobs, so these two times are indicative only.

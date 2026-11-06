@@ -1,0 +1,103 @@
+% ---------------------------------------------------------------------------
+\section{Discussion}
+\label{sec:discussion}
+% ---------------------------------------------------------------------------
+
+HyperCommon reads communities off local evidence only: a pair's shared neighbourhood,
+required of all three pairs of a wedge and propagated through shared pairs, never
+compared with a global null model. On ring lattices commonality does not depend on
+community size (Lemma~\ref{lem:ringJ}), so one threshold suits rings of thirty and of
+six hundred nodes alike, whereas on the gradient no single resolution of either Leiden
+objective keeps the large rings whole and the small ones
+apart~\cite{fortunato2007resolution,lancichinetti2011limits} (Table~\ref{tab:oracle}).
+On the families with a few large dense rings and many small sparse ones the Constant
+Potts Model at its best resolution is as accurate as HyperCommon on two worlds or
+slightly more; HyperCommon's advantage there comes from its robustness at high noise
+(three big, many small) and, on two worlds, from a threshold that overlapping modularity
+selects better than it selects a resolution. Where HyperCommon falls short, on small
+sparse rings beside large dense ones, it splits them and leaves part of their nodes
+unassigned (Tables~\ref{tab:recsmall} and~\ref{tab:S-coverage-oracle}; coverage
+$87\%$--$88\%$) rather than merging them with other communities: it reports only what
+local evidence supports. Degree-biased noise affects it little, for which the cap of
+Jaccard commonality by the degree ratio of a pair offers a mechanism: the edges that
+hubs gain under preferential attachment rarely pass. Overlap needs no separate
+membership rule: a shared node is kept in each of its communities through its own
+admitted edges (Corollary~\ref{cor:pairdisjoint}).
+
+Theory and benchmarks meet at the exact-recovery window: with isolated merges the
+planted rings are recovered exactly at every threshold inside it. The ablations support
+each test of the triple rule (Sec.~\ref{sec:ablations}): admitting open wedges, which J-thresholded
+3-clique percolation does not, helps where triangles are scarce; testing the
+non-adjacent pair, which the two-test variant omits, keeps overlapping communities
+apart; and testing the wedge's two edges, which link communities~\cite{ahn2010link}
+omit, separates HyperCommon from them most where communities overlap.
+
+The advantage is tied to the lattice geometry rather than to unequal sizes as such
+(Sec.~\ref{sec:geometry}). HyperCommon leads while communities are lattice-like
+(without labels, not on the gradient) and trails once a tenth (with labels) or three
+tenths (without) of each ring's edges are rewired internally, the former while the
+communities are still strongly clustered; it trails on all eight LFR families. Random
+geometric communities and rings with hubs also favour the Leiden objectives, while splitting the
+degree of shared nodes, as LFR graphs do, leaves its lead on the unequal rings intact.
+Communities joined by an admissible triple are read as one at every threshold at which
+that triple and the triples it touches inside them are admitted
+(Proposition~\ref{prop:sharedpairs} and the remark after it), the counterpart of the
+pair-disjointness that makes overlap clean; this limits the method where overlaps are
+densely connected, as in many social and collaboration
+networks~\cite{yang2014structure,yang2012community}. No method is best on every
+network~\cite{peel2017ground}; local triple evidence is the right description for
+lattice-like communities of unequal size and density that overlap.
+
+Five limits qualify these results. First, $\Omega$ is dominated by the largest
+communities: by ONMI or by recovery averaged over all communities
+(Tables~\ref{tab:onmi-oracle} and~\ref{tab:S-allcomm-oracle}), the Constant Potts Model
+at its best resolution is ahead on two worlds and on three big, many small, whose small
+rings it recovers better. Second, the label-free comparison applies one selector to
+every method, and for partitions it is the Newman--Girvan modularity, whose resolution
+limit the Constant Potts Model was introduced to avoid; it costs the Constant Potts
+Model more than HyperCommon on unequal rings (from $0.71$ to $0.34$ on three big, many
+small; Tables~\ref{tab:oracle} and~\ref{tab:labelfree}), so part of the label-free
+margin reflects the selector. At each method's own default or selection rule,
+HyperCommon still leads in 17 of the 28 ring settings, though the Constant Potts Model
+at the edge density is level with it on two worlds with overlap
+(Sec.~\ref{sec:planted}). Third, joining triples through shared non-adjacent pairs, which
+distinguishes HyperCommon's connectivity from that of link communities, adds little: with the parameter chosen per graph the edge-connected variant is within $0.02$
+in mean $\Omega$ on every ring setting and slightly more accurate on most LFR families;
+we keep the non-adjacent joins
+because they make every pair, not only every edge, bind at most one community
+(Corollary~\ref{cor:pairdisjoint}). Fourth, on real networks HyperCommon is competitive
+but rarely the most accurate (with Jaccard and its best threshold, only on college
+football, and tied on political blogs, by F1), its mean rank on the fourteen smaller
+networks is mid-field, the gains of HC$_f$ rest on choosing the function with the
+labels, and the two-test variant has the higher F1 on Amazon and, with the best
+threshold, on nine of the fourteen smaller networks (Sec.~\ref{sec:real}). Fifth,
+HyperCommon, like every method we tested, reports many communities on clustered graphs
+with no planted communities (Sec.~\ref{sec:geometry}), so a cover it returns is not by
+itself evidence of community structure. Of the methods that select their own number of
+groups by a statistical model, the nested stochastic block model was compared: it is
+among the most accurate methods on LFR graphs and well behind on the ring lattices even
+without overlap, where other partitions do well ($\Omega=0.50$ against $0.84$ for Leiden
+on uniform rings with $k=16$, and $0.28$ against $0.79$ for the Constant Potts Model on
+two worlds, both at $o_n=0$; Table~\ref{tab:labelfree}); BigClam and OSLOM were not
+compared (Sec.~\ref{sec:protocol}).
+
+The threshold's best value moves with noise, so it has to be chosen per graph. Choosing
+it by the overlapping modularity of the resulting cover~\cite{shen2009detect} works well
+for HyperCommon: it retains at least $95\%$ of the best $\Omega$ on 27 of the 36
+benchmark settings and a median $94\%$ of the best F1 on the real networks; nesting
+(Theorem~\ref{thm:nesting}) makes the covers at all thresholds one hierarchy, read off a
+single scoring of the wedges, so the choice costs only the evaluation of the overlapping
+modularity of each cover (Sec.~\ref{sec:runtime}). The criterion is global, and on the gradient it
+selects too fine a cover; choosing thresholds separately on the branches of the
+hierarchy, for instance by the cluster-stability criterion of
+HDBSCAN~\cite{campello2013density}, is the natural refinement. Degree-ratio pruning, exact for every
+threshold $t\ge0.02$, keeps the sweep moderate even with hubs: on YouTube, with
+$1.1\times10^6$ nodes, every threshold of the grid is available in ten minutes on a
+workstation with 28 logical processors.
+
+The commonality function is the second degree of freedom. Within degree strata every
+member of the family carries the signal, but the most accurate one varies from network
+to network, sometimes by more than the choice of method changes the accuracy. On the
+synthetic benchmarks Jaccard is the best single choice or close to it, and unnormalised
+scores fall well behind where communities differ in degree. Learning the function and the threshold from the
+structure of a given network is the natural next step.

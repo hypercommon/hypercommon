@@ -1,0 +1,148 @@
+% ---------------------------------------------------------------------------
+\section{Benchmarks and evaluation protocol}
+\label{sec:protocol}
+% ---------------------------------------------------------------------------
+
+\subsection{Planted overlapping ring lattices}
+\label{sec:benchmarks}
+
+Following Refs.~\cite{watts1998collective,kanovsky2010small}, each planted community
+is a ring lattice: $s$ nodes on a circle, each joined to its $k/2$ nearest neighbours on
+either side; communities may differ in size $s$ and in degree $k$. Overlap is planted by
+merging $\lfloor o_n n_0\rfloor$ pairs of nodes from different rings, each node in at
+most one merge ($n_0$ is the number of nodes before the merges): the survivor belongs to
+both rings in the ground truth and keeps both neighbourhoods, with twice the ring degree
+-- the case most favourable to commonality. Noise rewires a fraction
+$p\in\{0,0.05,\dots,0.8\}$ of the original edges: each keeps one random endpoint and
+moves the other to a non-neighbour chosen uniformly or preferentially
+(Appendix~\ref{app:design}); at $p=0$ the communities are exact. Every
+$(p,\text{seed})$ pair yields an independently generated graph.
+
+The ring families (Table~\ref{tab:shapes}) span equal and unequal $s$ and $k$, from
+uniform rings ($n_0=2000$, $(s,k)\in\{(50,8),(100,16)\}$, $o_n\in\{0,0.05,0.10\}$) to
+``two worlds'' (five dense rings of 200 nodes, twenty sparse rings of 50) and a gradient
+of ten rings from 600 to 30 nodes. All six unequal families are also generated at
+$o_n=0$ and $0.10$, so that, with the uniform and preferential families, the benchmark
+has 28 ring settings. Numbers quoted below for a
+ring family without its overlap level are at $o_n=0.05$. Further families isolate one
+question each (Appendix~\ref{app:design}): \emph{geometry} families rewire a fraction
+$q$ of each ring's edges inside the ring, moving each community from a lattice ($q=0$)
+through clustered small-world graphs to a random graph ($q=1$) at fixed sizes, mean
+degrees and overlap; \emph{isolated-merge} families ($o_n=0.01$) place the merges more
+than $2k$ apart on every ring, within the hypothesis of Theorem~\ref{thm:window}; and
+control sets change one assumption at a time, with rings that contain \emph{hubs},
+\emph{split} overlap (a shared node keeps about $k/2$ edges in each ring, as in LFR
+graphs), \emph{random geometric} communities (clustered but not lattices), and two
+\emph{null} graphs with triadic closure but no communities, a random geometric graph
+and a Holme--Kim graph~\cite{holme2002growing}.
+
+\subsection{Overlapping LFR graphs}
+
+We use the reference implementation of the overlapping
+Lancichinetti--Fortunato--Radicchi benchmark~\cite{lancichinetti2008benchmark,lancichinetti2009benchmarks}
+with $N=2000$, a fraction $o_n\in\{0,0.1,0.3\}$ of nodes in $o_m=2$ communities, and
+mixing parameter $\mu\in\{0.1,\dots,0.6\}$. Three slices at $o_n=0.1$ change one
+factor at a time (degree, $o_m$, community sizes), and two further families at
+$o_n=0.1$ raise the clustering with the generator's own rewiring ($C_{\rm LFR}=0.3$,
+$0.5$); all settings are in Appendix~\ref{app:design}.
+
+\subsection{Methods compared}
+\label{sec:methods}
+
+HyperCommon is compared with its ablations, with the methods closest to it, and with
+methods from the main families of overlapping and non-overlapping detection;
+BigClam, ego-splitting and the local-fitness methods LFM and OSLOM are not included
+(LFM because the \textsc{cdlib} implementation took more than ten minutes on a single
+2000-node benchmark graph, against the thousands of graphs of the benchmark):
+% TODO(Dima): OSLOM -- run it (bash /mnt/d/tmp/oslom.sh in WSL builds it), or give the reason here.
+\begin{itemize}
+\item \textbf{Ablations}, each removing one ingredient: \emph{triangles only} admits
+  only closed triples (J-thresholded 3-clique percolation, verified numerically);
+  \emph{two-test} admits an open wedge when its two edges pass, without testing its
+  non-adjacent pair; \emph{edge-connected} joins HyperCommon's triples only through
+  shared edges rather than through any shared pair.
+\item \textbf{Link communities}~\cite{ahn2010link}, with the same similarity, cut at
+  every value of HyperCommon's threshold grid.
+\item \textbf{Clique percolation} (CPM)~\cite{palla2005uncovering}.
+\item \textbf{SCAN}~\cite{xu2007scan} with cosine similarity (SCAN) and with Jaccard
+  similarity (SCAN-J).
+\item \textbf{Leiden}~\cite{traag2019leiden} optimising the Reichardt--Bornholdt (RB)
+  modularity~\cite{reichardt2006statistical} and, separately, the Constant Potts
+  Model~\cite{traag2011narrow} (L-CPM); \textbf{Infomap}~\cite{rosvall2008maps},
+  two-level, over a range of Markov
+  times~\cite{schaub2012markov,kheirkhahzadeh2016efficient};
+  \textbf{Walktrap}~\cite{pons2006walktrap}; \textbf{label propagation}
+  (LPA)~\cite{raghavan2007near}.
+\item \textbf{Stochastic block model} (SBM): the nested degree-corrected stochastic block
+  model~\cite{peixoto2014hierarchical}, fitted by minimum description length with
+  \textsc{graph-tool}~\cite{peixoto_graphtool}, which selects its own number of groups;
+  each level of the fitted hierarchy is a partition, treated as a parameter value, the
+  finest being the model's own choice. It was run on the benchmark graphs, not
+  on the real networks.
+\item \textbf{Overlapping label and ego methods}: SLPA~\cite{xie2011slpa},
+  DEMON~\cite{coscia2012demon} and ANGEL~\cite{rossetti2020angel}.
+\end{itemize}
+Each parameterised method has a grid (Table~\ref{tab:grids}). In a preliminary run, the
+best parameter of clique percolation, SLPA, DEMON, ANGEL and SCAN lay at an end of its
+grid on 20--65\% of the graphs; their grids were then widened and fixed before any of the
+results reported here were computed. Table~\ref{tab:S-gridedge} reports how often the
+selected parameter still lies at an end of its grid: on at most $5\%$ of the test graphs
+for HyperCommon and its edge-connected and two-test variants, link communities, the two
+Leiden objectives, Infomap and SCAN under every protocol; on $10\%$--$27\%$ for the
+triangles-only variant, DEMON, ANGEL and SCAN-J under the oracle and label-free
+protocols (at most $17\%$ frozen); on $38\%$--$49\%$ for clique percolation, almost
+always at clique size 3, the smallest possible; and on $20\%$--$75\%$ for SLPA, mostly at
+$r=0.01$ under the oracle and frozen protocols and at $r=0.45$ under the label-free one,
+whose grid was not extended further. Implementations and versions are
+listed in Appendix~\ref{app:design}.
+
+\subsection{Four protocols}
+\label{sec:protocols}
+
+Every method, HyperCommon included, is scored under the same four protocols.
+\emph{Oracle}: on each test graph, each method is credited with its best parameter on
+that graph, which measures what its family of covers can achieve, with the same access
+to the ground truth for all. \emph{Label-free}: on each test graph, each
+method takes the parameter whose cover has the largest overlapping
+modularity~\cite{shen2009detect},
+\begin{equation}
+  Q_{\rm ov}=\frac{1}{2m}\sum_{c}\sum_{u,v\in c}\frac{1}{O_uO_v}
+  \Bigl(A_{uv}-\frac{d_ud_v}{2m}\Bigr),
+  \label{eq:qov}
+\end{equation}
+where $O_u$ is the number of communities that contain $u$, nodes in no community
+contribute nothing (our extension to partial covers), and $m$ and $d_u$ are taken over
+the whole graph. The criterion uses the graph alone and measures what the method
+delivers without labels (ties are broken by grid order). For a partition $O_u=1$ for every node, and Eq.~\eqref{eq:qov} is the
+Newman--Girvan modularity; for Leiden with either objective and for Infomap this
+protocol therefore selects the partition of largest modularity along each parameter
+path (Table~\ref{tab:S-selector}). \emph{Frozen}: for each family and method, the
+parameter with the largest mean Omega over three calibration graphs per noise level,
+all noise levels pooled, is fixed and applied to ten fresh test graphs per noise level.
+\emph{Native}: each method at its own default or selection rule where it has one:
+Leiden RB at its default $\gamma=1$, the Newman--Girvan modularity itself; L-CPM at
+$\gamma$ equal to the edge density $2m/[n(n-1)]$~\cite{traag2011narrow}; link
+communities at the cut of largest partition density~\cite{ahn2010link}; Infomap at its
+default Markov time 1; SLPA at $r=0.1$, the default of \textsc{cdlib}; the stochastic
+block model at the finest level of its hierarchy; and the label-free choice for HyperCommon and the methods without a default.
+For the Constant Potts Model, link communities, Infomap, SLPA and the stochastic block
+model the native choice does not involve modularity; Leiden, Walktrap, HyperCommon and the
+methods without a default keep a modularity-based choice.
+
+\subsection{Metrics and statistics}
+\label{sec:metrics}
+
+Covers are compared with the adjusted Omega index~\cite{collins1988omega}; the
+overlapping normalised mutual information of McDaid \emph{et al.} with max
+normalisation (ONMI)~\cite{mcdaid2011normalized}; the best-match F1
+score~\cite{yang2015defining}, averaged over both matching directions; a per-community
+recovery score, the mean over true communities of the Jaccard similarity with the
+best-matching detected community, also reported for the communities no larger and
+larger than the median size; and coverage, the fraction of nodes in at least one
+community. Omega counts node pairs and is dominated by the largest communities; the
+per-community score weighs every community equally. An unassigned node has pair count
+zero with every other node in Omega and is a singleton in ONMI, so both penalise
+leaving nodes out. Each metric is averaged over the noise range,
+$\bar\Omega=\int\Omega(p)\,dp/\int dp$, per test seed; uncertainties are 95\%
+bootstrap intervals over the ten test seeds, and differences between methods are paired
+by seed.

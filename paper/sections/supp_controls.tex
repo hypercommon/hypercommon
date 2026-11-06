@@ -1,0 +1,41 @@
+\begin{table*}[p]
+\caption{Control families: $\Omega$ of HyperCommon (HC), its triangles-only variant and the best other method under the oracle and label-free protocols, with the reference family each control changes (one assumption at a time; Sec.~\ref{sec:protocol}), mean over the noise range of each family ($p\in\{0,0.1,\dots,0.8\}$ for the controls, $p\in\{0,\dots,0.6\}$ for the swap controls and their references, $p\in[0,0.8]$ for the other references). The controls are compared with the methods that lead on the main benchmarks (DEMON, ANGEL, SCAN and SCAN-J are left out). Mark on HC as in Table~\ref{tab:labelfree}.}
+\label{tab:S-controls}
+\scriptsize\setlength{\tabcolsep}{2pt}
+\begin{ruledtabular}
+\begin{tabular}{lcccccc|lcc}
+ & \multicolumn{3}{c}{oracle} & \multicolumn{3}{c|}{label-free} & reference & HC oracle & HC free \\
+Control & HC & tri. & best other & HC & tri. & best other & & & \\
+\hline
+hubs, $(50,k_i\in[4,32])\times40$ & 0.58$^{-}$ & 0.53 & 0.64 (Leiden) & 0.56$^{+}$ & 0.52 & 0.53 (Link) & uniform $k{=}8$ & 0.57 & 0.55 \\
+hubs, $(100,k_i\in[8,64])\times20$ & 0.71$^{-}$ & 0.72 & 0.84 (Leiden) & 0.69$^{-}$ & 0.70 & 0.83 (Leiden) & uniform $k{=}16$ & 0.73 & 0.72 \\
+hubs, two worlds & 0.76$^{-}$ & 0.75 & 0.85 (L-CPM) & 0.75$^{-}$ & 0.73 & 0.83 (L-CPM) & two worlds & 0.78 & 0.76 \\
+split overlap, two worlds, $o_n{=}0.05$ & 0.78$^{=}$ & 0.77 & 0.78 (L-CPM) & 0.78$^{+}$ & 0.76 & 0.71 (Link) & two worlds & 0.78 & 0.76 \\
+split overlap, two worlds, $o_n{=}0.10$ & 0.72$^{=}$ & 0.72 & 0.73 (L-CPM) & 0.72$^{+}$ & 0.71 & 0.62 (CPM) & two worlds, $o_n{=}0.10$ & 0.72 & 0.71 \\
+split overlap, three big, $o_n{=}0.05$ & 0.79$^{+}$ & 0.81 & 0.75 (Link) & 0.79$^{+}$ & 0.77 & 0.74 (Link) & three big & 0.80 & 0.78 \\
+split overlap, three big, $o_n{=}0.10$ & 0.73$^{+}$ & 0.75 & 0.66 (CPM) & 0.72$^{+}$ & 0.69 & 0.62 (Link) & three big, $o_n{=}0.10$ & 0.71 & 0.67 \\
+swaps, uniform $k{=}8$, $q{=}0.1$ & 0.68$^{-}$ & 0.56 & 0.81 (Leiden) & 0.65$^{=}$ & 0.56 & 0.66 (Leiden) & endpoint, $q{=}0.1$ & 0.68 & 0.65 \\
+swaps, uniform $k{=}8$, $q{=}0.3$ & 0.63$^{-}$ & 0.41 & 0.85 (Leiden) & 0.57$^{-}$ & 0.41 & 0.70 (Info.) & endpoint, $q{=}0.3$ & 0.62 & 0.57 \\
+swaps, three big, $q{=}0.1$ & 0.92$^{-}$ & 0.92 & 0.95 (L-CPM) & 0.91$^{+}$ & 0.91 & 0.85 (CPM) & endpoint, $q{=}0.1$ & 0.92 & 0.91 \\
+swaps, three big, $q{=}0.3$ & 0.84$^{-}$ & 0.83 & 0.96 (L-CPM) & 0.84$^{-}$ & 0.80 & 0.94 (L-CPM) & endpoint, $q{=}0.3$ & 0.84 & 0.83 \\
+random geometric, $(50,8)\times40$ & 0.48$^{-}$ & 0.43 & 0.57 (Leiden) & 0.46$^{=}$ & 0.43 & 0.46 (Leiden) & uniform $k{=}8$ & 0.57 & 0.55 \\
+random geometric, two worlds & 0.73$^{-}$ & 0.74 & 0.84 (L-CPM) & 0.73$^{-}$ & 0.73 & 0.79 (L-CPM) & two worlds & 0.78 & 0.76 \\
+\end{tabular}
+\end{ruledtabular}
+\end{table*}
+
+\begin{table*}[p]
+\caption{Null graphs with triadic closure but no planted communities: number of communities and coverage of each method's label-free cover (mean over ten graphs). RGG: random geometric graph on the unit torus, 2000 nodes, mean degree 8 (clustering $0.59$); HK: Holme--Kim graph, 2000 nodes, $m=4$, triangle probability $0.9$ (clustering $0.43$).}
+\label{tab:S-nulls}
+\scriptsize\setlength{\tabcolsep}{2pt}
+\begin{ruledtabular}
+\begin{tabular}{llccccccccccccccc}
+Graph & & HC & tri. & Link & CPM & Leiden & L-CPM & Info. & Walk. & LPA & SBM & SLPA & DEMON & ANGEL & SCAN & SCAN-J \\
+\hline
+RGG & communities & 101 & 98 & 188 & 162 & 34 & 35 & 36 & 53 & 178 & 31 & 172 & 237 & 89 & 92 & 66 \\
+ & coverage & 0.98 & 0.98 & 0.99 & 0.93 & 1.00 & 1.00 & 1.00 & 1.00 & 1.00 & 1.00 & 1.00 & 0.98 & 0.98 & 0.96 & 0.97 \\
+HK & communities & 175 & 166 & 391 & 288 & 16 & 16 & 27 & 32 & 55 & 12 & 42 & 196 & 156 & 97 & 121 \\
+ & coverage & 0.96 & 0.85 & 1.00 & 0.66 & 1.00 & 1.00 & 1.00 & 1.00 & 1.00 & 1.00 & 1.00 & 1.00 & 0.76 & 0.82 & 0.82 \\
+\end{tabular}
+\end{ruledtabular}
+\end{table*}
