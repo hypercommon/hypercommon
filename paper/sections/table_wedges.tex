@@ -1,0 +1,43 @@
+\begin{table}[h]
+\caption{Wedges of thirty-two SNAP networks, read as simple undirected graphs: nodes $n$, edges $m$, largest degree $d_{\max}$, and the number of wedges $W=\sum_v\binom{d_v}{2}$ against $m\ln m$, without and with the degree-ratio pruning of Sec.~\ref{sec:cost} at $t_{\min}=0.02$, which is exact for every threshold $t\ge0.02$. The last three are the graphs of Table~\ref{tab:real}; the others have no ground truth.}
+\label{tab:S-wedges}
+\begin{ruledtabular}
+\begin{tabular}{llrrrrr}
+Network & Kind & $n$ & $m$ & $d_{\max}$ & $W/(m\ln m)$ & Pruned \\
+\hline
+ca-GrQc & collaboration & 5\,241 & 14\,484 & 81 & 1.66 & 1.66 \\
+ca-HepTh & collaboration & 9\,875 & 25\,973 & 65 & 1.13 & 1.13 \\
+ca-HepPh & collaboration & 12\,006 & 118\,489 & 491 & 11.04 & 10.91 \\
+ca-AstroPh & collaboration & 18\,771 & 198\,050 & 504 & 5.28 & 5.26 \\
+ca-CondMat & collaboration & 23\,133 & 93\,439 & 279 & 1.84 & 1.83 \\
+email-Enron & communication & 36\,692 & 183\,831 & 1\,383 & 11.47 & 6.39 \\
+email-EuAll & communication & 265\,009 & 364\,481 & 7\,636 & 41.84 & 1.43 \\
+wiki-Talk & communication & 2\,394\,385 & 4\,659\,565 & 100\,029 & 176.02 & 3.69 \\
+ego-Facebook & social & 4\,039 & 88\,234 & 1\,045 & 9.27 & 8.68 \\
+ego-Twitter & social & 81\,306 & 1\,342\,296 & 3\,383 & 12.15 & 9.34 \\
+wiki-Vote & social & 7\,115 & 100\,762 & 1\,065 & 12.53 & 11.94 \\
+soc-Epinions1 & social & 75\,879 & 405\,740 & 3\,044 & 14.16 & 10.19 \\
+soc-Slashdot & social & 82\,168 & 504\,230 & 2\,552 & 11.33 & 7.69 \\
+loc-Brightkite & social & 58\,228 & 214\,078 & 1\,134 & 5.11 & 3.95 \\
+loc-Gowalla & social & 196\,591 & 950\,327 & 14\,730 & 22.20 & 4.81 \\
+com-LiveJournal & social & 3\,997\,962 & 34\,681\,189 & 14\,815 & 7.07 & 5.79 \\
+as-skitter & internet & 1\,696\,415 & 11\,095\,298 & 35\,455 & 89.02 & 4.66 \\
+as-CAIDA & internet & 26\,475 & 53\,381 & 2\,628 & 25.65 & 1.95 \\
+oregon1-010526 & internet & 11\,174 & 23\,409 & 2\,389 & 26.30 & 2.04 \\
+p2p-Gnutella31 & internet & 62\,586 & 147\,892 & 95 & 0.89 & 0.89 \\
+web-Google & web & 875\,713 & 4\,322\,051 & 6\,332 & 11.02 & 2.13 \\
+web-Stanford & web & 281\,903 & 1\,992\,636 & 38\,625 & 136.46 & 4.91 \\
+web-NotreDame & web & 325\,729 & 1\,090\,108 & 10\,721 & 20.12 & 3.27 \\
+web-BerkStan & web & 685\,230 & 6\,649\,470 & 84\,230 & 267.87 & 9.08 \\
+roadNet-CA & road & 1\,965\,206 & 2\,766\,607 & 12 & 0.15 & 0.15 \\
+roadNet-PA & road & 1\,088\,092 & 1\,541\,898 & 9 & 0.15 & 0.15 \\
+cit-HepPh & citation & 34\,546 & 420\,877 & 846 & 4.83 & 4.72 \\
+cit-Patents & citation & 3\,774\,768 & 16\,518\,947 & 793 & 1.22 & 1.22 \\
+amazon0601 & co-purchase & 403\,394 & 2\,443\,408 & 2\,752 & 2.01 & 1.58 \\
+\hline
+com-amazon & co-purchase & 334\,863 & 925\,872 & 549 & 0.77 & 0.74 \\
+com-dblp & collaboration & 317\,080 & 1\,049\,866 & 343 & 1.50 & 1.48 \\
+com-youtube & social & 1\,134\,890 & 2\,987\,624 & 28\,754 & 33.10 & 3.70 \\
+\end{tabular}
+\end{ruledtabular}
+\end{table}

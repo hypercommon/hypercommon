@@ -67,19 +67,20 @@ we keep the non-adjacent joins
 because they make every pair, not only every edge, bind at most one community
 (Corollary~\ref{cor:pairdisjoint}). Fourth, on real networks HyperCommon is competitive
 but rarely the most accurate (with Jaccard and its best threshold, only on college
-football, and tied on political blogs, by F1), its mean rank on the fourteen smaller
+football by F1), its mean rank on the fourteen smaller
 networks is mid-field, the gains of HC$_f$ rest on choosing the function with the
 labels, and the two-test variant has the higher F1 on Amazon and, with the best
 threshold, on nine of the fourteen smaller networks (Sec.~\ref{sec:real}). Fifth,
 HyperCommon, like every method we tested, reports many communities on clustered graphs
 with no planted communities (Sec.~\ref{sec:geometry}), so a cover it returns is not by
 itself evidence of community structure. Of the methods that select their own number of
-groups by a statistical model, the nested stochastic block model was compared: it is
-among the most accurate methods on LFR graphs and well behind on the ring lattices even
-without overlap, where other partitions do well ($\Omega=0.50$ against $0.84$ for Leiden
-on uniform rings with $k=16$, and $0.28$ against $0.79$ for the Constant Potts Model on
-two worlds, both at $o_n=0$; Table~\ref{tab:labelfree}); BigClam and OSLOM were not
-compared (Sec.~\ref{sec:protocol}).
+groups by a statistical model, the nested stochastic block model and OSLOM were
+compared: both are among the most accurate methods on LFR graphs, OSLOM the most accurate
+on six of the eight families without labels, and both are behind on the ring lattices
+even without overlap, where other partitions do well ($\Omega=0.50$ and $0.72$ against
+$0.84$ for Leiden on uniform rings with $k=16$, and $0.27$ and $0.31$ against $0.79$ for
+the Constant Potts Model on two worlds, both at $o_n=0$; Table~\ref{tab:labelfree});
+BigClam was not compared (Sec.~\ref{sec:protocol}).
 
 The threshold's best value moves with noise, so it has to be chosen per graph. Choosing
 it by the overlapping modularity of the resulting cover~\cite{shen2009detect} works well
@@ -87,13 +88,13 @@ for HyperCommon: it retains at least $95\%$ of the best $\Omega$ on 27 of the 36
 benchmark settings and a median $94\%$ of the best F1 on the real networks; nesting
 (Theorem~\ref{thm:nesting}) makes the covers at all thresholds one hierarchy, read off a
 single scoring of the wedges, so the choice costs only the evaluation of the overlapping
-modularity of each cover (Sec.~\ref{sec:runtime}). The criterion is global, and on the gradient it
+modularity of each cover (Sec.~\ref{sec:cost}). The criterion is global, and on the gradient it
 selects too fine a cover; choosing thresholds separately on the branches of the
 hierarchy, for instance by the cluster-stability criterion of
 HDBSCAN~\cite{campello2013density}, is the natural refinement. Degree-ratio pruning, exact for every
 threshold $t\ge0.02$, keeps the sweep moderate even with hubs: on YouTube, with
-$1.1\times10^6$ nodes, every threshold of the grid is available in ten minutes on a
-workstation with 28 logical processors.
+$1.1\times10^6$ nodes, it discards nine wedges in ten, and on thirty-two SNAP networks
+it leaves at most $12\,m\ln m$ wedges.
 
 The commonality function is the second degree of freedom. Within degree strata every
 member of the family carries the signal, but the most accurate one varies from network

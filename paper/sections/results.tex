@@ -67,8 +67,8 @@ Material~\cite{supplement}, Tables~\ref{tab:labelfree} and~\ref{tab:oracle}).
 Sec.~\ref{sec:protocols}. Under the label-free one, every parameter is chosen from the
 graph alone by the overlapping modularity of Eq.~\eqref{eq:qov}, which for a partition
 is the Newman--Girvan modularity (Table~\ref{tab:labelfree}). Over the 28 ring
-settings HyperCommon has the highest $\Omega$ in 16, by paired 95\% intervals that exclude zero (ablations not counted), is
-not significantly different from the best other method in 5 and trails in 7: on dense
+settings HyperCommon has the highest $\Omega$ in 15, by paired 95\% intervals that exclude zero (ablations not counted), is
+not significantly different from the best other method in 6 and trails in 7: on dense
 rings with little overlap, where Leiden leads ($0.84$ against $0.78$ at $k=16$,
 $o_n=0$); on rings of equal size and unequal degree at $o_n=0.10$, where the Constant
 Potts Model leads ($0.63$ against $0.61$); and on the gradient at all three overlap
@@ -157,7 +157,7 @@ pass then reaches into another community whenever its centre has a neighbour the
 Admitting open wedges improves on admitting only triangles (J-thresholded 3-clique
 percolation) in 26 and 25 of the 36 settings under the oracle and the label-free protocol, most where triangles are
 scarce ($0.04$--$0.11$ on sparse rings and $0.08$--$0.10$ on the sparse LFR slice);
-triangles alone are better in one setting under the oracle protocol and in none under
+triangles alone are better in two settings under the oracle protocol and in none under
 the label-free one. With a single threshold frozen per family (Table~\ref{tab:frozen})
 the order reverses on the unequal families: triangles alone have the higher mean
 $\Omega$ in 15 of the 36 settings, including two worlds under the three noise models
@@ -186,8 +186,8 @@ label-free comparison is in Table~\ref{tab:familyfree}.
 \subsection{LFR graphs}
 
 Overlapping LFR graphs are the complementary regime [Fig.~\ref{fig:benchmarks}(f)]:
-Leiden, Infomap, SLPA and, without labels, the stochastic block model are the most
-accurate there, and HyperCommon trails on all eight LFR families under every protocol,
+OSLOM, Leiden, Infomap, SLPA and, without labels, the stochastic block model are the most
+accurate there (OSLOM on six of the eight families without labels), and HyperCommon trails on all eight LFR families under every protocol,
 matching Leiden and Infomap only at low mixing and with its best threshold. The pairwise
 signal is not what fails: the area under the ROC curve of the commonality of edges
 inside against across planted communities is $0.97$ at $\mu=0.3$, and wedges that span
@@ -198,7 +198,7 @@ neighbours: at $\mu=0.3$, $89\%$ of the wedges inside communities of at most 40 
 pass at $t=0.1$, but only $21\%$ of those inside communities of at least 80 nodes.
 Percolation then breaks large communities into pieces at any threshold that keeps
 communities apart, which is why HyperCommon's deficit is largest with large communities
-($0.42$ against $0.87$ for Leiden). Raising the clustering with the generator's own
+($0.42$ against $0.89$ for OSLOM and $0.87$ for Leiden). Raising the clustering with the generator's own
 rewiring does not help, since it adds triangles across communities as well.
 
 \subsection{Lattice and random communities}
@@ -260,7 +260,7 @@ F1: the label-free F1 is $99.9\%$, $94\%$ and $89\%$ of its best F1 on the three
 (ratios of the unrounded values). The same selector serves the modularity-based methods
 less well: Leiden falls to $0.53$, $0.29$ and $0.19$ in F1, about half of its best
 values, and the Constant Potts Model to $0.56$, $0.24$ and $0.25$. Under this selector
-Infomap is the most accurate on Amazon and YouTube (F1 $0.89$ and $0.34$) and label
+Infomap is the most accurate on Amazon and YouTube (F1 $0.90$ and $0.34$) and label
 propagation on DBLP ($0.51$), with label-free HyperCommon within $0.02$--$0.05$ on
 each. By $\Omega$ the
 modularity- and flow-based partitions lead on all three. Detecting on the subgraph
@@ -278,10 +278,10 @@ the leaning of political books~\cite{krebs_polbooks,newman2006modularity} and of
 political blogs~\cite{adamic2005political}, and the classes of a primary
 school~\cite{stehle2011high}; recorded groups of fewer than three nodes are discarded.
 With Jaccard commonality and its best threshold, HyperCommon is more accurate than every
-other method on college football and tied on political blogs. Its mean rank among the
-sixteen methods of
-Tables~\ref{tab:S-realnet-f1-best}--\ref{tab:S-realnet-coverage-free} is $8.3$ without
-labels and $7.3$ with labels, mid-field, and the most accurate method varies from
+other method on college football and within $0.01$ of the best, OSLOM, on political blogs. Its mean rank among the
+seventeen methods of
+Tables~\ref{tab:S-realnet-f1-best}--\ref{tab:S-realnet-coverage-free} is $8.9$ without
+labels and $8.1$ with labels, mid-field, and the most accurate method varies from
 network to network, consistent with the absence of a universally best
 method~\cite{peel2017ground}. With labels choosing among 700 (function, threshold) pairs
 per network -- an upper bound rather than the analogue of one parameter grid -- HC$_f$
@@ -295,51 +295,3 @@ $95\%$ of the best F1 or more on seven of the fourteen, and on political blogs, 
 two-group network in which HyperCommon's best cover is the giant component, it selects
 fifteen small communities instead. Over all seventeen real networks the label-free
 threshold retains a median $94\%$ of the best F1.
-
-\subsection{Running time and scale}
-\label{sec:runtime}
-
-\begin{figure*}[t]
-  \centering
-  \includegraphics[width=\textwidth]{figures/fig_runtime.pdf}
-  \caption{Running time against network size on one core, mean of three graphs per
-  size: ring lattices with $k=8$ and $16$ ($o_n=0.05$, $p=0.2$) and LFR graphs
-  ($\langle k\rangle=20$, $o_n=0.1$, $\mu=0.3$). HyperCommon's cost is split into the
-  enumeration and scoring of all wedges, done once, the communities at one threshold,
-  and one local query: the community grown, by the search of
-  Proposition~\ref{prop:local}, from the first admissible triple found through a seed
-  node drawn uniformly at random (best of three repetitions).}
-  \label{fig:runtime}
-\end{figure*}
-
-HyperCommon scores every wedge once and then reads off the cover at any threshold, so a
-sweep of its threshold costs one scoring plus one component search per threshold. On a
-personal computer (Intel Core Ultra 9 185H, 32\,GB; Fig.~\ref{fig:runtime}) our
-vectorised implementation (Python with NumPy and SciPy) scales as nearly linearly as the
-C++ implementations of Leiden and Infomap (fitted exponents of the time against $n$:
-$1.14$--$1.20$ for the scoring of the wedges, $1.23$--$1.25$ for Leiden and
-$1.18$--$1.25$ for Infomap), consistent with Eq.~\eqref{eq:cost}. Once the wedges are
-scored, a threshold costs less than a run of Infomap at every size and less than a run of
-Leiden above about $2\times10^4$ nodes: on rings of 190\,000 nodes with $k=16$ the
-one-off scoring takes $45$\,s, after which each threshold costs $1.8$\,s, against
-$3.7$\,s for Leiden and $15$\,s for Infomap. A single cover is therefore more expensive
-with HyperCommon than with Leiden; the advantage is specific to sweeps, which every
-method needs in order to be tuned or to be chosen without labels. The local query takes
-less than $0.1$\,s on average at every size, from $10^3$ to $1.9\times10^5$ nodes.
-
-On the full Amazon and DBLP graphs ($3.3\times10^5$ and $3.2\times10^5$ nodes), timed
-alone on one core of the same computer (\texttt{bench/retime\_big.py}),
-HyperCommon's scoring and its covers at all 30 thresholds take $71$ and $68$\,s, of
-which $38$ and $40$\,s are the scoring, with a peak of $3.3$ and $6.3$\,GB of memory;
-Leiden's 19 resolutions take $22$ and $27$ minutes and Infomap's 13 Markov times $4.3$
-and $3.4$ minutes. The overlapping
-modularity of the 30 covers, which the label-free choice needs, adds $9.0$ and
-$7.7$ minutes in our Python implementation; the modularity of the partitions, which the
-same choice needs for Leiden and Infomap, is in neither of their times. On the full
-YouTube graph ($1.1\times10^6$ nodes, $1.5\times10^9$ wedges), the degree-ratio pruning
-of Sec.~\ref{sec:cost}, exact for every threshold $t\ge0.02$, discards nine wedges in
-ten, and the scoring and all thresholds, with the overlapping modularity of every cover,
-take $10$ minutes on a workstation with 28 logical processors, with a peak of
-$25.7$\,GB of memory. Leiden's resolutions took six hours and Infomap's Markov times
-$25$ minutes on the same machine, timed without the modularity while sharing its cores
-with up to fifteen other jobs, so these two times are indicative only.

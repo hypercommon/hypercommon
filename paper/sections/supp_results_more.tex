@@ -4,7 +4,7 @@
 
 \subsection*{Further results on the benchmarks}
 
-This section gives the detail behind Secs.~\ref{sec:recovery}--\ref{sec:runtime} that
+This section gives the detail behind Secs.~\ref{sec:recovery}--\ref{sec:real} that
 the main text summarises: the label-free benchmark table (Table~\ref{tab:labelfree}),
 the robustness table (Table~\ref{tab:robust}) and the discussion of the remaining
 comparisons. As in the main text, numbers quoted for a ring family without its overlap
@@ -101,8 +101,8 @@ ahead by ONMI on the gradient, on sparse uniform rings with overlap, on sparse r
 unequal size with overlap and on two worlds with superlinear preferential noise; over the 28 ring settings it leads by ONMI on 10
 and is level on 3, and by all-community recovery it leads on 9 and is level on 3. On the
 label-free covers (Tables~\ref{tab:onmi-label-free} and~\ref{tab:S-allcomm-label-free})
-the same metrics put HyperCommon ahead on 15 settings by ONMI (level on 1) and on 12 by
-all-community recovery (level on 5). Chosen by modularity, the resolution of the
+the same metrics put HyperCommon ahead on 15 settings by ONMI (level on 1) and on 11 by
+all-community recovery (level on 6). Chosen by modularity, the resolution of the
 Constant Potts Model recovers the small rings less well, and at $o_n=0.05$ its lead by
 these metrics on the two unequal families is gone (ONMI $0.45$ against $0.45$ on two
 worlds and $0.27$ against $0.39$ on three big, many small; all-community recovery within
@@ -150,8 +150,8 @@ does.
 \emph{Ablations.} Without the third-pair test, a wedge whose two edges pass reaches into
 another community through a shared node or through an edge between communities whose
 own commonality passes the threshold, which is how the two-test variant loses $0.21$
-even on LFR graphs without overlap. Triangles alone are better than HyperCommon in one
-setting under the oracle protocol, and higher in mean in three, by at most $0.02$
+even on LFR graphs without overlap. Triangles alone are better than HyperCommon in two
+settings under the oracle protocol, and higher in mean in three, by at most $0.02$
 (heavily overlapping and large-community LFR graphs), and in none under the label-free
 one, where the largest difference in their favour, $0.02$, is within the interval.
 Joining triples only through shared edges is slightly better on the LFR graphs, by up to
@@ -193,7 +193,7 @@ fragmented covers would gain on both.
 \subsection*{LFR graphs}
 
 With its best threshold HyperCommon reaches $\Omega=0.885$ at $\mu=0.1$ and $o_n=0.1$,
-against $0.884$--$0.886$ for Leiden and Infomap, while SLPA reaches $0.99$
+against $0.883$--$0.884$ for Leiden and Infomap, while SLPA reaches $0.99$
 [Fig.~\ref{fig:benchmarksoracle}(f)]. LFR communities are random graphs internally, with
 degree independent of size; at $\mu=0.3$ only $5\%$ of the wedges inside communities pass
 at $t=0.1$ in the slice with communities of 50 to 250 nodes. The generator's own
@@ -261,7 +261,7 @@ geometry.
 \emph{Null graphs.} On graphs with triadic closure but no planted communities
 (Table~\ref{tab:S-nulls}), label-free HyperCommon returns $101$ communities on the
 random geometric graph and $175$ on the Holme--Kim graph, covering $98\%$ and $96\%$ of
-the nodes, against $31$--$36$ and $12$--$27$ for Leiden, Infomap and the stochastic
+the nodes, against $32$--$36$ and $12$--$28$ for Leiden, Infomap, OSLOM and the stochastic
 block model, whose finest level has $132$ and $61$ groups.
 
 \subsection*{Real networks}
@@ -287,10 +287,9 @@ with labels ($0.030$ against $0.024$). On the subgraphs induced by the labelled 
 F1 $0.958$ and $0.504$ on Amazon and YouTube, within $0.005$ of the best method, while
 $\Omega$ still separates them (on YouTube $0.001$ for the components against $0.159$ for
 Leiden). On the induced DBLP graph HyperCommon's F1 is $0.584$ with and without labels;
-without labels it is second to SLPA ($0.604$), and with labels Leiden, SLPA and Infomap
-reach $0.59$--$0.61$ and HC$_f$ (the best of the seven commonality functions) $0.61$.
-Clique percolation did not complete on the induced YouTube graph, exhausting more than
-$100$\,GB of memory.
+without labels it is second to SLPA ($0.604$), and with labels OSLOM reaches $0.63$,
+Leiden, SLPA and Infomap $0.59$--$0.61$ and HC$_f$ (the best of the seven commonality
+functions) $0.61$.
 
 \emph{Fourteen smaller networks.} HC$_f$ in Table~\ref{tab:realmore} chooses, with
 labels, among 700 (function, threshold) pairs per network; it is the most accurate method
@@ -301,23 +300,13 @@ football and political books). With the best threshold the two-test variant has 
 higher F1 on nine of the fourteen networks, seven of them Facebook ego networks, by
 $0.005$--$0.05$ (Table~\ref{tab:S-realnet-f1-best}). Label-free HyperCommon with Jaccard
 is the most accurate method on none of the fourteen by F1 and on one by $\Omega$
-(Facebook ego 414); SLPA has the best mean rank without labels ($6.0$), and SCAN and
-Leiden with labels ($5.4$ and $5.5$). The best member of the family differs from network
+(Facebook ego 414); OSLOM has the best mean rank without labels ($6.2$, SLPA $6.6$), and Leiden with labels
+($6.0$, Infomap and SCAN $6.2$). The best member of the family differs from network
 to network: resource allocation, normalisation by the smaller neighbourhood, $I^2/U$ and
 the cosine are each the best on at least one network. On the remaining networks the most
-accurate method itself varies -- SLPA, Leiden, label propagation, SCAN and Infomap each
+accurate method itself varies -- OSLOM, Leiden, SLPA, label propagation, SCAN and Infomap each
 lead on some. By $\Omega$ (Table~\ref{tab:realmoreomega}) HC$_f$ is again the most
 accurate method on four networks (college football, political books and two ego
 networks), and the ranking on the others is much as by F1, with one exception: on
 political blogs the giant component, which F1 credits as a match for one of the two
 groups, has $\Omega$ near zero ($0.04$, against $0.55$ for Leiden).
-
-\subsection*{Running time}
-
-On rings of 190\,000 nodes with $k=16$ ($2.7\times10^7$ wedges) the one-off scoring of
-the wedges peaks at $5.8$\,GB of traced memory, and the label-free sweep over 30
-thresholds, with the overlapping modularity of every cover, adds $73$\,s to the $45$\,s
-of the scoring (Fig.~\ref{fig:runtime}). On the full Amazon and DBLP graphs, timed as in
-Sec.~\ref{sec:runtime}, one run of label propagation takes $19$ and $31$\,s. The local
-query is fast at every size because it reads only the neighbourhoods of the community it
-grows and of its frontier.

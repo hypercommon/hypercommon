@@ -1,57 +1,58 @@
 \begin{table*}[t]
-\caption{Accuracy on the benchmarks as a user would run the methods, every parameter chosen without labels by one rule: on each test graph, the parameter whose cover has the largest overlapping modularity, Eq.~\eqref{eq:qov}, which for a partition is the Newman--Girvan modularity (label-free protocol). $\Omega$, mean over the noise range ($p\in[0,0.8]$ for rings, $\mu\in[0.1,0.6]$ for LFR), ten test graphs per noise level. HC: HyperCommon; e-c.: its triples joined only through shared edges; tri.: triangles only (J-thresholded 3-clique percolation~\cite{palla2005uncovering,kumpula2008sequential}); 2-test: third pair not tested; Link: link communities with the same similarity; CPM: clique percolation; Leiden: Leiden with the Reichardt--Bornholdt modularity; L-CPM: Leiden with the Constant Potts Model; Info.: Infomap; Walk.: Walktrap, walks of length 4, dendrogram cut at maximum modularity; LPA: label propagation; SBM: nested degree-corrected stochastic block model, each level of its hierarchy a parameter value; SCAN: SCAN with cosine similarity; SCAN-J: SCAN with Jaccard similarity; $\alpha$: exponent of the preferential (degree-biased) noise. Parameter-free methods (Walktrap, LPA) are as under every protocol. Superscripts on HC: the paired 95\% bootstrap interval of its difference from the best other method (ablations excluded) lies above zero ($+$), contains zero ($=$) or lies below zero ($-$). Bold: best in row, within 0.005. 95\% bootstrap half-widths of these means over the ten test seeds have median 0.007 and maximum 0.051.}
+\caption{Accuracy on the benchmarks as a user would run the methods, every parameter chosen without labels by one rule: on each test graph, the parameter whose cover has the largest overlapping modularity, Eq.~\eqref{eq:qov}, which for a partition is the Newman--Girvan modularity (label-free protocol). $\Omega$, mean over the noise range ($p\in[0,0.8]$ for rings, $\mu\in[0.1,0.6]$ for LFR), ten test graphs per noise level. HC: HyperCommon; e-c.: its triples joined only through shared edges; tri.: triangles only (J-thresholded 3-clique percolation~\cite{palla2005uncovering,kumpula2008sequential}); 2-test: third pair not tested; Link: link communities with the same similarity; CPM: clique percolation; Leiden: Leiden with the Reichardt--Bornholdt modularity; L-CPM: Leiden with the Constant Potts Model; Info.: Infomap; Walk.: Walktrap, walks of length 4, dendrogram cut at maximum modularity; LPA: label propagation; SBM: nested degree-corrected stochastic block model, each level of its hierarchy a parameter value; OSLOM: order statistics local optimisation, significance threshold $t$ as its parameter; SCAN: SCAN with cosine similarity; SCAN-J: SCAN with Jaccard similarity; $\alpha$: exponent of the preferential (degree-biased) noise. Parameter-free methods (Walktrap, LPA) are as under every protocol. Superscripts on HC: the paired 95\% bootstrap interval of its difference from the best other method (ablations excluded) lies above zero ($+$), contains zero ($=$) or lies below zero ($-$). Bold: best in row, within 0.005. 95\% bootstrap half-widths of these means over the ten test seeds have median 0.007 and maximum 0.050.}
 \label{tab:labelfree}
 \scriptsize\setlength{\tabcolsep}{1.35pt}
-\begin{ruledtabular}
-\begin{tabular}{llcccc|cc|cccccc|ccccc}
- & & \multicolumn{4}{c}{HC and ablations} & \multicolumn{2}{c}{relatives} &\multicolumn{6}{c}{partitions} & \multicolumn{5}{c}{overlapping methods} \\
-Family & $o_n$ & HC & e-c. & tri. & 2-test & Link & CPM & Leiden & L-CPM & Info. & Walk. & LPA & SBM & SLPA & DEMON & ANGEL & SCAN & SCAN-J \\
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{llcccc|cc|cccccc|cccccc}
+\hline\hline
+ & & \multicolumn{4}{c}{HC and ablations} & \multicolumn{2}{c}{relatives} &\multicolumn{6}{c}{partitions} & \multicolumn{6}{c}{overlapping methods} \\
+Family & $o_n$ & HC & e-c. & tri. & 2-test & Link & CPM & Leiden & L-CPM & Info. & Walk. & LPA & SBM & SLPA & OSLOM & DEMON & ANGEL & SCAN & SCAN-J \\
 \hline
-uniform, $k{=}8$ & 0.00 & \textbf{0.61$^{=}$} & \textbf{0.61} & 0.51 & 0.51 & 0.60 & 0.51 & \textbf{0.61} & \textbf{0.61} & 0.48 & 0.39 & 0.14 & 0.38 & 0.36 & 0.53 & 0.52 & 0.50 & 0.53 \\
- & 0.05 & \textbf{0.55$^{+}$} & 0.54 & 0.49 & 0.29 & 0.53 & 0.49 & 0.44 & 0.43 & 0.32 & 0.24 & 0.12 & 0.26 & 0.33 & 0.44 & 0.39 & 0.26 & 0.30 \\
- & 0.10 & \textbf{0.50$^{+}$} & \textbf{0.50} & 0.46 & 0.22 & 0.45 & 0.44 & 0.32 & 0.31 & 0.26 & 0.18 & 0.11 & 0.21 & 0.30 & 0.40 & 0.40 & 0.21 & 0.21 \\
+uniform, $k{=}8$ & 0.00 & \textbf{0.61$^{=}$} & \textbf{0.61} & 0.51 & 0.51 & 0.60 & 0.51 & \textbf{0.61} & \textbf{0.61} & 0.48 & 0.39 & 0.14 & 0.38 & 0.36 & 0.55 & 0.53 & 0.52 & 0.50 & 0.53 \\
+ & 0.05 & \textbf{0.55$^{+}$} & 0.54 & 0.49 & 0.29 & 0.53 & 0.49 & 0.44 & 0.43 & 0.32 & 0.24 & 0.12 & 0.27 & 0.33 & 0.45 & 0.44 & 0.39 & 0.26 & 0.30 \\
+ & 0.10 & \textbf{0.50$^{+}$} & \textbf{0.50} & 0.46 & 0.22 & 0.45 & 0.44 & 0.32 & 0.31 & 0.25 & 0.18 & 0.11 & 0.21 & 0.30 & 0.37 & 0.40 & 0.40 & 0.21 & 0.21 \\
 \hline
-uniform, $k{=}16$ & 0.00 & 0.78$^{-}$ & 0.78 & 0.75 & 0.69 & 0.76 & 0.67 & \textbf{0.84} & 0.84 & 0.47 & 0.65 & 0.14 & 0.50 & 0.34 & 0.62 & 0.67 & 0.65 & 0.59 \\
- & 0.05 & 0.72$^{-}$ & 0.71 & 0.69 & 0.39 & 0.54 & 0.56 & \textbf{0.75} & 0.75 & 0.34 & 0.47 & 0.11 & 0.38 & 0.32 & 0.50 & 0.63 & 0.33 & 0.35 \\
- & 0.10 & \textbf{0.62$^{=}$} & \textbf{0.62} & 0.60 & 0.29 & 0.39 & 0.54 & \textbf{0.62} & 0.61 & 0.29 & 0.33 & 0.09 & 0.29 & 0.29 & 0.45 & 0.57 & 0.24 & 0.25 \\
+uniform, $k{=}16$ & 0.00 & 0.78$^{-}$ & 0.78 & 0.75 & 0.69 & 0.76 & 0.67 & \textbf{0.84} & 0.84 & 0.47 & 0.65 & 0.14 & 0.50 & 0.34 & 0.72 & 0.62 & 0.67 & 0.65 & 0.59 \\
+ & 0.05 & 0.72$^{-}$ & 0.71 & 0.69 & 0.39 & 0.54 & 0.56 & \textbf{0.75} & 0.75 & 0.35 & 0.47 & 0.11 & 0.38 & 0.32 & 0.64 & 0.50 & 0.63 & 0.33 & 0.35 \\
+ & 0.10 & \textbf{0.62$^{=}$} & \textbf{0.62} & 0.60 & 0.29 & 0.39 & 0.54 & \textbf{0.62} & 0.61 & 0.29 & 0.33 & 0.09 & 0.28 & 0.29 & 0.54 & 0.45 & 0.57 & 0.24 & 0.25 \\
 \hline
-equal $k$, unequal $s$, $k{=}8$ & 0.00 & \textbf{0.57$^{+}$} & 0.57 & 0.46 & 0.49 & 0.56 & 0.46 & 0.56 & 0.56 & 0.36 & 0.33 & 0.10 & 0.33 & 0.25 & 0.48 & 0.49 & 0.47 & 0.49 \\
- & 0.05 & \textbf{0.52$^{+}$} & 0.51 & 0.45 & 0.25 & 0.49 & 0.43 & 0.35 & 0.34 & 0.24 & 0.19 & 0.09 & 0.23 & 0.23 & 0.38 & 0.35 & 0.22 & 0.23 \\
- & 0.10 & \textbf{0.45$^{+}$} & \textbf{0.45} & 0.40 & 0.17 & 0.41 & 0.37 & 0.24 & 0.24 & 0.19 & 0.15 & 0.08 & 0.16 & 0.21 & 0.33 & 0.33 & 0.15 & 0.16 \\
+equal $k$, unequal $s$, $k{=}8$ & 0.00 & \textbf{0.57$^{+}$} & 0.57 & 0.46 & 0.49 & 0.56 & 0.46 & 0.56 & 0.56 & 0.36 & 0.33 & 0.10 & 0.33 & 0.25 & 0.47 & 0.48 & 0.49 & 0.47 & 0.49 \\
+ & 0.05 & \textbf{0.52$^{+}$} & 0.51 & 0.45 & 0.25 & 0.49 & 0.43 & 0.35 & 0.34 & 0.24 & 0.19 & 0.09 & 0.23 & 0.23 & 0.34 & 0.38 & 0.35 & 0.22 & 0.23 \\
+ & 0.10 & \textbf{0.45$^{+}$} & \textbf{0.45} & 0.40 & 0.17 & 0.41 & 0.37 & 0.24 & 0.24 & 0.19 & 0.15 & 0.08 & 0.16 & 0.21 & 0.27 & 0.33 & 0.33 & 0.15 & 0.16 \\
 \hline
-equal $k$, unequal $s$, $k{=}16$ & 0.00 & 0.80$^{-}$ & 0.79 & 0.77 & 0.70 & 0.77 & 0.71 & \textbf{0.84} & \textbf{0.84} & 0.61 & 0.69 & 0.17 & 0.49 & 0.43 & 0.64 & 0.69 & 0.66 & 0.60 \\
- & 0.05 & \textbf{0.73$^{=}$} & \textbf{0.73} & 0.71 & 0.42 & 0.56 & 0.59 & \textbf{0.73} & 0.72 & 0.50 & 0.56 & 0.14 & 0.41 & 0.41 & 0.51 & 0.66 & 0.37 & 0.37 \\
- & 0.10 & \textbf{0.65$^{+}$} & \textbf{0.65} & 0.62 & 0.31 & 0.42 & 0.57 & 0.60 & 0.59 & 0.44 & 0.44 & 0.12 & 0.33 & 0.37 & 0.45 & 0.61 & 0.27 & 0.29 \\
+equal $k$, unequal $s$, $k{=}16$ & 0.00 & 0.80$^{-}$ & 0.79 & 0.77 & 0.70 & 0.77 & 0.71 & \textbf{0.84} & \textbf{0.84} & 0.60 & 0.69 & 0.17 & 0.49 & 0.43 & 0.76 & 0.64 & 0.69 & 0.66 & 0.60 \\
+ & 0.05 & \textbf{0.73$^{=}$} & \textbf{0.73} & 0.71 & 0.42 & 0.56 & 0.59 & \textbf{0.73} & 0.72 & 0.51 & 0.56 & 0.14 & 0.40 & 0.41 & 0.70 & 0.51 & 0.66 & 0.37 & 0.37 \\
+ & 0.10 & \textbf{0.65$^{=}$} & \textbf{0.65} & 0.62 & 0.31 & 0.42 & 0.57 & 0.60 & 0.59 & 0.44 & 0.44 & 0.12 & 0.34 & 0.37 & 0.64 & 0.45 & 0.61 & 0.27 & 0.29 \\
 \hline
-equal $s$, unequal $k$ & 0.00 & 0.78$^{=}$ & \textbf{0.78} & 0.76 & 0.71 & 0.74 & 0.60 & \textbf{0.79} & \textbf{0.79} & 0.55 & 0.60 & 0.16 & 0.50 & 0.35 & 0.53 & 0.64 & 0.66 & 0.61 \\
- & 0.05 & 0.70$^{=}$ & \textbf{0.70} & 0.69 & 0.47 & 0.57 & 0.59 & 0.67 & \textbf{0.70} & 0.45 & 0.52 & 0.13 & 0.40 & 0.31 & 0.38 & 0.57 & 0.40 & 0.41 \\
- & 0.10 & 0.61$^{-}$ & 0.61 & 0.59 & 0.39 & 0.45 & 0.56 & 0.58 & \textbf{0.63} & 0.39 & 0.46 & 0.11 & 0.32 & 0.27 & 0.29 & 0.46 & 0.32 & 0.34 \\
+equal $s$, unequal $k$ & 0.00 & 0.78$^{=}$ & \textbf{0.78} & 0.76 & 0.71 & 0.74 & 0.60 & \textbf{0.79} & \textbf{0.79} & 0.55 & 0.60 & 0.16 & 0.51 & 0.35 & 0.56 & 0.53 & 0.64 & 0.66 & 0.61 \\
+ & 0.05 & 0.70$^{=}$ & \textbf{0.70} & 0.69 & 0.47 & 0.57 & 0.59 & 0.67 & \textbf{0.70} & 0.44 & 0.52 & 0.13 & 0.40 & 0.31 & 0.50 & 0.38 & 0.57 & 0.40 & 0.41 \\
+ & 0.10 & 0.61$^{-}$ & 0.61 & 0.59 & 0.39 & 0.45 & 0.56 & 0.58 & \textbf{0.63} & 0.39 & 0.46 & 0.11 & 0.34 & 0.27 & 0.46 & 0.29 & 0.46 & 0.32 & 0.34 \\
 \hline
-two worlds & 0.00 & \textbf{0.83$^{+}$} & \textbf{0.82} & 0.82 & 0.71 & 0.78 & 0.70 & 0.58 & 0.79 & 0.40 & 0.52 & 0.13 & 0.28 & 0.28 & 0.48 & 0.65 & 0.72 & 0.64 \\
- & 0.05 & \textbf{0.76$^{+}$} & \textbf{0.76} & \textbf{0.76} & 0.58 & 0.66 & 0.66 & 0.44 & 0.64 & 0.29 & 0.41 & 0.10 & 0.22 & 0.25 & 0.35 & 0.55 & 0.51 & 0.49 \\
- & 0.10 & \textbf{0.71$^{+}$} & \textbf{0.71} & 0.70 & 0.49 & 0.53 & 0.65 & 0.38 & 0.50 & 0.26 & 0.32 & 0.08 & 0.18 & 0.22 & 0.28 & 0.43 & 0.42 & 0.43 \\
+two worlds & 0.00 & \textbf{0.83$^{+}$} & \textbf{0.82} & 0.82 & 0.71 & 0.78 & 0.70 & 0.58 & 0.79 & 0.40 & 0.52 & 0.13 & 0.27 & 0.28 & 0.31 & 0.48 & 0.65 & 0.72 & 0.64 \\
+ & 0.05 & \textbf{0.76$^{+}$} & \textbf{0.76} & \textbf{0.76} & 0.58 & 0.66 & 0.66 & 0.44 & 0.64 & 0.29 & 0.41 & 0.10 & 0.22 & 0.25 & 0.27 & 0.35 & 0.55 & 0.51 & 0.49 \\
+ & 0.10 & \textbf{0.71$^{+}$} & \textbf{0.71} & 0.70 & 0.49 & 0.53 & 0.65 & 0.38 & 0.50 & 0.26 & 0.32 & 0.08 & 0.18 & 0.22 & 0.23 & 0.28 & 0.43 & 0.42 & 0.43 \\
 \hline
-three big, many small & 0.00 & \textbf{0.83$^{+}$} & \textbf{0.83} & 0.82 & 0.76 & 0.81 & 0.72 & 0.33 & 0.40 & 0.21 & 0.27 & 0.07 & 0.19 & 0.15 & 0.47 & 0.64 & 0.74 & 0.66 \\
- & 0.05 & \textbf{0.78$^{+}$} & \textbf{0.78} & 0.74 & 0.48 & 0.67 & 0.68 & 0.28 & 0.34 & 0.16 & 0.22 & 0.06 & 0.13 & 0.14 & 0.35 & 0.51 & 0.42 & 0.44 \\
- & 0.10 & \textbf{0.67$^{+}$} & 0.66 & 0.62 & 0.36 & 0.55 & 0.61 & 0.23 & 0.29 & 0.14 & 0.17 & 0.05 & 0.09 & 0.12 & 0.29 & 0.43 & 0.33 & 0.40 \\
+three big, many small & 0.00 & \textbf{0.83$^{+}$} & \textbf{0.83} & 0.82 & 0.76 & 0.81 & 0.72 & 0.33 & 0.40 & 0.21 & 0.27 & 0.07 & 0.18 & 0.15 & 0.18 & 0.47 & 0.64 & 0.74 & 0.66 \\
+ & 0.05 & \textbf{0.78$^{+}$} & \textbf{0.78} & 0.74 & 0.48 & 0.67 & 0.68 & 0.28 & 0.34 & 0.16 & 0.22 & 0.06 & 0.13 & 0.14 & 0.16 & 0.35 & 0.51 & 0.42 & 0.44 \\
+ & 0.10 & \textbf{0.67$^{+}$} & 0.66 & 0.62 & 0.36 & 0.55 & 0.61 & 0.23 & 0.29 & 0.14 & 0.17 & 0.05 & 0.10 & 0.12 & 0.14 & 0.29 & 0.43 & 0.33 & 0.40 \\
 \hline
-gradient & 0.00 & 0.42$^{-}$ & 0.40 & 0.39 & 0.36 & \textbf{0.61} & 0.56 & 0.21 & 0.21 & 0.11 & 0.14 & 0.03 & 0.14 & 0.07 & 0.50 & 0.48 & 0.41 & 0.38 \\
- & 0.05 & 0.32$^{-}$ & 0.31 & 0.27 & 0.20 & \textbf{0.48} & 0.40 & 0.14 & 0.15 & 0.07 & 0.10 & 0.03 & 0.08 & 0.07 & 0.34 & 0.42 & 0.18 & 0.16 \\
- & 0.10 & 0.23$^{-}$ & 0.24 & 0.22 & 0.13 & \textbf{0.39} & 0.35 & 0.09 & 0.11 & 0.06 & 0.07 & 0.02 & 0.05 & 0.06 & 0.27 & 0.33 & 0.12 & 0.13 \\
+gradient & 0.00 & 0.42$^{-}$ & 0.40 & 0.39 & 0.36 & \textbf{0.61} & 0.56 & 0.21 & 0.21 & 0.11 & 0.14 & 0.03 & 0.14 & 0.07 & 0.16 & 0.50 & 0.48 & 0.41 & 0.38 \\
+ & 0.05 & 0.32$^{-}$ & 0.31 & 0.27 & 0.20 & \textbf{0.48} & 0.40 & 0.14 & 0.15 & 0.07 & 0.10 & 0.03 & 0.07 & 0.07 & 0.11 & 0.34 & 0.42 & 0.18 & 0.16 \\
+ & 0.10 & 0.23$^{-}$ & 0.24 & 0.22 & 0.13 & \textbf{0.39} & 0.35 & 0.09 & 0.11 & 0.06 & 0.07 & 0.02 & 0.05 & 0.06 & 0.09 & 0.27 & 0.33 & 0.12 & 0.13 \\
 \hline
-uniform $k{=}8$, $\alpha{=}1$ & 0.05 & \textbf{0.56$^{+}$} & 0.55 & 0.49 & 0.31 & 0.53 & 0.48 & 0.45 & 0.44 & 0.32 & 0.24 & 0.12 & 0.28 & 0.33 & 0.43 & 0.37 & 0.28 & 0.32 \\
-uniform $k{=}8$, $\alpha{=}2$ & 0.05 & \textbf{0.56$^{+}$} & \textbf{0.56} & 0.49 & 0.33 & 0.54 & 0.48 & 0.45 & 0.45 & 0.33 & 0.22 & 0.12 & 0.27 & 0.33 & 0.43 & 0.39 & 0.30 & 0.32 \\
-two worlds, $\alpha{=}1$ & 0.05 & \textbf{0.77$^{+}$} & \textbf{0.77} & 0.75 & 0.54 & 0.66 & 0.65 & 0.47 & 0.66 & 0.31 & 0.62 & 0.11 & 0.26 & 0.26 & 0.26 & 0.44 & 0.46 & 0.47 \\
-two worlds, $\alpha{=}2$ & 0.05 & \textbf{0.79$^{+}$} & \textbf{0.79} & 0.75 & 0.51 & 0.66 & 0.64 & 0.49 & 0.66 & 0.32 & 0.62 & 0.10 & 0.29 & 0.26 & 0.23 & 0.41 & 0.50 & 0.50 \\
+uniform $k{=}8$, $\alpha{=}1$ & 0.05 & \textbf{0.56$^{+}$} & 0.55 & 0.49 & 0.31 & 0.53 & 0.48 & 0.45 & 0.44 & 0.32 & 0.24 & 0.12 & 0.28 & 0.33 & 0.46 & 0.43 & 0.37 & 0.28 & 0.32 \\
+uniform $k{=}8$, $\alpha{=}2$ & 0.05 & \textbf{0.56$^{+}$} & \textbf{0.56} & 0.49 & 0.33 & 0.54 & 0.48 & 0.45 & 0.45 & 0.32 & 0.22 & 0.12 & 0.28 & 0.33 & 0.46 & 0.43 & 0.39 & 0.30 & 0.32 \\
+two worlds, $\alpha{=}1$ & 0.05 & \textbf{0.77$^{+}$} & \textbf{0.77} & 0.75 & 0.54 & 0.66 & 0.65 & 0.47 & 0.66 & 0.31 & 0.62 & 0.11 & 0.26 & 0.26 & 0.28 & 0.26 & 0.44 & 0.46 & 0.47 \\
+two worlds, $\alpha{=}2$ & 0.05 & \textbf{0.79$^{+}$} & \textbf{0.79} & 0.75 & 0.51 & 0.66 & 0.64 & 0.49 & 0.66 & 0.32 & 0.62 & 0.10 & 0.29 & 0.26 & 0.30 & 0.23 & 0.41 & 0.50 & 0.50 \\
 \hline
-LFR, $o_n{=}0$ &  & 0.84$^{-}$ & 0.86 & 0.84 & 0.56 & 0.85 & 0.66 & 0.98 & 0.98 & \textbf{1.00} & 0.98 & 0.61 & 0.99 & 0.91 & 0.46 & 0.77 & 0.43 & 0.39 \\
-LFR, $o_n{=}0.1$ &  & 0.69$^{-}$ & 0.72 & 0.71 & 0.27 & 0.53 & 0.60 & 0.78 & 0.78 & \textbf{0.88} & 0.81 & 0.49 & 0.87 & 0.79 & 0.41 & 0.72 & 0.29 & 0.23 \\
-LFR, $o_n{=}0.3$ &  & 0.45$^{-}$ & 0.50 & 0.46 & 0.11 & 0.31 & 0.48 & 0.54 & 0.53 & \textbf{0.64} & 0.49 & 0.32 & 0.47 & 0.60 & 0.40 & 0.64 & 0.13 & 0.10 \\
-LFR, $\langle k\rangle{=}10$ &  & 0.43$^{-}$ & 0.45 & 0.35 & 0.09 & 0.40 & 0.36 & 0.69 & 0.70 & \textbf{0.71} & 0.61 & 0.36 & 0.63 & 0.48 & 0.26 & 0.25 & 0.12 & 0.12 \\
-LFR, $o_m{=}4$ &  & 0.61$^{-}$ & 0.63 & 0.62 & 0.40 & 0.46 & 0.52 & 0.62 & 0.62 & \textbf{0.71} & 0.62 & 0.40 & 0.67 & 0.68 & 0.43 & 0.66 & 0.36 & 0.28 \\
-LFR, sizes 50--250 &  & 0.42$^{-}$ & 0.41 & 0.42 & 0.14 & 0.40 & 0.16 & \textbf{0.87} & 0.85 & 0.77 & 0.75 & 0.38 & 0.79 & 0.59 & 0.18 & 0.55 & 0.13 & 0.07 \\
-LFR, $C_{\rm LFR}{=}0.3$ &  & 0.33$^{-}$ & 0.33 & 0.32 & 0.19 & 0.17 & 0.39 & 0.50 & 0.50 & 0.55 & 0.52 & 0.48 & 0.39 & \textbf{0.56} & 0.18 & 0.30 & 0.20 & 0.20 \\
-LFR, $C_{\rm LFR}{=}0.5$ &  & 0.24$^{-}$ & 0.24 & 0.24 & 0.19 & 0.10 & 0.24 & 0.29 & 0.29 & 0.30 & 0.26 & \textbf{0.35} & 0.23 & \textbf{0.35} & 0.17 & 0.21 & 0.18 & 0.20 \\
-\end{tabular}
-\end{ruledtabular}
+LFR, $o_n{=}0$ &  & 0.84$^{-}$ & 0.86 & 0.84 & 0.56 & 0.85 & 0.66 & 0.98 & 0.98 & \textbf{1.00} & 0.98 & 0.61 & \textbf{0.99} & 0.91 & \textbf{1.00} & 0.46 & 0.77 & 0.43 & 0.39 \\
+LFR, $o_n{=}0.1$ &  & 0.69$^{-}$ & 0.72 & 0.71 & 0.27 & 0.53 & 0.60 & 0.78 & 0.78 & 0.88 & 0.81 & 0.49 & 0.87 & 0.79 & \textbf{0.94} & 0.41 & 0.72 & 0.29 & 0.23 \\
+LFR, $o_n{=}0.3$ &  & 0.45$^{-}$ & 0.50 & 0.46 & 0.11 & 0.31 & 0.48 & 0.54 & 0.53 & 0.65 & 0.49 & 0.32 & 0.46 & 0.60 & \textbf{0.85} & 0.40 & 0.64 & 0.13 & 0.10 \\
+LFR, $\langle k\rangle{=}10$ &  & 0.43$^{-}$ & 0.45 & 0.35 & 0.09 & 0.40 & 0.36 & 0.69 & 0.70 & 0.70 & 0.61 & 0.36 & 0.63 & 0.48 & \textbf{0.77} & 0.26 & 0.25 & 0.12 & 0.12 \\
+LFR, $o_m{=}4$ &  & 0.61$^{-}$ & 0.63 & 0.62 & 0.40 & 0.46 & 0.52 & 0.62 & 0.62 & 0.70 & 0.62 & 0.40 & 0.67 & 0.68 & \textbf{0.75} & 0.43 & 0.66 & 0.36 & 0.28 \\
+LFR, sizes 50--250 &  & 0.42$^{-}$ & 0.41 & 0.42 & 0.14 & 0.40 & 0.16 & 0.87 & 0.85 & 0.79 & 0.75 & 0.38 & 0.79 & 0.59 & \textbf{0.89} & 0.18 & 0.55 & 0.13 & 0.07 \\
+LFR, $C_{\rm LFR}{=}0.3$ &  & 0.33$^{-}$ & 0.33 & 0.32 & 0.19 & 0.17 & 0.39 & 0.50 & 0.50 & 0.54 & 0.52 & 0.48 & 0.38 & \textbf{0.56} & 0.54 & 0.18 & 0.30 & 0.20 & 0.20 \\
+LFR, $C_{\rm LFR}{=}0.5$ &  & 0.24$^{-}$ & 0.24 & 0.24 & 0.19 & 0.10 & 0.24 & 0.29 & 0.29 & 0.30 & 0.26 & \textbf{0.35} & 0.24 & \textbf{0.35} & 0.33 & 0.17 & 0.21 & 0.18 & 0.20 \\
+\hline\hline
+\end{tabular}}
 \end{table*}

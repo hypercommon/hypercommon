@@ -50,6 +50,11 @@ METHODS = (["components", "hc", "hc_tri", "hc_2test"]
            + ["cpm", "leiden", "infomap", "lpa", "walktrap", "slpa", "demon", "angel", "scan", "scan_j", "linkcomm"])
 
 
+# clique percolation is out of reach on facebook_1912 (as real_more_detection_v3.SKIP); its
+# facebook_107 rows come from cpm_bits.py through cpm_rows_from_bits.py
+SKIP = {("facebook_107", "cpm"), ("facebook_1912", "cpm")}
+
+
 def task(args):
     net, method = args
     import networkx as nx
@@ -146,7 +151,7 @@ def main():  # noqa: C901
     if os.path.exists(OUT):
         with open(OUT, newline="") as fh:
             done = {(r["network"], r["method"]) for r in csv.DictReader(fh) if not r["error"]}
-    tasks = [(n, m) for n in nets for m in METHODS if (n, m) not in done]
+    tasks = [(n, m) for n in nets for m in METHODS if (n, m) not in done and (n, m) not in SKIP]
     # big, slow tasks first
     order = {"linkcomm": 0, "slpa": 1, "demon": 2, "angel": 3, "walktrap": 4}
     tasks.sort(key=lambda t: order.get(t[1], 9))

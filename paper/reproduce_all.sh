@@ -42,9 +42,6 @@ for NET in amazon dblp; do
 done
 $PY bench/real_more_detection_v2.py 16
 
-# --- running time (alone on the machine) ------------------------------------------------------
-$PY bench/runtime.py
-
 # --- earlier runs: the comparisons of the earlier tables ---------------------------
 for EXP in rings_isolated rings_hetero rings_hetero_overlap rings_pref rings_uniform lfr lfr_slices lfr_clustered rings_geometry; do
   $PY bench/run2.py $EXP --workers $W
@@ -64,6 +61,7 @@ $PY bench/score_big.py --onmi-only
 
 # --- derived numbers, tables, figures, PDF ----------------------------------------------------
 $PY analysis/lfr_triangles.py
+$PY analysis/wedge_scaling.py --table-only    # without --table-only: recount from analysis/snap/more/
 $PY analysis/derived_numbers.py
 $PY analysis/export_numbers.py
 $PY analysis/make_tables.py
@@ -86,13 +84,23 @@ if [ -n "$SBM_PY" ]; then
     (cd bench && $SBM_PY run_sbm.py $EXP --workers 8)
   done
 fi
+# OSLOM: needs the OSLOM2 binary (Linux/WSL; bench/build_oslom.sh puts it in ~/tools/OSLOM2, or set OSLOM_BIN)
+if [ -n "$OSLOM_PY" ]; then
+  (cd bench && PY=$OSLOM_PY bash queue_oslom.sh)
+  (cd bench && $OSLOM_PY real_more_detection_v3.py 10)                  # OSLOM on the 14 networks
+  (cd bench && $OSLOM_PY run_oslom_big.py --workers 6 --hours 48)       # OSLOM on the SNAP graphs
+  $PY bench/score_big.py ; $PY bench/score_big.py --onmi-only
+fi
+# clique percolation on Facebook ego 107: numba (environment cpm); set CPM_PY to that python
+if [ -n "$CPM_PY" ]; then
+  (cd bench && NUMBA_NUM_THREADS=12 $CPM_PY cpm_bits.py facebook_107 3 4 5 6 7 --save results/cpm107_covers.pkl && $PY cpm_rows_from_bits.py facebook_107 results/cpm107_covers.pkl)
+fi
 for EXP in rings_uniform rings_hetero rings_hetero_overlap rings_pref lfr lfr_slices lfr_clustered rings_geometry \
            nulls rings_hubs rings_split rings_geometry_swap rgg; do
   (cd bench && $PY analysis2.py $EXP)
 done
 $PY analysis/exact_windows.py
 $PY bench/check_pruning.py
-$PY bench/retime_big.py      # alone on the machine
 (cd analysis && $PY make_tables3.py && $PY make_tables3_controls.py && $PY make_tables3_real.py)
 for F in analysis/fig_*.py; do $PY "$F"; done
 # manuscript and Supplemental Material share labels (xr-hyper): build both, then rebuild both

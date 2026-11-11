@@ -185,7 +185,7 @@ def real_more_table():
     import sys as _sys
     _sys.path.insert(0, HERE)
     from real_more import load
-    raw = pd.read_csv(os.path.join(RES, "real_more_v2.csv"))
+    raw = pd.read_csv(os.path.join(RES, "real_more_v2.csv"), dtype={"error": str})
     failed = raw[raw.error.notna()][["network", "method", "error"]].drop_duplicates(["network", "method"])
     d = raw[raw.error.isna()]
     rules = {}
@@ -194,7 +194,7 @@ def real_more_table():
         rules[col] = best.unstack("method")
     hcf = [c for c in rules["f1"].columns if c.startswith("hcf_")]
     # runs that raised MemoryError, and runs stopped by hand once they had exceeded physical memory
-    stopped = failed.error.str.startswith("MemoryError: stopped by operator")
+    stopped = failed.error.astype(str).str.startswith("MemoryError: stopped by operator")
     name = lambda f: ", ".join(f"{OTHER_NAME.get(m, m)} on {dict(MORE_NETS)[n]}"
                                for n, m in f[["network", "method"]].itertuples(index=False))
     fails = "; ".join(s for s in (

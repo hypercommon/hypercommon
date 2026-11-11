@@ -56,7 +56,9 @@ def peak_gb():
         k32.K32GetProcessMemoryInfo(k32.GetCurrentProcess(), ctypes.byref(pmc), pmc.cb)
         return round(pmc.PeakWorkingSetSize / 2**30, 2)
     import resource
-    return round(resource.getrusage(resource.RUSAGE_SELF).ru_maxrss / 2**20, 2)
+    # ru_maxrss is in bytes on macOS, in kilobytes on Linux
+    unit = 2**30 if sys.platform == "darwin" else 2**20
+    return round(resource.getrusage(resource.RUSAGE_SELF).ru_maxrss / unit, 2)
 
 
 def main():

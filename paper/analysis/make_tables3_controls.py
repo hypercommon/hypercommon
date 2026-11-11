@@ -92,7 +92,7 @@ def main():
     # null graphs: what each method reports when there is nothing to find
     N = S[(S.experiment == "nulls") & (S.protocol == "label_free")]
     meths = [m for m in ["hc", "hc_tri", "linkcomm", "cpm", "leiden", "leiden_cpm", "infomap", "walktrap", "lpa",
-                         "sbm", "slpa", "demon", "angel", "scan", "scan_j"] if m in set(N.method)] or ["hc"]
+                         "sbm", "slpa", "oslom", "demon", "angel", "scan", "scan_j"] if m in set(N.method)] or ["hc"]
     out += [r"\begin{table*}[p]",
             r"\caption{Null graphs with triadic closure but no planted communities: number of communities and "
             r"coverage of each method's label-free cover (mean over ten graphs). RGG: random geometric graph on "

@@ -262,20 +262,38 @@ memory are
   \label{eq:cost}
 \end{equation}
 linear in $n$ when the second moment of the degree distribution is bounded, and
-$O(n^3)$ for a dense graph. Real networks are typically sparse~\cite{newman2018networks},
-and large scale-free graphs with unconstrained degrees must be
-sparse~\cite{delgenio2011all}; how often degree tails are heavy enough to make
-$\langle d^2\rangle$ grow quickly with $n$ is
+$O(n^3)$ for a dense graph. Complex networks are far from dense: real networks are
+typically sparse~\cite{newman2018networks}, and large scale-free graphs with
+unconstrained degrees must be sparse~\cite{delgenio2011all}. For a degree distribution
+with a power-law tail of exponent $\gamma$, $\langle d^2\rangle$ is bounded for $\gamma>3$,
+so that the cost is $O(n)$, and grows as $\ln n$ at $\gamma=3$, the exponent of the
+Barab\'asi--Albert model~\cite{albert2002statistical}, so that $W$ grows as $m\log m$
+and the cost is $O(n+m\log m)$; for $2<\gamma<3$ it grows as a power of $n$ set by the largest degree, and
+how often real degree tails are that heavy is
 debated~\cite{broido2019scale,voitalov2019scale}. On sixteen of the seventeen real
-networks of Sec.~\ref{sec:results}, $W/(m\ln m)$ lies between $0.8$ and $13$. The
-exception is YouTube, whose hubs reach degree $28\,754$ and give $W/(m\ln m)=33$; the
-degree-ratio pruning below brings the wedges that are enumerated and scored to
-$3.7\,m\ln m$. Once the triple scores are stored, every additional threshold costs
-$O(W)$. Since $J(u,v)\le\rho(u,v)\equiv(\min(d_u,d_v)+1)/(\max(d_u,d_v)+1)$, a triple
+networks of Sec.~\ref{sec:results}, $W/(m\ln m)$ lies between $0.8$ and $13$, as in the
+$\gamma=3$ case. The exception is YouTube, whose hubs reach degree $28\,754$ and give
+$W/(m\ln m)=33$; the degree-ratio pruning below, which on YouTube discards nine wedges in
+ten, brings the wedges that are enumerated and scored to $3.7\,m\ln m$. The same holds
+well beyond these networks (Table~\ref{tab:S-wedges}). On twenty-nine further SNAP
+networks without ground truth, collaboration, communication, social, internet, web, road
+and citation graphs with up to $4\times10^6$ nodes, $W/(m\ln m)$ ranges from $0.15$ on
+road networks to $268$ on a web graph with hubs of degree $8.4\times10^4$, yet after the
+pruning it is at most $12$ on all thirty-two. The excess wedges are those that join a hub
+to neighbours of far smaller degree: their commonality is bounded by the degree ratio
+and cannot reach the threshold, so the cost is that of the $\gamma=3$ case even where $W$
+itself is not. Once the triple
+scores are stored, every additional threshold costs $O(W)$, and nesting
+(Theorem~\ref{thm:nesting}) makes the covers at all thresholds one hierarchy: a sweep of
+the threshold costs one scoring and one component search per threshold, whereas a
+sweep of Leiden's resolution or of Infomap's Markov time costs a full run per value.
+Clique percolation is the costly method: the number of maximal cliques can grow
+exponentially with $n$~\cite{moon1965cliques}, every pair of them is compared, and on
+one of the fourteen smaller networks of Sec.~\ref{sec:real}, an ego network with more
+than $1.4\times10^7$ maximal cliques, it is out of reach. Since $J(u,v)\le\rho(u,v)\equiv(\min(d_u,d_v)+1)/(\max(d_u,d_v)+1)$, a triple
 that contains an edge with $\rho<t_{\min}$ has score below $t_{\min}$ and can be
 discarded before scoring without changing $\mathcal T_t$, and hence $\mathcal C_t$, for
 any $t\ge t_{\min}$, provided the commonalities of the pairs that remain are computed
-from the complete neighbourhoods (Appendix~\ref{app:proofs}). Sec.~\ref{sec:results}
-reports measured running times. A local query examines the frontier candidates of the
+from the complete neighbourhoods (Appendix~\ref{app:proofs}). A local query examines the frontier candidates of the
 community it grows, including rejected ones, and reads their neighbourhoods, so its
 cost scales with that neighbourhood rather than with the whole graph.

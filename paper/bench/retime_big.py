@@ -16,7 +16,7 @@ excluded: the time starts once the method's own input structure exists), the tim
 the overlapping modularity of every cover (hc only), and the peak resident memory of
 the process. Writes results/retime_big.csv.
 
-    python retime_big.py [amazon dblp]
+    python retime_big.py [amazon dblp youtube]     (on YouTube: lpa, infomap, leiden; hc in youtube_job.py)
 """
 import csv
 import gzip
@@ -42,9 +42,13 @@ def load(net):
 
 
 def peak_gb():
-    import psutil
-    mi = psutil.Process().memory_info()
-    return getattr(mi, "peak_wset", getattr(mi, "rss", 0)) / 1e9
+    """Peak resident memory of this process, in GB."""
+    if os.name == "nt":
+        import psutil
+        return psutil.Process().memory_info().peak_wset / 1e9
+    import resource
+    # ru_maxrss is in bytes on macOS, in kilobytes on Linux
+    return resource.getrusage(resource.RUSAGE_SELF).ru_maxrss * (1 if sys.platform == "darwin" else 1024) / 1e9
 
 
 def child(net, method):
@@ -102,7 +106,8 @@ def child(net, method):
 def main(nets):
     rows = []
     for net in nets:
-        for method in ("hc", "lpa", "infomap", "leiden"):
+        # on YouTube HyperCommon needs the degree-ratio pruning; it is timed by youtube_job.py
+        for method in (("lpa", "infomap", "leiden") if net == "youtube" else ("hc", "lpa", "infomap", "leiden")):
             env = dict(os.environ, **ENV1)
             p = subprocess.run([sys.executable, "-u", __file__, "--child", net, method], env=env,
                                capture_output=True, text=True)

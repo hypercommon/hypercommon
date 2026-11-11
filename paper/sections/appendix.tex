@@ -67,8 +67,9 @@ clustering option \texttt{-C} ($C_{\rm LFR}=0.3$, $0.5$).
 \textsc{leidenalg}~\cite{traag_leidenalg} (0.11.0, with python-igraph 1.0.0),
 \textsc{infomap}~\cite{edler_infomap} (2.10.1) and
 \textsc{graph-tool}~\cite{peixoto_graphtool} (3.9), except SCAN and link communities,
-which we implemented to expose the similarity and the cut; the stochastic block model was
-run under Linux on the same graphs, checked edge for edge. We also use networkx 3.6.1,
+which we implemented to expose the similarity and the cut, and OSLOM, the authors'
+OSLOM2 code (\texttt{oslom\_undir}, unweighted); the stochastic block model and OSLOM
+were run on the same graphs, checked edge for edge. We also use networkx 3.6.1,
 numpy 2.4.1 and scipy 1.17.1. Leiden: iterated to convergence
 (\texttt{n\_iterations}$=-1$), three restarts per resolution on the benchmarks and the
 fourteen smaller networks, the restart kept being the one of highest objective value
@@ -155,6 +156,7 @@ SCAN (Jaccard) & $\epsilon\in\{0.1,\dots,0.6\}$, $\mu_{\rm SCAN}\in\{2,3,5\}$ \\
 Walktrap & walks of length 4, dendrogram cut at maximum modularity \\
 label propagation & parameter-free \\
 stochastic block model & level of the nested hierarchy (finest first; 1--6 levels with more than one group) \\
+OSLOM & $t\in\{10^{-14},10^{-11},10^{-8},10^{-5},10^{-2},0.1\}$, otherwise its defaults (10 runs, first level) \\
 \end{tabular}
 \end{ruledtabular}
 \end{table*}

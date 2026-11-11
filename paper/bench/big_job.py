@@ -38,6 +38,41 @@ sys.path.insert(0, HERE)
 DATA = os.path.join(HERE, "data")
 
 T_GRID = [round(0.02 * i, 2) for i in range(1, 31)]
+# Optional memory cap per task (GB), for machines that swap instead of raising MemoryError
+# (macOS): past the cap the task is interrupted and recorded as a MemoryError.
+MEM_LIMIT_GB = float(os.environ.get("BIG_MEM_LIMIT_GB", "0") or 0)
+
+
+class mem_guard:
+    """Within the block, raise MemoryError once this process's resident memory exceeds
+    MEM_LIMIT_GB (no effect when it is 0). Pool workers run tasks in their main thread,
+    so the watcher thread can interrupt it. Swapped and compressed pages do not count in the
+    resident memory, so the growth of the machine's swap since the block began is added."""
+
+    def __enter__(self):
+        import _thread
+        import threading
+        self.hit, self.stop = False, threading.Event()
+        if MEM_LIMIT_GB > 0:
+            import psutil
+            proc = psutil.Process()
+            swap0 = psutil.swap_memory().used
+
+            def watch():
+                while not self.stop.wait(1.0):
+                    used = proc.memory_info().rss + max(0, psutil.swap_memory().used - swap0)
+                    if used > MEM_LIMIT_GB * 1e9:
+                        self.hit = True
+                        _thread.interrupt_main()
+                        return
+            threading.Thread(target=watch, daemon=True).start()
+        return self
+
+    def __exit__(self, typ, val, tb):
+        self.stop.set()
+        if typ is KeyboardInterrupt and self.hit:
+            raise MemoryError(f"stopped above the memory cap of {MEM_LIMIT_GB:g} GB")
+        return False
 Q50 = [round(0.02 * i, 2) for i in range(50)]
 LEIDEN_RB = [0.01, 0.02, 0.05, 0.1, 0.25, 0.5, 1.0, 2.0, 4.0, 8.0, 16.0, 32.0, 64.0, 128.0,
              256.0, 512.0, 1024.0, 2048.0, 4096.0]
@@ -268,19 +303,23 @@ def task_simple(net, setting, out):
         return
     st = Store(out, net, setting, "cpm")
     if not st.done():
-        for k in (3, 4, 5, 6, 7, 8):
+        from cpm_fast import k_clique_covers   # the output of nx k_clique_communities, in less memory
+        with mem_guard():
             t1 = time.time()
-            st.add(k, *to_arrays([set(c) for c in nx.community.k_clique_communities(G, k)]), A, ids,
-                   time.time() - t1)
+            covers = k_clique_covers(G, (3, 4, 5, 6, 7, 8))
+            secs = (time.time() - t1) / 6
+            for k, cov in covers.items():
+                st.add(k, *to_arrays([set(c) for c in cov]), A, ids, secs)
         st.save()
     st = Store(out, net, setting, "slpa")
     if not st.done():
         from slpa import slpa_multi
         np.random.seed(1)
         t1 = time.time()
-        for r, cov in slpa_multi(G, 100, [0.01, 0.02, 0.05, 0.1, 0.2, 0.3, 0.45]):
-            st.add(r, *to_arrays(cov), A, ids, time.time() - t1)
-            t1 = time.time()
+        with mem_guard():
+            for r, cov in slpa_multi(G, 100, [0.01, 0.02, 0.05, 0.1, 0.2, 0.3, 0.45]):
+                st.add(r, *to_arrays(cov), A, ids, time.time() - t1)
+                t1 = time.time()
         st.save()
 
 

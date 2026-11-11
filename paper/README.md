@@ -24,6 +24,16 @@ The fourteen further networks come from the Netzschleuder repository
 `analysis/real_more.py` reads them; ground-truth groups of fewer than three nodes are
 dropped (and the primary school's teachers are not a class).
 
+Wedge counts (Table S-wedges, `analysis/wedge_scaling.py`): 29 further SNAP edge lists,
+no ground truth, in `analysis/snap/more/`, each saved under its SNAP file name from
+`https://snap.stanford.edu/data/<file>`: `ca-{GrQc,HepTh,HepPh,AstroPh,CondMat}`,
+`email-{Enron,EuAll}`, `wiki-{Talk,Vote}`, `facebook_combined`, `twitter_combined`,
+`soc-Epinions1`, `soc-Slashdot0902`, `loc-{brightkite,gowalla}_edges`, `com-lj.ungraph`
+(under `bigdata/communities/`), `as-skitter`, `as-caida20071105`, `oregon1_010526`,
+`p2p-Gnutella31`, `web-{Google,Stanford,NotreDame,BerkStan}`, `roadNet-{CA,PA}`,
+`cit-{HepPh,Patents}`, `amazon0601`, all `.txt.gz`; the counts are in
+`figures/data/wedge_scaling.csv`.
+
 LFR graphs: the reference generator of Lancichinetti & Fortunato,
 https://github.com/andrealancichinetti/LFRbenchmarks at commit `ec9a860`,
 `unweighted_undirected/Sources/benchm.cpp`, compiled unmodified with
@@ -39,30 +49,27 @@ exactly. Test seeds are 0–9, calibration seeds 1000–1002. Stochastic methods
 (Leiden, Infomap, SLPA, label propagation) are seeded from the graph seed; on the real
 networks, Leiden and Infomap use seed 1 and SLPA seeds `random` and `numpy` with 1.
 
-## Timings
-Two machines, both Windows 11 (build 26300), Python 3.12.10, NumPy 2.4.1, SciPy 1.17.1.
+## Machine
+Every result behind the manuscript and the Supplemental Material was computed on one
+machine, a Mac mini (Apple M4 Pro, 14 cores, 64 GB RAM, macOS 27.2), in three micromamba
+environments under `~/hc/mamba`: `hc` (Python 3.12.16, numpy 2.4.1, scipy 1.17.1,
+networkx 3.6.1, python-igraph 1.0.0, leidenalg 0.11.0, infomap 2.10.1, cdlib 0.4.0) for
+everything except the two below; `gt` (graph-tool 3.9) for the nested stochastic block
+model; `cpm` (numba 0.68.1) for `bench/cpm_bits.py`. OSLOM is the OSLOM2 binary built by
+`bench/build_oslom.sh`. The manuscript reports no running times; the `seconds` columns of
+the result files are kept for reference only. Against an earlier run of the same
+scripts under Windows and Linux, every deterministic method gives identical scores;
+Infomap's random numbers depend on the platform (mean Omega 0.831 against 0.837), and
+the stochastic block model is stochastic.
 
-| Machine | Hardware | Used for |
-|---|---|---|
-| A | Intel Core Ultra 9 185H (16 cores, 22 threads), 32 GB RAM | everything not listed under B: the benchmarks, the running-time curve (Fig. of Sec. VII I, `bench/runtime.py`) and the single-core re-timing on full Amazon and DBLP (`bench/retime_big.py`) |
-| B | workstation, 28 logical processors, about 128 GB RAM | the full SNAP graphs (`bench/big_job.py`, `bench/youtube_job.py`, `bench/slpa_youtube_job.py`) |
-
-Load and threads of each timing:
-- `bench/runtime.py`: machine A, run alone; three graphs per size (repetitions as in the
-  figure caption).
-- `bench/retime_big.py`: machine A, idle, each method in turn with one thread
-  (`OMP_NUM_THREADS`, `MKL_NUM_THREADS`, `OPENBLAS_NUM_THREADS`, `NUMEXPR_NUM_THREADS` = 1).
-- `bench/youtube_job.py`: machine B, run alone (log and metadata in
-  `bench/results/youtube_full_dl/results/`: 15.5 min for all four HyperCommon variants,
-  10.4 min for HyperCommon itself, peak 25.7 GB).
-- `bench/big_job.py`: machine B, 16 worker processes at once, so its Leiden and Infomap
-  times on YouTube share the machine with up to fifteen other jobs and are indicative only.
-- The benchmark runs (`bench/run2.py`, 16 workers) are not timings; their `seconds`
-  column is not used.
+`bench/queue_mac.sh` runs the whole sequence on that machine (resumable, one done marker
+per step), `bench/native_mac.sh` the native-default runs beside it, and
+`bench/watchdog_mac.sh` kills a run above 30 GB of memory or when swap exceeds 12 GB
+(an OSLOM process alone, so that its Python caller records the failure).
 
 ## Commands
-Everything, in order, from scratch: `bash reproduce_all.sh` (about two days on the
-computer of the Timings section; the benchmark, detection and timing steps skip work already in their
+Everything, in order, from scratch: `bash reproduce_all.sh` (several days on the
+machine above; the benchmark and detection steps skip work already in their
 output files, so an interrupted run can be restarted). The steps it runs:
 
 ```
@@ -83,17 +90,14 @@ python bench/analysis.py <exp>              # oracle / frozen protocols, bootstr
 python bench/real_detection_v3.py <amazon|dblp> <full|induced>   # SNAP, top-5000 ground truth
 python bench/real_more_detection_v2.py 16                         # 14 Netzschleuder networks
 
-# running time (run alone on the machine)
-python bench/runtime.py
-
 # earlier runs: the comparisons of the earlier tables, kept for reference
 python bench/run2.py <exp>      # exp in rings_isolated, rings_uniform, rings_hetero, rings_hetero_overlap,
                                 #         rings_pref, lfr, lfr_slices, lfr_clustered, rings_geometry
 python bench/analysis2.py <exp> ; python bench/robust_p.py
 python bench/run2_family.py ; python bench/run2_family.py --top      # commonality family on the benchmarks
 python bench/real_more_detection_v3.py 16                            # 14 Netzschleuder networks
-python bench/big_job.py         # SNAP covers, large machine (~100 GB for clique percolation on YouTube)
-python bench/youtube_job.py     # HC on full YouTube (machine B of the Timings section)
+python bench/big_job.py         # SNAP covers; clique percolation through bench/cpm_fast.py (bounded memory)
+python bench/youtube_job.py     # HC on full YouTube
 python bench/slpa_youtube_job.py
 python bench/score_big.py ; python bench/score_big.py --onmi-only    # score every SNAP cover
 python analysis/make_tables2.py ; python analysis/make_tables2.py family geometry
@@ -101,6 +105,7 @@ python analysis/fig_benchmarks2.py
 
 # derived numbers, tables, figures, PDF
 python analysis/lfr_triangles.py            # where LFR triangles lie (inside / across communities)
+python analysis/wedge_scaling.py            # W against m ln m on 32 SNAP graphs (--table-only: from the CSV)
 python analysis/derived_numbers.py ; python analysis/export_numbers.py ; python analysis/make_tables.py
 python analysis/fig_<name>.py               # every figure script
 pdflatex main ; bibtex main ; pdflatex main ; pdflatex main
@@ -116,13 +121,21 @@ python bench/run2.py <exp> --methods hc,hc_2test,hc_tri,hc_econn,linkcomm,cpm,le
 # nested stochastic block model: Linux (WSL) with graph-tool, environment in environment-sbm.yml
 #   micromamba create -f environment-sbm.yml ; python bench/run_sbm.py <exp>
 #   (same graphs as run2.py; checked edge for edge against the run2 rows)
+# OSLOM: Linux or macOS; bash bench/build_oslom.sh downloads OSLOM2 from oslom.org and compiles it in ~/tools
+#   bash bench/queue_oslom.sh       # python bench/run_oslom.py <exp> over the benchmark experiments
+#                                   # (rows in results2/<exp>_oslom.csv)
+#   python bench/real_more_detection_v3.py 10   # adds OSLOM (five seeds) to the 14 Netzschleuder networks
+#   python bench/run_oslom_big.py --workers 6 --hours 48   # SNAP full and induced graphs, seed 1
+#   python bench/score_big.py ; python bench/score_big.py --onmi-only
+# clique percolation on Facebook ego 107 (more than 10^7 maximal cliques): numba, environment cpm
+#   NUMBA_NUM_THREADS=12 python bench/cpm_bits.py facebook_107 3 4 5 6 7 --save covers.pkl
+#   python bench/cpm_rows_from_bits.py facebook_107 covers.pkl   # its rows in real_more_v2/v3
 python bench/analysis2.py <exp> # oracle, label-free, frozen and native protocols, paired bootstrap marks
 
 # theory and implementation checks
 python analysis/exact_windows.py            # every recovery window of Sec. V in exact rational arithmetic
 python analysis/double_bonds.py             # shared pairs and fused rings (sections/table_doublebonds.tex)
 python bench/check_pruning.py               # degree-ratio pruning gives identical covers (Amazon, DBLP)
-python bench/retime_big.py                  # single-thread re-timing on Amazon/DBLP; run on an idle machine
 
 # tables and figures
 python analysis/make_tables3.py             # the main benchmark tables and the benchmark tables of the Supplemental Material
@@ -131,7 +144,7 @@ python analysis/make_tables3_real.py        # real networks (main table and Supp
 python analysis/make_tables2.py family geometry
 python -c "import sys; sys.path.insert(0, 'analysis'); import make_tables; make_tables.double_bond_table()"
 python analysis/fig_<name>.py               # fig_family, fig_real_networks, fig_schematic, fig_omega_t,
-                                            # fig_benchmarks2, fig_runtime
+                                            # fig_benchmarks2
 ```
 #### Every table and figure, and the command that makes it
 The manuscript is `main.tex`; the Supplemental Material is `supp.tex` (compile
@@ -144,18 +157,18 @@ through `xr-hyper`). Run every command from `paper/`.
 | Fig. 2 | `python analysis/fig_schematic.py` | `figures/fig_schematic.pdf` |
 | Fig. 3 | `python analysis/fig_omega_t.py` | `figures/fig_omega_t.pdf` |
 | Fig. 4, Fig. S1 | `python analysis/fig_benchmarks2.py` | `figures/fig_benchmarks.pdf`, `fig_benchmarks_oracle.pdf` |
-| Fig. 5 | `python bench/runtime.py ; python analysis/fig_runtime.py` | `figures/fig_runtime.pdf` |
 | Figs. S2–S4 | `python analysis/fig_real_networks.py ; python analysis/fig_family.py` | `figures/fig_real_commonality.pdf`, `fig_real_family.pdf`, `fig_real_triples.pdf` |
 | Table I (scorecard), Tables S1, S3–S18 | `python analysis/make_tables3.py` | `sections/table_scorecard.tex`, `table_benchmarks.tex`, `supp_benchmarks.tex` |
 | Table II (geometry) | `python analysis/make_tables2.py geometry` | `sections/table_geometry.tex` |
-| Table III (SNAP), Tables S23–S29 | `python analysis/make_tables3_real.py` | `sections/table_real.tex`, `table_real_induced.tex`, `supp_real.tex` |
+| Table III (SNAP), Tables S23, S25–S30 | `python analysis/make_tables3_real.py` | `sections/table_real.tex`, `table_real_induced.tex`, `supp_real.tex` |
 | Tables IV, V (fourteen networks) | `python analysis/make_tables2.py more` | `sections/table_real_more.tex` |
 | Tables VI, VIII, IX | written by hand from the data sources and `bench/methods2.py` | `sections/appendix.tex` |
 | Table VII, Table X | `python analysis/make_tables.py` (`double_bond_table` for Table X, after `python analysis/double_bonds.py`) | `sections/table_data_more.tex`, `table_doublebonds.tex` |
 | Table S2 (noise robustness) | `python bench/robust_p.py ; python analysis/make_tables2.py robust` | `sections/table_robust.tex` |
 | Tables S19, S20 (controls, null graphs) | `python analysis/make_tables3_controls.py` | `sections/supp_controls.tex` |
 | Tables S21, S22 (commonality family) | `python bench/run2_family.py ; python bench/run2_family.py --top ; python analysis/make_tables2.py family` | `sections/table_family.tex` |
-| Table S30 (sources of text-only numbers) | written by hand; each row names its script | `sections/supp_diagnostics.tex` |
+| Table S24 (wedges of 32 SNAP graphs) | `python analysis/wedge_scaling.py` | `sections/table_wedges.tex` |
+| Table S31 (sources of text-only numbers) | written by hand; each row names its script | `sections/supp_diagnostics.tex` |
 
 Which script writes which table: `make_tables3.py` writes `sections/table_benchmarks.tex`
 (label-free), `table_scorecard.tex` and `supp_benchmarks.tex` (oracle, frozen, native,

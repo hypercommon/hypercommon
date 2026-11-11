@@ -161,13 +161,27 @@ def run_method2(name, G, ts, seed):
     if name == "infomap":
         yield from _infomap(G, GRIDS2[name], seed)
         return
+    if name == "oslom":                 # the OSLOM2 binary, as run_oslom.py (not in METHODS2)
+        import shutil
+        import tempfile
+        from run_oslom import T_OSLOM, oslom_cover
+        workdir = tempfile.mkdtemp(prefix="oslom_")
+        try:
+            for t in T_OSLOM:
+                yield t, oslom_cover(G, t, seed, workdir)[0]
+        finally:
+            shutil.rmtree(workdir, ignore_errors=True)
+        return
 
     from cdlib import algorithms as A
     random.seed(seed)
     np.random.seed(seed % (2**32))
     if name == "cpm":
+        # the output of cdlib's kclique (networkx k_clique_communities), in bounded memory
+        from cpm_fast import k_clique_covers
+        covers = k_clique_covers(G, GRIDS2[name])
         for k in GRIDS2[name]:
-            yield k, _sets(A.kclique(G, k=k))
+            yield k, [set(c) for c in covers[k]]
     elif name == "lpa":
         yield None, _sets(A.label_propagation(G))
     elif name == "walktrap":

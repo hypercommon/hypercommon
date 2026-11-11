@@ -68,7 +68,7 @@ METHODS = [("hc", "HC"), ("hc_econn", "e-conn."), ("hc_tri", "tri."), ("hc_2test
            ("infomap", "Infomap"), ("lpa", "LPA"), ("slpa", "SLPA"), ("angel", "ANGEL"),
            ("demon", "DEMON"), ("scan", "SCAN")]
 HC_VARIANTS = ("hc", "hc_econn", "hc_tri", "hc_2test")
-NAME = dict(METHODS) | {"walktrap": "Walktrap", "scan_j": "SCAN-J", "components": "comp."}
+NAME = dict(METHODS) | {"walktrap": "Walktrap", "scan_j": "SCAN-J", "components": "comp.", "oslom": "OSLOM"}
 NOISE = (r"mean over the noise range ($p\in[0,0.8]$ for rings, $\mu\in[0.1,0.6]$ for LFR), "
          r"ten test graphs per noise level")
 LEGEND = (r"HC: HyperCommon; e-conn.: its triples joined only through shared edges; tri.: triangles only "
@@ -261,7 +261,7 @@ def geometry():
 REAL_METHODS = [("components", "components"), ("hc", "HyperCommon"), ("hc_family", r"HC$_f$"),
                 ("hc_econn", "edge-connected"), ("hc_tri", "triangles only"), ("hc_2test", "two-test"),
                 ("linkcomm", "link comm."), ("cpm", "CPM"), ("leiden", "Leiden"), ("leiden_cpm", "L-CPM"),
-                ("infomap", "Infomap"), ("lpa", "label prop."), ("slpa", "SLPA")]
+                ("infomap", "Infomap"), ("lpa", "label prop."), ("slpa", "SLPA"), ("oslom", "OSLOM")]
 REAL_NETS = [("amazon", "Amazon"), ("dblp", "DBLP"), ("youtube", "YouTube")]
 
 
@@ -309,7 +309,7 @@ def real_table(setting):
                r"nodes for Amazon, 93\,432 for DBLP, 47\,135 for YouTube). The induced Amazon subgraph falls into "
                r"1\,106 components that already score F1 $0.958$, and on YouTube the components are the most "
                r"accurate cover by F1, so this setting does not discriminate between methods on those two. "
-               r"Clique percolation on YouTube did not complete (memory above 100\,GB). Bold: best in column "
+               r"Bold: best in column "
                r"among the methods; the components row is a reference and is not marked.")
         label, name = "tab:realinduced", "table_real_induced.tex"
     out = [r"\begin{table*}[t]", r"\caption{" + cap + "}", r"\label{" + label + "}",
@@ -329,7 +329,7 @@ MORE_NETS = [("football", "College football"), ("polbooks", "Political books"), 
              ("primary_school", "Primary school")] + [
     (f"facebook_{e}", f"Facebook ego {e}") for e in (0, 107, 348, 414, 686, 698, 1684, 1912, 3437, 3980)]
 MORE_OTHERS = ["linkcomm", "cpm", "leiden", "leiden_cpm", "infomap", "lpa", "walktrap", "slpa", "demon", "angel",
-               "scan", "scan_j"]
+               "scan", "scan_j", "oslom"]
 
 
 def more_picks(metric):

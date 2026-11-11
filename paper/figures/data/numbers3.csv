@@ -5,8 +5,8 @@ omega.oracle.rings.-,13,of 28
 omega.oracle.lfr.+,0,of 8
 omega.oracle.lfr.=,0,of 8
 omega.oracle.lfr.-,8,of 8
-omega.label_free.rings.+,16,of 28
-omega.label_free.rings.=,5,of 28
+omega.label_free.rings.+,15,of 28
+omega.label_free.rings.=,6,of 28
 omega.label_free.rings.-,7,of 28
 omega.label_free.lfr.+,0,of 8
 omega.label_free.lfr.=,0,of 8
@@ -53,8 +53,8 @@ rec_mean.oracle.rings.-,16,of 28
 rec_mean.oracle.lfr.+,0,of 8
 rec_mean.oracle.lfr.=,0,of 8
 rec_mean.oracle.lfr.-,8,of 8
-rec_mean.label_free.rings.+,12,of 28
-rec_mean.label_free.rings.=,5,of 28
+rec_mean.label_free.rings.+,11,of 28
+rec_mean.label_free.rings.=,6,of 28
 rec_mean.label_free.rings.-,11,of 28
 rec_mean.label_free.lfr.+,0,of 8
 rec_mean.label_free.lfr.=,0,of 8
@@ -116,11 +116,11 @@ abl.hc_tri.oracle.rings.abl_better,0,of 28
 abl.hc_tri.oracle.rings.abl_higher_mean,0,of 28
 abl.hc_tri.oracle.rings.loss_range,0.01..0.11,
 abl.hc_tri.oracle.lfr.hc_better,2,of 8
-abl.hc_tri.oracle.lfr.abl_better,1,of 8
+abl.hc_tri.oracle.lfr.abl_better,2,of 8
 abl.hc_tri.oracle.lfr.abl_higher_mean,3,of 8
 abl.hc_tri.oracle.lfr.loss_range,-0.02..0.10,
 abl.hc_tri.oracle.all.hc_better,26,of 36
-abl.hc_tri.oracle.all.abl_better,1,of 36
+abl.hc_tri.oracle.all.abl_better,2,of 36
 abl.hc_tri.oracle.all.abl_higher_mean,3,of 36
 abl.hc_tri.oracle.all.loss_range,-0.02..0.11,
 abl.hc_tri.label_free.rings.hc_better,24,of 28
@@ -159,7 +159,7 @@ abl.hc_econn.oracle.all.hc_better,13,of 36
 abl.hc_econn.oracle.all.abl_better,9,of 36
 abl.hc_econn.oracle.all.abl_higher_mean,13,of 36
 abl.hc_econn.oracle.all.loss_range,-0.03..0.01,
-abl.hc_econn.label_free.rings.hc_better,10,of 28
+abl.hc_econn.label_free.rings.hc_better,9,of 28
 abl.hc_econn.label_free.rings.abl_better,0,of 28
 abl.hc_econn.label_free.rings.abl_higher_mean,6,of 28
 abl.hc_econn.label_free.rings.loss_range,-0.00..0.02,
@@ -167,7 +167,7 @@ abl.hc_econn.label_free.lfr.hc_better,0,of 8
 abl.hc_econn.label_free.lfr.abl_better,5,of 8
 abl.hc_econn.label_free.lfr.abl_higher_mean,7,of 8
 abl.hc_econn.label_free.lfr.loss_range,-0.05..0.01,
-abl.hc_econn.label_free.all.hc_better,10,of 36
+abl.hc_econn.label_free.all.hc_better,9,of 36
 abl.hc_econn.label_free.all.abl_better,5,of 36
 abl.hc_econn.label_free.all.abl_higher_mean,13,of 36
 abl.hc_econn.label_free.all.loss_range,-0.05..0.02,

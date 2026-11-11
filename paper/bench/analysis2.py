@@ -31,7 +31,7 @@ rng = np.random.default_rng(12345)
 
 
 NATIVE_OF = {"leiden_g1": "leiden", "leiden_cpm_dens": "leiden_cpm", "linkcomm_pd": "linkcomm"}
-NATIVE_PARAM = {"infomap": 1.0, "slpa": 0.1, "sbm": 0.0}   # reference defaults; sbm: finest level
+NATIVE_PARAM = {"infomap": 1.0, "slpa": 0.1, "sbm": 0.0, "oslom": 0.1}   # reference defaults; sbm: finest level
 
 
 def select(df):
@@ -87,9 +87,10 @@ def boot(x):
 
 def main(exp):
     df = pd.read_csv(os.path.join(RES, f"{exp}.csv"), dtype={"param": str}, on_bad_lines="skip")
-    extra = os.path.join(RES, f"{exp}_sbm.csv")             # run_sbm.py (graph-tool, under Linux)
-    if os.path.exists(extra):
-        df = pd.concat([df, pd.read_csv(extra, dtype={"param": str}, on_bad_lines="skip")], ignore_index=True)
+    for tag in ("sbm", "oslom"):                            # run_sbm.py, run_oslom.py (under Linux)
+        extra = os.path.join(RES, f"{exp}_{tag}.csv")
+        if os.path.exists(extra):
+            df = pd.concat([df, pd.read_csv(extra, dtype={"param": str}, on_bad_lines="skip")], ignore_index=True)
     df = df[df.error.isna()].copy()
     df["param"] = df["param"].fillna("")
     sel, frozen_params = select(df)

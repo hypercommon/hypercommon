@@ -74,7 +74,7 @@ with isolated shared nodes we derive the exact window of thresholds that recover
 planted communities, also for unequal densities, and an exact implementation confirms it
 (Secs.~\ref{sec:method}, \ref{sec:theory} and~\ref{sec:recovery}).
 \item[(iii)] \emph{A benchmark under four protocols.} We compare HyperCommon with three
-ablations and thirteen methods on the benchmarks (twelve on the fourteen smaller real
+ablations and fourteen methods on the benchmarks (thirteen on the fourteen smaller real
 networks, fewer on the three largest), among them link communities and Leiden with the
 Constant Potts Model, on ring lattices, overlapping LFR
 graphs~\cite{lancichinetti2008benchmark,lancichinetti2009benchmarks} and seventeen real
@@ -82,7 +82,7 @@ networks (Secs.~\ref{sec:protocol} and~\ref{sec:results}); without the test of t
 non-adjacent pair, accuracy falls in all 36 benchmark settings, with and without labels.
 With every parameter chosen without labels by overlapping modularity, which for
 partitions is the Newman--Girvan modularity, HyperCommon has the highest mean Omega
-index on 16 of the 28 ring settings and is level on 5 more; it trails on dense rings
+index on 15 of the 28 ring settings and is level on 6 more; it trails on dense rings
 with little overlap and on one setting of rings with unequal degrees, where the Leiden
 objectives lead, and on the gradient of ring sizes, where link communities lead. At
 each method's own default or selection rule it leads on 17 of the 28, at each method's
@@ -97,13 +97,14 @@ the dense rings and the Constant Potts Model on two worlds, with and without lab
 clustered graphs without planted communities HyperCommon, like every method tested,
 reports many.
 \item[(iv)] \emph{Scale and parameter choice.} The wedges are scored once and every
-threshold is read off the scores: scoring the wedges and reading off the covers at all
-30 thresholds takes about a minute on one core on Amazon and DBLP ($3\times10^5$
-nodes), against $22$--$27$ minutes for Leiden's sweep of resolutions (the overlapping
-modularity that the label-free choice needs adds $9.0$ and $7.7$ minutes in our Python
-implementation), and on YouTube ($1.1\times10^6$ nodes) every threshold of the grid,
-with its overlapping modularity, is available in ten minutes on a workstation with 28
-logical processors (Secs.~\ref{sec:cost} and~\ref{sec:runtime}). On seventeen real
+threshold is read off the scores, at a cost of $O(n+m+W)$ for $n$ nodes, $m$ edges and
+$W$ wedges, which is $O(n+m\log m)$ for the degree exponent $\gamma=3$ of the
+Barab\'asi--Albert model, with $W$ within $0.8$--$13$ times $m\ln m$ on sixteen of
+seventeen real networks and, after an exact pruning of hub wedges, at most $12\,m\ln m$
+on all of thirty-two SNAP networks; a whole sweep
+of the threshold costs one scoring, where Leiden and Infomap need one run per resolution,
+and it runs on the full YouTube graph ($1.1\times10^6$ nodes) on one core
+(Sec.~\ref{sec:cost}). On seventeen real
 networks the label-free threshold retains a median 94\% of the best threshold's F1,
 although other methods are more accurate on most of them, and the best commonality
 function differs between networks (Sec.~\ref{sec:real}).

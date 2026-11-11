@@ -134,8 +134,11 @@ def run_method(name, G, ts, seed):
     np.random.seed(seed % (2**32))
 
     if name == "cpm":
+        # the output of cdlib's kclique (networkx k_clique_communities), in bounded memory
+        from cpm_fast import k_clique_covers
+        covers = k_clique_covers(G, GRIDS[name])
         for k in GRIDS[name]:
-            yield k, _sets(A.kclique(G, k=k))
+            yield k, [set(c) for c in covers[k]]
     elif name == "leiden":
         import igraph as ig
         import leidenalg as la

@@ -51,10 +51,9 @@ $0.5$); all settings are in Appendix~\ref{app:design}.
 
 HyperCommon is compared with its ablations, with the methods closest to it, and with
 methods from the main families of overlapping and non-overlapping detection;
-BigClam, ego-splitting and the local-fitness methods LFM and OSLOM are not included
+BigClam, ego-splitting and the local-fitness method LFM are not included
 (LFM because the \textsc{cdlib} implementation took more than ten minutes on a single
 2000-node benchmark graph, against the thousands of graphs of the benchmark):
-% TODO(Dima): OSLOM -- run it (bash /mnt/d/tmp/oslom.sh in WSL builds it), or give the reason here.
 \begin{itemize}
 \item \textbf{Ablations}, each removing one ingredient: \emph{triangles only} admits
   only closed triples (J-thresholded 3-clique percolation, verified numerically);
@@ -81,6 +80,10 @@ BigClam, ego-splitting and the local-fitness methods LFM and OSLOM are not inclu
   on the real networks.
 \item \textbf{Overlapping label and ego methods}: SLPA~\cite{xie2011slpa},
   DEMON~\cite{coscia2012demon} and ANGEL~\cite{rossetti2020angel}.
+\item \textbf{OSLOM}~\cite{lancichinetti2011finding}, which keeps a group only if it is
+  statistically significant against a configuration-model null, with its significance
+  threshold $t$ as the parameter ($t=0.1$, its default, under the native protocol); it
+  was run on the benchmark graphs and on all the real networks.
 \end{itemize}
 Each parameterised method has a grid (Table~\ref{tab:grids}). In a preliminary run, the
 best parameter of clique percolation, SLPA, DEMON, ANGEL and SCAN lay at an end of its

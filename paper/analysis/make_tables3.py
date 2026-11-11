@@ -57,20 +57,21 @@ for exp, fam, lab in (("lfr", "on00", r"LFR, $o_n{=}0$"), ("lfr", "on10", r"LFR,
 
 ABL = [("hc", "HC"), ("hc_econn", "e-c."), ("hc_tri", "tri."), ("hc_2test", "2-test")]
 OTHERS = [("linkcomm", "Link"), ("cpm", "CPM"), ("leiden", "Leiden"), ("leiden_cpm", "L-CPM"),
-          ("infomap", "Info."), ("walktrap", "Walk."), ("lpa", "LPA"), ("sbm", "SBM"), ("slpa", "SLPA"),
+          ("infomap", "Info."), ("walktrap", "Walk."), ("lpa", "LPA"), ("sbm", "SBM"), ("slpa", "SLPA"), ("oslom", "OSLOM"),
           ("demon", "DEMON"), ("angel", "ANGEL"), ("scan", "SCAN"), ("scan_j", "SCAN-J")]
 METHODS = ABL + OTHERS
 OTHER_IDS = [m for m, _ in OTHERS]
 NAME = dict(METHODS)
 PROTS = [("oracle", "oracle"), ("label_free", "label-free"), ("frozen", "frozen"), ("native", "native")]
 HEAD2 = (r" & & \multicolumn{4}{c}{HC and ablations} & \multicolumn{2}{c}{relatives} &"
-         r"\multicolumn{6}{c}{partitions} & \multicolumn{5}{c}{overlapping methods} \\")
+         r"\multicolumn{6}{c}{partitions} & \multicolumn{6}{c}{overlapping methods} \\")
 LEGEND = (r"HC: HyperCommon; e-c.: its triples joined only through shared edges; tri.: triangles only "
           r"(J-thresholded 3-clique percolation~\cite{palla2005uncovering,kumpula2008sequential}); 2-test: "
           r"third pair not tested; Link: link communities with the same similarity; CPM: clique percolation; "
           r"Leiden: Leiden with the Reichardt--Bornholdt modularity; L-CPM: Leiden with the Constant Potts "
           r"Model; Info.: Infomap; Walk.: Walktrap, walks of length 4, dendrogram cut at maximum modularity; LPA: label propagation; "
           r"SBM: nested degree-corrected stochastic block model, each level of its hierarchy a parameter value; "
+          r"OSLOM: order statistics local optimisation, significance threshold $t$ as its parameter; "
           r"SCAN: SCAN with cosine similarity; SCAN-J: SCAN with Jaccard similarity; $\alpha$: exponent of the "
           r"preferential (degree-biased) noise.")
 # the SBM's frozen level can be missing on a test graph whose fitted hierarchy is shallower
@@ -123,11 +124,13 @@ def write(name, lines):
 
 
 def full_table(S, P, prot, metric, label, caption, rows=ROWS, marks=True, fmt="%.2f", star=True, bold=True):
-    cols = "llcccc|cc|cccccc|ccccc"
+    cols = "llcccc|cc|cccccc|" + "c" * 6        # overlapping: SLPA, OSLOM, DEMON, ANGEL, SCAN, SCAN-J
     if bold and "Bold:" not in caption:
         caption += r" Bold: best in row, within 0.005."
     out = [r"\begin{table*}" + ("[p]" if not star else "[t]"), r"\caption{" + caption + "}", r"\label{" + label + "}",
-           r"\scriptsize\setlength{\tabcolsep}{1.35pt}", r"\begin{ruledtabular}", r"\begin{tabular}{" + cols + "}",
+           r"\scriptsize\setlength{\tabcolsep}{1.35pt}",
+           # twenty columns, scaled to the text width (the one-column Supplemental pages are narrower)
+           r"\resizebox{\textwidth}{!}{%", r"\begin{tabular}{" + cols + "}", r"\hline\hline",
            HEAD2, r"Family & $o_n$ & " + " & ".join(n for _, n in METHODS) + r" \\", r"\hline"]
     last = None
     for exp, fam, lab, o, grp in rows:
@@ -152,7 +155,7 @@ def full_table(S, P, prot, metric, label, caption, rows=ROWS, marks=True, fmt="%
             cells.append(r"\textbf{" + s + "}" if bold and abs(x - best) < 0.005 else s)
         on = f"{int(o) / 100:.2f}" if o else ""
         out.append(lab + " & " + on + " & " + " & ".join(cells) + r" \\")
-    out += [r"\end{tabular}", r"\end{ruledtabular}", r"\end{table*}"]
+    out += [r"\hline\hline", r"\end{tabular}}", r"\end{table*}"]
     return out
 
 
@@ -355,7 +358,7 @@ def main():
                                      r"of the same family, all noise levels pooled (frozen protocol)"),
             ("native", "tab:native", r"each method at its own default or selection rule: Leiden at "
                                      r"$\gamma=1$, L-CPM at $\gamma$ equal to the edge density, link communities "
-                                     r"at maximum partition density, Infomap at Markov time 1, SLPA at $r=0.1$, "
+                                     r"at maximum partition density, Infomap at Markov time 1, SLPA at $r=0.1$, OSLOM at $t=0.1$, "
                                      r"SBM at the finest level of its hierarchy, and the label-free choice for the methods without one (native protocol)")):
         sup += full_table(S, P, prot, "omega", label, r"As Table~\ref{tab:labelfree}, with " + txt + ". " + ci(prot)
                           + (FROZEN_DASH if prot == "frozen" else ""),
