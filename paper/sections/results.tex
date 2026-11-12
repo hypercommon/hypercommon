@@ -236,8 +236,9 @@ gains and leads on the dense hub rings, and the Constant Potts Model on two worl
 hubs; split overlap, in
 which a shared node divides its edges between its rings as in LFR graphs, keeps it
 within $0.05$ of the merged-node families, so the way LFR graphs share nodes is not what
-limits it on two worlds and three big, many small; random geometric communities, clustered but not lattices, leave it behind or
-level with the best other method. On graphs with triadic closure but no planted
+limits it on two worlds and three big, many small; random geometric communities, clustered but not lattices, leave it
+behind the best other method with labels and on two worlds, and only slightly ahead of
+Leiden without labels on the uniform rings ($0.48$ against $0.46$). On graphs with triadic closure but no planted
 communities (Table~\ref{tab:S-nulls}) every method reports communities, label-free
 HyperCommon $101$ on the random geometric graph and $175$ on the Holme--Kim graph:
 neither it nor its label-free threshold tells such a graph from one with planted
@@ -255,14 +256,14 @@ Walktrap, DEMON and ANGEL were not run on these graphs, and clique percolation a
 only on the induced subgraphs (Table~\ref{tab:realinduced}). Scored against the distinct
 node sets instead (Table~\ref{tab:S-realnet-dedup}), F1 changes by at most $0.03$ (at
 most $0.01$ for HyperCommon and its variants) and the order of the methods in each
-column is unchanged. HyperCommon's threshold is chosen without labels at little cost in
+column is unchanged except on Amazon, where OSLOM moves above two of the HyperCommon
+variants in each column. HyperCommon's threshold is chosen without labels at little cost in
 F1: the label-free F1 is $99.9\%$, $94\%$ and $89\%$ of its best F1 on the three graphs
 (ratios of the unrounded values). The same selector serves the modularity-based methods
 less well: Leiden falls to $0.53$, $0.29$ and $0.19$ in F1, about half of its best
 values, and the Constant Potts Model to $0.56$, $0.24$ and $0.25$. Under this selector
-Infomap is the most accurate on Amazon and YouTube (F1 $0.90$ and $0.34$) and label
-propagation on DBLP ($0.51$), with label-free HyperCommon within $0.02$--$0.05$ on
-each. By $\Omega$ the
+Infomap is the most accurate on all three graphs (F1 $0.90$, $0.52$ and $0.34$), with
+label-free HyperCommon within $0.03$--$0.05$ on each. By $\Omega$ the
 modularity- and flow-based partitions lead on all three. Detecting on the subgraph
 induced by the labelled nodes, as is common~\cite{yang2015defining}, makes F1
 uninformative on Amazon and YouTube: there the connected components already score

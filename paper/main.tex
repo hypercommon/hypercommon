@@ -45,14 +45,16 @@
 \input{sections/discussion}
 
 \section*{Data and code availability}
-% TODO(Dima): archive the tagged release on Zenodo and put its DOI here.
-The implementation (including the vectorised code with degree-ratio pruning used for
-the timings), the benchmark generators, the script behind every number, table and
-figure, the raw results (one row per graph, method and parameter) and the per-setting
-paired bootstrap intervals are in release \texttt{pre-submission} of
-\url{https://github.com/hypercommon/hypercommon}, under the MIT licence; its \texttt{paper/README.md}
-lists the command that regenerates each table and figure, together with the software
-versions, the seeds and the hardware and load of every timing.
+% TODO(Dima): after the final commit, tag v1.0.0, archive it on Zenodo and put the DOI
+% here as "archived at https://doi.org/10.5281/zenodo.XXXXXXX (release v1.0.0 of ...)".
+The implementation (including the vectorised code with the degree-ratio pruning used on
+YouTube), the benchmark generators, the script behind every number, table and figure,
+the raw results (one row per graph, method and parameter) and the per-setting paired
+bootstrap intervals are in release \texttt{v1.0.0} of
+\url{https://github.com/hypercommon/hypercommon}, under the MIT licence;
+\texttt{paper/README.md} lists the command that regenerates each table and figure,
+together with the software versions, the seeds and the machines on which the results
+were computed.
 Table~\ref{tab:S-diagnostics} of the Supplemental Material lists the source of every
 number quoted in the text that appears in no table. The real networks are
 public: SNAP (\url{https://snap.stanford.edu/data}) and the Netzschleuder

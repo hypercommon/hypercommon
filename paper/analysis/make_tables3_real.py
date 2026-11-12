@@ -102,7 +102,10 @@ CAP_FULL = (r"Detection on the full SNAP Amazon (334\,863 nodes), DBLP (317\,080
             r"DEMON and ANGEL were not run on these graphs, to bound the computing time of the large runs. "
             r"Stochastic methods: one seed. F1 against the distinct node sets is in "
             r"Table~\ref{tab:S-realnet-dedup}; it changes F1 by at most 0.03 (at most 0.01 for HyperCommon and "
-            r"its variants) and reverses the order of no two methods in a column. The top-5000 lists of Amazon and DBLP "
+            r"its variants) and changes the order of the methods in a column only for OSLOM on Amazon, which then "
+            r"moves ahead of HC$_f$ and the two-test variant with labels (0.883 against 0.874 and 0.878) and "
+            r"ahead of HC$_f$ and triangles only without labels (0.847 against 0.844 and 0.828, level with "
+            r"HyperCommon). The top-5000 lists of Amazon and DBLP "
             r"frequently consist of near-cliques~\cite{chen2024parallel}, which can favour methods that find "
             r"small dense groups. Bold: best in column.")
 

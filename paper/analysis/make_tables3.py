@@ -3,7 +3,7 @@ Benchmark tables of the manuscript, generated from the result files so that
 no number is typed by hand.
 
   sections/table_benchmarks.tex   label-free Omega, every ring setting (three overlap levels
-                                  for every unequal family) and LFR family, all twelve other
+                                  for every unequal family) and LFR family, all fourteen other
                                   methods and the three ablations (tab:labelfree)
   sections/table_scorecard.tex    HC minus the best other method under the four protocols,
                                   with the paired-interval mark, and the counts (tab:scorecard)

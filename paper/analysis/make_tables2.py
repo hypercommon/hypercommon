@@ -361,7 +361,7 @@ def more_table():
                r"labels it chooses among 700 (function, threshold) pairs per network, so its best-parameter "
                r"column is an upper bound for the family, not one method's parameter grid (with 30 quantile "
                r"levels per function its four wins are unchanged). "
-               r"``Best other'': the most accurate of the twelve other methods under that protocol"
+               r"``Best other'': the most accurate of the thirteen other methods under that protocol"
                + (f" (runs that did not complete: {fails})" if fails and metric == "f1" else "") +
                r". Bold: best of HC, HC$_f$ and the other methods under each protocol. Functions: J, Jaccard; "
                r"cos, cosine; $I/\min$ and $I/\max$, overlap normalised by the smaller or larger neighbourhood; $I$, overlap "
