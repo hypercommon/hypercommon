@@ -13,37 +13,29 @@ is the commonality of the pair. A set $T=\{i,j,\ell\}$ of three distinct nodes i
 \emph{wedge} if one of its nodes is adjacent to the other two, and it is
 \emph{admissible at threshold $t$} if it is a wedge and $J\ge t$ for all three of its
 pairs. The admissible triples $\mathcal T_t$ are the hyperedges of a 3-uniform
-hypergraph $\mathcal H_t=(V,\mathcal T_t)$. Connectivity is taken through shared
-pairs rather than shared nodes: let $L_t$ be the two-node-overlap graph of
-$\mathcal H_t$, whose vertices are the triples of $\mathcal T_t$, two of them adjacent
-when they share exactly two nodes. The communities at threshold $t$ are the node sets
-of its components, one community per component:
+hypergraph $\mathcal H_t=(V,\mathcal T_t)$. Let $L_t$ be its two-node-overlap graph,
+whose vertices are the triples of $\mathcal T_t$, two of them adjacent when they share
+exactly two nodes. The communities at threshold $t$ are the node sets of its
+components:
 \begin{equation}
   \mathcal C_t=\Bigl(\textstyle\bigcup_{T\in K}T\Bigr)_{K \text{ a connected component of } L_t}.
   \label{eq:communities}
 \end{equation}
 A node belongs to every community whose component contains a triple through it, so
-$\mathcal C_t$ is a cover rather than a partition, and nodes in no admissible triple
-are left unassigned. Propositions~\ref{prop:determinism}, \ref{prop:local}
-and~\ref{prop:sharedpairs}, Theorem~\ref{thm:nesting}, Corollary~\ref{cor:pairdisjoint}
-and Proposition~\ref{prop:endpoints}(i) use only the definition of admissibility and
-hold for any commonality function in place of $J$; Proposition~\ref{prop:endpoints}(ii)
-holds for any function that is at most one and equals one exactly on identical closed
-neighbourhoods, as Jaccard, the cosine and the overlap normalised by the larger
-neighbourhood do; Lemma~\ref{lem:ringJ} and Theorem~\ref{thm:window} are specific to
-Jaccard. All proofs are in Appendix~\ref{app:proofs}.
+$\mathcal C_t$ is a cover, and nodes in no admissible triple are left unassigned. All
+results except Lemma~\ref{lem:ringJ} and Theorem~\ref{thm:window}, which are specific to
+Jaccard, hold for any commonality function; proofs are in Appendix~\ref{app:proofs}.
 
-\subsection{Determinism and locality}
+\subsection{Determinism, locality and nesting}
 
 \begin{proposition}[Order independence]
 \label{prop:determinism}
 $\mathcal C_t$ is a function of $(G,t)$ alone: it does not depend on a processing
 order, a random seed, or the order in which triples are discovered.
 \end{proposition}
-$\mathcal T_t$, $L_t$ and its components are all defined pointwise from $(G,t)$. This
-is the property the procedure of the original formulation~\cite{deinega2023thesis}
-lacked: it deleted each edge once used, so whether a later triple could still be
-formed depended on which community had been grown first.
+This is the property the original formulation~\cite{deinega2023thesis} lacked: it
+deleted each edge once used, so whether a later triple could still be formed depended on
+which community had been grown first.
 
 \begin{proposition}[Local query]
 \label{prop:local}
@@ -53,12 +45,6 @@ $\{x,y,w\}\in\mathcal T_t$, visits exactly the component of $L_t$ that contains 
 and evaluates $J$ only on pairs within the closed neighbourhoods of the nodes it
 reaches.
 \end{proposition}
-Every wedge through a pair $\{x,y\}$ contains a neighbour of $x$ or $y$, so the search
-misses no adjacent triple. A node lies in as many communities as there are components
-containing a triple through it; its full membership follows by seeding from each triple
-through it not yet visited.
-
-\subsection{Monotone nesting in the threshold}
 
 \begin{theorem}[Nesting]
 \label{thm:nesting}
@@ -66,64 +52,21 @@ If $t_1\le t_2$, then $L_{t_2}$ is the subgraph of $L_{t_1}$ induced on
 $\mathcal T_{t_2}$, and every community of $\mathcal C_{t_2}$ is contained in a
 community of $\mathcal C_{t_1}$.
 \end{theorem}
-Raising $t$ only removes triples, so it only splits communities or removes nodes; it
-never merges two of them. The components of $\{L_t\}_{t\in[0,1]}$ form a filtration --
-a forest of triple components indexed by $t$ -- which changes only at the finitely many
-values $J$ takes; because communities overlap, their node sets need not form a laminar
-dendrogram. Coarse covers at small $t$ and
-fragmentation at large $t$ are the two ends of this single hierarchy.
-
-\subsection{The two ends of the hierarchy}
-
-Accuracy is scored with the Omega index~\cite{collins1988omega}. For a cover
-$\mathcal C$ let $c_{\mathcal C}(i,j)$ be the number of its communities containing
-both $i$ and $j$, and $\pi_{\mathcal C}(c)$ the fraction of the $\binom{n}{2}$ pairs with
-$c_{\mathcal C}=c$. With ground truth $\mathcal G$,
-$\Omega=(\Omega_u-\Omega_e)/(1-\Omega_e)$, where
-$\Omega_u=\Pr[c_{\mathcal C}=c_{\mathcal G}]$ and
-$\Omega_e=\sum_c \pi_{\mathcal C}(c)\,\pi_{\mathcal G}(c)$.
-
-\begin{lemma}
-\label{lem:constant}
-If $c_{\mathcal C}(i,j)=c$ for every pair and $c_{\mathcal G}$ is not identically $c$,
-then $\Omega=0$.
-\end{lemma}
-A cover that gives every pair the same count agrees with the ground truth exactly as
-often as chance predicts.
-
-\begin{proposition}[Endpoints]
-\label{prop:endpoints}
-Let the ground truth give some pair count $0$ and some pair count $\ge1$.
-(i) If $G$ is connected and $|V|\ge3$, then $\mathcal C_0=\{V\}$ and $\Omega(0)=0$.
-(ii) The communities at $t=1$ are the classes of nodes with identical closed
-neighbourhoods having at least three members; if there are none,
-$\mathcal C_1=\varnothing$ and $\Omega(1)=0$.
-Consequently, when the hypotheses of (i) hold and there are no such classes, whenever
-$\Omega(t)>0$ for some $t$ the maximum $\Omega^\star=\max_t\Omega(t)$ is attained at an
-interior threshold $t^\star\in(0,1)$.
-\end{proposition}
-At $t=0$ every wedge is admitted and the line graph of $G$ connects them; at $t=1$ only
-nodes with identical closed neighbourhoods stay together. The proposition does not
-assert that $\Omega^\star>0$ or that $\Omega(t)$ has a single maximum; both are
-empirical. The two hypotheses are separate: (i) needs a connected graph, and the final
-claim also needs no class of three or more nodes with identical closed neighbourhoods.
-On noise-free ring lattices the second holds (distinct nodes have distinct arcs when
-$s\ge2k+2$), and the first holds when the merges connect all rings, which random merges
-usually but not always do (a ring that receives no merge is a separate component) and
-the isolated-merge family with $k=8$ never does (20 merges cannot connect 40 rings);
-after rewiring both hold generically. The first fails on the noise-free benchmark
-without overlap, whose rings are disconnected and recovered exactly at $t=0$, a case
-covered by Theorem~\ref{thm:window}.
+Raising $t$ only splits communities or removes nodes; it never merges two of them. The
+covers at all thresholds therefore form one hierarchy, which changes only at the
+finitely many values $J$ takes. Its two ends carry no information: on a connected graph
+the cover at $t=0$ is one community, and at $t=1$ only classes of nodes with identical
+closed neighbourhoods remain, so the most accurate threshold is interior
+(Proposition~\ref{prop:endpoints} of the Supplemental Material).
 
 \subsection{Exact recovery on overlapping ring lattices}
 
 Consider $r$ rings of sizes $s_i\ge 2k+2$, each node joined to its $k/2$ nearest
 neighbours on either side ($k\ge4$ even), and a set of \emph{merges}: a node $v$ of one
 ring is absorbed into a node $u$ of another, which inherits $v$'s edges and so belongs
-to both ground-truth communities. The merges are \emph{isolated} if they identify
-disjoint pairs of original nodes from different rings -- each original node takes part
-in at most one merge -- and, on each original ring, any two merge positions are more
-than $k$ apart.
+to both ground-truth communities. The merges are \emph{isolated} if each original node
+takes part in at most one merge and, on each original ring, any two merge positions are
+more than $k$ apart.
 
 \begin{lemma}[Commonality on the lattice]
 \label{lem:ringJ}
@@ -138,11 +81,8 @@ $u$ on its two different rings. Then
 \end{aligned}
   \label{eq:ringJ}
 \end{equation}
-and every other pair on distinct rings has $J=0$. (With ring degrees $k_a\ne k_b$ and
-$x,z$ on the ring of degree $k_a$, $J_u(d)=(k_a+1-d)/(k_a+k_b+1+d)$ and
-$J(z,y')=1/(k_a+k_b+1)$.)
+and every other pair on distinct rings has $J=0$.
 \end{lemma}
-Closed neighbourhoods are arcs of $k+1$ nodes, and a merged node's is the union of two.
 
 \begin{theorem}[Exact recovery window]
 \label{thm:window}
@@ -159,24 +99,14 @@ if and only if
 Without merges the condition is $0\le t\le J(2)=(k-1)/(k+3)$.
 \end{theorem}
 
-Explicitly, $t^{+}(4)=3/11$, $t^{+}(6)=2/5$ and $t^{+}(k)=k/(2k+2)$ for $k\ge8$, so
-the window widens towards $(0,\tfrac12)$ as $k$ grows. For a single merge between two
-rings, exact computation for $k=4$ to $12$ shows that the window also holds for ring
-sizes down to $s=k+4$ for $k=4$ and $6$, and $s=k+2$ for $k=8$ to $12$; smaller rings
-widen it upward (for $k=4$ and $s=6$ or $7$ it is $(1/9,2/5]$). This covers the rings of
-Fig.~\ref{fig:schematic} ($s=9$, $k=4$).
-
-The two edges of the window have a direct reading. The lower edge is the price of
-overlap: in the noise-free lattice a node shared by two communities is the only bridge
-between them, and the bridge is cut once $t$ exceeds the commonality $1/(2k+1)$ of the
-two communities' members across it. The upper edge is set by the shared nodes
-themselves. For $k\ge8$ it is their commonality $J_u(1)$ with either community, roughly
-halved by their double membership, and above it they drop out of the communities they
-belong to; for $k=4$ and $6$ it is $\max(J(3),J_u(2))<J_u(1)$, and above it the triple
-formed by a shared node and its two nearest neighbours on a ring splits off as a
-spurious community. For one isolated merge between rings of even degrees
-$k_a,k_b\ge4$ and sizes at least $2k_a+2$ and $2k_b+2$, the same argument gives the
-window
+Explicitly, $t^{+}(k)=k/(2k+2)$ for $k\ge8$, so the window widens towards $(0,\tfrac12)$
+as $k$ grows: $(1/17,4/9]$ for $k=8$ and $(1/33,8/17]$ for $k=16$. Both edges have a
+direct reading. The lower edge is the price of overlap: a shared node is the only bridge
+between its two rings, and the bridge is cut once $t$ exceeds the commonality $1/(2k+1)$
+of the rings' members across it. The upper edge is set by the shared nodes themselves:
+their commonality with either ring is roughly halved by their double membership, and
+above it they drop out. For one isolated merge between rings of degrees $k_a$ and $k_b$
+the same argument gives
 \begin{equation}
 \begin{aligned}
   &\frac{1}{k_a+k_b+1}<t\le\min\{U(k_a,k_b),U(k_b,k_a)\},\\
@@ -184,116 +114,68 @@ window
 \end{aligned}
   \label{eq:windowab}
 \end{equation}
-which reduces to Eq.~\eqref{eq:window} for $k_a=k_b$. Because each merge type imposes
-its own window, a family whose isolated merges join rings of several degree pairs is
-recovered exactly if and only if $t$ lies in the intersection of the windows of
-Eq.~\eqref{eq:windowab} over its merge types (for a family in which all these merge
-types occur). For the two-worlds, three-big and equal-$s$ families this is
-$(1/17,4/21]$, against $(1/17,4/9]$ for uniform rings with $k=8$; for the gradient it is
-$(1/17,4/13]$. Once $k_a\ge2k_b^2-2$ the window of a merge between a dense and a sparse
-ring no longer overlaps that of merges between two sparse rings, so no single threshold
-recovers a family that contains both, even without noise. A node formed by merging one
-node from each of $m$ rings (all other merges isolated) gives the window
-$(1/(2k+1),\min\{k/(mk+2),\max((k-2)/(k+4),(k-1)/(mk+3))\}]$, whose upper edge tends to
-$1/m$ as $k$ grows; it is non-empty if and only if $m\le2k$. We verified
-Eqs.~\eqref{eq:window} and~\eqref{eq:windowab} exactly, in rational arithmetic, at and
-on either side of every distinct commonality value, for $k=4,\dots,24$ and for eleven
-degree pairs from $(4,4)$ to $(32,8)$, without a mismatch, and the other window
-statements of this section and of Appendix~\ref{app:proofs} by the same exact
-computation (analysis/exact\_windows.py).
+and a family with several merge types is recovered exactly if and only if $t$ lies in the
+intersection of their windows; once $k_a\ge2k_b^2-2$ the windows of dense--sparse and
+sparse--sparse merges are disjoint, and no single threshold recovers a family with
+both. We verified these windows exactly, in rational arithmetic, for $k=4,\dots,24$ and
+eleven degree pairs, together with the smaller-ring and multi-ring cases of
+Sec.~\ref{app:proofsmore} of the Supplemental Material.
 
 \begin{proposition}[Shared pairs]
 \label{prop:sharedpairs}
 Let $A$ and $B$ be ground-truth communities, and let the pair $\{u_1,u_2\}\subseteq
 A\cap B$ lie in an admissible triple $T_A\subseteq A$ and in an admissible triple
 $T_B\subseteq B$. Then $T_A$ and $T_B$ lie in the same component of $L_t$, whatever the
-commonality between $A\setminus B$ and $B\setminus A$. Consequently $\mathcal C_t$
-differs from the ground truth unless some ground-truth community contains
-$T_A\cup T_B$.
+commonality between $A\setminus B$ and $B\setminus A$.
 \end{proposition}
-The two triples share the pair and so are adjacent in $L_t$. More generally, any
-admissible triple that shares a pair with an admissible triple inside $A$ and a pair
-with one inside $B$ joins them. In particular, three communities that pairwise share
-single nodes $u_{AB},u_{AC},u_{BC}$ are joined whenever $\{u_{AB},u_{AC},u_{BC}\}$ is
-admissible and each of its pairs lies in an admissible triple inside the community that
-contains it, although no two of them share a pair. Two communities that overlap in a
-pair of nodes close to each other in both are thus read as one, much as $k$-clique
-percolation reads communities that share $k-1$ nodes as one~\cite{palla2005uncovering};
-Theorem~\ref{thm:window}'s isolation hypothesis excludes such configurations
-(Appendix~\ref{app:proofs} gives when they fuse two rings). The
-random merges of our benchmarks are not isolated: with $o_n=0.05$
-($\lfloor o_n n_0\rfloor$ merged pairs; Sec.~\ref{sec:benchmarks}), between $6\%$ and
-$61\%$ of the rings of a family are fused with another ring just above the lower edge
-of the window (Table~\ref{tab:doublebonds}). With merges placed to satisfy the
-hypothesis (Sec.~\ref{sec:recovery}), HyperCommon recovers the planted rings exactly at
-every threshold of our grid inside the window.
+Two communities that share a pair of nearby nodes are thus read as one, much as
+$k$-clique percolation reads communities sharing $k-1$ nodes as
+one~\cite{palla2005uncovering}. The random merges of our benchmarks are not isolated:
+with $o_n=0.05$, between $6\%$ and $61\%$ of the rings of a family are fused with
+another just above the lower edge of the window (Table~\ref{tab:doublebonds}).
 
 \begin{corollary}[Pair-disjointness]
 \label{cor:pairdisjoint}
 At every threshold $t$, all admissible triples that contain a given pair of nodes lie in
 one component of $L_t$. In particular, an edge that lies in an admissible triple is
-assigned to exactly one community, the community of its triples, and the communities
-of a node are those of the admitted edges incident to it. The node sets of two
-communities may still share a pair, even an edge; such a pair lies in admissible
-triples of at most one of them.
+assigned to exactly one community, and the communities of a node are those of the
+admitted edges incident to it.
 \end{corollary}
-The corollary describes the kind of overlap HyperCommon represents: no pair of nodes
-binds two communities (a pair binds a community when it lies in one of its admitted
-triples), so each admitted edge is assigned to one community and a node's memberships
-can be read off its admitted edges, as in link communities~\cite{ahn2010link,evans2009line};
-overlap needs no separate membership rule and cannot blur two communities into each
-other through a shared edge. This representation shares an assumption of clique
-percolation and link clustering that ground-truth studies contradict for many social,
-collaboration and information networks, where the overlaps of communities are more
-densely connected than their non-overlapping parts~\cite{yang2014structure,yang2012community};
-in product co-purchasing networks such as Amazon, by contrast, overlaps are
-small~\cite{yang2014overlapping}. The same property sets the limit of the
-representation (Proposition~\ref{prop:sharedpairs}).
+No pair of nodes binds two communities, so a node's memberships can be read off its
+admitted edges, as in link communities~\cite{ahn2010link,evans2009line}. This shares an
+assumption of clique percolation and link clustering that ground truth contradicts in
+many social and collaboration networks, where overlaps are more densely connected than
+the rest of the communities~\cite{yang2014structure,yang2012community}; in co-purchasing
+networks, by contrast, overlaps are small~\cite{yang2014overlapping}.
 
 \subsection{Cost}
 \label{sec:cost}
 
-Admissibility is decided for each of the $W=\sum_v\binom{d_v}{2}$ wedges ($d_v$ the
-degree of $v$), with deduplication of triangles, from three pair commonalities, all of
-which one pass over the centred wedges counts. With $m=|E|$, the expected time and the
-memory are
+Admissibility is decided for each of the $W=\sum_v\binom{d_v}{2}$ wedges from three pair
+commonalities, all counted in one pass over the wedges, so the time and memory are
 \begin{equation}
-  O(n+m+W)=O\bigl(n[1+\langle d^2\rangle]\bigr),
+  O(n+m+W)=O\bigl(n[1+\langle d^2\rangle]\bigr)
   \label{eq:cost}
 \end{equation}
-linear in $n$ when the second moment of the degree distribution is bounded, and
-$O(n^3)$ for a dense graph. Complex networks are far from dense: real networks are
-typically sparse~\cite{newman2018networks}, and large scale-free graphs with
-unconstrained degrees must be sparse~\cite{delgenio2011all}. For a degree distribution
-with a power-law tail of exponent $\gamma$, $\langle d^2\rangle$ is bounded for $\gamma>3$,
-so that the cost is $O(n)$, and grows as $\ln n$ at $\gamma=3$, the exponent of the
-Barab\'asi--Albert model~\cite{albert2002statistical}, so that $W$ grows as $m\log m$
-and the cost is $O(n+m\log m)$; for $2<\gamma<3$ it grows as a power of $n$ set by the largest degree, and
-how often real degree tails are that heavy is
-debated~\cite{broido2019scale,voitalov2019scale}. On sixteen of the seventeen real
-networks of Sec.~\ref{sec:results}, $W/(m\ln m)$ lies between $0.8$ and $13$, as in the
-$\gamma=3$ case. The exception is YouTube, whose hubs reach degree $28\,754$ and give
-$W/(m\ln m)=33$; the degree-ratio pruning below, which on YouTube discards nine wedges in
-ten, brings the wedges that are enumerated and scored to $3.7\,m\ln m$. The same holds
-well beyond these networks (Table~\ref{tab:S-wedges}). On twenty-nine further SNAP
-networks without ground truth, collaboration, communication, social, internet, web, road
-and citation graphs with up to $4\times10^6$ nodes, $W/(m\ln m)$ ranges from $0.15$ on
-road networks to $268$ on a web graph with hubs of degree $8.4\times10^4$, yet after the
-pruning it is at most $12$ on all thirty-two. The excess wedges are those that join a hub
-to neighbours of far smaller degree: their commonality is bounded by the degree ratio
-and cannot reach the threshold, so the cost is that of the $\gamma=3$ case even where $W$
-itself is not. Once the triple
-scores are stored, every additional threshold costs $O(W)$, and nesting
-(Theorem~\ref{thm:nesting}) makes the covers at all thresholds one hierarchy: a sweep of
-the threshold costs one scoring and one component search per threshold, whereas a
-sweep of Leiden's resolution or of Infomap's Markov time costs a full run per value.
-Clique percolation is the costly method: the number of maximal cliques can grow
-exponentially with $n$~\cite{moon1965cliques}, every pair of them is compared, and on
-one of the fourteen smaller networks of Sec.~\ref{sec:real}, an ego network with more
-than $1.4\times10^7$ maximal cliques, it is out of reach. Since $J(u,v)\le\rho(u,v)\equiv(\min(d_u,d_v)+1)/(\max(d_u,d_v)+1)$, a triple
-that contains an edge with $\rho<t_{\min}$ has score below $t_{\min}$ and can be
-discarded before scoring without changing $\mathcal T_t$, and hence $\mathcal C_t$, for
-any $t\ge t_{\min}$, provided the commonalities of the pairs that remain are computed
-from the complete neighbourhoods (Appendix~\ref{app:proofs}). A local query examines the frontier candidates of the
-community it grows, including rejected ones, and reads their neighbourhoods, so its
-cost scales with that neighbourhood rather than with the whole graph.
+for $n$ nodes and $m$ edges. For a power-law degree tail of exponent $\gamma$ this is
+$O(n)$ when $\gamma>3$ and $O(n+m\log m)$ at $\gamma=3$, the exponent of the
+Barab\'asi--Albert model~\cite{albert2002statistical}; for $2<\gamma<3$ it grows as a
+power of $n$ set by the largest degree, and how often real tails are that heavy is
+debated~\cite{broido2019scale,voitalov2019scale}.
+
+In practice the heavy tail matters less than $W$ suggests. Since
+$J(u,v)\le\rho(u,v)\equiv(\min(d_u,d_v)+1)/(\max(d_u,d_v)+1)$, a wedge containing an edge
+with $\rho<t_{\min}$ cannot be admitted at any $t\ge t_{\min}$ and can be discarded
+before scoring, provided the remaining commonalities are computed from the complete
+neighbourhoods (Sec.~\ref{app:proofsmore}). The excess wedges of a heavy tail are exactly
+of this kind: they join a hub to neighbours of far smaller degree. On thirty-two SNAP
+networks with up to $4\times10^6$ nodes, $W/(m\ln m)$ ranges from $0.15$ on road networks
+to $268$ on a web graph with hubs of degree $8.4\times10^4$, but after pruning at
+$t_{\min}=0.02$ it is at most $12$ on all of them (Table~\ref{tab:S-wedges}); on YouTube
+it falls from $33$ to $3.7$. The cost is therefore that of the $\gamma=3$ case even where
+$W$ itself is not. Once the triple scores are stored, every further threshold costs
+$O(W)$, so a whole sweep of the threshold costs one scoring, whereas a sweep of Leiden's
+resolution or Infomap's Markov time costs a full run per value. Clique percolation is the
+costly method: the number of maximal cliques can grow exponentially with
+$n$~\cite{moon1965cliques}, and on one of the fourteen smaller networks of
+Sec.~\ref{sec:real} it is out of reach.

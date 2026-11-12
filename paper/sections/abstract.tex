@@ -2,19 +2,15 @@ Nodes that share most of their neighbours tend to share a community. On this pre
 three nodes, one adjacent to the other two, whose three pairs all reach a commonality
 threshold form an elementary community, and communities are the connected components of
 the resulting 3-uniform hypergraph under shared pairs. The construction, HyperCommon, is
-deterministic, local and nested in its threshold, and no pair of nodes lies in elementary
-communities of two different communities. We derive the exact window of thresholds that
-recovers planted overlapping ring lattices whose shared nodes lie far apart. We compare
-HyperCommon with fourteen other methods on twenty-eight ring-lattice settings that vary
-community size, density, overlap and noise model. With every parameter chosen without
-labels by overlapping modularity (Newman--Girvan modularity for partitions), HyperCommon
-has the highest mean Omega index in fifteen of them, most clearly where communities of
-unequal size and density overlap, and is level with the best other method in six; it
-trails mainly on dense rings with little overlap and on a gradient of ring sizes. With
-each method's best parameter it leads in eleven and trails in thirteen, and with one
-parameter frozen per family it leads in one. It trails on all eight LFR families, whose
-communities are random graphs internally, and once a tenth (with labels) or three tenths
-(without) of each ring's edges are rewired internally, while the communities are still
-clustered. On seventeen real networks of
-up to $1.1\times10^6$ nodes, the threshold chosen without labels keeps a median 94\% of
-the best threshold's F1, but on most of them another method is more accurate.
+deterministic, local and nested in its threshold, and no pair of nodes binds two
+communities. Its cost is linear in the number of wedges, which an exact pruning of hub
+wedges keeps below $12\,m\ln m$ on thirty-two real networks with $m$ edges. We derive the
+exact window of thresholds that recovers planted overlapping ring lattices. Compared with
+fourteen other methods, every parameter chosen without labels, HyperCommon is the most
+accurate in fifteen of twenty-eight ring-lattice settings and level in six, most clearly
+where communities of unequal size and density overlap. It trails on all eight families
+of overlapping LFR graphs, and on the rings once a tenth (with labels) or three tenths
+(without) of their edges are rewired internally: it needs communities whose members share
+many neighbours. On seventeen real networks of up to $1.1\times10^6$ nodes, the threshold
+chosen without labels keeps a median 94\% of the best threshold's F1, but on most of
+them another method is more accurate.

@@ -347,7 +347,6 @@ def more_picks(metric):
 
 
 def more_table():
-    out_all = []
     for metric, label, mname in (("f1", "tab:realmore", "best-match F1"), ("omega", "tab:realmoreomega", r"$\Omega$")):
         best, free, failed = more_picks(metric)
         fails = ", ".join(f"{NAME.get(m, m)} on {dict(MORE_NETS)[n]}" for n, m in failed.itertuples(index=False))
@@ -368,7 +367,7 @@ def more_table():
                r"count; RA, resource allocation. College football: the conference labels of "
                r"Ref.~\cite{girvan2002community} are those of the 2001 season while the games are from the 2000 "
                r"season; corrected labels are given in Ref.~\cite{evans2010clique}. Every method on every network "
-               r"is in Tables~\ref{tab:S-realnet-f1-best}--\ref{tab:S-realnet-coverage-free}.")
+               r"is in Tables~\ref{tab:S-realnet-f1-best} and~\ref{tab:S-realnet-f1-free}.")
         if metric == "omega":
             cap = r"As Table~\ref{tab:realmore}, scored by $\Omega$ on the labelled nodes."
         out = [r"\begin{table*}[t]", r"\caption{" + cap + "}", r"\label{" + label + "}", r"\footnotesize",
@@ -401,8 +400,7 @@ def more_table():
             rows.append(row)
         out += [r"\end{tabular}", r"\end{ruledtabular}", r"\end{table*}"]
         pd.DataFrame(rows).to_csv(os.path.join(DATA, f"real_more_summary2_{metric}.csv"), index=False)
-        out_all += out + [""]
-    write("table_real_more.tex", out_all)
+        write("table_real_more.tex" if metric == "f1" else "table_real_more_omega.tex", out)
 
 
 F_SHORT = {"jaccard": "J", "cosine": "cos", "max_norm": r"$I/\max$", "min_norm": r"$I/\min$", "i2_over_u": r"$I^2/U$",

@@ -3,109 +3,53 @@
 \label{sec:intro}
 % ---------------------------------------------------------------------------
 
-Most real networks are organised into groups of nodes that are more densely connected
-to one another than to the rest of the network~\cite{girvan2002community,newman2018networks,fortunato2010community,fortunato2022twenty}.
-In social, biological and information networks these groups overlap: a person belongs
-to a family, a workplace and a sports club, and a protein to several complexes. Methods
-that partition the nodes cannot represent this, and the many methods designed for
+Most real networks are organised into groups of nodes that are more densely connected to
+one another than to the rest of the
+network~\cite{fortunato2010community,fortunato2022twenty},
+and in social, biological and information networks these groups overlap. Methods for
 overlapping communities~\cite{xie2013overlapping,fortunato2016community} differ less in
-how they search than in what they take a community to be. Modularity
-optimisation~\cite{newman2004finding,blondel2008fast,traag2019leiden} compares a group
-with a global null model, flow-based methods~\cite{rosvall2008maps} with a random
-walker's trajectories, statistical
-inference~\cite{peixoto2014hierarchical,peixoto2015model,ball2011efficient,yang2013overlapping}
-with a generative model, OSLOM~\cite{lancichinetti2011finding} with the significance of each
-group against a configuration-model null, label propagation~\cite{raghavan2007near,gregory2010finding,xie2011slpa} with a
-consensus among neighbours, and local methods~\cite{clauset2005finding,lancichinetti2009lfm}
-with a fitness grown from a seed. No definition is best on every network, in
-theory~\cite{peel2017ground} or across real data~\cite{ghasemian2020evaluating}; the
+how they search than in what they take a community to be: a group compared with a global
+null model~\cite{newman2004finding,traag2019leiden}, with a random
+walker's trajectories~\cite{rosvall2008maps}, with a generative
+model~\cite{peixoto2014hierarchical,ball2011efficient},
+with its significance against a configuration-model null~\cite{lancichinetti2011finding},
+or with a consensus among neighbours~\cite{raghavan2007near,gregory2010finding,xie2011slpa}.
+No definition is best on every network~\cite{peel2017ground,ghasemian2020evaluating}; the
 useful question about a method is which structure it captures, and why.
 
 A natural definition comes from the inside: two friends who share most of their friends
 are, more likely than not, in the same circle. This is triadic
-closure~\cite{granovetter1973strength,kossinets2006empirical}. Real networks are highly
-clustered~\cite{watts1998collective}, so neighbourhoods overlap, and the overlap is
-larger between members of a group than across groups. Since triadic closure and
-community structure both produce shared neighbourhoods, and separating the two is itself
-an inference problem~\cite{peixoto2022disentangling}, Sec.~\ref{sec:commonality} tests
-the premise on networks with recorded groups. We call the overlap of two closed
-neighbourhoods the \emph{commonality} of the pair. Pairwise neighbourhood similarity is
-an old tool -- Jaccard's coefficient~\cite{jaccard1912distribution}, vertex
-similarity~\cite{leicht2006vertex}, the local indices of link
-prediction~\cite{zhou2009predicting,lu2011link} and their global corrections for
-indirect similarity~\cite{barzel2013network,feizi2013network}, SCAN~\cite{xu2007scan},
-link communities~\cite{ahn2010link,evans2009line}, and clique and $k$-truss
-communities~\cite{palla2005uncovering,derenyi2005clique,farkas2007weighted,cohen2008trusses,huang2014querying}
--- but a single pair is a weak and degree-confounded signal; what matters is how
-pairwise evidence is combined.
+closure~\cite{granovetter1973strength}. Real networks are highly
+clustered~\cite{watts1998collective}, and neighbourhoods overlap more between members of
+a group than across groups, although separating the two effects is itself an inference
+problem~\cite{peixoto2022disentangling}. We call the overlap of two closed neighbourhoods
+the \emph{commonality} of the pair. Pairwise neighbourhood similarity is an old
+tool~\cite{jaccard1912distribution,leicht2006vertex,zhou2009predicting,barzel2013network,feizi2013network},
+but a single pair is a weak and degree-confounded signal; what matters is how pairwise
+evidence is combined.
 
 We combine it through triples. Three nodes of which one is adjacent to the other two,
 and whose three pairs all have commonality at least $t$, form an elementary community;
-two such triples belong to the same community when they share a pair. The
-communities are therefore the connected components of the two-node-overlap graph of
-a 3-uniform hypergraph, which gives the method its name, HyperCommon. Higher-order
-structures are increasingly seen as natural units of network
-organisation~\cite{benson2016higher,battiston2020networks,kovalenko2021growing,chodrow2021generative};
+two such triples belong to the same community when they share a pair. The communities
+are the connected components of the two-node-overlap graph of a 3-uniform hypergraph,
+which gives the method its name, HyperCommon. Higher-order structures are increasingly
+seen as natural units of network
+organisation~\cite{benson2016higher,battiston2020networks};
 here the hypergraph is built from pairwise commonality rather than given. A node shared
-by two communities belongs to triples in both, so overlap needs no extra machinery. The
-construction differs from 3-clique
-percolation~\cite{palla2005uncovering,kumpula2008sequential} in two ways that we test
-separately: open wedges (three nodes joined by exactly two edges) are admitted, as in
-triad percolation~\cite{zhang2018triad}, so communities need not be dense in triangles,
-and every pair of a triple -- including the pair that is not an edge, which link
-communities test alone~\cite{ahn2010link} -- must pass the commonality test.
+by two communities belongs to triples in both, so overlap needs no extra machinery.
 
-This paper makes four contributions.
-\begin{enumerate}
-\item[(i)] \emph{The premise, tested.} On four networks with recorded memberships, edges
-whose endpoints share a recorded group have higher commonality than edges whose
-labelled endpoints share none -- on the three large ones at every endpoint degree --
-once unlabelled nodes are no longer counted as evidence of separation (counting them
-reverses the conclusion on DBLP). Every member of a family of neighbourhood-overlap
-functions carries the signal, and the most informative one depends on the network
-(Sec.~\ref{sec:commonality}).
-\item[(ii)] \emph{A construction with exact guarantees.} HyperCommon combines the
-non-adjacent-pair test of link communities with the edge tests of thresholded clique
-percolation and SCAN. Like any threshold percolation of locally tested triples, its
-cover is independent of processing order, computable locally from any seed triple and
-nested in the threshold; no pair of nodes lies in admitted triples of two different
-communities, so every edge of an admitted triple is assigned to exactly one community. On overlapping ring lattices
-with isolated shared nodes we derive the exact window of thresholds that recovers the
-planted communities, also for unequal densities, and an exact implementation confirms it
-(Secs.~\ref{sec:method}, \ref{sec:theory} and~\ref{sec:recovery}).
-\item[(iii)] \emph{A benchmark under four protocols.} We compare HyperCommon with three
-ablations and fourteen methods on the benchmarks (thirteen on the fourteen smaller real
-networks, fewer on the three largest), among them link communities and Leiden with the
-Constant Potts Model, on ring lattices, overlapping LFR
-graphs~\cite{lancichinetti2008benchmark,lancichinetti2009benchmarks} and seventeen real
-networks (Secs.~\ref{sec:protocol} and~\ref{sec:results}); without the test of the
-non-adjacent pair, accuracy falls in all 36 benchmark settings, with and without labels.
-With every parameter chosen without labels by overlapping modularity, which for
-partitions is the Newman--Girvan modularity, HyperCommon has the highest mean Omega
-index on 15 of the 28 ring settings and is level on 6 more; it trails on dense rings
-with little overlap and on one setting of rings with unequal degrees, where the Leiden
-objectives lead, and on the gradient of ring sizes, where link communities lead. At
-each method's own default or selection rule it leads on 17 of the 28, at each method's
-best parameter on 11, and with one parameter frozen per family on 1. It trails on all
-eight LFR families, and on the rings once a tenth (with labels) or three tenths
-(without) of each community's edges are rewired internally, long before the communities
-become random graphs. Controls (degree-preserving rewiring, split overlap, random
-geometric communities) tie this to the lattice-like geometry of the communities rather
-than to changes of degree or to the way they share nodes; with hubs inside the lattice
-communities HyperCommon's own accuracy changes by at most 0.03, but Leiden then leads on
-the dense rings and the Constant Potts Model on two worlds, with and without labels. On
-clustered graphs without planted communities HyperCommon, like every method tested,
-reports many.
-\item[(iv)] \emph{Scale and parameter choice.} The wedges are scored once and every
-threshold is read off the scores, at a cost of $O(n+m+W)$ for $n$ nodes, $m$ edges and
-$W$ wedges, which is $O(n+m\log m)$ for the degree exponent $\gamma=3$ of the
-Barab\'asi--Albert model, with $W$ within $0.8$--$13$ times $m\ln m$ on sixteen of
-seventeen real networks and, after an exact pruning of hub wedges, at most $12\,m\ln m$
-on all of thirty-two SNAP networks; a whole sweep
-of the threshold costs one scoring, where Leiden and Infomap need one run per resolution,
-and it runs on the full YouTube graph ($1.1\times10^6$ nodes) on one core
-(Sec.~\ref{sec:cost}). On seventeen real
-networks the label-free threshold retains a median 94\% of the best threshold's F1,
-although other methods are more accurate on most of them, and the best commonality
-function differs between networks (Sec.~\ref{sec:real}).
-\end{enumerate}
+The paper makes three contributions. (i)~\emph{The premise, tested}: on four networks
+with recorded memberships, edges inside recorded groups have higher commonality than
+edges between them, on the three large ones at every endpoint degree, once unlabelled nodes are no longer
+counted as evidence of separation (Sec.~\ref{sec:commonality}). (ii)~\emph{A
+construction with exact guarantees}: HyperCommon is independent of processing order,
+local and nested in its threshold, every edge it admits belongs to exactly one
+community, and on overlapping ring lattices we derive the exact window of thresholds
+that recovers the planted communities (Secs.~\ref{sec:method} and~\ref{sec:theory}).
+Its cost is linear in the number of wedges, and we show why that number stays near
+$m\ln m$ on real networks with hubs (Sec.~\ref{sec:cost}). (iii)~\emph{A map of where it
+works}: against fourteen other methods on ring lattices, LFR graphs and seventeen real
+networks (Secs.~\ref{sec:protocol} and~\ref{sec:results}), HyperCommon leads where
+communities are lattice-like and overlap with unequal sizes and densities, and trails
+where communities are random graphs internally, because their members share too few
+neighbours.

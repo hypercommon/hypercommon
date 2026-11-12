@@ -1,36 +1,35 @@
 % ---------------------------------------------------------------------------
-% Supplemental Material (S-numbered tables and figures)
+% Supplemental Material (S-numbered tables, figures and sections)
 % ---------------------------------------------------------------------------
 \setcounter{table}{0}
 \setcounter{figure}{0}
 \renewcommand{\thetable}{S\arabic{table}}
 \renewcommand{\thefigure}{S\arabic{figure}}
+\renewcommand{\thesection}{S\arabic{section}}
 \renewcommand{\theHtable}{S\arabic{table}}
 \renewcommand{\theHfigure}{S\arabic{figure}}
+\renewcommand{\theHsection}{S\arabic{section}}
 
-This Supplemental Material completes the main text. It gives the details of the
-empirical commonality analysis of Sec.~\ref{sec:commonality} with the full figures of
-the four networks; the details of Sec.~\ref{sec:results} that the main text summarises,
-with the benchmarks under the label-free protocol (Table~\ref{tab:labelfree}) and the
-robustness to noise (Table~\ref{tab:robust}); the benchmarks under the oracle,
-frozen and native protocols (Tables~\ref{tab:oracle}--\ref{tab:native}); ONMI and
-per-community recovery of the oracle and label-free covers
-(Tables~\ref{tab:onmi-oracle}--\ref{tab:reclarge}); coverage and number of communities
-of every method (Tables~\ref{tab:S-coverage-oracle}--\ref{tab:S-ncomms-label-free}); the
-paired intervals behind the scorecard (Table~\ref{tab:S-intervals}); the label-free
-selector against the oracle (Table~\ref{tab:S-selector}); the grid-edge audit
-(Table~\ref{tab:S-gridedge}); the control families (Table~\ref{tab:S-controls}) and the
-null graphs without planted communities (Table~\ref{tab:S-nulls}); the commonality family
-on the benchmarks (Tables~\ref{tab:familyoracle} and~\ref{tab:familyfree}); the SNAP
-graphs detected on their induced subgraphs (Table~\ref{tab:realinduced}) and scored by F1
-against the distinct node sets (Table~\ref{tab:S-realnet-dedup}); the wedge counts of
-thirty-two SNAP networks (Table~\ref{tab:S-wedges}); every method on the
-fourteen smaller networks
-(Tables~\ref{tab:S-realnet-f1-best}--\ref{tab:S-realnet-coverage-free}); and the numbers
-quoted in the text that appear in no table, with their sources
-(Table~\ref{tab:S-diagnostics}).
-Figure~\ref{fig:benchmarksoracle} shows the panels of Fig.~\ref{fig:benchmarks} under
-the oracle protocol.
+This Supplemental Material gives the data and benchmark settings, the details of the
+commonality analysis of Sec.~\ref{sec:commonality}, and the full tables behind
+Sec.~\ref{sec:results}. Every further number (the benchmarks scored by all-community
+recovery, the selector and grid-edge diagnostics, the SNAP graphs on their induced
+subgraphs and against distinct node sets, and every method's $\Omega$ and coverage on
+the smaller real networks) is in the repository named in the main text, with the script
+that produces it.
+
+\input{sections/appendix}
+\clearpage
+
+\input{sections/supp_proofs}
+\clearpage
+
+\section{Commonality in empirical networks}
+\input{sections/supp_commonality}
+\clearpage
+
+\section{Benchmarks}
+\input{sections/supp_results_more}
 
 \begin{figure*}[p]
   \centering
@@ -39,11 +38,6 @@ the oracle protocol.
   graph (oracle protocol).}
   \label{fig:benchmarksoracle}
 \end{figure*}
-
-\input{sections/supp_commonality}
-\clearpage
-
-\input{sections/supp_results_more}
 \clearpage
 
 \input{sections/supp_benchmarks}
@@ -55,13 +49,8 @@ the oracle protocol.
 \input{sections/table_family}
 \clearpage
 
-\input{sections/table_real_induced}
-\clearpage
-
+\section{Real networks}
 \input{sections/table_wedges}
-\clearpage
-
+\input{sections/table_real_more}
+\input{sections/table_real_more_omega}
 \input{sections/supp_real}
-\clearpage
-
-\input{sections/supp_diagnostics}

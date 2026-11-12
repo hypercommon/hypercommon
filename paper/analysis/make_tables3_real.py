@@ -97,29 +97,24 @@ CAP_FULL = (r"Detection on the full SNAP Amazon (334\,863 nodes), DBLP (317\,080
             r"free choice taken over all of them. Leiden at $\gamma=1$ and Infomap at Markov time 1 are the two "
             r"methods at their defaults (one parameter, so best and free coincide). Connected components are a "
             r"trivial reference. On YouTube HyperCommon uses degree-ratio pruning, exact for every $t\ge0.02$ "
-            r"(Sec.~\ref{sec:cost}), which excludes link communities and the other functions; clique percolation "
-            r"and SLPA are compared on the induced subgraphs (Table~\ref{tab:realinduced}), and SCAN, Walktrap, "
-            r"DEMON and ANGEL were not run on these graphs, to bound the computing time of the large runs. "
-            r"Stochastic methods: one seed. F1 against the distinct node sets is in "
-            r"Table~\ref{tab:S-realnet-dedup}; it changes F1 by at most 0.03 (at most 0.01 for HyperCommon and "
-            r"its variants) and changes the order of the methods in a column only for OSLOM on Amazon, which then "
-            r"moves ahead of HC$_f$ and the two-test variant with labels (0.883 against 0.874 and 0.878) and "
-            r"ahead of HC$_f$ and triangles only without labels (0.847 against 0.844 and 0.828, level with "
-            r"HyperCommon). The top-5000 lists of Amazon and DBLP "
+            r"(Sec.~\ref{sec:cost}), which excludes link communities and the other functions. Clique percolation "
+            r"and SLPA were run only on the subgraphs induced by the labelled nodes, and SCAN, Walktrap, DEMON and "
+            r"ANGEL not at all, to bound the computing time of the large runs. Stochastic methods: one seed. "
+            r"Scored against the distinct node sets of the recorded communities instead, F1 changes by at most "
+            r"0.03, and OSLOM moves above two of the HyperCommon variants on Amazon (both in the repository). "
+            r"The top-5000 lists of Amazon and DBLP "
             r"frequently consist of near-cliques~\cite{chen2024parallel}, which can favour methods that find "
             r"small dense groups. Bold: best in column.")
 
 
 def supp_real():
-    out = real_table("full", "f1_dedup", "tab:S-realnet-dedup",
-                     r"As Table~\ref{tab:real}, with F1 scored against the distinct node sets of the recorded "
-                     r"communities rather than against the top-5000 lists, which repeat some sets.")
+    out = []
     raw = pd.read_csv(os.path.join(RES, "real_more_v3.csv"), dtype={"param": str})
     d = raw[raw.error.isna()].copy()
     key = ["network", "method", "seed"]
     meths = ["hc", "hc_econn", "hc_tri", "hc_2test"] + T2.MORE_OTHERS
     names = dict(T2.METHODS) | {"walktrap": "Walktrap", "scan_j": "SCAN-J", "oslom": "OSLOM"}
-    for metric, mname in (("f1", "best-match F1"), ("omega", r"$\Omega$"), ("coverage", "coverage")):
+    for metric, mname in (("f1", "best-match F1"),):
         for prot in ("best", "free"):
             col = metric if prot == "best" else "eq"
             if metric == "coverage" and prot == "best":

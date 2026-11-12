@@ -10,6 +10,11 @@
 % labels of the main text (Tables I-..., Figs. 1-..., Secs., Eqs.); compile main.tex first
 \externaldocument{main}
 
+\newtheorem{lemma}{Lemma}
+\newtheorem{proposition}{Proposition}
+\renewcommand{\thelemma}{S\arabic{lemma}}
+\renewcommand{\theproposition}{S\arabic{proposition}}
+
 \begin{document}
 
 \title{Supplemental Material for: Overlapping communities as connected components of a

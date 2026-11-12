@@ -3,9 +3,9 @@
 \label{app:proofs}
 % ---------------------------------------------------------------------------
 
-This appendix proves the results of Sec.~\ref{sec:theory} and gives the details of the
-ring-lattice windows, of the fusion of rings through shared pairs and of the cost
-estimate.
+This appendix proves the results of Sec.~\ref{sec:theory}; the two ends of the
+hierarchy, the further ring-lattice windows, the fusion of rings and the cost estimate
+are in Sec.~\ref{app:proofsmore} of the Supplemental Material.
 
 \subsection{Determinism, locality and nesting}
 
@@ -28,29 +28,6 @@ $\mathcal T_{t_2}\subseteq\mathcal T_{t_1}$. Adjacency (sharing two nodes) does 
 involve $t$ either, so $L_{t_2}$ is induced. A connected subgraph of $L_{t_2}$ is
 connected in $L_{t_1}$, so each component of $L_{t_2}$, and the union of its triples,
 lies inside a single component of $L_{t_1}$.
-\end{proof}
-
-\subsection{The two ends of the hierarchy}
-
-\begin{proof}[Proof of Lemma~\ref{lem:constant}]
-$\pi_{\mathcal C}$ is concentrated on $c$, so $\Omega_e=\pi_{\mathcal G}(c)<1$; a pair agrees
-exactly when $c_{\mathcal G}(i,j)=c$, so $\Omega_u=\pi_{\mathcal G}(c)$ as well.
-\end{proof}
-
-\begin{proof}[Proof of Proposition~\ref{prop:endpoints}]
-(i) At $t=0$ every wedge is admissible. Two edges sharing an endpoint form a wedge, and
-the wedges built on a common edge share its endpoints, so a walk in the line graph of
-$G$ is a walk in $L_0$. The line graph of a connected graph is connected, and every
-node of a connected graph with $|V|\ge3$ lies on a wedge. The single community $V$
-gives $c_{\mathcal C}\equiv1$, and Lemma~\ref{lem:constant} applies.
-(ii) $J(u,v)=1$ iff $N[u]=N[v]$, an equivalence relation whose classes are cliques; a
-triple is admissible at $t=1$ iff it lies within one class, and triples within one
-class are connected in $L_1$. Without classes of size at least three, $c_{\mathcal C}\equiv0$
-and Lemma~\ref{lem:constant} applies. For the final claim: the cover changes only at
-the finitely many distinct triple scores, so $\Omega(t)$ takes finitely many values on
-$[0,1]$ and its maximum $\Omega^\star$ is attained; under the stated hypotheses
-$\Omega(0)=\Omega(1)=0$ by (i) and (ii), so since $\Omega^\star\ge\Omega(t)>0$ every
-maximiser lies in $(0,1)$.
 \end{proof}
 
 \subsection{Ring lattices}
@@ -125,22 +102,6 @@ consecutive nodes contains at most one merge position and that nodes of differen
 share at most one merged neighbour. For a ring pair merged twice the separation $k+1$ is
 sharp: shared nodes $k$ apart on both rings raise the lower edge to $1/k$.
 
-\emph{Unequal degrees.} For one isolated merge between rings of even degrees
-$k_a,k_b\ge4$ and sizes at least $2k_a+2$ and $2k_b+2$, the same argument applies with
-the commonalities of Lemma~\ref{lem:ringJ} for unequal degrees. The cross pair has
-$J=1/(k_a+k_b+1)$, which gives the lower edge of Eq.~\eqref{eq:windowab}. On the ring of
-degree $x$, with $y$ the degree of the other ring, the upper-edge argument runs with
-$J_u(1)=x/(x+y+2)$, $J_u(2)=(x-1)/(x+y+3)$ and $J(3)=(x-2)/(x+4)$, which gives
-$U(x,y)$; both rings must be recovered, which gives the minimum over $U(k_a,k_b)$ and
-$U(k_b,k_a)$.
-
-\emph{Obstruction for unequal degrees.} A shared node between a dense and a sparse
-community is held more weakly by the sparse one, so the window of such a merge narrows
-and moves down, with upper edge $k_b/(k_a+k_b+2)$ for $k_a\gg k_b$. It cannot overlap
-the window of merges between two sparse rings, whose lower edge is $1/(2k_b+1)$, once
-$k_a\ge2k_b^2-2$: beyond that degree contrast no single threshold recovers a family that
-also contains merges between two sparse rings, even without noise.
-
 \subsection{Shared pairs and pair-disjointness}
 
 \begin{proof}[Proof of Proposition~\ref{prop:sharedpairs}]
@@ -148,52 +109,8 @@ If $T_A\ne T_B$, the two triples share exactly the two nodes $u_1,u_2$ and are a
 in $L_t$.
 \end{proof}
 
-\emph{Fusion of rings.} Connectivity through shared pairs is what lets a community grow
-through its own open wedges, and Proposition~\ref{prop:sharedpairs} is its counterpart.
-On ring lattices, three communities that pairwise share single
-nodes are joined when two of the three shared-node pairs are adjacent and the third lies
-within distance $k$; for $k=8$ and pairwise adjacent shared nodes two apart, the rings
-are recovered only for $4/13<t\le4/9$, and for $k=4$ they are never recovered. Two rings
-joined only through two shared merged nodes, with no other merge within ring distance
-$k$ of them, can be fused above the lower edge $1/(2k+1)$ only when those nodes lie
-within ring distance $k$ of each other on both rings, or within $k/2$ on one ring and
-within $3k/2$ on the other; for $k=8$, shared nodes $2$ apart on one ring and $11$ apart
-on the other fuse the rings for $t\le3/23$. Theorem~\ref{thm:window}'s isolation
-hypothesis excludes both cases. Whether fusion then occurs depends on the threshold,
-since the merge lowers the commonality of the shared pair: two rings with $s=50$, $k=8$
-that share two nodes four positions apart are fused at small $t$ but recovered
-separately at $t=0.4$, where the shared pair, with $J=1/3$, is not admitted.
-
 \begin{proof}[Proof of Corollary~\ref{cor:pairdisjoint}]
 Two distinct admissible triples that contain the same pair share exactly two nodes and
 are therefore adjacent in $L_t$, so all admissible triples through the pair lie in one
 component.
 \end{proof}
-
-\subsection{Cost}
-
-Every commonality needed is available from the wedges themselves: for a pair $\{a,b\}$,
-$|N[a]\cap N[b]|$ is the number of common neighbours of $a$ and $b$, that is of centred
-wedges $a$--$c$--$b$ (a triangle contributes once to each of its three pairs), plus $2$
-if $a\sim b$, so one pass over the centred wedges, with pairs indexed by hashing, counts
-all of them. Our implementation finds components on the incidence graph between admitted
-triples and their pairs over a grid of thresholds. Alternatively, as in sequential clique
-percolation~\cite{kumpula2008sequential}, a single union--find sweep over the triples in
-decreasing order of score builds the merge tree of the triple components at all
-thresholds in $O(W\log W)$, from which the cover at any one threshold is read in $O(W)$
-more. For heavy-tailed degree distributions the hubs dominate through $W$, as for
-every triangle-based method.
-
-\emph{Degree-ratio pruning.} In the pruning of Sec.~\ref{sec:cost}, every wedge through
-an edge with $\rho<t_{\min}$ is discarded. Common neighbours reached through discarded
-edges must still be counted, for example by intersecting the adjacency lists of the kept
-pairs; counting only the kept wedges would underestimate $J$. This is the size filter of
-exact set-similarity joins~\cite{arasu2006efficient,bayardo2007scaling}, applied to
-closed neighbourhoods of sizes $d_u+1$ and $d_v+1$. The pruning applies to every rule
-that tests the edges of a wedge, including our three ablations, but not to link
-communities, which score a wedge by its non-adjacent pair alone, whose commonality is
-not bounded by the degrees of the wedge's edges, so every wedge through a hub has to be
-enumerated. Our implementation counts the common neighbours of the kept pairs from the
-full adjacency matrix, and pruned and unpruned runs give identical covers on its test
-graphs, which include a hub joined to many leaves, and on the full Amazon and DBLP graphs
-at all 30 thresholds $t\ge0.02$ of our grid.

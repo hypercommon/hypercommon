@@ -179,7 +179,7 @@ def scorecard(S, P):
            r"graphs; native: each method's own default or selection rule where it has one "
            r"(Sec.~\ref{sec:protocol}), the label-free choice otherwise. Counts are not corrected for "
            r"multiplicity. Method abbreviations as in Table~\ref{tab:labelfree}; the full tables are "
-           r"Tables~\ref{tab:labelfree} and~\ref{tab:oracle}--\ref{tab:native}.}",
+           r"Tables~\ref{tab:labelfree} and~\ref{tab:oracle} (frozen and native in the repository).}",
            r"\label{tab:scorecard}", r"\scriptsize\setlength{\tabcolsep}{3pt}", r"\begin{ruledtabular}",
            r"\begin{tabular}{llcccc}",
            r"Family & $o_n$ & " + " & ".join(n for _, n in PROTS) + r" \\", r"\hline"]
@@ -351,7 +351,7 @@ def main():
                     r"($+$), contains zero ($=$) or lies below zero ($-$). Bold: best in row, within 0.005. "
                     + ci("label_free"))
     write("table_benchmarks.tex", lf)
-    sup = []
+    sup, extra = [], []  # extra: written to extra_benchmarks.tex, kept in the repository only
     for prot, label, txt in (
             ("oracle", "tab:oracle", r"every method at its best parameter on each test graph (oracle protocol)"),
             ("frozen", "tab:frozen", r"each method's parameter frozen on three calibration graphs per noise level "
@@ -360,15 +360,15 @@ def main():
                                      r"$\gamma=1$, L-CPM at $\gamma$ equal to the edge density, link communities "
                                      r"at maximum partition density, Infomap at Markov time 1, SLPA at $r=0.1$, OSLOM at $t=0.1$, "
                                      r"SBM at the finest level of its hierarchy, and the label-free choice for the methods without one (native protocol)")):
-        sup += full_table(S, P, prot, "omega", label, r"As Table~\ref{tab:labelfree}, with " + txt + ". " + ci(prot)
+        (sup if prot == "oracle" else extra).__iadd__(full_table(S, P, prot, "omega", label, r"As Table~\ref{tab:labelfree}, with " + txt + ". " + ci(prot)
                           + (FROZEN_DASH if prot == "frozen" else ""),
-                          star=False) + [""]
+                          star=False) + [""])
     for prot, nm in (("oracle", "oracle"), ("label_free", "label-free")):
         sup += full_table(S, P, prot, "onmi", f"tab:onmi-{nm}",
                           rf"ONMI (McDaid \emph{{et al.}}, max normalisation) of the {nm} covers of "
                           rf"Table~\ref{{{'tab:oracle' if prot == 'oracle' else 'tab:labelfree'}}}; superscripts on "
                           r"HC as in Table~\ref{tab:labelfree}, for ONMI.", star=False) + [""]
-        sup += full_table(S, P, prot, "rec_mean", f"tab:S-allcomm-{nm}",
+        extra += full_table(S, P, prot, "rec_mean", f"tab:S-allcomm-{nm}",
                           rf"Per-community recovery over all true communities (mean over true communities of the "
                           rf"Jaccard similarity with the best-matching detected community) of the {nm} covers; "
                           r"superscripts as in Table~\ref{tab:labelfree}, for this score.", star=False) + [""]
@@ -383,17 +383,16 @@ def main():
                           r"Numbers of rings larger than the median size: $10$, $10$, $5$, $3$, $5$ (families "
                           r"in order)."), rows=uneq, marks=False,
                           star=False) + [""]
-    for prot, nm in (("oracle", "oracle"), ("label_free", "label-free")):
+    for prot, nm in (("label_free", "label-free"),):
         sup += full_table(S, P, prot, "coverage", f"tab:S-coverage-{nm}",
                           rf"Coverage (fraction of nodes in at least one community) of the {nm} covers.",
                           marks=False, star=False, bold=False) + [""]
-        sup += full_table(S, P, prot, "n_comms", f"tab:S-ncomms-{nm}",
+        extra += full_table(S, P, prot, "n_comms", f"tab:S-ncomms-{nm}",
                           rf"Number of communities of the {nm} covers (planted: Table~\ref{{tab:shapes}}).",
                           marks=False, fmt="%.0f", star=False, bold=False) + [""]
-    sup += intervals_table(V) + [""]
-    D = selected()
-    sup += selector_table(S, D) + [""] + gridedge_table(D)
+    sup += intervals_table(V)
     write("supp_benchmarks.tex", sup)
+    write("extra_benchmarks.tex", extra)
 
 
 if __name__ == "__main__":
