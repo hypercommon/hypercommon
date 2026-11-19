@@ -1,7 +1,7 @@
 """
 Summary of the detection runs on the lattice-like real networks
-(bench/real_lattice_detection.py): Hi-C contact maps with contact domains and protein
-contact networks with CATH domains, each with its distance- or sequence-only control.
+(bench/real_lattice_detection.py), any of its kinds (hic, sketch, image, tracks, geo,
+protein, transit, streets, tssb, spatial, text), each with its position-only control.
 
 For every graph and method: the best value over the parameter grid (best) and the value at
 the parameter of largest overlapping modularity (free), stochastic methods averaged over
@@ -10,7 +10,8 @@ the best other method chosen per set (the method with the highest mean), with a 
 bootstrap interval over the graphs (paired by graph).
 
     python real_lattice_summary.py [kinds...]     (default: hic protein)
-Writes figures/data/real_lattice_summary.csv and prints the tables.
+Writes figures/data/real_lattice_summary.csv (default kinds) or
+real_lattice_summary_<kinds>.csv, and prints the tables.
 """
 import os
 

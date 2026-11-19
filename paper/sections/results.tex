@@ -31,7 +31,7 @@ that wedge throughout it.
 
 When merges fall at random they are rarely isolated, and rings fuse through nearby
 merged nodes (Proposition~\ref{prop:sharedpairs}); the noise-free curve still stays
-between $0.92$ and $0.99$ across the window for $k=8$ [Fig.~\ref{fig:omegat}(a)]. As
+between $0.91$ and $0.99$ across the window for $k=8$ [Fig.~\ref{fig:omegat}(a)]. As
 noise grows the best threshold moves down towards $t\approx0.1$, so the threshold has to
 be chosen per graph. The overlapping modularity of the cover chooses it well: the
 label-free threshold attains at least $95\%$ of the best threshold's mean $\Omega$ on 27
@@ -103,10 +103,10 @@ over the test graphs, and all 9 have rings of unequal size or preferential
 rewiring: on two worlds it stays above $0.6$ up to $p=0.68$, against $0.63$
 for the next method, on three big, many small up to $0.62$ against $0.57$,
 and on two worlds under preferential rewiring up to $0.64$ against $0.61$.
-On uniform rings of degree $8$ the leading methods are level. HyperCommon trails where
+On uniform rings of degree $8$ under uniform rewiring the leading methods are level. HyperCommon trails where
 the rings are dense: on uniform rings of degree $16$ Leiden holds to $p=0.66$
 against $0.59$ ($o_n=0$), and the two Leiden variants lead on the dense, even
-family and on rings of equal size and unequal degree. It also trails on the gradient,
+family and on rings of equal size and unequal degree with overlap. It also trails on the gradient,
 where the label-free selector picks too fine a cover; with the best threshold per graph
 HyperCommon holds longest there as well ($p_{0.6}=0.44$ against $0.40$ for
 link communities). Where the rings are dense or unequal in size, the leading
@@ -205,8 +205,8 @@ segments~\cite{ermshaus2023clasp}, spots of brain tissue with their cortical
 layers~\cite{maynard2021transcriptome}, sentences of articles with their sections, and,
 with overlapping groups, transit stations with their routes and points of street maps
 with their streets~\cite{haklay2008openstreetmap}. Every rule was fixed before any
-detection was run, and every graph has a control with the same nodes and groups whose
-edges come from position alone.
+detection was run, and almost every graph has a control with the same nodes and groups
+whose edges come from position alone.
 
 With the best parameter HyperCommon ranks first on Hi-C maps and on sketches at $k=8$,
 in both cases level with the next method (on sketches several reach $\Omega=0.99$), and
@@ -220,7 +220,7 @@ kinds, but third on images and on transit networks
 One graph shows why the lead of the benchmarks does not carry over. On a slice of brain
 tissue (4221 spots, seven layers of 305 to 1215 spots, $k=8$), every threshold up to
 $t=0.21$ leaves one community that holds at least $94\%$ of the spots, while at $t=0.25$
-the largest holds $16\%$ and there are 247; no threshold gives $\Omega$ above $0.08$,
+the largest holds $16\%$ and there are 247; no threshold gives $\Omega$ above $0.10$,
 against $0.26$--$0.28$ for Infomap, the SBM and Leiden. Some edges between layers have
 a higher commonality than some edges inside them, so every threshold either keeps a
 bridge between layers or cuts a layer apart. On rings with isolated merges this cannot

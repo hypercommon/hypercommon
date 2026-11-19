@@ -1,11 +1,12 @@
 """
-Detection on real networks whose groups are expected to be lattice-like: Hi-C contact
-maps with their contact domains (analysis/data_hic/) and protein C-alpha contact
-networks with their CATH domains (analysis/data_protein/). Every graph folder holds
-edges.tsv (u, v) and groups.txt (one group per line). Methods, grids, seeds and scoring
-are those of real_more_detection_v3.py (its task() is reused with this loader).
+Detection on real networks whose groups are expected to be lattice-like, one kind per
+folder analysis/data_<kind>/ (hic, sketch, image, tracks, geo, protein, transit, streets,
+tssb, spatial, text; built by analysis/<kind>_build.py, controls in <name>_null/). Every
+graph folder holds edges.tsv (u, v) and groups.txt (one group per line). Methods, grids,
+seeds and scoring are those of real_more_detection_v3.py (its task() is reused with this
+loader); OSLOM is run separately with methods=oslom.
 
-    python real_lattice_detection.py <hic|protein> [workers] [methods|all] [name substrings]
+    python real_lattice_detection.py <kind> [workers] [methods|all] [name substrings]
 Output: results/real_lattice_<set>.csv (appended, resumable by (network, method)).
 """
 from __future__ import annotations

@@ -121,9 +121,10 @@ def table_sets(r):
         r"\caption{Every set of lattice-like real graphs: HyperCommon's rank among the fifteen "
         r"methods by $\Omega$ and F1, oracle (orc) and label-free (free) protocols; its mean "
         r"$\Omega$ (oracle), the most accurate other method with the oracle and HC minus it, "
-        r"with the paired 95\% bootstrap interval over the graphs of the set. Controls keep "
+        r"with the paired 95\% bootstrap interval over the graphs of the set (none for a set "
+        r"of one graph). Controls keep "
         r"the nodes and groups and build the edges from position alone (sequence, genomic, "
-        r"grid or map distance; time for sketches), removing the data signal.}"
+        r"grid, map or drawing distance), removing the data signal.}"
         r"\label{tab:S-real-lattice-sets}\\",
         r"\hline\hline",
         r"Kind & set & $\Omega$ orc & $\Omega$ free & F1 orc & F1 free & HC $\Omega$ & best other & "
@@ -145,12 +146,13 @@ def table_sets(r):
             q = sub[sub.set == s].set_index(["metric", "protocol"])
             ro = q.loc[("omega", "oracle")]
             ctl = "control" if s.endswith("control") else ""
+            ci = f" [${ro.lo:+.2f}, {ro.hi:+.2f}$]" if ro.graphs > 1 else ""
             lines.append(
                 f"{name if first else ''} & {tag(s) + (', control' if ctl else '')} & "
                 f"{q.loc[('omega', 'oracle'), 'rank']} & {q.loc[('omega', 'label_free'), 'rank']} & "
                 f"{q.loc[('f1', 'oracle'), 'rank']} & {q.loc[('f1', 'label_free'), 'rank']} & "
                 f"{ro.hc:.2f} & {SHORT[ro.best_other]} {ro.best_other_mean:.2f} & "
-                f"${ro['diff']:+.2f}$ [${ro.lo:+.2f}, {ro.hi:+.2f}$] \\\\")
+                f"${ro['diff']:+.2f}${ci} \\\\")
             first = False
         lines.append(r"\hline")
     lines.append(r"\end{longtable*}")

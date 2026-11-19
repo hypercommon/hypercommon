@@ -2,8 +2,8 @@
 How lattice-like are the recorded groups of a network? For every group, wedges whose
 three nodes all lie in the group (the centre adjacent to the other two, inside the
 group) are sampled, and the lattice index is the share of them whose three pairs all
-have closed-neighbourhood Jaccard at least t = 0.1 -- the statistic of Sec. VII D
-(89% of the wedges inside small LFR communities pass, 21% inside large ones). Groups
+have closed-neighbourhood Jaccard at least t = 0.1 (not used in the paper;
+an exploratory measure). Groups
 are weighted by their number of internal wedges. Also reported: the mean Jaccard of the
 edges inside groups. Reference values from ring lattices and LFR graphs are computed
 the same way.

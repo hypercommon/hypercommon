@@ -5,10 +5,12 @@ Every kind follows one recipe. Nodes lie along a chain, on a sheet or on a map, 
 node is linked to a few nearby nodes that it resembles most, and the recorded groups are
 stretches of the chain or patches of the sheet, so the groups are expected to be
 lattice-like. All rules (selection of graphs, edges, groups and controls) were fixed and
-written down before any detection was run. Each graph has a \emph{control} with the same
+written down before any detection was run. Each graph (except the $7$\,\AA\ protein
+graphs and the time series linked among all windows) has a \emph{control} with the same
 nodes and groups whose edges come from position alone, which removes the data signal and
-keeps the geometry. The build scripts (\texttt{paper/analysis/*\_build.py}), the sources
-with their checksums and licences, and the graphs are in the repository. Groups with
+keeps the geometry. The build scripts (\texttt{paper/analysis/*\_build.py}) and the
+sources with their checksums and licences are in the repository; the graphs are rebuilt
+from the sources, since several licences do not allow redistribution. Groups with
 fewer than three nodes are dropped; detection, grids and scoring are those of the
 smaller real networks (Sec.~\ref{sec:real}), with HyperCommon's threshold searched over
 100 quantile levels of its triple scores.
@@ -44,7 +46,7 @@ groups the annotated segments. Control: the nearest windows in time.
 \emph{Brain tissue}~\cite{maynard2021transcriptome}: the 12 Visium slices of human
 dorsolateral prefrontal cortex, spots linked to the $k$ of their 36 nearest spots with
 the most similar expression (30 principal components); groups the manually annotated
-layers, or their spatially connected parts. Control: the nearest spots on the grid.
+layers and, on the six slices where they differ, the layers' spatially connected parts. Control: the nearest spots on the grid.
 \emph{Articles}: 15 English Wikipedia featured articles, sentences in reading order, each
 linked to the $k$ most similar (TF--IDF cosine) of the 40 sentences before and after it;
 groups the sections and subsections, nested. Control: the nearest sentences in reading
@@ -57,10 +59,13 @@ points every $30$\,m or less along named streets, linked when within two (or thr
 steps along the street network; groups the named streets, which share their crossings.
 For both, the control links each node to its nearest nodes by distance.
 
-On Hi-C maps, sketches, images, proteins, time series, articles, transit networks and
-brain tissue at $k=8$, HyperCommon is far more accurate on the data graphs than on their
-controls. On pedestrian tracks, street maps and three of the five commuting maps the
-control is about as accurate, so there the groups are found from position alone
+With the best parameter, HyperCommon is more accurate on the data graphs than on their
+controls on Hi-C maps, sketches, proteins, time series, articles and transit networks
+(by $0.09$ to $0.65$ in $\Omega$), on images at a low level ($0.13$--$0.17$ against
+$0.02$), on brain tissue at $k=8$ but not at $k=16$, and on the small-area maps and the
+US commuting zones at $k=8$. On pedestrian tracks, street maps (where the control is
+slightly more accurate), the regions of England and Wales and the US states the control
+is about as accurate, so there the groups are found from position alone
 (Table~\ref{tab:S-real-lattice-sets}).
 
 \input{sections/table_real_lattice_sets}

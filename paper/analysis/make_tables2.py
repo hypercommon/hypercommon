@@ -364,7 +364,7 @@ def more_table():
                + (f" (runs that did not complete: {fails})" if fails and metric == "f1" else "") +
                r". Bold: best of HC, HC$_f$ and the other methods under each protocol. Functions: J, Jaccard; "
                r"cos, cosine; $I/\min$ and $I/\max$, overlap normalised by the smaller or larger neighbourhood; $I$, overlap "
-               r"count; RA, resource allocation. College football: the conference labels of "
+               r"count; $I^2/U$, squared overlap over the size of the union; RA, resource allocation. College football: the conference labels of "
                r"Ref.~\cite{girvan2002community} are those of the 2001 season while the games are from the 2000 "
                r"season; corrected labels are given in Ref.~\cite{evans2010clique}. Every method on every network "
                r"is in Tables~\ref{tab:S-realnet-f1-best} and~\ref{tab:S-realnet-f1-free}.")

@@ -27,3 +27,19 @@ paper/PLAN.md
 paper/*.fls
 paper/*.fdb_latexmk
 paper/*.synctex.gz
+# lattice-like real data: not redistributed (licences differ; see paper/README.md, Data);
+# each folder's README.md (sources, URLs, checksums) is kept
+paper/analysis/data_geo/*
+paper/analysis/data_hic/*
+paper/analysis/data_image/*
+paper/analysis/data_protein/*
+paper/analysis/data_sketch/*
+paper/analysis/data_spatial/*
+paper/analysis/data_streets/*
+paper/analysis/data_text/*
+paper/analysis/data_tracks/*
+paper/analysis/data_transit/*
+paper/analysis/data_tssb/*
+!paper/analysis/data_*/README.md
+paper/analysis/data_trackml/
+paper/analysis/trackml_build.py

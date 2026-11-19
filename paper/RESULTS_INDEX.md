@@ -13,7 +13,13 @@ shared-pair table. `paper/README.md` lists the script behind every table and fig
 |---|---|---|
 | `bench/results2/<exp>.csv` | one row per graph × method × parameter, with `eq` (overlapping modularity, the label-free criterion) and per-community recovery `rec_mean`, `rec_small`, `rec_large`; exp in `rings_isolated`, `rings_uniform`, `rings_hetero`, `rings_hetero_overlap`, `rings_pref`, `lfr`, `lfr_slices`, `lfr_clustered`, `rings_geometry` | `bench/run2.py` (methods and grids: `bench/methods2.py`) |
 | `bench/results2/<exp>_summary2.csv`, `_paired2.csv`, `_frozen_params2.csv` | oracle / frozen / label-free means over the noise range with bootstrap intervals; paired differences from HC | `bench/analysis2.py <exp>` |
-| `bench/results2/robust_p.csv` | high-noise mean, Ω at the largest p, p½ per ring family and method | `bench/robust_p.py` |
+| `bench/results2/robust_p.csv` | high-noise mean, Ω at the largest p, p½ per ring family and method (earlier robustness summary, superseded by the dense sweep; not in the paper) | `bench/robust_p.py` |
+| `bench/results2/<exp>_dense{,_oslom,_sbm}.csv` | robustness sweep: test graphs at p = 0, 0.01, ..., 1 (OSLOM, SBM: steps of 0.05), same columns as `<exp>.csv`; packed (columns used) in `bench/results2_gz/` | `bench/queue_dense.sh`, `bench/queue_dense_wsl.sh` |
+| `bench/results2/robust_structure.csv` | planted structure left at each p: weak/strong community fractions, edges inside, clustering | `bench/robust_structure.py` |
+| `figures/data/robust_curves.csv`, `robust_drop.csv`, `robust_drop_by_method.csv`, `robust_table.csv` | mean Ω curves with bands, p at which Ω falls below each level, area, p_weak, p_clust; HC against the best other with paired bootstrap | `analysis/robust_dense.py`, `analysis/robust_table.py` |
+| `bench/results/real_lattice_<kind>{,_wsl}.csv` | lattice-like real networks, every method × parameter (`_wsl`: OSLOM and the SBM); packed in `bench/results_gz/` | `bench/real_lattice_detection.py` |
+| `figures/data/real_lattice_summary_<kind>.csv`, `real_lattice_ranks.csv` | per-set means, HC rank among fifteen methods, best other and paired difference | `analysis/real_lattice_summary.py`, `analysis/real_lattice_ranks.py` |
+| `figures/data/edge_prune.csv` | wedges left after degree-ratio and exact edge pruning (Discussion) | `bench/edge_prune.py` |
 | `bench/results2/family2.csv`, `family2_top.csv` | HC with each commonality function on the benchmark families, quantile levels 0–0.96 and 0.97–0.995 | `bench/run2_family.py`, `--top` |
 | `bench/results/big_dl/results_big/` | covers of every method on SNAP Amazon, DBLP, YouTube (full and induced), produced on a large machine | `bench/big_job.py` (+ `bench/slpa_youtube_job.py` for SLPA on induced YouTube) |
 | `bench/results/youtube_full_dl/results/` | HC covers on the full YouTube graph, degree-ratio pruning, machine B of `README.md` (Timings) | `bench/youtube_job.py` (`bench/hc_big.py`) |

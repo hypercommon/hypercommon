@@ -24,7 +24,22 @@ The fourteen further networks come from the Netzschleuder repository
 `analysis/real_more.py` reads them; ground-truth groups of fewer than three nodes are
 dropped (and the primary school's teachers are not a class).
 
-Wedge counts (Table S-wedges, `analysis/wedge_scaling.py`): 29 further SNAP edge lists,
+Lattice-like real networks (Sec. VII G, Table II, Table S26): eleven kinds, each built
+from public data by `analysis/<kind>_build.py` into `analysis/data_<kind>/`, one folder
+per graph (`edges.tsv`, `groups.txt`) and its position-only control (`<name>_null/`):
+`hic` (Rao et al. 2014, GEO GSE63525; `hic_null.py` writes the controls), `protein`
+(CATH v4.4 domains on PDB chains; `protein_null.py`), `sketch` (Quick, Draw!), `image`
+(BSDS500), `tracks` (MOT17 labels), `geo` (US ACS commuting flows and UK ONS ODWP01EW),
+`transit` (twelve agency GTFS feeds), `streets` (OpenStreetMap via Overpass), `tssb`
+(Time Series Segmentation Benchmark), `spatial` (DLPFC Visium slices, Maynard et al.
+2021) and `text` (English Wikipedia featured articles). The built graphs are not in the
+repository, because the source licences differ (BSDS500 is research-only, MOT17 is
+CC BY-NC-SA, OpenStreetMap and some feeds are share-alike, several transit feeds allow
+no redistribution). Each folder's `README.md` is kept: the exact URLs, download dates,
+checksums, licence and attribution of its sources, and the build command. Rebuild with
+`python -I analysis/<kind>_build.py ...` as given there.
+
+Wedge counts (Table S21, `analysis/wedge_scaling.py`): 29 further SNAP edge lists,
 no ground truth, in `analysis/snap/more/`, each saved under its SNAP file name from
 `https://snap.stanford.edu/data/<file>`: `ca-{GrQc,HepTh,HepPh,AstroPh,CondMat}`,
 `email-{Enron,EuAll}`, `wiki-{Talk,Vote}`, `facebook_combined`, `twitter_combined`,
@@ -50,8 +65,8 @@ exactly. Test seeds are 0–9, calibration seeds 1000–1002. Stochastic methods
 networks, Leiden and Infomap use seed 1 and SLPA seeds `random` and `numpy` with 1.
 
 ## Machine
-Every result behind the manuscript and the Supplemental Material was computed on one
-machine, a Mac mini (Apple M4 Pro, 14 cores, 64 GB RAM, macOS 27.2), in three micromamba
+Every result behind the manuscript and the Supplemental Material, except the two parts
+named at the end of this section, was computed on one machine, a Mac mini (Apple M4 Pro, 14 cores, 64 GB RAM, macOS 27.2), in three micromamba
 environments under `~/hc/mamba`: `hc` (Python 3.12.16, numpy 2.4.1, scipy 1.17.1,
 networkx 3.6.1, python-igraph 1.0.0, leidenalg 0.11.0, infomap 2.10.1, cdlib 0.4.0) for
 everything except the two below; `gt` (graph-tool 3.9) for the nested stochastic block
@@ -67,13 +82,21 @@ per step), `bench/native_mac.sh` the native-default runs beside it, and
 `bench/watchdog_mac.sh` kills a run above 30 GB of memory or when swap exceeds 12 GB
 (an OSLOM process alone, so that its Python caller records the failure).
 
+Two later parts were computed on a second machine, a Windows 11 laptop (Intel Core Ultra 9
+185H, 22 threads, 32 GB RAM): the robustness sweep (`bench/queue_dense.sh`, Python 3.12.10
+with the versions under Software) and the lattice-like real networks
+(`bench/real_lattice_detection.py`); OSLOM and the SBM for both ran under WSL (Ubuntu
+24.04, Python 3.12.16, graph-tool 3.9, OSLOM2 built by `bench/build_oslom.sh`). The
+robustness curves join the main runs at p = 0, 0.05, ..., 0.8 (Mac) with the dense points
+(laptop); the deterministic methods agree between the two machines (see above).
+
 ## Commands
 Everything, in order, from scratch: `bash reproduce_all.sh` (several days on the
 machine above; the benchmark and detection steps skip work already in their
 output files, so an interrupted run can be restarted). The steps it runs:
 
 ```
-# empirical commonality (Sec. II)
+# empirical commonality (Sec. III)
 python analysis/real_networks.py            # classes, AUC, degree strata, wedges
 python analysis/real_networks_v2.py         # formulas, pair vs triple rule (matched recall)
 python analysis/real_family.py              # the commonality family on edges
@@ -146,6 +169,35 @@ python -c "import sys; sys.path.insert(0, 'analysis'); import make_tables; make_
 python analysis/fig_<name>.py               # fig_family, fig_real_networks, fig_schematic, fig_omega_t,
                                             # fig_benchmarks2
 ```
+### Robustness sweep (Sec. VII C)
+```
+# p = 0, 0.01, ..., 1 on the test graphs of the 28 ring settings; resumable
+bash bench/queue_dense.sh          # every method but OSLOM and the SBM (DENSE_P=1 python bench/run2.py <exp>),
+                                   # then python bench/robust_structure.py (p_weak, p_clust)
+bash bench/queue_dense_wsl.sh      # OSLOM and the SBM, Linux, p in steps of 0.05 (DENSE_STEP)
+python analysis/robust_dense.py    # curves, p_0.6, area, markers; Fig. 4, Figs. S6, S7
+python analysis/robust_table.py    # Table S19, paired bootstrap over the test graphs
+```
+The rows these scripts read (only the columns they use) are in
+`bench/results2_gz/<exp>_dense*.csv.gz` and `robust_structure.csv.gz`; unpack them into
+`bench/results2/` to rerun the analysis without the sweep.
+
+### Lattice-like real networks (Sec. VII G)
+```
+python -I analysis/<kind>_build.py ...                 # see analysis/data_<kind>/README.md
+python analysis/hic_null.py ; python analysis/protein_null.py   # controls (other kinds: in the builder)
+python bench/real_lattice_detection.py <kind> 16 all   # every method but OSLOM; results/real_lattice_<kind>.csv
+RL_SUFFIX=_wsl python bench/real_lattice_detection.py <kind> 4 oslom,sbm   # Linux: OSLOM, SBM
+python analysis/real_lattice_summary.py <kind>         # per-kind summary, figures/data/real_lattice_summary_<kind>.csv
+python analysis/real_lattice_ranks.py                  # Table II, Table S26
+python bench/edge_prune.py analysis/snap/com-dblp.ungraph.txt.gz analysis/snap/com-amazon.ungraph.txt.gz \
+    analysis/data_spatial/dlpfc_151507_k16/edges.tsv   # edge-pruning numbers of Sec. VIII, figures/data/edge_prune.csv
+```
+
+The detection rows (one per graph, method and parameter; scores only, no graph data) are
+in `bench/results_gz/real_lattice_<kind>{,_wsl}.csv.gz`; unpack them into `bench/results/`
+to rebuild the tables without the graphs.
+
 #### Every table and figure, and the command that makes it
 The manuscript is `main.tex`; the Supplemental Material is `supp.tex` (compile
 `main` then `supp`, each with `pdflatex`, `bibtex`, `pdflatex`, `pdflatex`; they share labels
@@ -156,19 +208,26 @@ through `xr-hyper`). Run every command from `paper/`.
 | Fig. 1 | `python analysis/real_networks.py ; python analysis/real_networks_v2.py ; python analysis/real_family.py ; python analysis/fig_commonality_combined.py` | `figures/fig_commonality.pdf` |
 | Fig. 2 | `python analysis/fig_schematic.py` | `figures/fig_schematic.pdf` |
 | Fig. 3 | `python analysis/fig_omega_t.py` | `figures/fig_omega_t.pdf` |
-| Fig. 4, Fig. S1 | `python analysis/fig_benchmarks2.py` | `figures/fig_benchmarks.pdf`, `fig_benchmarks_oracle.pdf` |
-| Figs. S2–S4 | `python analysis/fig_real_networks.py ; python analysis/fig_family.py` | `figures/fig_real_commonality.pdf`, `fig_real_family.pdf`, `fig_real_triples.pdf` |
-| Table I (scorecard), Tables S1, S3–S18 | `python analysis/make_tables3.py` | `sections/table_scorecard.tex`, `table_benchmarks.tex`, `supp_benchmarks.tex` |
-| Table II (geometry) | `python analysis/make_tables2.py geometry` | `sections/table_geometry.tex` |
-| Table III (SNAP), Tables S23, S25–S30 | `python analysis/make_tables3_real.py` | `sections/table_real.tex`, `table_real_induced.tex`, `supp_real.tex` |
-| Tables IV, V (fourteen networks) | `python analysis/make_tables2.py more` | `sections/table_real_more.tex` |
-| Tables VI, VIII, IX | written by hand from the data sources and `bench/methods2.py` | `sections/appendix.tex` |
-| Table VII, Table X | `python analysis/make_tables.py` (`double_bond_table` for Table X, after `python analysis/double_bonds.py`) | `sections/table_data_more.tex`, `table_doublebonds.tex` |
-| Table S2 (noise robustness) | `python bench/robust_p.py ; python analysis/make_tables2.py robust` | `sections/table_robust.tex` |
-| Tables S19, S20 (controls, null graphs) | `python analysis/make_tables3_controls.py` | `sections/supp_controls.tex` |
-| Tables S21, S22 (commonality family) | `python bench/run2_family.py ; python bench/run2_family.py --top ; python analysis/make_tables2.py family` | `sections/table_family.tex` |
-| Table S24 (wedges of 32 SNAP graphs) | `python analysis/wedge_scaling.py` | `sections/table_wedges.tex` |
-| Table S31 (sources of text-only numbers) | written by hand; each row names its script | `sections/supp_diagnostics.tex` |
+| Fig. 4, Figs. S6, S7 | robustness sweep (below) ; `python analysis/robust_dense.py` | `figures/fig_robust.pdf`, `fig_robust_all.pdf`, `fig_robust_oracle.pdf` |
+| Table I (geometry) | `python analysis/make_tables2.py geometry` | `sections/table_geometry.tex` |
+| Table II (lattice-like real networks), Table S26 | lattice-like real networks (below) ; `python analysis/real_lattice_ranks.py` | `sections/table_real_lattice.tex`, `table_real_lattice_sets.tex` |
+| Figs. S1–S3 | `python analysis/fig_real_networks.py ; python analysis/fig_family.py` | `figures/fig_real_commonality.pdf`, `fig_real_family.pdf`, `fig_real_triples.pdf` |
+| Figs. S4, S5 | `python analysis/fig_benchmarks2.py` | `figures/fig_benchmarks.pdf`, `fig_benchmarks_oracle.pdf` |
+| Tables S1, S3, S4 (data, ring families, grids) | written by hand from the data sources and `bench/methods2.py` | `sections/appendix.tex` |
+| Table S2 (fourteen networks) | `python analysis/make_tables.py` | `sections/table_data_more.tex` |
+| Table S5 (shared pairs) | `python analysis/double_bonds.py ; python -c "import sys; sys.path.insert(0, 'analysis'); import make_tables; make_tables.double_bond_table()"` | `sections/table_doublebonds.tex` |
+| Table S6 (label-free), Table S7 (scorecard), Tables S8–S14 | `python analysis/make_tables3.py` | `sections/table_benchmarks.tex`, `table_scorecard.tex`, `supp_benchmarks.tex` |
+| Tables S15, S16 (controls, null graphs) | `python analysis/make_tables3_controls.py` | `sections/supp_controls.tex` |
+| Tables S17, S18 (commonality family) | `python bench/run2_family.py ; python bench/run2_family.py --top ; python analysis/make_tables2.py family` | `sections/table_family.tex` |
+| Table S19 (robustness) | after `robust_dense.py`: `python analysis/robust_table.py` | `sections/table_robust_dense.tex` |
+| Table S20 (SNAP), Tables S24, S25 | `python analysis/make_tables3_real.py` | `sections/table_real.tex`, `supp_real.tex` |
+| Table S21 (wedges of 32 SNAP graphs) | `python analysis/wedge_scaling.py` | `sections/table_wedges.tex` |
+| Tables S22, S23 (fourteen networks) | `python analysis/make_tables2.py more` | `sections/table_real_more.tex`, `table_real_more_omega.tex` |
+
+Further tables kept in the repository but not in the paper: `sections/extra_benchmarks.tex`
+(frozen and native protocols, `make_tables3.py`), `sections/table_real_induced.tex`
+(SNAP graphs on the subgraphs induced by the labelled nodes, `make_tables2.py real`) and
+`sections/supp_diagnostics.tex` (where numbers quoted in the text without a table come from).
 
 Which script writes which table: `make_tables3.py` writes `sections/table_benchmarks.tex`
 (label-free), `table_scorecard.tex` and `supp_benchmarks.tex` (oracle, frozen, native,

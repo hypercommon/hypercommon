@@ -1,5 +1,11 @@
-"""Wedges left to score at threshold t: all, after degree-ratio pruning, after exact edge-J pruning."""
+"""Wedges left to score at threshold t: all, after degree-ratio pruning, after exact edge-J pruning
+(the numbers of the Discussion).
+
+    python bench/edge_prune.py <edge list> ...      (SNAP .txt.gz, or a graph folder's edges.tsv)
+Prints a table per graph and writes figures/data/edge_prune.csv (one row per graph and t).
+"""
 import gzip
+import os
 import sys
 
 import numpy as np
@@ -20,6 +26,9 @@ def load(path):
     return A.tocsr()
 
 
+ROWS = []
+
+
 def main(path):
     A = load(path)
     d = np.asarray(A.sum(1)).ravel().astype(np.int64)
@@ -37,7 +46,8 @@ def main(path):
     J = (c + 2) / (d[u] + d[v] - c)
     ratio = (np.minimum(d[u], d[v]) + 1) / (np.maximum(d[u], d[v]) + 1)
     W = int((d * (d - 1) // 2).sum())
-    print(f"{path.split('/')[-2] if 'edges' in path else path.split('/')[-1]}: n={A.shape[0]} m={len(u)} wedges={W:,}")
+    name = path.replace(os.sep, "/").split("/")[-2] if "edges" in path else os.path.basename(path)
+    print(f"{name}: n={A.shape[0]} m={len(u)} wedges={W:,}")
     print("    t   ratio-pruned   edge-J-pruned   edges kept (J)")
     for t in (0.1, 0.2, 0.3, 0.5, 0.7, 0.9):
         out = []
@@ -45,8 +55,13 @@ def main(path):
             dk = np.bincount(np.r_[u[keep], v[keep]], minlength=A.shape[0]).astype(np.int64)
             out.append(int((dk * (dk - 1) // 2).sum()) / W)
         print(f"  {t:.1f}   {out[0]:12.1%}   {out[1]:13.1%}   {(J >= t).mean():8.1%}")
+        ROWS.append(dict(graph=name, n=A.shape[0], m=len(u), wedges=W, t=t, ratio_pruned=out[0],
+                         edge_pruned=out[1], edges_kept=float((J >= t).mean())))
 
 
 if __name__ == "__main__":
+    import pandas as pd
     for p in sys.argv[1:]:
         main(p)
+    out = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "figures", "data", "edge_prune.csv")
+    pd.DataFrame(ROWS).to_csv(out, index=False)
