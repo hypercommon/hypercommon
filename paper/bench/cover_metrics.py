@@ -35,13 +35,58 @@ def _upper_counts(M):
     return C.row[keep].astype(np.int64), C.col[keep].astype(np.int64), C.data[keep].astype(np.int64)
 
 
+def _omega_counts_by_class(M1, M2, max_classes=1500):
+    """Exact pair counts via node classes: nodes with the same truth and detected
+    memberships are interchangeable, so pairs are counted per pair of classes.
+    Returns (agree, h1, h2) over all n(n-1)/2 pairs, or None if there are too many classes."""
+    n = M1.shape[0]
+    sig = {}
+    cls = np.empty(n, np.int64)
+    for i in range(n):
+        key = (M1.indices[M1.indptr[i]:M1.indptr[i + 1]].tobytes(), M2.indices[M2.indptr[i]:M2.indptr[i + 1]].tobytes())
+        cls[i] = sig.setdefault(key, len(sig))
+    K = len(sig)
+    if K > max_classes:
+        return None
+    S = sp.csr_matrix((np.ones(n, np.int32), (cls, np.arange(n))), shape=(K, n))
+    size = np.asarray(S.sum(axis=1)).ravel().astype(np.int64)
+    first = np.full(K, -1, np.int64)
+    first[cls[::-1]] = np.arange(n)[::-1]                 # one representative node per class
+    R1, R2 = M1[first], M2[first]
+    C1 = (R1 @ R1.T).toarray().astype(np.int64)
+    C2 = (R2 @ R2.T).toarray().astype(np.int64)
+    W = np.triu(np.outer(size, size), 1)
+    W[np.diag_indices(K)] = size * (size - 1) // 2
+    iu = np.triu_indices(K)
+    w, a, b = W[iu], C1[iu], C2[iu]
+    keep = w > 0                                          # a class of one node has no inner pair
+    w, a, b = w[keep], a[keep], b[keep]
+    agree = int(w[a == b].sum())
+    L = int(max(a.max(initial=0), b.max(initial=0))) + 1
+    h1 = np.bincount(a, weights=w, minlength=L)
+    h2 = np.bincount(b, weights=w, minlength=L)
+    return agree, h1, h2
+
+
 def omega(detected, truth, nodes) -> float:
     nodes = list(nodes)
     n = len(nodes)
     index = {u: i for i, u in enumerate(nodes)}
     P = n * (n - 1) // 2
-    r1, c1, d1 = _upper_counts(_membership(truth, index, n))
-    r2, c2, d2 = _upper_counts(_membership(detected, index, n))
+    M1, M2 = _membership(truth, index, n), _membership(detected, index, n)
+    fast = _omega_counts_by_class(M1.tocsr(), M2.tocsr()) if n > 1 else None
+    if fast is not None:
+        agree, h1, h2 = fast
+        omega_u = agree / P
+        L = max(len(h1), len(h2))
+        h1 = np.pad(h1, (0, L - len(h1))) / P
+        h2 = np.pad(h2, (0, L - len(h2))) / P
+        omega_e = float((h1 * h2).sum())
+        if omega_e >= 1.0 - 1e-15:
+            return 1.0 if agree == P else 0.0
+        return (omega_u - omega_e) / (1.0 - omega_e)
+    r1, c1, d1 = _upper_counts(M1)
+    r2, c2, d2 = _upper_counts(M2)
     k1 = r1 * n + c1
     k2 = r2 * n + c2
     keys = np.union1d(k1, k2)

@@ -24,3 +24,6 @@ paper/*Notes.bib
 
 # internal planning notes (kept locally, not released)
 paper/PLAN.md
+paper/*.fls
+paper/*.fdb_latexmk
+paper/*.synctex.gz

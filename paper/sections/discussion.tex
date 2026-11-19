@@ -13,29 +13,41 @@ exact-recovery window, and the ablations support each test of the triple rule: o
 wedges help where triangles are scarce, the non-adjacent pair keeps overlapping
 communities apart, and the edge tests separate HyperCommon from link communities.
 
-The method's reach is set by geometry. It leads while communities are lattice-like, so
-that adjacent members share many neighbours, and trails once a tenth (with labels) or
-three tenths (without) of each ring's edges are rewired internally, on all LFR families
-and on random geometric communities with labels. The same property that makes overlap
-clean, that no pair binds two communities, means that communities joined by an admissible
-triple are read as one (Proposition~\ref{prop:sharedpairs}), which limits the method
-where overlaps are densely connected~\cite{yang2014structure,yang2012community}.
+The same property makes the method robust to random rewiring. A rewired edge lands
+between nodes that share almost no neighbours, so it rarely passes the test, and a
+community stays connected as long as enough of its own wedges survive. Without labels
+HyperCommon keeps its accuracy longest in \tbd{14} of the 28 ring settings, clearly so in \tbd{9}, all
+with communities of unequal size or degree-biased rewiring, and trails where rings are
+dense (Sec.~\ref{sec:robust}). Its reach is set
+by geometry: it trails once a tenth (with labels) or three tenths (without) of each
+ring's edges are rewired inside the ring, on all LFR families and on random geometric
+communities with labels. That no pair binds two communities also means that
+communities joined by an admissible triple are read as one
+(Proposition~\ref{prop:sharedpairs}), which limits the method where overlaps are
+densely connected~\cite{yang2014structure,yang2012community}.
 
 Three limits qualify these results. First, part of the label-free margin reflects the
 selector: modularity costs the Constant Potts Model more than HyperCommon on unequal
 rings, and with each method's best parameter HyperCommon leads on fewer settings (11 of
-28) than it trails (13). Second, on real networks HyperCommon is competitive but rarely
-the most accurate, the gains from the choice of function rest on labels, and the
-two-test variant, without the third-pair test, has the higher F1 on most of the smaller
-networks; none of the real networks tested is known to have lattice-like groups. Third, like every method we tested, it reports many communities on clustered
-graphs with none planted, so a test against randomised graphs that keep the degrees and
-the clustering would have to be added.
+28) than it trails (13). Second, on real networks it is competitive but rarely the most
+accurate, also where the groups are lattice-like: it ranks among the three most accurate
+methods on five of eleven kinds, first on two, and Leiden leads on most. One threshold
+has to separate all groups at once, and in real data the commonality of edges inside
+groups and between them overlaps, so the cover jumps from one large community to many
+small ones (Sec.~\ref{sec:reallattice}). Third, like every method we tested, it reports
+many communities on clustered graphs with none planted, so a test against randomised
+graphs that keep the degrees and the clustering would have to be added.
 
-Two directions follow. The label-free criterion is global and, on the gradient, selects
-too fine a cover; since the covers at all thresholds form one hierarchy read off a
-single scoring of the wedges (Sec.~\ref{sec:cost}), thresholds could be chosen
+Three directions follow. The covers at all thresholds form one hierarchy read off a
+single scoring of the wedges (Sec.~\ref{sec:cost}), so thresholds could be chosen
 separately on its branches, for instance by the cluster-stability criterion of
-HDBSCAN~\cite{campello2013density}. And the commonality function is a second degree of
-freedom: every member of the family carries the signal, but the most accurate one varies
-between networks, so learning the function and the threshold from a network's own
-structure is the natural next step.
+HDBSCAN~\cite{campello2013density}; this addresses both the cliff of the real networks
+and the too fine label-free cover on the gradient. The commonality function is a second
+degree of freedom: the most accurate one varies between networks, so learning the
+function and the threshold from a network's own structure is a natural next step. And
+the cost can be cut further. An edge whose commonality is below $t$ fails every wedge
+through it, so scoring the edges first, from their common neighbours, and enumerating
+wedges only on the edges that pass is exact and costs the edge scores plus the wedges of
+the kept edges, $O(W)$ only in the worst case of a clique. At $t=0.5$ it leaves $14\%$ of
+DBLP's wedges and $1\%$ of a brain slice's, against $24\%$ and $97\%$ after the
+degree-ratio pruning, and at $t=0.7$ under $1\%$ of Amazon's, against $6\%$.

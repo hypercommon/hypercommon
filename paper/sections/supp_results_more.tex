@@ -43,20 +43,6 @@ Model is then ahead on two worlds ($0.57$ against $0.42$) and on three big, many
 with its resolution chosen by modularity, the Constant Potts Model recovers the small
 rings less well and its ONMI lead on these two families is gone at $o_n=0.05$.
 
-\subsection*{Robustness to noise}
-
-\input{sections/table_robust}
-
-Table~\ref{tab:robust} reports, for every ring family, the rewired fraction $p_{1/2}$ at
-which the mean $\Omega$ first falls below one half and the mean $\Omega$ over the
-high-noise half, $p\in[0.4,0.8]$. Without labels, on the four families whose large rings
-have degree 32 and small rings degree 8, HyperCommon has the highest high-noise mean
-($0.60$ against $0.49$ for link communities on three big, many small); on the gradient
-it is the least robust of the leading methods. Only DEMON and ANGEL degrade under
-degree-biased noise; for HyperCommon the bound of Jaccard by the degree ratio offers a
-mechanism: a hub grown by preferential rewiring has low commonality with the lattice
-neighbours it attaches to, so the edges it gains rarely pass.
-
 \subsection*{Ablations and the commonality function}
 
 Without the third-pair test, a wedge whose two edges pass reaches into another community

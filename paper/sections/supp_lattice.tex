@@ -1,0 +1,66 @@
+% Lattice-like real networks (Sec. sec:reallattice of the main text)
+\label{app:reallattice}
+
+Every kind follows one recipe. Nodes lie along a chain, on a sheet or on a map, each
+node is linked to a few nearby nodes that it resembles most, and the recorded groups are
+stretches of the chain or patches of the sheet, so the groups are expected to be
+lattice-like. All rules (selection of graphs, edges, groups and controls) were fixed and
+written down before any detection was run. Each graph has a \emph{control} with the same
+nodes and groups whose edges come from position alone, which removes the data signal and
+keeps the geometry. The build scripts (\texttt{paper/analysis/*\_build.py}), the sources
+with their checksums and licences, and the graphs are in the repository. Groups with
+fewer than three nodes are dropped; detection, grids and scoring are those of the
+smaller real networks (Sec.~\ref{sec:real}), with HyperCommon's threshold searched over
+100 quantile levels of its triple scores.
+
+\emph{Hi-C contact maps}~\cite{rao2014hic}: GM12878 chromosomes 17--22 at 25\,kb,
+nodes the covered bins, each bin linked to the $k\in\{8,16,32\}$ bins with which it has
+the most normalised contacts; groups the Arrowhead contact domains, which are nested.
+Control: the $k$ nearest bins along the chromosome.
+\emph{Pen sketches}~\cite{ha2018sketch}: 20 Quick, Draw!\ drawings of five categories,
+points resampled along the strokes, each linked to its $k\in\{8,16\}$ nearest points in
+position and pen time; groups the strokes. Control: position only.
+\emph{Images}~\cite{martin2001database,arbelaez2011contour}: 15 BSDS500 test images in
+blocks of $6\times6$ pixels, each block linked to the $k$ blocks of most similar colour
+within three blocks; groups the segments of all human annotators, pooled. Control: the
+$k$ nearest blocks on the grid.
+\emph{Pedestrian tracks}~\cite{milan2016mot16}: 15 frame windows of the MOT17 training
+sequences, nodes the annotated pedestrian boxes, each linked to the $k=8$ boxes nearby
+in space and time that overlap it most; groups the tracks. Control: the nearest boxes.
+\emph{Commuting maps}~\cite{census_commuting,ons_odwp01ew}: US counties, and local
+authorities and small areas (MSOAs) of England and Wales, each unit linked to the $k$
+units it exchanges most commuters with, after a coverage normalisation; groups states
+or commuting zones (US), regions (local authorities) and local authority districts
+(MSOAs). The commuting zones are themselves built from commuting flows, so that set is
+partly circular. Control: the $k$ nearest units on the map.
+\emph{Protein contacts}~\cite{sillitoe2021cath}: 60 chains with two or more CATH
+domains, residues linked when their C$_\alpha$ atoms are within $8$\,\AA\ (and
+$7$\,\AA); groups the domains. Control: residues within $h$ positions along the chain,
+$h$ matching the mean degree.
+\emph{Time series}~\cite{ermshaus2023clasp}: 24 series of the Time Series Segmentation
+Benchmark with two to nine segments, nodes sliding windows, each linked to the $k$
+windows of most similar shape (among all windows, or among those nearby in time);
+groups the annotated segments. Control: the nearest windows in time.
+\emph{Brain tissue}~\cite{maynard2021transcriptome}: the 12 Visium slices of human
+dorsolateral prefrontal cortex, spots linked to the $k$ of their 36 nearest spots with
+the most similar expression (30 principal components); groups the manually annotated
+layers, or their spatially connected parts. Control: the nearest spots on the grid.
+\emph{Articles}: 15 English Wikipedia featured articles, sentences in reading order, each
+linked to the $k$ most similar (TF--IDF cosine) of the 40 sentences before and after it;
+groups the sections and subsections, nested. Control: the nearest sentences in reading
+order.
+\emph{Transit networks}: the rail (or rail and central bus) networks of 12 cities from
+their official GTFS feeds, stations linked when they are within two (or three) stops of
+each other on a route; groups the routes, which share their interchange stations.
+\emph{Street maps}~\cite{haklay2008openstreetmap}: 12 city centres from OpenStreetMap,
+points every $30$\,m or less along named streets, linked when within two (or three)
+steps along the street network; groups the named streets, which share their crossings.
+For both, the control links each node to its nearest nodes by distance.
+
+On Hi-C maps, sketches, images, proteins, time series, articles, transit networks and
+brain tissue at $k=8$, HyperCommon is far more accurate on the data graphs than on their
+controls. On pedestrian tracks, street maps and three of the five commuting maps the
+control is about as accurate, so there the groups are found from position alone
+(Table~\ref{tab:S-real-lattice-sets}).
+
+\input{sections/table_real_lattice_sets}

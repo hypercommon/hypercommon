@@ -30,7 +30,7 @@ from multiprocessing import Pool
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
 from experiments import EXPERIMENTS  # noqa: E402
-from run2 import CAL_SEEDS, FIELDS, TEST_SEEDS, _safe  # noqa: E402
+from run2 import CAL_SEEDS, FIELDS, SUFFIX, TEST_SEEDS, _safe, grid  # noqa: E402
 
 RESULTS = os.path.join(HERE, "results2")
 OSLOM_BIN = os.environ.get("OSLOM_BIN", os.path.expanduser("~/tools/OSLOM2/oslom_undir"))
@@ -114,14 +114,14 @@ def main():
     ap.add_argument("--limit", type=int, default=0, help="run only the first N tasks (timing)")
     a = ap.parse_args()
     exp = EXPERIMENTS[a.experiment]
-    path = os.path.join(RESULTS, f"{a.experiment}_oslom.csv")
+    path = os.path.join(RESULTS, f"{a.experiment}{SUFFIX}_oslom.csv")
     done = set()
     if os.path.exists(path):
         with open(path, newline="") as fh:
             done = {(r["family"], f"{float(r['p']):.4f}", str(r["seed"])) for r in csv.DictReader(fh)}
     tasks = [(a.experiment, f, p, s) for f in exp["families"]
-             for p in exp.get("p_grid_by_family", {}).get(f, exp.get("p_grid_v2", exp["p_grid"]))
-             for s in TEST_SEEDS + CAL_SEEDS if (f, f"{float(p):.4f}", str(s)) not in done]
+             for p in grid(exp, f)[0]
+             for s in grid(exp, f)[1] if (f, f"{float(p):.4f}", str(s)) not in done]
     if a.limit:
         tasks = tasks[:a.limit]
     print(f"{len(tasks)} tasks ({len(done)} done) -> {path}", flush=True)

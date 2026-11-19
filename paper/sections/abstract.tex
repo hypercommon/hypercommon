@@ -8,9 +8,11 @@ wedges keeps below $12\,m\ln m$ on thirty-two real networks with $m$ edges. We d
 exact window of thresholds that recovers planted overlapping ring lattices. Compared with
 fourteen other methods, every parameter chosen without labels, HyperCommon is the most
 accurate in fifteen of twenty-eight ring-lattice settings and level in six, most clearly
-where communities of unequal size and density overlap. It trails on all eight families
-of overlapping LFR graphs, and on the rings once a tenth (with labels) or three tenths
-(without) of their edges are rewired internally: it needs communities whose members share
-many neighbours. On seventeen real networks of up to $1.1\times10^6$ nodes, the threshold
-chosen without labels keeps a median 94\% of the best threshold's F1, but on most of
-them another method is more accurate.
+where communities of unequal size and density overlap, and as the rings are rewired from
+order to randomness it keeps its accuracy longest in \tbd{fourteen} of them. It trails on
+all eight families of overlapping LFR graphs, and on the rings once a tenth (with labels)
+or three tenths (without) of their edges are rewired inside the rings: it needs
+communities whose members share many neighbours. On real networks, including eleven
+kinds built to have lattice-like groups, it is among the three most accurate methods on
+five kinds but rarely the most accurate, because a single threshold cannot cut the
+strongest links between groups and keep the weakest inside them.

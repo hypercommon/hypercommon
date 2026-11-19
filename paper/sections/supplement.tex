@@ -31,6 +31,21 @@ that produces it.
 \section{Benchmarks}
 \input{sections/supp_results_more}
 
+\input{sections/table_scorecard}
+
+\begin{figure*}[p]
+  \centering
+  \includegraphics[width=\textwidth]{figures/fig_benchmarks.pdf}
+  \caption{Accuracy against noise with every method's parameter chosen without labels
+  (largest overlapping modularity on each graph); lines are means over ten test graphs
+  and bands 95\% bootstrap intervals. (a,b)~Uniform rings; (c--e)~rings of unequal size
+  and density ($o_n=0.05$); (f)~overlapping LFR graphs, against the mixing parameter. In
+  (e) the selector picks too fine a cover for HyperCommon (Sec.~\ref{sec:planted}).
+  OSLOM and the stochastic block model are not drawn; on the family of (f) OSLOM is the
+  most accurate method (Table~\ref{tab:labelfree}).}
+  \label{fig:benchmarks}
+\end{figure*}
+
 \begin{figure*}[p]
   \centering
   \includegraphics[width=\textwidth]{figures/fig_benchmarks_oracle.pdf}
@@ -49,8 +64,17 @@ that produces it.
 \input{sections/table_family}
 \clearpage
 
+\section{Robustness to rewiring}
+\input{sections/supp_robust}
+\clearpage
+
 \section{Real networks}
+\input{sections/table_real}
 \input{sections/table_wedges}
 \input{sections/table_real_more}
 \input{sections/table_real_more_omega}
 \input{sections/supp_real}
+
+\clearpage
+\section{Lattice-like real networks}
+\input{sections/supp_lattice}

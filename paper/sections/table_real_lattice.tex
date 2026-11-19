@@ -1,0 +1,22 @@
+\begin{table}[t]
+\caption{HyperCommon (HC) on lattice-like real networks: its rank by $\Omega$ among the fifteen methods (HC and the fourteen others; 1 is the most accurate), with the best parameter per graph (oracle) and without labels (label-free). A kind holds one or more sets of graphs (one per $k$, and per graph type or map); a single number is the rank on every set, two numbers the best and the median rank over the sets. Graphs: distinct networks of the kind. Leader: the most accurate method with the oracle on most sets (several when tied). Every set, F1 and the controls are in Table~\ref{tab:S-real-lattice-sets}.}
+\label{tab:real-lattice}
+\scriptsize\setlength{\tabcolsep}{3pt}
+\begin{ruledtabular}
+\begin{tabular}{llrccl}
+Kind & group & graphs & oracle & free & leader \\
+\hline
+Hi-C maps & domain & 6 & 1, 4 & 8, 9 & SCAN/L-CPM/HC \\
+sketches & stroke & 20 & 1, 2.5 & 5, 6 & Link/HC \\
+images & segment & 15 & 3, 3.5 & 3, 3.5 & Leiden \\
+pedestrians & track & 15 & 3 & 7 & SCAN \\
+commuting & region & 5 & 3, 6.5 & 7, 10.5 & Leiden/L-CPM \\
+proteins & domain & 60 & 4, 5.5 & 8, 8.5 & Leiden \\
+transit & route & 12 & 5, 5.5 & 3, 4 & Leiden \\
+streets & street & 12 & 6, 7.5 & 8, 8.5 & Leiden \\
+time series & segment & 24 & 5, 5 & 6, 7 & Leiden \\
+brain tissue & layer & 12 & 9, 11 & 9, 11 & Leiden \\
+articles & section & 15 & 10, 11 & 9, 9.5 & Leiden/L-CPM \\
+\end{tabular}
+\end{ruledtabular}
+\end{table}

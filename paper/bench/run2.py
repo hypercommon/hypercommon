@@ -38,6 +38,24 @@ FIELDS = ["experiment", "family", "p", "seed", "split", "method", "param",
 TEST_SEEDS = list(range(10))
 CAL_SEEDS = [1000, 1001, 1002]
 
+# DENSE_P=1: the robustness sweep. p = 0, 0.01, ..., 1 minus the values of the main grid
+# (already run), test seeds only, rows to <experiment>_dense*.csv so the main tables are unchanged.
+# DENSE_STEP (default 0.01) sets the step; 0.05 for the slow OSLOM and SBM runs, which then
+# only add p = 0.85 ... 1 to the main grid.
+DENSE = os.environ.get("DENSE_P") == "1"
+SUFFIX = "_dense" if DENSE else ""
+_STEP = float(os.environ.get("DENSE_STEP", "0.01"))
+P_DENSE = [round(_STEP * i, 2) for i in range(int(round(1 / _STEP)) + 1)]
+
+
+def grid(exp, fam_id):
+    """The p values and seeds to run for one family."""
+    base = exp.get("p_grid_by_family", {}).get(fam_id, exp.get("p_grid_v2", exp["p_grid"]))
+    if not DENSE:
+        return base, TEST_SEEDS + CAL_SEEDS
+    have = {round(float(p), 2) for p in base}
+    return [p for p in P_DENSE if p not in have], TEST_SEEDS
+
 
 def _safe(f, *a):
     """A metric that is undefined for a degenerate ground truth (one community: nulls) is NaN."""
@@ -105,7 +123,7 @@ def main():
     methods = a.methods.split(",") if a.methods else (
         exp["methods"] if a.experiment == "rings_isolated" else METHODS2)
     os.makedirs(RESULTS, exist_ok=True)
-    path = os.path.join(RESULTS, f"{a.experiment}.csv")
+    path = os.path.join(RESULTS, f"{a.experiment}{SUFFIX}.csv")
 
     done = set()
     if os.path.exists(path):
@@ -117,8 +135,9 @@ def main():
                     for r in csv.DictReader(fh) if not (r.get("error") or "").startswith(transient)}
     tasks = []
     for fam_id in exp["families"]:
-        for p in exp.get("p_grid_by_family", {}).get(fam_id, exp.get("p_grid_v2", exp["p_grid"])):
-            for seed in TEST_SEEDS + CAL_SEEDS:
+        ps, seeds = grid(exp, fam_id)
+        for p in ps:
+            for seed in seeds:
                 for m in methods:
                     if (fam_id, f"{float(p):.4f}", str(seed), m) not in done:
                         tasks.append((a.experiment, fam_id, p, seed, m))

@@ -1,0 +1,42 @@
+% Robustness to rewiring (Sec. sec:robust of the main text)
+
+The robustness sweep extends the rewiring of every ring setting to $p=0,0.01,\dots,1$
+on the ten test graphs (seeds $0$--$9$), OSLOM and the stochastic block model in steps
+of $0.05$; every other setting of the benchmarks is unchanged
+(\texttt{bench/run2.py} with \texttt{DENSE\_P=1}; analysis in
+\texttt{analysis/robust\_dense.py}). For each method and protocol, $p_{0.6}$ is the
+first $p$ at which the mean $\Omega$ over the ten graphs falls below $0.6$, by linear
+interpolation between grid points, and the area is the mean $\Omega$ over
+$p\in[0,1]$. The planted-structure markers are computed on the same graphs: a ring is a
+weak community when its members have more edges inside it than out, and $p_{\rm weak}$
+is the first $p$ at which fewer than half of the rings are; $p_{\rm clust}$ is the first
+$p$ at which the mean clustering coefficient is below $5\%$ of its value at $p=0$.
+
+Table~\ref{tab:S-robust} gives, for every setting, HyperCommon's $p_{0.6}$ against the
+other method that holds longest, with a paired bootstrap interval (\texttt{analysis/robust\_table.py});
+the same comparison at the levels $0.5,0.7,0.8,0.9$ and by area is in
+\texttt{figures/data/robust\_drop.csv}. \tbd{OSLOM and the SBM: complete on the uniform
+and the first heterogeneous sweep; on the others still running.}
+
+\input{sections/table_robust_dense}
+
+Only DEMON and ANGEL degrade under degree-biased rewiring. For HyperCommon the bound of
+Jaccard by the degree ratio offers a mechanism: a hub grown by preferential rewiring has
+low commonality with the lattice neighbours it attaches to, so the edges it gains rarely
+pass.
+
+\begin{figure*}[p]
+  \centering
+  \includegraphics[width=\textwidth]{figures/fig_robust_all.pdf}
+  \caption{As Fig.~\ref{fig:robust}, for all 28 ring settings, every parameter chosen
+  without labels.}
+  \label{fig:S-robust-all}
+\end{figure*}
+
+\begin{figure*}[p]
+  \centering
+  \includegraphics[width=\textwidth]{figures/fig_robust_oracle.pdf}
+  \caption{As Fig.~\ref{fig:robust}, with every method at its best parameter on each
+  graph (oracle protocol).}
+  \label{fig:S-robust-oracle}
+\end{figure*}
