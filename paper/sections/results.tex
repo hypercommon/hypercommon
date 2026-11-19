@@ -96,25 +96,26 @@ members have more edges inside than out), and $p_{\rm clust}$, beyond which the 
 clustering coefficient is below $5\%$ of its value at $p=0$; it falls as about
 $(1-p)^3$, since a triangle survives only if none of its three edges is rewired.
 
-Without labels, HyperCommon keeps $\Omega\ge0.6$ longest in \tbd{14} of the 28 settings
-and is among the three methods that keep it longest in \tbd{23} (Fig.~\ref{fig:robust},
-Table~\ref{tab:S-robust}). In \tbd{9} of them its lead holds under a paired bootstrap
-over the test graphs, and all \tbd{9} have rings of unequal size or preferential
-rewiring: on two worlds it stays above $0.6$ up to $p=\tbd{0.68}$, against $\tbd{0.63}$
-for the next method, on three big, many small up to $\tbd{0.62}$ against $\tbd{0.57}$,
-and on two worlds under preferential rewiring up to $\tbd{0.64}$ against $\tbd{0.61}$.
+Without labels, HyperCommon keeps $\Omega\ge0.6$ longest in 14 of the 28 settings
+and is among the three methods that keep it longest in 22 (Fig.~\ref{fig:robust},
+Table~\ref{tab:S-robust}). In 9 of them its lead holds under a paired bootstrap
+over the test graphs, and all 9 have rings of unequal size or preferential
+rewiring: on two worlds it stays above $0.6$ up to $p=0.68$, against $0.63$
+for the next method, on three big, many small up to $0.62$ against $0.57$,
+and on two worlds under preferential rewiring up to $0.64$ against $0.61$.
 On uniform rings of degree $8$ the leading methods are level. HyperCommon trails where
-the rings are dense: on uniform rings of degree $16$ Leiden holds to $p=\tbd{0.66}$
-against $\tbd{0.59}$ ($o_n=0$), and the two Leiden variants lead on the dense, even
+the rings are dense: on uniform rings of degree $16$ Leiden holds to $p=0.66$
+against $0.59$ ($o_n=0$), and the two Leiden variants lead on the dense, even
 family and on rings of equal size and unequal degree. It also trails on the gradient,
 where the label-free selector picks too fine a cover; with the best threshold per graph
-HyperCommon holds longest there as well ($p_{0.6}=\tbd{0.44}$ against $\tbd{0.40}$ for
-link communities). The leading
-methods keep $\Omega\ge0.6$ beyond $p_{\rm weak}$ ($\tbd{0.42}$--$\tbd{0.52}$ on uniform
-rings, $\tbd{0.15}$--$\tbd{0.38}$ where sizes differ, the small rings losing the most
-edges): rewired edges scatter at random, while each ring keeps its remaining edges
-together. On two worlds HyperCommon keeps $\Omega\ge0.6$ up to $p_{\rm clust}$
-($\tbd{0.68}$ against $\tbd{0.67}$), where the rings have lost $95\%$ of their
+HyperCommon holds longest there as well ($p_{0.6}=0.44$ against $0.40$ for
+link communities). Where the rings are dense or unequal in size, the leading
+methods keep $\Omega\ge0.6$ beyond $p_{\rm weak}$ ($0.43$--$0.52$ on the dense
+families, $0.15$--$0.47$ on two worlds and three big, many small, whose small rings
+lose the most edges): rewired edges scatter at random, while each ring keeps its
+remaining edges together. On the sparse rings ($k=8$) and on the gradient every method
+falls below $0.6$ before $p_{\rm weak}$. On two worlds HyperCommon keeps $\Omega\ge0.6$ up to $p_{\rm clust}$
+($0.68$ against $0.67$), where the rings have lost $95\%$ of their
 triangles.
 
 \subsection{Ablations}
