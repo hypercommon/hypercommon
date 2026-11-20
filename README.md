@@ -38,3 +38,5 @@ Python 3.12. The stochastic block model baseline needs graph-tool under Linux
 ## Licence
 
 MIT (see `LICENSE`). If you use the code, please cite the paper (`CITATION.cff`).
+The code is archived on Zenodo: https://doi.org/10.5281/zenodo.24392727 (all versions;
+v1.0.0 is https://doi.org/10.5281/zenodo.24392728).

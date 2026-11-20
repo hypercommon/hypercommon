@@ -4,6 +4,7 @@ title: "HyperCommon"
 type: software
 license: MIT
 repository-code: "https://github.com/hypercommon/hypercommon"
+doi: 10.5281/zenodo.24392727
 authors:
   - family-names: Deinega
     given-names: Dmitri
