@@ -28,7 +28,7 @@ import time
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 SNAP = os.path.join(HERE, "..", "analysis", "snap")
-OUT = os.path.join(HERE, "results", "retime_big.csv")
+OUT = os.path.join(HERE, "results", os.environ.get("RETIME_OUT", "retime_big.csv"))
 ENV1 = {k: "1" for k in ("OMP_NUM_THREADS", "MKL_NUM_THREADS", "OPENBLAS_NUM_THREADS", "NUMEXPR_NUM_THREADS")}
 
 

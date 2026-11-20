@@ -56,6 +56,7 @@ and `real_more.csv` (older scoring: restricted communities of fewer than three n
 `real_family_detection.csv` (an exploratory function sweep on full Amazon/DBLP under that older
 scoring), `runtime_tracemalloc_in_timing.csv` (timings taken with the memory tracer active).
 `bench/results/runtime.csv` — running times vs n (3 repetitions per size).
+`bench/results/time_methods.csv` — Table S22: every method's whole sweep on three benchmark graphs, one thread, 3 repetitions (`bench/time_methods.py`); `bench/results/retime_big_laptop.csv` — the same on full Amazon and DBLP for HC, LPA, Infomap, Leiden (`bench/retime_big.py`); both on the laptop.
 `bench/results/slpa_iterations*.csv` — SLPA 21 vs 100 iterations check.
 
 ## 2. Real-network analysis

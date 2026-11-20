@@ -24,7 +24,7 @@ The fourteen further networks come from the Netzschleuder repository
 `analysis/real_more.py` reads them; ground-truth groups of fewer than three nodes are
 dropped (and the primary school's teachers are not a class).
 
-Lattice-like real networks (Sec. VII G, Table II, Table S26): eleven kinds, each built
+Lattice-like real networks (Sec. VII G, Table II, Table S27): eleven kinds, each built
 from public data by `analysis/<kind>_build.py` into `analysis/data_<kind>/`, one folder
 per graph (`edges.tsv`, `groups.txt`) and its position-only control (`<name>_null/`):
 `hic` (Rao et al. 2014, GEO GSE63525; `hic_null.py` writes the controls), `protein`
@@ -71,8 +71,9 @@ environments under `~/hc/mamba`: `hc` (Python 3.12.16, numpy 2.4.1, scipy 1.17.1
 networkx 3.6.1, python-igraph 1.0.0, leidenalg 0.11.0, infomap 2.10.1, cdlib 0.4.0) for
 everything except the two below; `gt` (graph-tool 3.9) for the nested stochastic block
 model; `cpm` (numba 0.68.1) for `bench/cpm_bits.py`. OSLOM is the OSLOM2 binary built by
-`bench/build_oslom.sh`. The manuscript reports no running times; the `seconds` columns of
-the result files are kept for reference only. Against an earlier run of the same
+`bench/build_oslom.sh`. The `seconds` columns of the result files are kept for reference
+only (runs in parallel); the running times of the manuscript (Sec. V C, Table S22)
+are from controlled runs on the laptop below. Against an earlier run of the same
 scripts under Windows and Linux, every deterministic method gives identical scores;
 Infomap's random numbers depend on the platform (mean Omega 0.831 against 0.837), and
 the stochastic block model is stochastic.
@@ -189,7 +190,7 @@ python analysis/hic_null.py ; python analysis/protein_null.py   # controls (othe
 python bench/real_lattice_detection.py <kind> 16 all   # every method but OSLOM; results/real_lattice_<kind>.csv
 RL_SUFFIX=_wsl python bench/real_lattice_detection.py <kind> 4 oslom,sbm   # Linux: OSLOM, SBM
 python analysis/real_lattice_summary.py <kind>         # per-kind summary, figures/data/real_lattice_summary_<kind>.csv
-python analysis/real_lattice_ranks.py                  # Table II, Table S26
+python analysis/real_lattice_ranks.py                  # Table II, Table S27
 python bench/edge_prune.py analysis/snap/com-dblp.ungraph.txt.gz analysis/snap/com-amazon.ungraph.txt.gz \
     analysis/data_spatial/dlpfc_151507_k16/edges.tsv   # edge-pruning numbers of Sec. VIII, figures/data/edge_prune.csv
 ```
@@ -210,7 +211,7 @@ through `xr-hyper`). Run every command from `paper/`.
 | Fig. 3 | `python analysis/fig_omega_t.py` | `figures/fig_omega_t.pdf` |
 | Fig. 4, Figs. S6, S7 | robustness sweep (below) ; `python analysis/robust_dense.py` | `figures/fig_robust.pdf`, `fig_robust_all.pdf`, `fig_robust_oracle.pdf` |
 | Table I (geometry) | `python analysis/make_tables2.py geometry` | `sections/table_geometry.tex` |
-| Table II (lattice-like real networks), Table S26 | lattice-like real networks (below) ; `python analysis/real_lattice_ranks.py` | `sections/table_real_lattice.tex`, `table_real_lattice_sets.tex` |
+| Table II (lattice-like real networks), Table S27 | lattice-like real networks (below) ; `python analysis/real_lattice_ranks.py` | `sections/table_real_lattice.tex`, `table_real_lattice_sets.tex` |
 | Figs. S1–S3 | `python analysis/fig_real_networks.py ; python analysis/fig_family.py` | `figures/fig_real_commonality.pdf`, `fig_real_family.pdf`, `fig_real_triples.pdf` |
 | Figs. S4, S5 | `python analysis/fig_benchmarks2.py` | `figures/fig_benchmarks.pdf`, `fig_benchmarks_oracle.pdf` |
 | Tables S1, S3, S4 (data, ring families, grids) | written by hand from the data sources and `bench/methods2.py` | `sections/appendix.tex` |
@@ -220,9 +221,10 @@ through `xr-hyper`). Run every command from `paper/`.
 | Tables S15, S16 (controls, null graphs) | `python analysis/make_tables3_controls.py` | `sections/supp_controls.tex` |
 | Tables S17, S18 (commonality family) | `python bench/run2_family.py ; python bench/run2_family.py --top ; python analysis/make_tables2.py family` | `sections/table_family.tex` |
 | Table S19 (robustness) | after `robust_dense.py`: `python analysis/robust_table.py` | `sections/table_robust_dense.tex` |
-| Table S20 (SNAP), Tables S24, S25 | `python analysis/make_tables3_real.py` | `sections/table_real.tex`, `supp_real.tex` |
+| Table S20 (SNAP), Tables S25, S26 | `python analysis/make_tables3_real.py` | `sections/table_real.tex`, `supp_real.tex` |
 | Table S21 (wedges of 32 SNAP graphs) | `python analysis/wedge_scaling.py` | `sections/table_wedges.tex` |
-| Tables S22, S23 (fourteen networks) | `python analysis/make_tables2.py more` | `sections/table_real_more.tex`, `table_real_more_omega.tex` |
+| Table S22 (running times) | runs below (Running times); `python bench/make_table_times.py` | `sections/table_times.tex` |
+| Tables S23, S24 (fourteen networks) | `python analysis/make_tables2.py more` | `sections/table_real_more.tex`, `table_real_more_omega.tex` |
 
 Further tables kept in the repository but not in the paper: `sections/extra_benchmarks.tex`
 (frozen and native protocols, `make_tables3.py`), `sections/table_real_induced.tex`
@@ -248,6 +250,12 @@ Scoring on real networks: detected communities are restricted to the nodes that 
 at least one ground-truth group; every nonempty restricted community is kept (primary
 rule), and the rule that also drops restricted communities with fewer than three nodes
 is recorded alongside (`*_ge3` columns) as a sensitivity check.
+
+Running times (Sec. V C, Table S22; laptop, idle, one thread): `python bench/time_methods.py`
+(Windows: every method but OSLOM and the SBM) and, under WSL with the `gt` environment,
+`python bench/time_methods.py oslom sbm`, rows to `bench/results/time_methods.csv`;
+`RETIME_OUT=retime_big_laptop.csv python bench/retime_big.py amazon dblp` (full SNAP graphs);
+then `python bench/make_table_times.py` writes `sections/table_times.tex`.
 
 Per-branch thresholds (Discussion, "a first try"; exploratory, no table): `bench/hc_tree.py`.
 `bash bench/run_tree_all.sh` (rings and LFR, rows to `bench/results_tree/`) and
