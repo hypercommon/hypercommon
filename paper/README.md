@@ -249,6 +249,13 @@ at least one ground-truth group; every nonempty restricted community is kept (pr
 rule), and the rule that also drops restricted communities with fewer than three nodes
 is recorded alongside (`*_ge3` columns) as a sensitivity check.
 
+Per-branch thresholds (Discussion, "a first try"; exploratory, no table): `bench/hc_tree.py`.
+`bash bench/run_tree_all.sh` (rings and LFR, rows to `bench/results_tree/`) and
+`bash bench/run_tree_real.sh` (the real networks), then `python bench/compare_tree.py` and
+`python bench/compare_tree_real.py` write `bench/results_tree/compare_bench.csv` (the
+label-free LFR gain of 0.11 is the mean of `tree_minus_hc` over the eight LFR families)
+and `compare_real.csv`. The raw rows are in `bench/results_tree_gz/*.csv.gz`.
+
 ## Checks
 `python -m pytest ../tests bench/test_hc_fast.py bench/test_hc_scale.py bench/test_hc_scale_family.py`:
 the library's tests, plus equality of the fast and scalable implementations (Jaccard and

@@ -39,6 +39,7 @@ def _geom(lo, hi, n):
 
 GRIDS2 = {
     "hc": T_GRID, "hc_2test": T_GRID, "hc_tri": T_GRID, "hc_econn": T_GRID,
+    "hc_tree": [5, 10, 20, 50, 100, 200, 500],     # exploratory (hc_tree.py): min pairs per cluster
     "linkcomm": T_GRID,
     "cpm": [3, 4, 5, 6, 7],
     "leiden": _geom(1 / 16, 32, 30),
@@ -54,7 +55,7 @@ GRIDS2 = {
 }
 METHODS2 = ["hc", "hc_2test", "hc_tri", "hc_econn", "linkcomm", "cpm", "leiden", "leiden_cpm",
             "infomap", "lpa", "walktrap", "slpa", "demon", "angel", "scan", "scan_j"]
-HC_LIKE = ("hc", "hc_2test", "hc_tri", "hc_econn", "linkcomm", "linkcomm_pd")
+HC_LIKE = ("hc", "hc_2test", "hc_tri", "hc_econn", "hc_tree", "linkcomm", "linkcomm_pd")
 # Native defaults (each method's own choice, no sweep), for the protocol that does not
 # select by overlapping modularity: Leiden-RB at gamma = 1; Leiden-CPM at gamma equal
 # to the edge density 2m/(n(n-1)) (the Erdos-Renyi null of the CPM); link communities
@@ -135,6 +136,12 @@ def _slpa_multi(G, T, rs):
 
 def run_method2(name, G, ts, seed):
     """Yield (param, cover) over the method's whole grid. `ts`: TripleScores of G."""
+    if name == "hc_tree":                       # a threshold per branch (hc_tree.py)
+        from hc_tree import TreeHC
+        tree = TreeHC(ts)
+        for ms in GRIDS2[name]:
+            yield ms, tree.communities(ms)
+        return
     if name in ("hc", "hc_2test", "hc_tri", "hc_econn"):
         for t in GRIDS2[name]:
             yield t, ts.communities(name, t)

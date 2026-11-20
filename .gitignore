@@ -43,3 +43,7 @@ paper/analysis/data_tssb/*
 !paper/analysis/data_*/README.md
 paper/analysis/data_trackml/
 paper/analysis/trackml_build.py
+# per-branch threshold rows: shipped compressed in paper/bench/results_tree_gz/
+paper/bench/results_tree/*
+!paper/bench/results_tree/compare_*.csv
+paper/bench/results_tree_*.log
