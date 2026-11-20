@@ -1,0 +1,15 @@
+\begin{table*}[t]
+\caption{The per-branch threshold (\texttt{bench/hc\_tree.py}) against HyperCommon (HC), $\Omega$. The covers of HyperCommon at all thresholds form one tree (Kruskal on the triples in decreasing $s_3$, over the pairs); it is condensed with a minimum cluster size, in pairs, and clusters are selected by excess of mass with their stability counted in nodes, as in HDBSCAN~\cite{campello2013density}. The minimum size is the parameter (7 values, 5--500), chosen as for every method: best per graph (oracle) or largest overlapping modularity (label-free). Rings and LFR: mean over settings of the noise-averaged $\Omega$; real networks: mean over sets (lattice-like kinds, Table~\ref{tab:S-real-lattice-sets}) or networks. Up/down: settings, sets or networks where the per-branch threshold is above / below HC by more than 0.005. Rank: median rank among HC or the per-branch threshold and the other methods. Its oracle chooses among 7 values, HC's among 30 on the benchmarks and 100 on the real networks. On the gradient without labels it lifts HC from 0.42 to 0.54 without overlap and from 0.32 to 0.42 at $o_n=0.05$ (link communities: 0.61 and 0.48).}
+\label{tab:S-tree}
+\begin{ruledtabular}
+\begin{tabular}{lccccc|ccccc}
+ & \multicolumn{5}{c}{Oracle} & \multicolumn{5}{c}{Label-free} \\
+ & HC & Branch & Up/down & Rank HC & Rank branch & HC & Branch & Up/down & Rank HC & Rank branch \\
+\hline
+Ring lattices (settings), 28 & 0.674 & 0.682 & 14/11 & 2 & 1 & 0.637 & 0.654 & 16/9 & 1 & 1 \\
+LFR (families), 8 & 0.536 & 0.622 & 7/0 & 8.5 & 7 & 0.502 & 0.608 & 8/0 & 9 & 5.5 \\
+Lattice-like real (sets), 32 & 0.393 & 0.339 & 12/18 & 7 & 8 & 0.236 & 0.252 & 14/13 & 9 & 8 \\
+Fourteen networks, 14 & 0.443 & 0.450 & 5/7 & 7.5 & 8.5 & 0.402 & 0.392 & 6/5 & 7.5 & 8 \\
+\end{tabular}
+\end{ruledtabular}
+\end{table*}

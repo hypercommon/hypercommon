@@ -175,11 +175,7 @@ $t_{\min}=0.02$ it is at most $12$ on all of them (Table~\ref{tab:S-wedges}); on
 it falls from $33$ to $3.7$. The cost is therefore that of the $\gamma=3$ case even where
 $W$ itself is not. Once the triple scores are stored, every further threshold costs
 $O(W)$, so a whole sweep of the threshold costs one scoring, whereas a sweep of Leiden's
-resolution or Infomap's Markov time costs a full run per value. On one core of a laptop
-(Table~\ref{tab:S-times}) the whole sweep of HyperCommon takes 0.9--1.6\,s on the benchmark
-graphs, about as long as Infomap's and less than Leiden's, and 52 and 68\,s on the full
-Amazon and DBLP graphs, against 238 and 209\,s for Infomap and about 1300\,s for Leiden;
-selecting its threshold by overlapping modularity adds 393 and 475\,s. Clique percolation is the
+resolution or Infomap's Markov time costs a full run per value. Clique percolation is the
 costly method: the number of maximal cliques can grow exponentially with
 $n$~\cite{moon1965cliques}, and on one of the fourteen smaller networks of
 Sec.~\ref{sec:real} it is out of reach.

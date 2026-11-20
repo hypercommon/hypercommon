@@ -41,8 +41,10 @@ graphs that keep the degrees and the clustering would have to be added.
 Three directions follow. The covers at all thresholds form one hierarchy read off a
 single scoring of the wedges (Sec.~\ref{sec:cost}), so thresholds could be chosen
 separately on its branches. A first try with the cluster-stability criterion of
-HDBSCAN~\cite{campello2013density} raises the label-free $\Omega$ on LFR by $0.11$ but
-not on the real networks, so a better rule for choosing the branches is still open. The
+HDBSCAN~\cite{campello2013density} (Table~\ref{tab:S-tree}) raises the label-free
+$\Omega$ by $0.11$ on LFR and, on the gradient without overlap, where HyperCommon's
+label-free cover is too fine, from $0.42$ to $0.54$, but not on the real networks, so a
+better rule for choosing the branches is still open. The
 commonality function is a second
 degree of freedom: the most accurate one varies between networks, so learning the
 function and the threshold from a network's own structure is a natural next step. And
