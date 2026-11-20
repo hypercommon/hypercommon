@@ -80,8 +80,21 @@ that produces it.
 \input{sections/supp_lattice}
 
 \clearpage
+\onecolumngrid
 \section{Per-branch thresholds}
 \label{sec:S-tree}
-The first try of the Discussion, on the benchmarks and real networks of the main text
-(Table~\ref{tab:S-tree}).
+The first try of the Discussion (\texttt{bench/hc\_tree.py}). The covers of HyperCommon
+at all thresholds form one tree: adding the triples in decreasing $s_3$ (Kruskal) gives
+the single-linkage tree of the pairs, with the threshold as the level at which a
+community splits. As in HDBSCAN~\cite{campello2013density}, the tree is condensed with a
+minimum cluster size $m_{\min}$, counted in pairs: a split is kept when both sides hold at
+least $m_{\min}$ pairs, otherwise the smaller side falls out of the cluster. The stability
+of a cluster is the sum over its nodes of the range of thresholds over which the node
+stays in it, and clusters are selected by excess of mass; a cluster's community is the
+node set of all its pairs, so communities still overlap in nodes and are disjoint in
+pairs. The parameter is $m_{\min}\in\{5,10,20,50,100,200,500\}$, chosen as for every
+method: best per graph (oracle) or largest overlapping modularity (label-free). Its
+oracle thus chooses among 7 values, HyperCommon's among 30 on the benchmarks and 100 on
+the real networks. Table~\ref{tab:S-tree} compares the two on the benchmarks and real
+networks of the main text.
 \input{sections/table_tree}

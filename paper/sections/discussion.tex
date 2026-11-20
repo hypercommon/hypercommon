@@ -43,8 +43,13 @@ single scoring of the wedges (Sec.~\ref{sec:cost}), so thresholds could be chose
 separately on its branches. A first try with the cluster-stability criterion of
 HDBSCAN~\cite{campello2013density} (Table~\ref{tab:S-tree}) raises the label-free
 $\Omega$ by $0.11$ on LFR and, on the gradient without overlap, where HyperCommon's
-label-free cover is too fine, from $0.42$ to $0.54$, but not on the real networks, so a
-better rule for choosing the branches is still open. The
+label-free cover is too fine, from $0.42$ to $0.54$; there the gain stops because
+modularity still chooses its minimum cluster size. On the real networks it changes the mean
+by at most $0.02$ without labels, and with the best parameter per graph it loses $0.05$ on
+the lattice-like sets. We keep the single
+threshold as the method: the recovery window is proved for it, while the per-branch rule
+has no guarantee yet and adds a parameter of its own. A better rule for choosing the
+branches is still open. The
 commonality function is a second
 degree of freedom: the most accurate one varies between networks, so learning the
 function and the threshold from a network's own structure is a natural next step. And

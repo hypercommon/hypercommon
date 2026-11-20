@@ -40,27 +40,21 @@ def main():
         return x.hc, x.tree, x.best_other_mean
     g0 = cell("gradient10_o00", "label_free")
     g5 = cell("gradient10", "label_free")
-    cap = ("The per-branch threshold (\\texttt{bench/hc\\_tree.py}) against HyperCommon (HC), $\\Omega$. "
-           "The covers of HyperCommon at all thresholds form one tree (Kruskal on the triples in "
-           "decreasing $s_3$, over the pairs); it is condensed with a minimum cluster size, in "
-           "pairs, and clusters are selected by excess of mass with their stability counted in "
-           "nodes, as in HDBSCAN~\\cite{campello2013density}. The minimum size is the parameter "
-           "(7 values, 5--500), chosen as for every method: best per graph (oracle) or largest "
-           "overlapping modularity (label-free). Rings and LFR: mean over settings of the "
+    cap = ("The per-branch threshold (Branch) against HyperCommon (HC), $\\Omega$, under the "
+           "oracle and label-free protocols. Rings and LFR: mean over settings of the "
            "noise-averaged $\\Omega$; real networks: mean over sets (lattice-like kinds, "
            "Table~\\ref{tab:S-real-lattice-sets}) or networks. Up/down: settings, sets or networks "
-           "where the per-branch threshold is above / below HC by more than 0.005. Rank: median "
-           "rank among HC or the per-branch threshold and the other methods. Its oracle chooses "
-           "among 7 values, HC's among 30 on the benchmarks and 100 on the real networks. On the "
+           "where Branch is above / below HC by more than 0.005. Rank: median "
+           "rank among HC or Branch and the other methods. On the "
            f"gradient without labels it lifts HC from {g0[0]:.2f} to {g0[1]:.2f} without overlap "
            f"and from {g5[0]:.2f} to {g5[1]:.2f} at $o_n=0.05$ (link communities: {g0[2]:.2f} "
            f"and {g5[2]:.2f}).")
     tex = "\n".join([
-        "\\begin{table*}[t]", "\\caption{" + cap + "}", "\\label{tab:S-tree}",
+        "\\begin{table}[h]", "\\caption{" + cap + "}", "\\label{tab:S-tree}",
         "\\begin{ruledtabular}", "\\begin{tabular}{lccccc|ccccc}",
         " & \\multicolumn{5}{c}{Oracle} & \\multicolumn{5}{c}{Label-free} \\\\",
         " & HC & Branch & Up/down & Rank HC & Rank branch & HC & Branch & Up/down & Rank HC & Rank branch \\\\",
-        "\\hline", *lines, "\\end{tabular}", "\\end{ruledtabular}", "\\end{table*}"])
+        "\\hline", *lines, "\\end{tabular}", "\\end{ruledtabular}", "\\end{table}"])
     with open(os.path.join(HERE, "..", "sections", "table_tree.tex"), "w") as fh:
         fh.write(tex + "\n")
     print(tex)
