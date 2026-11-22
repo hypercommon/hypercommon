@@ -32,6 +32,7 @@ rng = np.random.default_rng(12345)
 
 NATIVE_OF = {"leiden_g1": "leiden", "leiden_cpm_dens": "leiden_cpm", "linkcomm_pd": "linkcomm"}
 NATIVE_PARAM = {"infomap": 1.0, "slpa": 0.1, "sbm": 0.0, "oslom": 0.1}   # reference defaults; sbm: finest level
+NATIVE_STR = {"egosplit": "lp:lp"}      # ego-splitting: the reference code's default, label propagation twice
 
 
 def select(df):
@@ -55,9 +56,10 @@ def select(df):
         own = nat_rows[nat_rows.split == "test"].assign(method=lambda d: d.method.map(NATIVE_OF))
         fixed = [test[(test.method == m) & (pd.to_numeric(test.param, errors="coerce").round(6) == v)]
                  for m, v in NATIVE_PARAM.items()]
-        replaced = set(NATIVE_OF.values()) | set(NATIVE_PARAM)
+        fixed += [test[(test.method == m) & (test.param == v)] for m, v in NATIVE_STR.items()]
+        replaced = set(NATIVE_OF.values()) | set(NATIVE_PARAM) | set(NATIVE_STR)
         have = set(own.method)
-        nat = pd.concat([lf[~lf.method.isin(replaced & (have | set(NATIVE_PARAM)))], own] + fixed,
+        nat = pd.concat([lf[~lf.method.isin(replaced & (have | set(NATIVE_PARAM) | set(NATIVE_STR)))], own] + fixed,
                         ignore_index=True).assign(protocol="native")
         parts.append(nat)
     return pd.concat(parts, ignore_index=True), best

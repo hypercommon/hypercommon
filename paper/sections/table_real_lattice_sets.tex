@@ -1,81 +1,81 @@
 \begin{longtable*}{llrrrrrlr}
-\caption{Every set of lattice-like real graphs: HyperCommon's rank among the fifteen methods by $\Omega$ and F1, oracle (orc) and label-free (free) protocols; its mean $\Omega$ (oracle), the most accurate other method with the oracle and HC minus it, with the paired 95\% bootstrap interval over the graphs of the set (none for a set of one graph). Controls keep the nodes and groups and build the edges from position alone (sequence, genomic, grid, map or drawing distance), removing the data signal.}\label{tab:S-real-lattice-sets}\\
+\caption{Every set of lattice-like real graphs: HyperCommon's rank among the seventeen methods by $\Omega$ and F1, oracle (orc) and label-free (free) protocols; its mean $\Omega$ (oracle), the most accurate other method with the oracle and HC minus it, with the paired 95\% bootstrap interval over the graphs of the set (none for a set of one graph). Controls keep the nodes and groups and build the edges from position alone (sequence, genomic, grid, map or drawing distance), removing the data signal.}\label{tab:S-real-lattice-sets}\\
 \hline\hline
 Kind & set & $\Omega$ orc & $\Omega$ free & F1 orc & F1 free & HC $\Omega$ & best other & difference \\
 \hline\endfirsthead
 \hline Kind & set & $\Omega$ orc & $\Omega$ free & F1 orc & F1 free & HC $\Omega$ & best other & difference \\ \hline\endhead
 \hline\hline\endlastfoot
-Hi-C maps & k=8 & 1 & 9 & 1 & 4 & 0.70 & CPM 0.69 & $+0.01$ [$-0.02, +0.05$] \\
- & k=8, control & 13 & 12 & 14 & 11 & 0.05 & L-CPM 0.53 & $-0.48$ [$-0.51, -0.46$] \\
- & k=16 & 6 & 10 & 10 & 8 & 0.65 & SCAN 0.69 & $-0.04$ [$-0.22, +0.07$] \\
- & k=16, control & 12 & 12 & 12 & 10 & 0.05 & L-CPM 0.53 & $-0.47$ [$-0.50, -0.44$] \\
- & k=32 & 4 & 8 & 1 & 6 & 0.59 & L-CPM 0.63 & $-0.04$ [$-0.06, -0.03$] \\
- & k=32, control & 12 & 10 & 11 & 5 & 0.06 & L-CPM 0.53 & $-0.47$ [$-0.50, -0.43$] \\
+Hi-C maps & k=8 & 1 & 10 & 1 & 4 & 0.70 & CPM 0.69 & $+0.01$ [$-0.02, +0.05$] \\
+ & k=8, control & 15 & 14 & 16 & 12 & 0.05 & L-CPM 0.53 & $-0.48$ [$-0.51, -0.46$] \\
+ & k=16 & 1 & 10 & 1 & 6 & 0.74 & SCAN 0.69 & $+0.05$ [$+0.01, +0.09$] \\
+ & k=16, control & 14 & 13 & 13 & 6 & 0.06 & Leiden 0.53 & $-0.47$ [$-0.50, -0.44$] \\
+ & k=32 & 5 & 10 & 2 & 5 & 0.59 & L-CPM 0.63 & $-0.04$ [$-0.06, -0.03$] \\
+ & k=32, control & 14 & 12 & 13 & 5 & 0.06 & L-CPM 0.53 & $-0.47$ [$-0.50, -0.43$] \\
 \hline
 sketches & k=8 & 1 & 5 & 1 & 6 & 0.99 & Link 0.99 & $+0.00$ [$+0.00, +0.00$] \\
- & k=8, control & 1 & 1 & 5 & 4 & 0.66 & Link 0.64 & $+0.02$ [$-0.01, +0.05$] \\
+ & k=8, control & 1 & 1 & 6 & 7 & 0.66 & Link 0.64 & $+0.02$ [$-0.01, +0.05$] \\
  & k=16 & 4 & 7 & 1 & 7 & 0.98 & Link 0.99 & $-0.01$ [$-0.04, +0.00$] \\
- & k=16, control & 2 & 2 & 1 & 4 & 0.58 & Link 0.62 & $-0.04$ [$-0.07, -0.01$] \\
+ & k=16, control & 2 & 2 & 2 & 6 & 0.58 & Link 0.62 & $-0.04$ [$-0.07, -0.01$] \\
 \hline
-images & k=8 & 4 & 3 & 5 & 5 & 0.13 & Leiden 0.17 & $-0.04$ [$-0.08, -0.01$] \\
- & k=8, control & 8 & 13 & 6 & 4 & 0.02 & Leiden 0.11 & $-0.10$ [$-0.12, -0.07$] \\
- & k=16 & 3 & 4 & 7 & 7 & 0.17 & Leiden 0.20 & $-0.03$ [$-0.07, +0.01$] \\
- & k=16, control & 13 & 13 & 7 & 5 & 0.01 & Leiden 0.12 & $-0.10$ [$-0.13, -0.07$] \\
+images & k=8 & 6 & 4 & 8 & 8 & 0.13 & Leiden 0.17 & $-0.04$ [$-0.08, -0.01$] \\
+ & k=8, control & 10 & 15 & 8 & 7 & 0.02 & Ego 0.11 & $-0.10$ [$-0.12, -0.07$] \\
+ & k=16 & 4 & 4 & 9 & 9 & 0.17 & Leiden 0.20 & $-0.03$ [$-0.07, +0.01$] \\
+ & k=16, control & 15 & 15 & 9 & 7 & 0.01 & Leiden 0.12 & $-0.10$ [$-0.13, -0.07$] \\
 \hline
-pedestrians & k=8 & 3 & 7 & 7 & 11 & 0.32 & SCAN 0.37 & $-0.05$ [$-0.07, -0.03$] \\
- & k=8, control & 3 & 7 & 7 & 8 & 0.32 & SCAN 0.38 & $-0.06$ [$-0.08, -0.04$] \\
+pedestrians & k=8 & 3 & 9 & 10 & 14 & 0.32 & SCAN 0.37 & $-0.05$ [$-0.07, -0.03$] \\
+ & k=8, control & 3 & 9 & 10 & 11 & 0.32 & SCAN 0.38 & $-0.06$ [$-0.08, -0.04$] \\
 \hline
-commuting & ew ltla region k=8 & 9 & 7 & 8 & 7 & 0.38 & Leiden 0.61 & $-0.23$ \\
- & ew ltla region k=8, control & 8 & 10 & 11 & 11 & 0.39 & L-CPM 0.51 & $-0.11$ \\
- & ew ltla region k=16 & 11 & 10 & 12 & 12 & 0.41 & Leiden 0.63 & $-0.22$ \\
- & ew ltla region k=16, control & 10 & 9 & 11 & 11 & 0.42 & Leiden 0.53 & $-0.11$ \\
- & ew msoa north lad k=8 & 6 & 9 & 7 & 8 & 0.61 & Leiden 0.69 & $-0.08$ \\
- & ew msoa north lad k=8, control & 4 & 9 & 4 & 1 & 0.49 & Infomap 0.54 & $-0.05$ \\
- & ew msoa north lad k=16 & 6 & 10 & 9 & 8 & 0.65 & L-CPM 0.70 & $-0.05$ \\
- & ew msoa north lad k=16, control & 7 & 10 & 10 & 6 & 0.48 & Infomap 0.53 & $-0.05$ \\
- & ew msoa south lad k=8 & 5 & 10 & 6 & 6 & 0.63 & L-CPM 0.73 & $-0.10$ \\
- & ew msoa south lad k=8, control & 4 & 6 & 9 & 4 & 0.50 & L-CPM 0.55 & $-0.05$ \\
- & ew msoa south lad k=16 & 7 & 11 & 10 & 7 & 0.63 & L-CPM 0.73 & $-0.09$ \\
- & ew msoa south lad k=16, control & 3 & 10 & 10 & 6 & 0.52 & L-CPM 0.52 & $-0.00$ \\
- & us county cz k=8 & 3 & 11 & 5 & 6 & 0.45 & L-CPM 0.51 & $-0.06$ \\
- & us county cz k=8, control & 8 & 3 & 8 & 4 & 0.32 & L-CPM 0.42 & $-0.10$ \\
- & us county cz k=16 & 6 & 13 & 7 & 4 & 0.27 & L-CPM 0.45 & $-0.18$ \\
- & us county cz k=16, control & 7 & 8 & 6 & 6 & 0.25 & L-CPM 0.40 & $-0.16$ \\
- & us county state k=8 & 10 & 11 & 10 & 9 & 0.25 & Leiden 0.58 & $-0.33$ \\
- & us county state k=8, control & 11 & 9 & 10 & 9 & 0.25 & Leiden 0.46 & $-0.21$ \\
- & us county state k=16 & 10 & 12 & 12 & 11 & 0.24 & Leiden 0.72 & $-0.48$ \\
- & us county state k=16, control & 11 & 9 & 11 & 10 & 0.25 & Leiden 0.44 & $-0.19$ \\
+commuting & ew ltla region k=8 & 11 & 10 & 10 & 10 & 0.38 & Ego 0.61 & $-0.23$ \\
+ & ew ltla region k=8, control & 10 & 12 & 13 & 13 & 0.39 & L-CPM 0.51 & $-0.11$ \\
+ & ew ltla region k=16 & 13 & 12 & 14 & 14 & 0.41 & Leiden 0.63 & $-0.22$ \\
+ & ew ltla region k=16, control & 12 & 11 & 13 & 13 & 0.42 & Ego 0.57 & $-0.15$ \\
+ & ew msoa north lad k=8 & 8 & 10 & 10 & 9 & 0.61 & Leiden 0.69 & $-0.08$ \\
+ & ew msoa north lad k=8, control & 7 & 10 & 8 & 1 & 0.49 & Infomap 0.54 & $-0.05$ \\
+ & ew msoa north lad k=16 & 7 & 11 & 11 & 8 & 0.65 & L-CPM 0.70 & $-0.05$ \\
+ & ew msoa north lad k=16, control & 9 & 13 & 12 & 6 & 0.48 & Infomap 0.53 & $-0.05$ \\
+ & ew msoa south lad k=8 & 8 & 11 & 10 & 6 & 0.63 & L-CPM 0.73 & $-0.10$ \\
+ & ew msoa south lad k=8, control & 7 & 7 & 12 & 4 & 0.50 & L-CPM 0.55 & $-0.05$ \\
+ & ew msoa south lad k=16 & 8 & 12 & 13 & 7 & 0.63 & L-CPM 0.73 & $-0.09$ \\
+ & ew msoa south lad k=16, control & 4 & 12 & 13 & 6 & 0.52 & L-CPM 0.52 & $-0.00$ \\
+ & us county cz k=8 & 3 & 12 & 6 & 6 & 0.45 & L-CPM 0.51 & $-0.06$ \\
+ & us county cz k=8, control & 11 & 3 & 11 & 4 & 0.32 & L-CPM 0.42 & $-0.10$ \\
+ & us county cz k=16 & 8 & 15 & 10 & 4 & 0.27 & L-CPM 0.45 & $-0.18$ \\
+ & us county cz k=16, control & 9 & 9 & 10 & 6 & 0.25 & L-CPM 0.40 & $-0.16$ \\
+ & us county state k=8 & 12 & 13 & 12 & 12 & 0.25 & Leiden 0.58 & $-0.33$ \\
+ & us county state k=8, control & 13 & 12 & 12 & 12 & 0.25 & Leiden 0.46 & $-0.21$ \\
+ & us county state k=16 & 12 & 14 & 14 & 13 & 0.24 & Leiden 0.72 & $-0.48$ \\
+ & us county state k=16, control & 13 & 11 & 13 & 12 & 0.25 & Leiden 0.44 & $-0.19$ \\
 \hline
-proteins & 7A & 4 & 8 & 8 & 12 & 0.57 & Leiden 0.83 & $-0.26$ [$-0.31, -0.22$] \\
- & 8A & 7 & 9 & 7 & 10 & 0.48 & Leiden 0.81 & $-0.33$ [$-0.40, -0.26$] \\
- & 8A, control & 12 & 12 & 8 & 2 & 0.00 & Infomap 0.54 & $-0.54$ [$-0.59, -0.49$] \\
+proteins & 7A & 7 & 9 & 10 & 14 & 0.57 & Leiden 0.83 & $-0.26$ [$-0.31, -0.22$] \\
+ & 8A & 8 & 11 & 10 & 12 & 0.48 & Ego 0.81 & $-0.33$ [$-0.40, -0.27$] \\
+ & 8A, control & 14 & 14 & 10 & 3 & 0.00 & Ego 0.55 & $-0.55$ [$-0.60, -0.49$] \\
 \hline
-transit & r2 & 5 & 3 & 7 & 5 & 0.28 & Leiden 0.31 & $-0.02$ [$-0.05, +0.00$] \\
- & r2, control & 5 & 4 & 5 & 5 & 0.16 & Leiden 0.19 & $-0.02$ [$-0.03, -0.01$] \\
- & r3 & 6 & 5 & 9 & 8 & 0.26 & Leiden 0.31 & $-0.05$ [$-0.08, -0.03$] \\
- & r3, control & 3 & 5 & 8 & 9 & 0.17 & Leiden 0.18 & $-0.01$ [$-0.01, +0.00$] \\
+transit & r2 & 8 & 5 & 11 & 8 & 0.28 & Ego 0.32 & $-0.03$ [$-0.06, -0.00$] \\
+ & r2, control & 8 & 5 & 9 & 7 & 0.16 & Leiden 0.19 & $-0.02$ [$-0.03, -0.01$] \\
+ & r3 & 9 & 6 & 12 & 10 & 0.26 & Ego 0.31 & $-0.05$ [$-0.08, -0.03$] \\
+ & r3, control & 6 & 7 & 10 & 10 & 0.17 & Ego 0.18 & $-0.01$ [$-0.02, +0.00$] \\
 \hline
-streets & r2 & 6 & 8 & 5 & 8 & 0.25 & Leiden 0.30 & $-0.06$ [$-0.08, -0.03$] \\
- & r2, control & 4 & 6 & 5 & 4 & 0.26 & Leiden 0.28 & $-0.01$ [$-0.03, -0.00$] \\
- & r3 & 9 & 9 & 5 & 9 & 0.24 & Leiden 0.30 & $-0.05$ [$-0.07, -0.03$] \\
- & r3, control & 1 & 4 & 3 & 5 & 0.28 & L-CPM 0.27 & $+0.01$ [$-0.01, +0.03$] \\
+streets & r2 & 10 & 10 & 7 & 8 & 0.25 & Ego 0.31 & $-0.07$ [$-0.09, -0.04$] \\
+ & r2, control & 5 & 9 & 7 & 5 & 0.26 & Leiden 0.28 & $-0.01$ [$-0.03, -0.00$] \\
+ & r3 & 11 & 11 & 9 & 9 & 0.24 & BigClam 0.30 & $-0.06$ [$-0.08, -0.04$] \\
+ & r3, control & 2 & 6 & 6 & 5 & 0.28 & Ego 0.28 & $-0.00$ [$-0.02, +0.01$] \\
 \hline
-time series & band k=8 & 5 & 8 & 7 & 10 & 0.33 & Leiden 0.56 & $-0.23$ [$-0.32, -0.13$] \\
- & band k=8, control & 13 & 13 & 6 & 1 & 0.00 & SBM 0.50 & $-0.49$ [$-0.56, -0.42$] \\
- & band k=16 & 6 & 7 & 9 & 9 & 0.31 & Leiden 0.67 & $-0.36$ [$-0.45, -0.27$] \\
- & band k=16, control & 13 & 13 & 6 & 3 & 0.00 & Leiden 0.52 & $-0.52$ [$-0.59, -0.45$] \\
- & knn k=8 & 5 & 6 & 2 & 8 & 0.03 & Leiden 0.04 & $-0.01$ [$-0.02, +0.00$] \\
+time series & band k=8 & 7 & 10 & 9 & 13 & 0.33 & Leiden 0.56 & $-0.23$ [$-0.32, -0.13$] \\
+ & band k=8, control & 15 & 15 & 11 & 3 & 0.00 & SBM 0.63 & $-0.63$ [$-0.69, -0.56$] \\
+ & band k=16 & 8 & 9 & 11 & 11 & 0.31 & Leiden 0.67 & $-0.36$ [$-0.45, -0.27$] \\
+ & band k=16, control & 15 & 15 & 8 & 5 & 0.00 & BigClam 0.66 & $-0.66$ [$-0.72, -0.59$] \\
+ & knn k=8 & 7 & 7 & 2 & 10 & 0.03 & Ego 0.04 & $-0.01$ [$-0.02, +0.00$] \\
 \hline
-brain tissue & k=8 & 9 & 9 & 8 & 9 & 0.11 & Leiden 0.29 & $-0.18$ [$-0.23, -0.14$] \\
- & k=8, control & 14 & 14 & 6 & 12 & 0.01 & Leiden 0.26 & $-0.25$ [$-0.27, -0.22$] \\
- & k=16 & 13 & 12 & 10 & 14 & 0.04 & Leiden 0.30 & $-0.26$ [$-0.31, -0.22$] \\
- & k=16, control & 10 & 10 & 5 & 7 & 0.04 & Leiden 0.25 & $-0.20$ [$-0.24, -0.17$] \\
- & parts k=8 & 11 & 11 & 7 & 12 & 0.08 & Leiden 0.29 & $-0.20$ [$-0.23, -0.18$] \\
- & parts k=8, control & 14 & 14 & 6 & 13 & 0.01 & Leiden 0.29 & $-0.28$ [$-0.30, -0.25$] \\
+brain tissue & k=8 & 11 & 12 & 10 & 11 & 0.11 & Leiden 0.29 & $-0.18$ [$-0.23, -0.14$] \\
+ & k=8, control & 16 & 16 & 8 & 14 & 0.01 & Leiden 0.26 & $-0.25$ [$-0.27, -0.22$] \\
+ & k=16 & 15 & 14 & 12 & 16 & 0.04 & Leiden 0.30 & $-0.26$ [$-0.31, -0.22$] \\
+ & k=16, control & 12 & 12 & 8 & 9 & 0.04 & Leiden 0.25 & $-0.20$ [$-0.24, -0.17$] \\
+ & parts k=8 & 13 & 12 & 9 & 14 & 0.08 & Leiden 0.29 & $-0.20$ [$-0.23, -0.18$] \\
+ & parts k=8, control & 16 & 16 & 8 & 15 & 0.01 & Leiden 0.29 & $-0.28$ [$-0.30, -0.25$] \\
 \hline
-articles & k=8 & 10 & 9 & 12 & 13 & 0.23 & L-CPM 0.36 & $-0.13$ [$-0.19, -0.07$] \\
- & k=8, control & 11 & 11 & 11 & 11 & 0.05 & Leiden 0.34 & $-0.29$ [$-0.36, -0.23$] \\
- & k=16 & 12 & 10 & 13 & 12 & 0.23 & Leiden 0.38 & $-0.16$ [$-0.21, -0.10$] \\
- & k=16, control & 11 & 11 & 11 & 11 & 0.10 & L-CPM 0.35 & $-0.26$ [$-0.32, -0.19$] \\
+articles & k=8 & 12 & 11 & 14 & 15 & 0.23 & L-CPM 0.36 & $-0.13$ [$-0.19, -0.07$] \\
+ & k=8, control & 13 & 13 & 13 & 13 & 0.05 & Ego 0.36 & $-0.31$ [$-0.37, -0.25$] \\
+ & k=16 & 14 & 12 & 15 & 14 & 0.23 & Ego 0.39 & $-0.16$ [$-0.21, -0.12$] \\
+ & k=16, control & 13 & 13 & 13 & 13 & 0.10 & Ego 0.38 & $-0.28$ [$-0.34, -0.21$] \\
 \hline
 \end{longtable*}

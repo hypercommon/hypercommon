@@ -65,7 +65,7 @@ exactly. Test seeds are 0–9, calibration seeds 1000–1002. Stochastic methods
 networks, Leiden and Infomap use seed 1 and SLPA seeds `random` and `numpy` with 1.
 
 ## Machine
-Every result behind the manuscript and the Supplemental Material, except the two parts
+Every result behind the manuscript and the Supplemental Material, except the later parts
 named at the end of this section, was computed on one machine, a Mac mini (Apple M4 Pro, 14 cores, 64 GB RAM, macOS 27.2), in three micromamba
 environments under `~/hc/mamba`: `hc` (Python 3.12.16, numpy 2.4.1, scipy 1.17.1,
 networkx 3.6.1, python-igraph 1.0.0, leidenalg 0.11.0, infomap 2.10.1, cdlib 0.4.0) for
@@ -83,13 +83,18 @@ per step), `bench/native_mac.sh` the native-default runs beside it, and
 `bench/watchdog_mac.sh` kills a run above 30 GB of memory or when swap exceeds 12 GB
 (an OSLOM process alone, so that its Python caller records the failure).
 
-Two later parts were computed on a second machine, a Windows 11 laptop (Intel Core Ultra 9
+Two later parts (and the two methods added last, below) were computed on a second machine, a Windows 11 laptop (Intel Core Ultra 9
 185H, 22 threads, 32 GB RAM): the robustness sweep (`bench/queue_dense.sh`, Python 3.12.10
 with the versions under Software) and the lattice-like real networks
 (`bench/real_lattice_detection.py`); OSLOM and the SBM for both ran under WSL (Ubuntu
 24.04, Python 3.12.16, graph-tool 3.9, OSLOM2 built by `bench/build_oslom.sh`). The
 robustness curves join the main runs at p = 0, 0.05, ..., 0.8 (Mac) with the dense points
 (laptop); the deterministic methods agree between the two machines (see above).
+
+BigClam and ego-splitting, the fifteenth and sixteenth methods compared, were added last,
+on the laptop, for every part of the comparison (Python 3.12.10 with numba 0.68.1 and
+llvmlite 0.50.0 beside the versions under Software): `bench/bigclam.py` is a port of SNAP's
+`agmfast` (BigClam), `bench/egosplit.py` of the ego-splitting reference code.
 
 ## Commands
 Everything, in order, from scratch: `bash reproduce_all.sh` (several days on the
@@ -154,6 +159,11 @@ python bench/run2.py <exp> --methods hc,hc_2test,hc_tri,hc_econn,linkcomm,cpm,le
 # clique percolation on Facebook ego 107 (more than 10^7 maximal cliques): numba, environment cpm
 #   NUMBA_NUM_THREADS=12 python bench/cpm_bits.py facebook_107 3 4 5 6 7 --save covers.pkl
 #   python bench/cpm_rows_from_bits.py facebook_107 covers.pkl   # its rows in real_more_v2/v3
+# BigClam and ego-splitting (added last; resumable)
+#   bash bench/queue_more.sh            # every benchmark experiment, then the robustness sweep at step 0.05
+#   bash bench/queue_more_lattice.sh    # the lattice-like real networks
+#   python bench/real_more_detection_v3.py 16    # the Netzschleuder networks (picks up the missing methods)
+#   python bench/run_more_big.py --workers 4     # SNAP Amazon, DBLP, YouTube; then score_big.py as above
 python bench/analysis2.py <exp> # oracle, label-free, frozen and native protocols, paired bootstrap marks
 
 # theory and implementation checks

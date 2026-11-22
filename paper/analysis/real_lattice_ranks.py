@@ -1,11 +1,11 @@
 """
-HyperCommon's rank among the fifteen methods (HyperCommon and the fourteen others; the
+HyperCommon's rank among the seventeen methods (HyperCommon and the sixteen others; the
 ablations are left out) on the lattice-like real networks of real_lattice_detection.py.
 
 For every set of graphs (a data kind at one k, or one geographic graph at one k), every
 method's mean Omega and F1 over the set's graphs, under the oracle (best parameter per
 graph) and the label-free (largest overlapping modularity) protocols, as in
-real_lattice_summary.py; HyperCommon's rank among the fifteen means (1 = most accurate),
+real_lattice_summary.py; HyperCommon's rank among the seventeen means (1 = most accurate),
 the most accurate other method and HyperCommon minus it with a paired 95% bootstrap
 interval over the graphs. Controls (the graphs with the data signal removed) are ranked
 too and marked.
@@ -44,7 +44,7 @@ KINDS = [
 SHORT = {"leiden": "Leiden", "leiden_cpm": "L-CPM", "linkcomm": "Link", "cpm": "CPM",
          "scan": "SCAN", "scan_j": "SCAN-J", "infomap": "Infomap", "walktrap": "Walktrap",
          "lpa": "LPA", "slpa": "SLPA", "demon": "DEMON", "angel": "ANGEL", "oslom": "OSLOM",
-         "sbm": "SBM", "hc": "HC"}
+         "sbm": "SBM", "bigclam": "BigClam", "egosplit": "Ego", "hc": "HC"}
 rng = np.random.default_rng(0)
 
 
@@ -87,7 +87,7 @@ def table_kinds(r):
     lines = [
         r"\begin{table}[t]",
         r"\caption{HyperCommon (HC) on lattice-like real networks: its rank by $\Omega$ among "
-        r"the fifteen methods (HC and the fourteen others; 1 is the most accurate), with the "
+        r"the seventeen methods (HC and the sixteen others; 1 is the most accurate), with the "
         r"best parameter per graph (oracle) and without labels (label-free). A kind holds one "
         r"or more sets of graphs (one per $k$, and per graph type or map); a single number is "
         r"the rank on every set, two numbers the best and the median rank over the sets. "
@@ -118,7 +118,7 @@ def table_kinds(r):
 def table_sets(r):
     lines = [
         r"\begin{longtable*}{llrrrrrlr}",
-        r"\caption{Every set of lattice-like real graphs: HyperCommon's rank among the fifteen "
+        r"\caption{Every set of lattice-like real graphs: HyperCommon's rank among the seventeen "
         r"methods by $\Omega$ and F1, oracle (orc) and label-free (free) protocols; its mean "
         r"$\Omega$ (oracle), the most accurate other method with the oracle and HC minus it, "
         r"with the paired 95\% bootstrap interval over the graphs of the set (none for a set "

@@ -28,7 +28,7 @@ REAL_METHODS = [("components", "components"), ("hc", "HC"), ("hc_family", r"HC$_
                 ("hc_econn", "e-conn."), ("hc_tri", "tri."), ("hc_2test", "2-test"),
                 ("linkcomm", "Link"), ("leiden", "Leiden"), ("leiden@1.0", r"Leiden, $\gamma{=}1$"),
                 ("leiden_cpm", "L-CPM"), ("infomap", "Infomap"), ("infomap@1.0", "Infomap, Markov time 1"),
-                ("lpa", "LPA"), ("oslom", "OSLOM")]
+                ("lpa", "LPA"), ("oslom", "OSLOM"), ("bigclam", "BigClam"), ("egosplit", "ego-splitting")]
 NETS = [("amazon", "Amazon"), ("dblp", "DBLP"), ("youtube", "YouTube")]
 
 
@@ -113,7 +113,7 @@ def supp_real():
     d = raw[raw.error.isna()].copy()
     key = ["network", "method", "seed"]
     meths = ["hc", "hc_econn", "hc_tri", "hc_2test"] + T2.MORE_OTHERS
-    names = dict(T2.METHODS) | {"walktrap": "Walktrap", "scan_j": "SCAN-J", "oslom": "OSLOM"}
+    names = dict(T2.METHODS) | {"walktrap": "Walktrap", "scan_j": "SCAN-J", "oslom": "OSLOM", "bigclam": "BigClam", "egosplit": "Ego"}
     for metric, mname in (("f1", "best-match F1"),):
         for prot in ("best", "free"):
             col = metric if prot == "best" else "eq"

@@ -45,10 +45,12 @@ PANELS = [  # the five ring panels of fig_benchmarks, and the equal-size unequal
 COLOR = {"hc": "#0072B2", "linkcomm": "#7a7f87", "cpm": "#009E73", "leiden": "#D55E00",
          "leiden_cpm": "#CC79A7", "infomap": "#56B4E9", "slpa": "#E69F00", "oslom": "#000000",
          "sbm": "#882255", "walktrap": "#999933", "demon": "#44AA99", "angel": "#DDCC77",
-         "lpa": "#AA4499", "scan": "#88CCEE", "scan_j": "#117733"}
+         "lpa": "#AA4499", "scan": "#88CCEE", "scan_j": "#117733",
+         "bigclam": "#661100", "egosplit": "#6699CC"}
 LABEL = {"hc": "HC", "linkcomm": "Link", "cpm": "CPM", "leiden": "Leiden", "leiden_cpm": "L-CPM",
          "infomap": "Infomap", "slpa": "SLPA", "oslom": "OSLOM", "sbm": "SBM", "walktrap": "Walktrap",
-         "demon": "DEMON", "angel": "ANGEL", "lpa": "LPA", "scan": "SCAN", "scan_j": "SCAN-J"}
+         "demon": "DEMON", "angel": "ANGEL", "lpa": "LPA", "scan": "SCAN", "scan_j": "SCAN-J",
+         "bigclam": "BigClam", "egosplit": "Ego"}
 rng = np.random.default_rng(11)
 
 

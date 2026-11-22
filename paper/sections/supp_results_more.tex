@@ -92,8 +92,9 @@ communities it is behind Leiden with labels ($0.50$ against $0.57$) and only sli
 ahead of it without labels on the uniform rings ($0.48$ against $0.46$), and behind the
 Constant Potts Model on two worlds under both protocols ($0.73$ against $0.84$ and
 $0.79$). On the null graphs (Table~\ref{tab:S-nulls}) label-free HyperCommon covers
-$98\%$ and $96\%$ of the nodes with its $101$ and $175$ communities, against $32$--$36$
-and $12$--$28$ for Leiden, Infomap, OSLOM and the stochastic block model.
+$98\%$ and $96\%$ of the nodes with its $101$ and $175$ communities, against $24$--$48$
+and $12$--$28$ for Leiden, Infomap, OSLOM, the stochastic block model, BigClam and
+ego-splitting.
 
 \subsection*{Real networks}
 
@@ -102,7 +103,11 @@ On the SNAP graphs, Leiden's label-free F1 equals its F1 at $\gamma=1$
 DBLP ($0.549$, against $0.545$ for Infomap) and Leiden on YouTube ($0.363$); Infomap at
 its default Markov time is about $0.06$ ahead of label-free HyperCommon on Amazon and
 DBLP. On Amazon, whose communities are sparse in triangles, the two-test variant reaches
-F1 $0.887$ but a lower $\Omega$ ($0.424$ against $0.459$). Detecting on the subgraphs
+F1 $0.887$ but a lower $\Omega$ ($0.424$ against $0.459$). Of the two methods added last,
+ego-splitting is level with HyperCommon by F1 on DBLP ($0.524$ against $0.516$ with labels)
+and behind it on Amazon and YouTube, and BigClam is behind it on all three (best F1
+$0.71$, $0.15$ and $0.10$); by $\Omega$ BigClam is ahead of it on all three and
+ego-splitting on DBLP and YouTube. Detecting on the subgraphs
 induced by the labelled nodes, as is common, makes F1 uninformative on Amazon and
 YouTube: there the connected components score within $0.005$ of the best method.
 
@@ -110,8 +115,8 @@ On the fourteen smaller networks (Tables~\ref{tab:realmore}, \ref{tab:realmoreom
 \ref{tab:S-realnet-f1-best} and~\ref{tab:S-realnet-f1-free}), HC$_f$ chooses, with
 labels, among 700 (function, threshold) pairs per network, an upper bound rather than one
 parameter grid; it is the most accurate method on four networks by F1 and four by
-$\Omega$. OSLOM has the best mean rank without labels ($6.2$) and Leiden with labels
-($6.0$); no method leads throughout, and eleven of the thirteen others are the most
+$\Omega$. OSLOM has the best mean rank without labels ($6.9$) and Leiden with labels
+($6.7$); no method leads throughout, and thirteen of the fifteen others are the most
 accurate on at least one network under one of the protocols. The label-free threshold retains $95\%$ of the best F1 or more on seven of the
 fourteen; on political blogs, a two-group network in which HyperCommon's best cover is the
 giant component, it selects fifteen small communities instead.

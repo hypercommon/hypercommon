@@ -9,7 +9,8 @@ whole graph, so that every method's label-free choice -- its parameter with the
 largest eq -- is read from the same rows. HyperCommon variants and link communities
 search 100 quantile levels of their own scores; HC with each commonality function as
 before. OSLOM (the OSLOM2 binary, run_oslom.py; its threshold t over T_OSLOM, five seeds) was
-added after the first run, which a rerun picks up as the only missing method. Scoring
+added after the first run, which a rerun picks up as the only missing method; BigClam and
+ego-splitting (bigclam.py, egosplit.py; five seeds) were added the same way later. Scoring
 as in v2: detected communities restricted to the labelled nodes, every
 nonempty one kept (f1, ...) or only those of at least three nodes (*_ge3).
 
@@ -35,12 +36,12 @@ FIELDS = ["network", "method", "param", "seed", "eq",
           "f1_ge3", "onmi_ge3", "omega_ge3", "coverage_ge3", "n_comms_ge3",
           "seconds", "n_nodes", "n_edges", "error"]
 Q100 = [round(0.01 * i, 2) for i in range(100)]
-STOCHASTIC = {"leiden", "leiden_cpm", "infomap", "lpa", "slpa", "demon", "angel", "oslom"}
+STOCHASTIC = {"leiden", "leiden_cpm", "infomap", "lpa", "slpa", "demon", "angel", "oslom", "bigclam", "egosplit"}
 FUNCS = ("jaccard", "cosine", "max_norm", "min_norm", "i2_over_u", "count", "resource_alloc")
 METHODS = (["components", "hc", "hc_tri", "hc_2test", "hc_econn", "linkcomm"]
            + ["hcf_" + f for f in FUNCS]
            + ["cpm", "leiden", "leiden_cpm", "infomap", "lpa", "walktrap", "slpa", "demon", "angel",
-              "scan", "scan_j", "oslom"])
+              "scan", "scan_j", "oslom", "bigclam", "egosplit"])
 # clique percolation: facebook_1912 has more than 14 million maximal cliques (up to 68 nodes),
 # out of reach; facebook_107 has 2.2 million, too slow for bench/cpm_fast.py, and its rows come
 # from cpm_bits.py (10.6 h on 12 threads) through cpm_rows_from_bits.py

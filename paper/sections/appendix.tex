@@ -70,7 +70,11 @@ clustering option \texttt{-C} ($C_{\rm LFR}=0.3$, $0.5$).
 which we implemented to expose the similarity and the cut, and OSLOM, the authors'
 OSLOM2 code (\texttt{oslom\_undir}, unweighted); the stochastic block model and OSLOM
 were run on the same graphs, checked edge for edge. We also use networkx 3.6.1,
-numpy 2.4.1 and scipy 1.17.1. Leiden: iterated to convergence
+numpy 2.4.1 and scipy 1.17.1. BigClam: a port of SNAP's \texttt{agmfast} (seeding by
+locally minimal conductance, projected gradient ascent with backtracking line search,
+membership threshold $\sqrt{2m/n^2}$) compiled with numba 0.68.1. Ego-splitting: a port of
+the reference \texttt{persona.py}, persona clusters of fewer than five dropped, Leiden on
+the persona graph with the same restarts as Leiden itself. Leiden: iterated to convergence
 (\texttt{n\_iterations}$=-1$), three restarts per resolution on the benchmarks and the
 fourteen smaller networks, the restart kept being the one of highest objective value
 under every protocol, so that no label enters the choice of restart, and one run per
@@ -157,6 +161,10 @@ Walktrap & walks of length 4, dendrogram cut at maximum modularity \\
 label propagation & parameter-free \\
 stochastic block model & level of the nested hierarchy (1--6 levels with more than one group) \\
 OSLOM & $t\in\{10^{-14},10^{-11},10^{-8},10^{-5},10^{-2},0.1\}$, otherwise defaults (10 runs, first level) \\
+BigClam & $K\in\{2,3,5,8,12,20,30,50,80,120,200\}$, plus $K\in\{300,500,1000,2000,5000\}$ \\
+ & where $n\ge10K$ and $nK\le5\times10^{8}$; otherwise SNAP's defaults \\
+ego-splitting & ego-nets by connected components or label propagation; personas by \\
+ & label propagation or Leiden (RB), 13 resolutions from $1/16$ to $32$ \\
 \end{tabular}
 \end{ruledtabular}
 \end{table*}

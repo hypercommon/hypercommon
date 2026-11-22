@@ -16,7 +16,7 @@ communities apart, and the edge tests separate HyperCommon from link communities
 The same property makes the method robust to random rewiring. A rewired edge lands
 between nodes that share almost no neighbours, so it rarely passes the test, and a
 community stays connected as long as enough of its own wedges survive. Without labels
-HyperCommon keeps its accuracy longest in 14 of the 28 ring settings, clearly so in 9, all
+HyperCommon keeps its accuracy longest in 13 of the 28 ring settings, clearly so in 9, all
 with communities of unequal size or degree-biased rewiring, and trails where rings are
 dense (Sec.~\ref{sec:robust}). Its reach is set
 by geometry: it trails once a tenth (with labels) or three tenths (without) of each
@@ -28,10 +28,10 @@ densely connected~\cite{yang2014structure,yang2012community}.
 
 Three limits qualify these results. First, part of the label-free margin reflects the
 selector: modularity costs the Constant Potts Model more than HyperCommon on unequal
-rings, and with each method's best parameter HyperCommon leads on fewer settings (11 of
-28) than it trails (13). Second, on real networks it is competitive but rarely the most
+rings, and with each method's best parameter HyperCommon leads on fewer settings (10 of
+28) than it trails (15). Second, on real networks it is competitive but rarely the most
 accurate, also where the groups are lattice-like: it ranks among the three most accurate
-methods on five of eleven kinds, first on two, and Leiden leads on most. One threshold
+methods on four of eleven kinds, first on two, and Leiden leads on most. One threshold
 has to separate all groups at once, and in real data the commonality of edges inside
 groups and between them overlaps, so the cover jumps from one large community to many
 small ones (Sec.~\ref{sec:reallattice}). Third, like every method we tested, it reports

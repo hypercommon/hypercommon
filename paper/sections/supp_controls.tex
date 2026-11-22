@@ -7,7 +7,7 @@
  & \multicolumn{3}{c}{oracle} & \multicolumn{3}{c|}{label-free} & reference & HC oracle & HC free \\
 Control & HC & tri. & best other & HC & tri. & best other & & & \\
 \hline
-hubs, $(50,k_i\in[4,32])\times40$ & 0.58$^{-}$ & 0.53 & 0.64 (Leiden) & 0.56$^{+}$ & 0.52 & 0.53 (Link) & uniform $k{=}8$ & 0.57 & 0.55 \\
+hubs, $(50,k_i\in[4,32])\times40$ & 0.58$^{-}$ & 0.53 & 0.64 (Leiden) & 0.56$^{+}$ & 0.52 & 0.53 (Ego) & uniform $k{=}8$ & 0.57 & 0.55 \\
 hubs, $(100,k_i\in[8,64])\times20$ & 0.71$^{-}$ & 0.72 & 0.84 (Leiden) & 0.69$^{-}$ & 0.70 & 0.83 (Leiden) & uniform $k{=}16$ & 0.73 & 0.72 \\
 hubs, two worlds & 0.76$^{-}$ & 0.75 & 0.85 (L-CPM) & 0.75$^{-}$ & 0.73 & 0.83 (L-CPM) & two worlds & 0.78 & 0.76 \\
 split overlap, two worlds, $o_n{=}0.05$ & 0.78$^{=}$ & 0.77 & 0.78 (L-CPM) & 0.78$^{+}$ & 0.76 & 0.71 (Link) & two worlds & 0.78 & 0.76 \\
@@ -27,15 +27,15 @@ random geometric, two worlds & 0.73$^{-}$ & 0.74 & 0.84 (L-CPM) & 0.73$^{-}$ & 0
 \begin{table*}[p]
 \caption{Null graphs with triadic closure but no planted communities: number of communities and coverage of each method's label-free cover (mean over ten graphs). RGG: random geometric graph on the unit torus, 2000 nodes, mean degree 8 (clustering $0.59$); HK: Holme--Kim graph, 2000 nodes, $m=4$, triangle probability $0.9$ (clustering $0.43$).}
 \label{tab:S-nulls}
-\scriptsize\setlength{\tabcolsep}{2pt}
+\scriptsize\setlength{\tabcolsep}{1.4pt}
 \begin{ruledtabular}
-\begin{tabular}{llcccccccccccccccc}
-Graph & & HC & tri. & Link & CPM & Leiden & L-CPM & Info. & Walk. & LPA & SBM & SLPA & OSLOM & DEMON & ANGEL & SCAN & SCAN-J \\
+\begin{tabular}{llcccccccccccccccccc}
+Graph & & HC & tri. & Link & CPM & Leiden & L-CPM & Info. & Walk. & LPA & SBM & SLPA & OSLOM & BigClam & Ego & DEMON & ANGEL & SCAN & SCAN-J \\
 \hline
-RGG & communities & 101 & 98 & 188 & 162 & 34 & 35 & 36 & 53 & 178 & 32 & 172 & 36 & 237 & 89 & 92 & 66 \\
- & coverage & 0.98 & 0.98 & 0.99 & 0.93 & 1.00 & 1.00 & 1.00 & 1.00 & 1.00 & 1.00 & 1.00 & 1.00 & 0.98 & 0.98 & 0.96 & 0.97 \\
-HK & communities & 175 & 166 & 391 & 288 & 16 & 16 & 28 & 32 & 55 & 12 & 42 & 13 & 196 & 156 & 97 & 121 \\
- & coverage & 0.96 & 0.85 & 1.00 & 0.66 & 1.00 & 1.00 & 1.00 & 1.00 & 1.00 & 1.00 & 1.00 & 1.00 & 1.00 & 0.76 & 0.82 & 0.82 \\
+RGG & communities & 101 & 98 & 188 & 162 & 34 & 35 & 36 & 53 & 178 & 32 & 172 & 36 & 24 & 48 & 237 & 89 & 92 & 66 \\
+ & coverage & 0.98 & 0.98 & 0.99 & 0.93 & 1.00 & 1.00 & 1.00 & 1.00 & 1.00 & 1.00 & 1.00 & 1.00 & 0.99 & 0.98 & 0.98 & 0.98 & 0.96 & 0.97 \\
+HK & communities & 175 & 166 & 391 & 288 & 16 & 16 & 28 & 32 & 55 & 12 & 42 & 13 & 14 & 16 & 196 & 156 & 97 & 121 \\
+ & coverage & 0.96 & 0.85 & 1.00 & 0.66 & 1.00 & 1.00 & 1.00 & 1.00 & 1.00 & 1.00 & 1.00 & 1.00 & 0.94 & 1.00 & 1.00 & 0.76 & 0.82 & 0.82 \\
 \end{tabular}
 \end{ruledtabular}
 \end{table*}

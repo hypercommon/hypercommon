@@ -92,13 +92,13 @@ def main():
     # null graphs: what each method reports when there is nothing to find
     N = S[(S.experiment == "nulls") & (S.protocol == "label_free")]
     meths = [m for m in ["hc", "hc_tri", "linkcomm", "cpm", "leiden", "leiden_cpm", "infomap", "walktrap", "lpa",
-                         "sbm", "slpa", "oslom", "demon", "angel", "scan", "scan_j"] if m in set(N.method)] or ["hc"]
+                         "sbm", "slpa", "oslom", "bigclam", "egosplit", "demon", "angel", "scan", "scan_j"] if m in set(N.method)] or ["hc"]
     out += [r"\begin{table*}[p]",
             r"\caption{Null graphs with triadic closure but no planted communities: number of communities and "
             r"coverage of each method's label-free cover (mean over ten graphs). RGG: random geometric graph on "
             r"the unit torus, 2000 nodes, mean degree 8 (clustering $0.59$); HK: Holme--Kim graph, 2000 nodes, "
             r"$m=4$, triangle probability $0.9$ (clustering $0.43$).}",
-            r"\label{tab:S-nulls}", r"\scriptsize\setlength{\tabcolsep}{2pt}", r"\begin{ruledtabular}",
+            r"\label{tab:S-nulls}", r"\scriptsize\setlength{\tabcolsep}{1.4pt}", r"\begin{ruledtabular}",
             r"\begin{tabular}{ll" + "c" * len(meths) + "}",
             r"Graph & & " + " & ".join(NAME.get(m, m) for m in meths) + r" \\", r"\hline"]
     for fam, lab in (("rgg_null", "RGG"), ("hk_null", "HK")):

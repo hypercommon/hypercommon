@@ -29,7 +29,10 @@ def load(kind):
     parts = [pd.read_csv(os.path.join(RES, f), dtype={"param": str}, low_memory=False)
              for f in (f"real_lattice_{kind}.csv", f"real_lattice_{kind}_wsl.csv")
              if os.path.exists(os.path.join(RES, f)) and os.path.getsize(os.path.join(RES, f)) > 0]
-    d = pd.concat(parts)
+    d = pd.concat(parts, ignore_index=True)
+    # only the graphs the original fifteen methods were run on (the later BigClam and
+    # ego-splitting runs also built a few extra sets, which are left out)
+    d = d[d.network.isin(d.network[~d.method.isin(["bigclam", "egosplit"])])]
     return d[d.error.isna()]
 
 

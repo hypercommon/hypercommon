@@ -18,7 +18,7 @@ shared-pair table. `paper/README.md` lists the script behind every table and fig
 | `bench/results2/robust_structure.csv` | planted structure left at each p: weak/strong community fractions, edges inside, clustering | `bench/robust_structure.py` |
 | `figures/data/robust_curves.csv`, `robust_drop.csv`, `robust_drop_by_method.csv`, `robust_table.csv` | mean Ω curves with bands, p at which Ω falls below each level, area, p_weak, p_clust; HC against the best other with paired bootstrap | `analysis/robust_dense.py`, `analysis/robust_table.py` |
 | `bench/results/real_lattice_<kind>{,_wsl}.csv` | lattice-like real networks, every method × parameter (`_wsl`: OSLOM and the SBM); packed in `bench/results_gz/` | `bench/real_lattice_detection.py` |
-| `figures/data/real_lattice_summary_<kind>.csv`, `real_lattice_ranks.csv` | per-set means, HC rank among fifteen methods, best other and paired difference | `analysis/real_lattice_summary.py`, `analysis/real_lattice_ranks.py` |
+| `figures/data/real_lattice_summary_<kind>.csv`, `real_lattice_ranks.csv` | per-set means, HC rank among seventeen methods, best other and paired difference | `analysis/real_lattice_summary.py`, `analysis/real_lattice_ranks.py` |
 | `figures/data/edge_prune.csv` | wedges left after degree-ratio and exact edge pruning (Discussion) | `bench/edge_prune.py` |
 | `bench/results2/family2.csv`, `family2_top.csv` | HC with each commonality function on the benchmark families, quantile levels 0–0.96 and 0.97–0.995 | `bench/run2_family.py`, `--top` |
 | `bench/results/big_dl/results_big/` | covers of every method on SNAP Amazon, DBLP, YouTube (full and induced), produced on a large machine | `bench/big_job.py` (+ `bench/slpa_youtube_job.py` for SLPA on induced YouTube) |

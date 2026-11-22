@@ -105,7 +105,7 @@ def main():
         r"\caption{Robustness to rewiring on the 28 ring settings: $p_{0.6}$, the rewired "
         r"fraction at which the mean $\Omega$ over the ten test graphs first falls below $0.6$, "
         r"for HyperCommon (HC) and for the other method that holds longest, HC's rank among the "
-        r"fifteen methods and HC minus the best other method, with the paired 95\% bootstrap "
+        r"seventeen methods and HC minus the best other method, with the paired 95\% bootstrap "
         r"interval (the test graphs resampled, both mean curves recomputed). Label-free: every "
         r"parameter by the largest overlapping modularity; oracle: the best parameter per "
         r"graph. $p_{\rm weak}$, $p_{\rm clust}$: the planted-structure markers of "

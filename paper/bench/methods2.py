@@ -52,9 +52,23 @@ GRIDS2 = {
     "angel": [0.1, 0.25, 0.5, 0.75, 0.9, 1.0],
     "scan": [(e, m) for e in (0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8) for m in (2, 3, 5)],
     "scan_j": [(e, m) for e in (0.1, 0.2, 0.3, 0.4, 0.5, 0.6) for m in (2, 3, 5)],
+    # added in a later round (bigclam.py, egosplit.py): the number of communities K;
+    # ego-splitting's (local, global) clustering, global label propagation or Leiden-RB at a resolution
+    "bigclam": [2, 3, 5, 8, 12, 20, 30, 50, 80, 120, 200],
+    "egosplit": [(loc, glob) for loc in ("cc", "lp") for glob in ["lp"] + _geom(1 / 16, 32, 13)],
 }
 METHODS2 = ["hc", "hc_2test", "hc_tri", "hc_econn", "linkcomm", "cpm", "leiden", "leiden_cpm",
-            "infomap", "lpa", "walktrap", "slpa", "demon", "angel", "scan", "scan_j"]
+            "infomap", "lpa", "walktrap", "slpa", "demon", "angel", "scan", "scan_j",
+            "bigclam", "egosplit"]
+BIGCLAM_MORE = [300, 500, 1000, 2000, 5000]
+
+
+def bigclam_grid(n):
+    """GRIDS2["bigclam"], and beyond K = 200 every K of BIGCLAM_MORE with at least ten nodes per
+    community (10 K <= n) whose dense affiliation matrix fits in 4 GB (n K <= 5e8)."""
+    return GRIDS2["bigclam"] + [K for K in BIGCLAM_MORE if 10 * K <= n and n * K <= 5e8]
+
+
 HC_LIKE = ("hc", "hc_2test", "hc_tri", "hc_econn", "hc_tree", "linkcomm", "linkcomm_pd")
 # Native defaults (each method's own choice, no sweep), for the protocol that does not
 # select by overlapping modularity: Leiden-RB at gamma = 1; Leiden-CPM at gamma equal
@@ -178,6 +192,15 @@ def run_method2(name, G, ts, seed):
                 yield t, oslom_cover(G, t, seed, workdir)[0]
         finally:
             shutil.rmtree(workdir, ignore_errors=True)
+        return
+
+    if name == "bigclam":               # bigclam.py, the SNAP reference code ported (numba)
+        from bigclam import bigclam_covers
+        yield from bigclam_covers(G, bigclam_grid(G.number_of_nodes()), seed)
+        return
+    if name == "egosplit":              # egosplit.py, the google-research reference code ported
+        from egosplit import egosplit_covers
+        yield from egosplit_covers(G, GRIDS2[name], seed)
         return
 
     from cdlib import algorithms as A

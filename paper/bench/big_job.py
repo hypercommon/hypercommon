@@ -36,6 +36,8 @@ warnings.filterwarnings("ignore")
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
 DATA = os.path.join(HERE, "data")
+if not os.path.isdir(DATA):                 # the SNAP files where score_big.py reads them
+    DATA = os.path.join(HERE, "..", "analysis", "snap")
 
 T_GRID = [round(0.02 * i, 2) for i in range(1, 31)]
 # Optional memory cap per task (GB), for machines that swap instead of raising MemoryError

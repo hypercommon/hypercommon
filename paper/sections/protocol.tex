@@ -41,7 +41,7 @@ the community sizes or the clustering.
 Three \emph{ablations} each remove one ingredient: \emph{triangles only} admits only
 closed triples (J-thresholded 3-clique percolation); \emph{two-test} admits an open
 wedge when its two edges pass, without testing its non-adjacent pair; and
-\emph{edge-connected} joins triples only through shared edges. The fourteen other
+\emph{edge-connected} joins triples only through shared edges. The sixteen other
 methods are link communities~\cite{ahn2010link} with the same similarity, cut at every
 value of HyperCommon's threshold grid; clique percolation
 (CPM)~\cite{palla2005uncovering}; SCAN~\cite{xu2007scan} with cosine and with Jaccard
@@ -52,14 +52,18 @@ Markov times~\cite{schaub2012markov,kheirkhahzadeh2016efficient};
 Walktrap~\cite{pons2006walktrap}; label propagation (LPA)~\cite{raghavan2007near};
 SLPA~\cite{xie2011slpa}; DEMON~\cite{coscia2012demon}; ANGEL~\cite{rossetti2020angel};
 OSLOM~\cite{lancichinetti2011finding}, which keeps a group only if it is significant
-against a configuration-model null, with its significance level as the parameter; and
+against a configuration-model null, with its significance level as the parameter;
+BigClam~\cite{yang2013overlapping}, which fits each node's nonnegative affiliation to $K$
+communities by maximum likelihood, with $K$ as the parameter; ego-splitting~\cite{epasto2017ego},
+which splits each node into one persona per cluster of its ego-net and partitions the
+graph of personas, with the two clusterings as the parameter; and
 the nested degree-corrected stochastic block model (SBM)~\cite{peixoto2014hierarchical},
 fitted with \textsc{graph-tool}~\cite{peixoto_graphtool}, each level of its hierarchy
-treated as a parameter value. OSLOM and the SBM were run on the ring and LFR benchmarks,
+treated as a parameter value. BigClam and ego-splitting are ports of their authors'
+reference code (SNAP and Google Research). OSLOM and the SBM were run on the ring and LFR benchmarks,
 the random-geometric controls, the null graphs and the lattice-like real networks, and
 OSLOM also on all other real networks.
-BigClam~\cite{yang2013overlapping}, ego-splitting~\cite{epasto2017ego} and the
-local-fitness method LFM~\cite{lancichinetti2009lfm} are not included (LFM took more than
+The local-fitness method LFM~\cite{lancichinetti2009lfm} is not included (it took more than
 ten minutes on a single 2000-node graph, against the thousands of graphs of the
 benchmark). Every grid (Table~\ref{tab:grids}) was widened and fixed after a preliminary
 run and before any reported result was computed.
@@ -81,7 +85,8 @@ contribute nothing; for a partition this is the Newman--Girvan modularity. Two f
 protocols check these two: \emph{native}, each method at its own default or selection
 rule where it has one (Leiden at $\gamma=1$, L-CPM at the edge density, link communities
 at the largest partition density, Infomap at Markov time 1, SLPA at $r=0.1$, OSLOM at its
-default level $0.1$, the SBM at its finest level), and \emph{frozen}, one parameter per
+default level $0.1$, the SBM at its finest level, ego-splitting with label propagation
+at both levels; otherwise the label-free choice), and \emph{frozen}, one parameter per
 family and method fixed on separate calibration graphs.
 
 \subsection{Metrics}

@@ -58,13 +58,14 @@ for exp, fam, lab in (("lfr", "on00", r"LFR, $o_n{=}0$"), ("lfr", "on10", r"LFR,
 ABL = [("hc", "HC"), ("hc_econn", "e-c."), ("hc_tri", "tri."), ("hc_2test", "2-test")]
 OTHERS = [("linkcomm", "Link"), ("cpm", "CPM"), ("leiden", "Leiden"), ("leiden_cpm", "L-CPM"),
           ("infomap", "Info."), ("walktrap", "Walk."), ("lpa", "LPA"), ("sbm", "SBM"), ("slpa", "SLPA"), ("oslom", "OSLOM"),
-          ("demon", "DEMON"), ("angel", "ANGEL"), ("scan", "SCAN"), ("scan_j", "SCAN-J")]
+          ("demon", "DEMON"), ("angel", "ANGEL"), ("scan", "SCAN"), ("scan_j", "SCAN-J"),
+          ("bigclam", "BigClam"), ("egosplit", "Ego")]
 METHODS = ABL + OTHERS
 OTHER_IDS = [m for m, _ in OTHERS]
 NAME = dict(METHODS)
 PROTS = [("oracle", "oracle"), ("label_free", "label-free"), ("frozen", "frozen"), ("native", "native")]
 HEAD2 = (r" & & \multicolumn{4}{c}{HC and ablations} & \multicolumn{2}{c}{relatives} &"
-         r"\multicolumn{6}{c}{partitions} & \multicolumn{6}{c}{overlapping methods} \\")
+         r"\multicolumn{6}{c}{partitions} & \multicolumn{8}{c}{overlapping methods} \\")
 LEGEND = (r"HC: HyperCommon; e-c.: its triples joined only through shared edges; tri.: triangles only "
           r"(J-thresholded 3-clique percolation~\cite{palla2005uncovering,kumpula2008sequential}); 2-test: "
           r"third pair not tested; Link: link communities with the same similarity; CPM: clique percolation; "
@@ -72,7 +73,9 @@ LEGEND = (r"HC: HyperCommon; e-c.: its triples joined only through shared edges;
           r"Model; Info.: Infomap; Walk.: Walktrap, walks of length 4, dendrogram cut at maximum modularity; LPA: label propagation; "
           r"SBM: nested degree-corrected stochastic block model, each level of its hierarchy a parameter value; "
           r"OSLOM: order statistics local optimisation, significance threshold $t$ as its parameter; "
-          r"SCAN: SCAN with cosine similarity; SCAN-J: SCAN with Jaccard similarity; $\alpha$: exponent of the "
+          r"SCAN: SCAN with cosine similarity; SCAN-J: SCAN with Jaccard similarity; BigClam: cluster affiliation "
+          r"model, number of communities as its parameter; Ego: ego-splitting, its local and global clusterings "
+          r"as its parameter; $\alpha$: exponent of the "
           r"preferential (degree-biased) noise.")
 # the SBM's frozen level can be missing on a test graph whose fitted hierarchy is shallower
 FROZEN_DASH = (r" Dashes: the level of the stochastic block model's hierarchy frozen on the calibration "
@@ -124,12 +127,12 @@ def write(name, lines):
 
 
 def full_table(S, P, prot, metric, label, caption, rows=ROWS, marks=True, fmt="%.2f", star=True, bold=True):
-    cols = "llcccc|cc|cccccc|" + "c" * 6        # overlapping: SLPA, OSLOM, DEMON, ANGEL, SCAN, SCAN-J
+    cols = "llcccc|cc|cccccc|" + "c" * 8        # overlapping: SLPA, OSLOM, DEMON, ANGEL, SCAN, SCAN-J, BigClam, Ego
     if bold and "Bold:" not in caption:
         caption += r" Bold: best in row, within 0.005."
     out = [r"\begin{table*}" + ("[p]" if not star else "[t]"), r"\caption{" + caption + "}", r"\label{" + label + "}",
            r"\scriptsize\setlength{\tabcolsep}{1.35pt}",
-           # twenty columns, scaled to the text width (the one-column Supplemental pages are narrower)
+           # twenty-two columns, scaled to the text width (the one-column Supplemental pages are narrower)
            r"\resizebox{\textwidth}{!}{%", r"\begin{tabular}{" + cols + "}", r"\hline\hline",
            HEAD2, r"Family & $o_n$ & " + " & ".join(n for _, n in METHODS) + r" \\", r"\hline"]
     last = None
