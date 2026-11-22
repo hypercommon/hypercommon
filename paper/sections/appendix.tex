@@ -72,7 +72,13 @@ OSLOM2 code (\texttt{oslom\_undir}, unweighted); the stochastic block model and 
 were run on the same graphs, checked edge for edge. We also use networkx 3.6.1,
 numpy 2.4.1 and scipy 1.17.1. BigClam: a port of SNAP's \texttt{agmfast} (seeding by
 locally minimal conductance, projected gradient ascent with backtracking line search,
-membership threshold $\sqrt{2m/n^2}$) compiled with numba 0.68.1. Ego-splitting: a port of
+membership threshold $\sqrt{2m/n^2}$) compiled with numba 0.68.1. Against SNAP's own \texttt{bigclam} (one thread) on twelve of the
+fourteen smaller
+networks at $K$ from 5 to 120, its mean F1 and $\Omega$ differ by $-0.006$ and $-0.002$ on
+average and by at most $0.05$, about the spread between seeds
+(\texttt{bench/check\_bigclam\_snap.py}). On Amazon and DBLP its grid ends at $K=1000$
+($nK\le5\times10^8$), far fewer communities than the thousands of small recorded ones,
+so its communities are large and its F1 there is low. Ego-splitting: a port of
 the reference \texttt{persona.py}, persona clusters of fewer than five dropped, Leiden on
 the persona graph with the same restarts as Leiden itself. Leiden: iterated to convergence
 (\texttt{n\_iterations}$=-1$), three restarts per resolution on the benchmarks and the

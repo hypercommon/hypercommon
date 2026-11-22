@@ -1,6 +1,6 @@
 """
 The per-branch threshold (hc_tree, results_tree/real_<kind>.csv) on the real networks
-against HyperCommon and the fourteen other methods, exploratory. Picks as
+against HyperCommon and the sixteen other methods, exploratory. Picks as
 analysis/real_lattice_summary.py: oracle = best parameter per graph, label-free = largest
 overlapping modularity, stochastic methods averaged over seeds.
 
