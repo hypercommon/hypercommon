@@ -179,11 +179,12 @@ def main():
 
     for prot in ("label_free", "oracle"):
         t = T[T.protocol == prot]
-        sig_win = ((t.lo > 0)).sum()
-        sig_loss = ((t.hi < 0)).sum()
+        sig_win = ((t.lo_all > 0)).sum()
+        sig_loss = ((t.hi_all < 0)).sum()
         print(f"{prot}: rank 1 in {(t['rank'] == 1).sum()}, top 3 in {(t['rank'] <= 3).sum()} of {len(t)}; "
               f"HC ahead of the best other with the interval above 0 in {sig_win}, behind with it below 0 "
-              f"in {sig_loss}, level in {len(t) - sig_win - sig_loss}")
+              f"in {sig_loss}, level in {len(t) - sig_win - sig_loss} (against the best of all others); "
+              f"by area ahead {(t.area_lo > 0).sum()}, behind {(t.area_hi < 0).sum()}")
     with pd.option_context("display.width", 250):
         print(T.round(3).to_string(index=False))
 

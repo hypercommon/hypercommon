@@ -95,6 +95,9 @@ fi
 if [ -n "$CPM_PY" ]; then
   (cd bench && NUMBA_NUM_THREADS=12 $CPM_PY cpm_bits.py facebook_107 3 4 5 6 7 --save results/cpm107_covers.pkl && $PY cpm_rows_from_bits.py facebook_107 results/cpm107_covers.pkl)
 fi
+# the robustness sweep (p = 0, 0.01, ..., 1) and the planted-structure markers; OSLOM and the SBM
+# at step 0.05 in WSL (bench/queue_dense_wsl.sh, with their environments)
+(cd bench && PY=$PY W=$W bash queue_dense.sh)
 # BigClam and ego-splitting, then L-CPM below 0.002 and the Jaccard-weighted Leiden control
 (cd bench && PY=$PY W=$W bash queue_more.sh)
 (cd bench && PY=$PY W=$W bash queue_review.sh && $PY merge_cpm_lo.py)

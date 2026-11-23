@@ -42,8 +42,7 @@ and~\ref{tab:oracle}).
 \label{sec:planted}
 
 Without labels, over the 28 ring settings and the noise range $p\le0.8$, HyperCommon has
-the highest mean $\Omega$ in 16, by paired 95\% intervals that exclude zero, is level
-with the best other method in 4 and trails in 8 (Table~\ref{tab:scorecard}): on dense
+the highest mean $\Omega$ in 16, by paired 95\% intervals against the method with the next highest mean that exclude zero, is level with it in 4 and trails in 8 (Table~\ref{tab:scorecard}): on dense
 uniform rings, where Leiden leads with little overlap ($0.84$ against $0.78$ at $k=16$,
 $o_n=0$) and ego-splitting at $o_n=0.10$ ($0.65$ against $0.62$), on rings of degree $16$ and
 unequal size without overlap, on rings of equal size and unequal degree at $o_n=0.10$,
@@ -55,17 +54,16 @@ Part of these margins lies in the selector rather than in the objectives. At its
 resolution the Constant Potts Model reaches $0.71$ on three big, many small and $0.78$ on
 two worlds, against $0.34$ and $0.64$ when modularity chooses its resolution, while
 HyperCommon goes from $0.80$ to $0.78$ and from $0.78$ to $0.76$. At each method's own
-default or selection rule (native protocol), HyperCommon is still ahead in 17 of the 28
-settings. With the best parameter on every graph (oracle), every method narrows the gap:
+default or selection rule (native protocol), HyperCommon is still ahead in 17 of the 28 settings. These counts are not corrected for multiple comparisons, and the 28 settings are eight families at up to three overlap levels plus four under preferential rewiring: without labels HyperCommon leads at every overlap level on two worlds, on three big, many small and on the sparse rings of unequal size, and in all four preferential settings, and at none on the dense uniform rings and the gradient. With the best parameter on every graph (oracle), every method narrows the gap:
 HyperCommon is ahead in 10, level in 3 and behind in 15, mostly behind one of the two
 Leiden objectives and twice behind ego-splitting, and stays ahead on three big, many small at every overlap level
 ($0.80$ against $0.72$ for link communities) and on the gradient with overlap.
-Modularity with a single resolution fails on the overlapping gradient even without noise ($\Omega=0.28$ for Leiden and $0.34$ with the Constant Potts Model at their best resolutions, against $0.97$--$1.00$ for HyperCommon, clique percolation, link communities and ego-splitting), because small rings are merged while large ones are split~\cite{fortunato2007resolution,lancichinetti2011limits}. Without overlap the rings are disconnected and both find them.
+Modularity with a single resolution fails on the overlapping gradient even without noise ($o_n=0.05$, $p=0$: $\Omega=0.28$ for Leiden and $0.33$ with the Constant Potts Model at their best resolutions, against $0.97$--$1.00$ for HyperCommon, clique percolation, link communities and ego-splitting), consistent with the resolution limit, which merges small communities and splits large ones~\cite{fortunato2007resolution,lancichinetti2011limits}. Without overlap the rings are disconnected and both find them.
 With one parameter frozen per family, HyperCommon leads in only 1 setting: its best
 threshold moves with noise. Omega is dominated by the largest communities, and
 HyperCommon recovers the large rings best but splits the small sparse ones, which the
 Constant Potts Model recovers best (Tables~\ref{tab:recsmall} and~\ref{tab:reclarge});
-by ONMI HyperCommon leads on 10 of the 28 settings with labels and on 14 without
+by ONMI HyperCommon leads on 9 of the 28 settings with labels and on 14 without
 (Tables~\ref{tab:onmi-oracle} and~\ref{tab:onmi-label-free}).
 
 \subsection{Robustness to rewiring}
@@ -94,17 +92,12 @@ members have more edges inside than out), and $p_{\rm clust}$, beyond which the 
 clustering coefficient is below $5\%$ of its value at $p=0$; it falls as about
 $(1-p)^3$, since a triangle survives only if none of its three edges is rewired.
 
-Without labels, HyperCommon keeps $\Omega\ge0.6$ longest in 13 of the 28 settings
-and is among the three methods that keep it longest in 20 (Fig.~\ref{fig:robust},
-Table~\ref{tab:S-robust}). In 8 its lead holds under a paired bootstrap over the test graphs, the best other method chosen again in each resample, and all 8 have rings of unequal size or preferential rewiring: on two worlds it stays above $0.6$ up to $p=0.68$, against $0.63$
-for the next method, and on three big, many small up to $0.62$ against $0.57$.
-By the area under the curve it leads in 17 and trails in 11, every interval excluding zero (10 and 18 with the best parameter). HyperCommon trails where
+Without labels, HyperCommon has the largest area under the curve in 17 of the 28 settings and trails in the other 11, every paired 95\% interval excluding zero, the best other method chosen again in each bootstrap resample of the test graphs (Fig.~\ref{fig:robust}, Table~\ref{tab:S-robust}); it leads at every overlap level of two worlds, of three big, many small and of the sparse rings of unequal size, under every preferential rewiring and on the sparse uniform rings, by up to $0.11$ (two worlds, $\alpha=2$), and with the best parameter per graph in 10. It keeps $\Omega\ge0.6$ longest in 13 and is among the three methods that keep it longest in 20; the lead in $p_{0.6}$ holds under the same bootstrap in 8, all with rings of unequal size or preferential rewiring, though mostly by less than the grid step: on two worlds it stays above $0.6$ up to $p=0.68$, against $0.63$ for the next method, and on three big, many small up to $0.62$ against $0.57$. HyperCommon trails where
 the rings are dense: on uniform rings of degree $16$ Leiden holds to $p=0.66$
 against $0.59$ ($o_n=0$), and the two Leiden variants lead on rings of degree $16$ and
 unequal size and on rings of equal size and unequal degree with overlap. It also trails on the gradient,
-where the label-free selector picks too fine a cover; with the best threshold per graph it holds longest there at $o_n=0.05$ and $0.10$ ($p_{0.6}=0.44$ against $0.40$ for link communities) and is second at $o_n=0$. Where the rings are dense or unequal in size, the leading methods keep $\Omega\ge0.6$ beyond $p_{\rm weak}$, since rewired edges scatter while each ring keeps its remaining edges together; on the sparse rings and the gradient every method falls below $0.6$ before it. On two worlds HyperCommon keeps $\Omega\ge0.6$ up to $p_{\rm clust}$
-($0.68$ against $0.67$), where the rings have lost $95\%$ of their
-triangles.
+where the label-free selector picks too fine a cover; with the best threshold per graph it holds longest there at $o_n=0.05$ and $0.10$ ($p_{0.6}=0.44$ against $0.40$ for link communities) and is second at $o_n=0$. Where the rings are dense or unequal in size, the leading methods keep $\Omega\ge0.6$ beyond $p_{\rm weak}$, since rewired edges scatter while each ring keeps its remaining edges together; without labels, on the sparse rings and the gradient every method falls below $0.6$ before it. On two worlds HyperCommon keeps $\Omega\ge0.6$ up to $p_{\rm clust}$
+($0.68$ against $0.67$), where the mean clustering coefficient has fallen by $95\%$.
 
 \subsection{Ablations}
 \label{sec:ablations}
@@ -118,9 +111,8 @@ protocols, most where triangles are scarce ($0.04$--$0.11$ on sparse rings). Joi
 triples only through shared edges changes $\Omega$ by at most $0.02$ on the rings; we
 keep joins through non-adjacent pairs because they give
 Corollary~\ref{cor:pairdisjoint}. Link communities, whose edge similarity is the
-commonality of the wedge's third pair, are less accurate than HyperCommon in 25 of the
-28 ring settings under both protocols. Weighting edges by the same commonality does not reproduce the triple rule: Leiden on the Jaccard-weighted graph beats Leiden in all 28 ring settings, by $0.01$--$0.10$ without labels, but HyperCommon beats it in 18, by up to $0.47$, and trails in 8, all with rings of equal size or without overlap (Table~\ref{tab:S-jaccard-control}). Among the commonality functions, Jaccard is the
-best, or within $0.01$ of it, on seventeen of eighteen benchmark settings with the best
+commonality of the wedge's third pair, are less accurate than HyperCommon in 27 of the 28 ring settings with labels and in 25 without. Weighting edges by the same commonality does not reproduce the triple rule: Leiden on the Jaccard-weighted graph beats Leiden in all 28 ring settings, by $0.01$--$0.10$ without labels, but HyperCommon beats it in 18, by up to $0.47$, and trails in 9, all with rings of equal size, without overlap or of degree 16; with the best parameter per graph it beats it in 14 and trails in 13 (Table~\ref{tab:S-jaccard-control}). Among the commonality functions, Jaccard is the
+best, or within $0.01$ of it, on thirteen of eighteen benchmark settings with the best
 threshold (Tables~\ref{tab:familyoracle} and~\ref{tab:familyfree}).
 
 \subsection{Where it breaks: LFR graphs and random communities}

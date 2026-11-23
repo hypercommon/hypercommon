@@ -6,7 +6,7 @@ bench/results2/<exp>_jctrl.csv from queue_review.sh), against HyperCommon and un
 on the 28 ring settings and the eight LFR families of the scorecard. Mean Omega over the noise
 range and the ten test graphs per noise level (as the scorecard), oracle (best parameter per
 graph) and label-free (largest overlapping modularity); HC minus leiden_j with a paired 95%
-bootstrap interval over the test graphs (graph = (p, seed)).
+bootstrap interval over the ten test seeds, each averaged over the noise range (as the scorecard).
 
     python jaccard_control.py
 Writes figures/data/jaccard_control.csv and sections/table_jaccard_control.tex.
@@ -71,7 +71,9 @@ def main():
                 continue
             r = dict(experiment=exp, family=fam)
             for prot, P in sel.items():
-                g = P.loc[fam].dropna()
+                # as the scorecard: each test graph seed averaged over the noise range, then
+                # the ten seeds resampled (paired)
+                g = P.loc[fam].dropna().groupby(level="seed").mean()
                 for m in ("hc", "leiden", "leiden_j"):
                     r[f"{prot}_{m}"] = g[m].mean()
                 diff = (g["hc"] - g["leiden_j"]).to_numpy()
@@ -96,7 +98,7 @@ def main():
              r"Leiden), against HyperCommon (HC) and unweighted Leiden. Mean $\Omega$ over the noise range "
              r"($p\in[0,0.8]$ for rings, $\mu\in[0.1,0.6]$ for LFR), ten test graphs per noise level; "
              r"oracle: best parameter per graph; label-free: largest overlapping modularity. HC $-$ L-J: "
-             r"mean difference with the paired 95\% bootstrap interval over the test graphs. Bold: the "
+             r"mean difference with the paired 95\% bootstrap interval over the ten test seeds, each averaged over the noise range. Weighted Leiden iterates until no improvement, at most 100 times. Bold: the "
              r"best of the three.}",
              r"\label{tab:S-jaccard-control}",
              r"\scriptsize\setlength{\tabcolsep}{3pt}",

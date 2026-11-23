@@ -3,19 +3,13 @@
 \label{sec:discussion}
 % ---------------------------------------------------------------------------
 
-HyperCommon reads communities off local evidence only: a pair's shared neighbourhood,
-required of all three pairs of a wedge and propagated through shared pairs, never
-compared with a global null model. On ring lattices commonality does not depend on
+HyperCommon reads communities off local evidence only, never compared with a global null model. On ring lattices commonality does not depend on
 community size (Lemma~\ref{lem:ringJ}), so one threshold suits rings of thirty and of six
-hundred nodes alike, where no single resolution of either Leiden objective keeps the
-large rings whole and the small ones apart. The ablations support each test of the triple rule: open wedges help where triangles are scarce, and the non-adjacent pair keeps overlapping communities apart.
+hundred nodes alike, where, once they overlap, no single resolution of either Leiden objective keeps the large rings whole and the small ones apart. The ablations support each test of the triple rule: open wedges help where triangles are scarce, and the non-adjacent pair keeps overlapping communities apart.
 
 The same property makes the method robust to random rewiring: a rewired edge joins nodes that share almost no neighbours, so it rarely passes, and a community stays connected while enough of its own wedges survive. Without labels
-HyperCommon keeps $\Omega\ge0.6$ longest in 13 of the 28 ring settings, clearly so in 8, all with communities of unequal size or degree-biased rewiring, and trails where rings are
-dense (Sec.~\ref{sec:robust}). Its reach is set
-by geometry: it trails once a tenth (with labels) or three tenths (without) of each
-ring's edges are rewired inside the ring, on all LFR families and on random geometric
-communities with labels. That an admitted pair is assigned to one community only also means that
+HyperCommon has the largest area under the accuracy curve in 17 of the 28 ring settings, most clearly with communities of unequal size or degree-biased rewiring, and trails where rings are
+dense (Sec.~\ref{sec:robust}). Its reach is set by geometry: it trails where communities are random graphs internally (Sec.~\ref{sec:geometry}). That an admitted pair is assigned to one community only also means that
 communities joined by an admissible triple are read as one
 (Proposition~\ref{prop:sharedpairs}), which limits the method where overlaps are
 densely connected~\cite{yang2014structure,yang2012community}.
@@ -26,11 +20,8 @@ rings, and with each method's best parameter HyperCommon leads on fewer settings
 28) than it trails (15). Second, on real networks it is rarely the most accurate, also where the groups are lattice-like: with its best parameter it is among the top three on four of eleven kinds and first on two, without labels fourth at best, and Leiden, with either objective, leads on most sets. One threshold
 has to separate all groups at once, and in real data the commonality of edges inside
 groups and between them overlaps, so the cover jumps from one large community to many
-small ones (Sec.~\ref{sec:reallattice}). Third, like every method tested, it reports communities on clustered graphs with none planted; a test against randomised graphs with the same degrees and clustering is still needed.
+small ones (Sec.~\ref{sec:reallattice}). Third, like every method tested, it reports communities on clustered graphs with none planted; a test against randomised graphs with the same degrees and clustering is still needed. We did not compare with an overlapping stochastic block model, nor with LFM, too slow for the benchmark.
 
 Three directions follow. The covers at all thresholds form one hierarchy read off a
 single scoring of the wedges (Sec.~\ref{sec:cost}), so thresholds could be chosen
-separately on its branches. A first try with the cluster-stability criterion of HDBSCAN~\cite{campello2013density} (Table~\ref{tab:S-tree}) raises the label-free $\Omega$ by $0.11$ on LFR and from $0.42$ to $0.54$ on the gradient without overlap, but changes the real networks by at most $0.02$ without labels. We keep the single threshold, for which the recovery window is proved; a better rule for the branches is still open. The
-commonality function is a second
-degree of freedom: the most accurate one varies between networks, so learning the
-function and the threshold from a network's own structure is a natural next step. And the cost can be cut further: an edge below $t$ fails every wedge through it, so scoring the edges first and enumerating wedges only on those that pass is exact; at $t=0.5$ it keeps $14\%$ of DBLP's wedges and $1\%$ of a brain slice's, against $24\%$ and $97\%$ after the degree-ratio pruning.
+separately on its branches. A first try with the stability criterion of HDBSCAN~\cite{campello2013density} (Table~\ref{tab:S-tree}) raises the label-free $\Omega$ by $0.11$ on LFR but the mean over the real networks by at most $0.02$; we keep the single threshold, for which the window is proved. The commonality function, whose best choice varies between networks, could be learned with the threshold. And scoring the edges before enumerating wedges, exact since an edge below $t$ fails every wedge through it, would cut the cost further: at $t=0.5$ it keeps $14\%$ of DBLP's wedges, against $24\%$ after the degree-ratio pruning.

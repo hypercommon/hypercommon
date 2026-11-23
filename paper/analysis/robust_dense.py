@@ -149,7 +149,10 @@ def draw(ax, C, S, exp, fam, title, letter=None, small=False):
     g = C[(C.experiment == exp) & (C.family == fam)]
     if g.empty:
         return
-    area = g.groupby("method").omega.mean()
+    # rank the other methods by the area under their curve (trapezoid over each method's own
+    # p grid, as in the tables), not by the mean of the points, which favours a coarse grid
+    area = g.groupby("method").apply(
+        lambda h: np.trapezoid(h.sort_values("p").omega, h.sort_values("p").p) / (h.p.max() - h.p.min()))
     others = area.drop(index="hc", errors="ignore").sort_values(ascending=False).index[:3]
     st = S[(S.experiment == exp) & (S.family == fam)] if len(S) else S
     if len(st) and np.isfinite(st.p_weak.iloc[0]):

@@ -99,8 +99,7 @@ $i$ and $j$, and $\pi_{\mathcal C}(c)$ the fraction of pairs with $c_{\mathcal C
 with ground truth $\mathcal G$, $\Omega=(\Omega_u-\Omega_e)/(1-\Omega_e)$, where
 $\Omega_u=\Pr[c_{\mathcal C}=c_{\mathcal G}]$ and
 $\Omega_e=\sum_c\pi_{\mathcal C}(c)\pi_{\mathcal G}(c)$. Omega counts node pairs and is
-dominated by the largest communities. A pair in two detected communities counts twice, so a
-duplicated or nested node set in a cover lowers $\Omega$; covers are scored as returned. We also report the overlapping normalised
+dominated by the largest communities. A pair in two detected communities counts twice, so a duplicated or nested node set changes the pair counts that $\Omega$ compares; covers are scored as returned. We also report the overlapping normalised
 mutual information (ONMI)~\cite{mcdaid2011normalized}, a per-community recovery score
 (the mean Jaccard similarity of each true community with its best match), the best-match
 F1 score~\cite{yang2015defining} on real networks, and coverage. Unassigned nodes are

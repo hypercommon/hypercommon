@@ -3,32 +3,10 @@
 \label{app:proofs}
 % ---------------------------------------------------------------------------
 
-This appendix proves the results of Sec.~\ref{sec:theory}; the two ends of the
-hierarchy, the further ring-lattice windows, the fusion of rings and the cost estimate
-are in Sec.~\ref{app:proofsmore} of the Supplemental Material.
-
-\subsection{Determinism, locality and nesting}
-
-\begin{proof}[Proof of Proposition~\ref{prop:determinism}]
-$\mathcal T_t$ is defined pointwise from $G$ and $t$, the adjacency of $L_t$ pointwise
-from $\mathcal T_t$, and the connected components of a graph are unique.
-\end{proof}
-
-\begin{proof}[Proof of Proposition~\ref{prop:local}]
-Two triples are adjacent in $L_t$ iff they share a pair $\{x,y\}$. If $\{x,y,w\}$ is a
-wedge its centre is $x$, $y$ or $w$, and in each case $w$ is adjacent to $x$ or $y$.
-Every neighbour of a visited triple is therefore generated from one of its three pairs,
-so the search traverses the component and nothing else. Admissibility of
-$\{x,y,w\}$ depends on $N[x],N[y],N[w]$ only.
-\end{proof}
-
-\begin{proof}[Proof of Theorem~\ref{thm:nesting}]
-$J\ge t_2$ implies $J\ge t_1$ and the wedge condition does not involve $t$, so
-$\mathcal T_{t_2}\subseteq\mathcal T_{t_1}$. Adjacency (sharing two nodes) does not
-involve $t$ either, so $L_{t_2}$ is induced. A connected subgraph of $L_{t_2}$ is
-connected in $L_{t_1}$, so each component of $L_{t_2}$, and the union of its triples,
-lies inside a single component of $L_{t_1}$.
-\end{proof}
+This appendix proves the exact-recovery window, Theorem~\ref{thm:window}; the proofs of
+determinism, locality and nesting, the two ends of the hierarchy, the further ring-lattice
+windows, the fusion of rings and the cost estimate are in Sec.~\ref{app:proofsmore} of the
+Supplemental Material.
 
 \subsection{Ring lattices}
 
