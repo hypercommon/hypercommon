@@ -73,7 +73,11 @@ def main():
             for prot, P in sel.items():
                 # as the scorecard: each test graph seed averaged over the noise range, then
                 # the ten seeds resampled (paired)
-                g = P.loc[fam].dropna().groupby(level="seed").mean()
+                g = P.loc[fam].dropna().groupby(level="seed").apply(
+                    lambda h: pd.Series({m: np.trapezoid(h.sort_index(level="p")[m].to_numpy(),
+                                                         h.sort_index(level="p").index.get_level_values("p").to_numpy(dtype=float))
+                                         / (h.index.get_level_values("p").max() - h.index.get_level_values("p").min())
+                                         for m in ("hc", "leiden", "leiden_j")}))
                 for m in ("hc", "leiden", "leiden_j"):
                     r[f"{prot}_{m}"] = g[m].mean()
                 diff = (g["hc"] - g["leiden_j"]).to_numpy()

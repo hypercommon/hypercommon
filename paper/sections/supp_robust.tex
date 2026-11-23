@@ -2,7 +2,7 @@
 
 The robustness sweep extends the rewiring of every ring setting to $p=0,0.01,\dots,1$
 on the ten test graphs (seeds $0$--$9$), OSLOM, the stochastic block model, BigClam and
-ego-splitting in steps of $0.05$; every other setting of the benchmarks is unchanged
+ego-splitting in steps of $0.05$ (ego-splitting in steps of $0.01$ on equal $k$, unequal $s$, $k=8$, $o_n=0.10$, where it holds $\Omega\ge0.6$ second longest); every other setting of the benchmarks is unchanged
 (\texttt{bench/run2.py} with \texttt{DENSE\_P=1}; analysis in
 \texttt{analysis/robust\_dense.py}). For each method and protocol, $p_{0.6}$ is the
 first $p$ at which the mean $\Omega$ over the ten graphs falls below $0.6$, by linear
@@ -29,7 +29,7 @@ pass.
 
 \begin{figure*}[p]
   \centering
-  \includegraphics[width=\textwidth]{figures/fig_robust_all.pdf}
+  \includegraphics[width=\textwidth,height=0.84\textheight,keepaspectratio]{figures/fig_robust_all.pdf}
   \caption{As Fig.~\ref{fig:robust}, for all 28 ring settings, every parameter chosen
   without labels.}
   \label{fig:S-robust-all}

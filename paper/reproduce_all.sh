@@ -98,6 +98,11 @@ fi
 # the robustness sweep (p = 0, 0.01, ..., 1) and the planted-structure markers; OSLOM and the SBM
 # at step 0.05 in WSL (bench/queue_dense_wsl.sh, with their environments)
 (cd bench && PY=$PY W=$W bash queue_dense.sh)
+[ -n "$SBM_PY" ] && [ -n "$OSLOM_PY" ] && (cd bench && bash queue_dense_wsl.sh)   # in WSL, with graph-tool and OSLOM
+# each method's own default (native protocol of the scorecard)
+for EXP in rings_hetero rings_uniform rings_pref rings_hetero_overlap lfr lfr_slices lfr_clustered rings_geometry; do
+  (cd bench && $PY run2.py $EXP --workers $W --methods leiden_g1,leiden_cpm_dens,linkcomm_pd)
+done
 # BigClam and ego-splitting, then L-CPM below 0.002 and the Jaccard-weighted Leiden control
 (cd bench && PY=$PY W=$W bash queue_more.sh)
 (cd bench && PY=$PY W=$W bash queue_review.sh && $PY merge_cpm_lo.py)
@@ -108,7 +113,7 @@ done
 $PY analysis/exact_windows.py
 $PY bench/check_pruning.py
 (cd analysis && $PY make_tables3.py && $PY make_tables3_controls.py && $PY make_tables3_real.py)
-(cd analysis && $PY robust_dense.py && $PY robust_table.py && $PY jaccard_control.py)
+(cd analysis && $PY robust_dense.py && $PY robust_table.py && $PY jaccard_control.py && $PY numbers3.py)
 for F in analysis/fig_*.py; do $PY "$F"; done
 # manuscript and Supplemental Material share labels (xr-hyper): build both, then rebuild both
 for D in main supp; do pdflatex -interaction=nonstopmode $D && bibtex $D; done
