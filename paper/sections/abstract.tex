@@ -6,22 +6,21 @@ deterministic, local and nested in its threshold, and every edge it admits lies 
 exactly one community. A randomly rewired edge rarely joins two nodes with many
 neighbours in common, so the threshold rejects it while the triples inside each group
 hold the group together. Compared with sixteen other methods, every parameter chosen
-without labels, HyperCommon keeps its accuracy longest in thirteen of twenty-eight
-ring-lattice settings as the rings are rewired from order to randomness, most clearly
-where communities of unequal size and density overlap (on one, $\Omega\ge0.6$ up to a
-rewired fraction of $0.68$, against $0.63$ for the next method). It is the most accurate
-in sixteen of the settings and level in four, and in ten when every method gets its best
-parameter on each graph. We derive the exact window of thresholds that recovers planted
-overlapping ring lattices, and show that once ring degrees differ enough no single
-threshold recovers both their dense--sparse and their sparse--sparse overlaps. One
-threshold fits rings of 600 and of 30 nodes alike: on such a gradient without noise
-HyperCommon, like clique percolation, link communities and ego-splitting, reaches
-$\Omega\ge0.97$ at its best parameter, Leiden at most $0.32$ at its best resolution. Its
-cost is linear in the number of wedges, which an exact pruning of hub wedges keeps below
-$12\,m\ln m$ on thirty-two real networks with $m$ edges. It trails on all eight families
-of overlapping LFR graphs, and on the rings once a tenth (with labels) or three tenths
-(without) of their edges are rewired inside the rings: it needs communities whose
-members share many neighbours. On real networks, including eleven kinds built to have
-lattice-like groups, it is among the three most accurate methods on four kinds but
-rarely the most accurate, because a single threshold cannot cut the strongest links
-between groups and keep the weakest inside them.
+without labels, HyperCommon keeps $\Omega\ge0.6$ to a higher rewired fraction than every
+other method in thirteen of twenty-eight ring-lattice settings as the rings are rewired
+from order to randomness; its lead holds under a paired bootstrap in nine, all with
+rings of unequal size or preferential rewiring (on one, up to $0.68$ against $0.63$ for
+the next method). It is the most accurate in sixteen of the settings and level in four,
+and in ten when every method gets its best parameter on each graph. We derive the exact
+window of thresholds that recovers planted overlapping ring lattices, and show that once
+ring degrees differ enough no single threshold recovers both their dense--sparse and
+their sparse--sparse overlaps. One threshold fits rings of 600 and of 30 nodes alike: on
+such a gradient without noise HyperCommon, like clique percolation, link communities and
+ego-splitting, reaches $\Omega\ge0.97$ at its best parameter, Leiden at most $0.32$ at
+its best resolution. It trails on all eight families of overlapping LFR graphs, and on
+the rings once a tenth (with labels) or three tenths (without) of their edges are
+rewired inside the rings: it needs communities whose members share many neighbours. On
+real networks, including eleven kinds built to have lattice-like groups, it is among the
+three most accurate methods on four kinds but rarely the most accurate, because a single
+threshold cannot cut the strongest links between groups and keep the weakest inside
+them.
