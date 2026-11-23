@@ -95,6 +95,9 @@ fi
 if [ -n "$CPM_PY" ]; then
   (cd bench && NUMBA_NUM_THREADS=12 $CPM_PY cpm_bits.py facebook_107 3 4 5 6 7 --save results/cpm107_covers.pkl && $PY cpm_rows_from_bits.py facebook_107 results/cpm107_covers.pkl)
 fi
+# BigClam and ego-splitting, then L-CPM below 0.002 and the Jaccard-weighted Leiden control
+(cd bench && PY=$PY W=$W bash queue_more.sh)
+(cd bench && PY=$PY W=$W bash queue_review.sh && $PY merge_cpm_lo.py)
 for EXP in rings_uniform rings_hetero rings_hetero_overlap rings_pref lfr lfr_slices lfr_clustered rings_geometry \
            nulls rings_hubs rings_split rings_geometry_swap rgg; do
   (cd bench && $PY analysis2.py $EXP)
@@ -102,6 +105,7 @@ done
 $PY analysis/exact_windows.py
 $PY bench/check_pruning.py
 (cd analysis && $PY make_tables3.py && $PY make_tables3_controls.py && $PY make_tables3_real.py)
+(cd analysis && $PY robust_dense.py && $PY robust_table.py && $PY jaccard_control.py)
 for F in analysis/fig_*.py; do $PY "$F"; done
 # manuscript and Supplemental Material share labels (xr-hyper): build both, then rebuild both
 for D in main supp; do pdflatex -interaction=nonstopmode $D && bibtex $D; done

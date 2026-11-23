@@ -2,8 +2,10 @@
 The robustness table (Table S-robust): for each of the 28 ring settings and both protocols,
 HyperCommon's p_0.6 (the first p at which its mean Omega over the ten test graphs falls below
 0.6), the other method that holds longest and its p_0.6, HyperCommon's rank, and HyperCommon
-minus that method with a paired 95% bootstrap interval (the ten test graphs resampled, both
-mean curves recomputed on the same sample; a curve that never falls below 0.6 counts as 1).
+minus that method; the paired 95% bootstrap interval is of HC minus the best of ALL other methods,
+every mean curve recomputed on the same resample of the ten test graphs and the best other method
+chosen again in each (a curve that never falls below 0.6 counts as 1). The same for the area under
+the mean curve (area_diff, area_lo, area_hi in the csv).
 Also the planted-structure markers p_weak and p_clust. Reads what robust_dense.py writes, and
 the per-graph rows through its loader.
 
@@ -24,8 +26,8 @@ rng = np.random.default_rng(5)
 
 FAM = {  # family -> (name, o_n); the overlap level is in the name for the overlap sweeps
     "k8_s50": ("uniform, $k=8$", None), "k16_s100": ("uniform, $k=16$", None),
-    "dense_even": ("dense, even", "0.05"), "gradient10": ("gradient", "0.05"),
-    "k_only_s100": ("unequal $k$", "0.05"), "sizes_only_k8": ("unequal size", "0.05"),
+    "dense_even": ("equal $k$, unequal $s$, $k=16$", "0.05"), "gradient10": ("gradient", "0.05"),
+    "k_only_s100": ("equal $s$, unequal $k$", "0.05"), "sizes_only_k8": ("equal $k$, unequal $s$, $k=8$", "0.05"),
     "three_big_many_small": ("three big, many small", "0.05"), "two_worlds": ("two worlds", "0.05"),
 }
 ORDER = ["k8_s50", "k16_s100", "dense_even", "k_only_s100", "sizes_only_k8", "gradient10",
@@ -80,6 +82,38 @@ def boot_diff(g, a, b, n=2000):
     return np.percentile(out, [2.5, 97.5])
 
 
+def boot_all(g, others, n=2000):
+    """HC minus the BEST of all other methods, recomputed in every resample of the test graphs
+    (paired: the same seeds for every method), for p_0.6 and for the area under the mean curve.
+    Returns (lo, hi) of each, and the share of resamples in which HC leads by each."""
+    W = {m: g[g.method == m].pivot_table(index="seed", columns="p", values="omega")
+         for m in ["hc"] + list(others)}
+    seeds = W["hc"].index
+    for m in others:
+        seeds = seeds.intersection(W[m].index)
+    seeds = seeds.to_numpy()
+    P = {m: W[m].columns.to_numpy(dtype=float) for m in W}
+    V = {m: W[m].loc[seeds].to_numpy() for m in W}
+
+    def stats(idx):
+        out = {}
+        for m in W:
+            y = np.nanmean(V[m][idx], 0)
+            ps = P[m]
+            out[m] = (min(first_below(ps, y, L), 1.0), float(np.trapezoid(y, ps) / (ps.max() - ps.min())))
+        return out
+
+    dp, da = np.empty(n), np.empty(n)
+    for i in range(n):
+        st = stats(rng.integers(0, len(seeds), len(seeds)))
+        dp[i] = st["hc"][0] - max(st[m][0] for m in others)
+        da[i] = st["hc"][1] - max(st[m][1] for m in others)
+    full = stats(np.arange(len(seeds)))
+    return dict(lo_all=np.percentile(dp, 2.5), hi_all=np.percentile(dp, 97.5),
+                area_diff=full["hc"][1] - max(full[m][1] for m in others),
+                area_lo=np.percentile(da, 2.5), area_hi=np.percentile(da, 97.5))
+
+
 def main():
     comp = pd.read_csv(os.path.join(DATA, "robust_drop.csv"))
     G = pd.concat([per_graph(e) for e in EXPS], ignore_index=True)
@@ -89,11 +123,14 @@ def main():
         g = G[(G.experiment == r.experiment) & (G.family == r.family) & (G.protocol == r.protocol)]
         bo = r[f"other_{k}_by"]
         lo, hi = boot_diff(g, "hc", bo)
+        late = set(str(r.get("left_out", "") or "").split(",")) - {"", "nan"}
+        others = sorted(set(g.method) - {"hc"} - late)
+        ba = boot_all(g, others)
         rows.append(dict(experiment=r.experiment, family=r.family, protocol=r.protocol,
                          hc=r[f"hc_{k}"], best_other=bo, best_other_p=r[f"other_{k}"],
                          rank=int(r[f"hc_rank_{k}"]), diff=min(r[f"hc_{k}"], 1) - min(r[f"other_{k}"], 1), lo=lo, hi=hi,
                          hc_area=r.hc_area, other_area=r.other_area, other_area_by=r.other_area_by,
-                         p_weak=r.p_weak, p_clust=r.p_clust, left_out=r.get("left_out", "")))
+                         p_weak=r.p_weak, p_clust=r.p_clust, left_out=r.get("left_out", ""), **ba))
     T = pd.DataFrame(rows)
     T.to_csv(os.path.join(DATA, "robust_table.csv"), index=False)
 
@@ -103,10 +140,12 @@ def main():
     lines = [
         r"\begin{table*}[p]",
         r"\caption{Robustness to rewiring on the 28 ring settings: $p_{0.6}$, the rewired "
-        r"fraction at which the mean $\Omega$ over the ten test graphs first falls below $0.6$, "
-        r"for HyperCommon (HC) and for the other method that holds longest, HC's rank among the "
-        r"seventeen methods and HC minus the best other method, with the paired 95\% bootstrap "
-        r"interval (the test graphs resampled, both mean curves recomputed). Label-free: every "
+        r"fraction at which the mean $\Omega$ over the ten test graphs first falls below $0.6$ "
+        r"(linearly interpolated between grid points), for HyperCommon (HC) and for the other "
+        r"method that holds longest, HC's rank among the seventeen methods and HC minus the best "
+        r"other method, with the paired 95\% bootstrap interval of HC minus the best of all other "
+        r"methods (the test graphs resampled, every mean curve recomputed and the best other "
+        r"method chosen again in each resample). Label-free: every "
         r"parameter by the largest overlapping modularity; oracle: the best parameter per "
         r"graph. $p_{\rm weak}$, $p_{\rm clust}$: the planted-structure markers of "
         r"Sec.~\ref{sec:robust}; $p_{\rm clust}>1$: the clustering never falls below $5\%$ of "
@@ -129,7 +168,7 @@ def main():
         for prot in ("label_free", "oracle"):
             x = q.loc[prot]
             cells.append(f"{f(x.hc)} & {LABEL[x.best_other]} {f(x.best_other_p)} & {x['rank']} & "
-                         f"${x['diff']:+.2f}$ [${x.lo:+.2f},{x.hi:+.2f}$]")
+                         f"${x['diff']:+.2f}$ [${x.lo_all:+.2f},{x.hi_all:+.2f}$]")
         x = q.iloc[0]
         nm = nm if rw == "uniform" else f"{nm}, pref. {rw}"
         lines.append(f"{nm} & {on} & {f(x.p_weak)} & {f(x.p_clust)} & "

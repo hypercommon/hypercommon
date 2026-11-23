@@ -65,8 +65,9 @@ the random-geometric controls, the null graphs and the lattice-like real network
 OSLOM also on all other real networks.
 The local-fitness method LFM~\cite{lancichinetti2009lfm} is not included (it took more than
 ten minutes on a single 2000-node graph, against the thousands of graphs of the
-benchmark). Every grid (Table~\ref{tab:grids}) was widened and fixed after a preliminary
-run and before any reported result was computed.
+benchmark). Every grid (Table~\ref{tab:grids}) was widened and fixed after a first round on the same
+ring and LFR families, in which several methods had their best parameter at a grid edge,
+and before any reported result was computed, except the lower end of the Constant Potts grid (Table~\ref{tab:grids}).
 
 \subsection{Protocols}
 \label{sec:protocols}
@@ -98,7 +99,8 @@ $i$ and $j$, and $\pi_{\mathcal C}(c)$ the fraction of pairs with $c_{\mathcal C
 with ground truth $\mathcal G$, $\Omega=(\Omega_u-\Omega_e)/(1-\Omega_e)$, where
 $\Omega_u=\Pr[c_{\mathcal C}=c_{\mathcal G}]$ and
 $\Omega_e=\sum_c\pi_{\mathcal C}(c)\pi_{\mathcal G}(c)$. Omega counts node pairs and is
-dominated by the largest communities, so we also report the overlapping normalised
+dominated by the largest communities. A pair in two detected communities counts twice, so a
+duplicated or nested node set in a cover lowers $\Omega$; covers are scored as returned. We also report the overlapping normalised
 mutual information (ONMI)~\cite{mcdaid2011normalized}, a per-community recovery score
 (the mean Jaccard similarity of each true community with its best match), the best-match
 F1 score~\cite{yang2015defining} on real networks, and coverage. Unassigned nodes are

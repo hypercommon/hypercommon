@@ -17,6 +17,12 @@ its results were seen. Changes from methods.py:
               (not through shared non-adjacent pairs)
   cpm, demon, angel, scan, scan_j: their extended grids from the first round.
 
+Added after review: leiden_cpm_lo, sixteen CPM resolutions below the grid (1e-4 .. 0.0017),
+run as a separate method so the finished rows stay, then merged into leiden_cpm
+(merge_cpm_lo.py), so L-CPM's grid is 1e-4 .. 0.5; and the control leiden_j, Leiden-RB
+modularity on the graph weighted by the closed-neighbourhood Jaccard of each edge, on the
+resolutions of leiden (rows to results2/<experiment>_jctrl.csv, not a rival method).
+
 Every method's every cover is scored, so the oracle, frozen and label-free
 protocols are all read from the same rows (analysis2.py).
 """
@@ -44,6 +50,8 @@ GRIDS2 = {
     "cpm": [3, 4, 5, 6, 7],
     "leiden": _geom(1 / 16, 32, 30),
     "leiden_cpm": _geom(0.002, 0.5, 30),
+    "leiden_cpm_lo": _geom(1e-4, 0.002, 17)[:-1],   # added after review, merged into leiden_cpm
+    "leiden_j": _geom(1 / 16, 32, 30),              # control: Leiden-RB on Jaccard edge weights
     "infomap": _geom(0.25, 16, 13),
     "lpa": [None],
     "walktrap": [None],
@@ -76,20 +84,39 @@ HC_LIKE = ("hc", "hc_2test", "hc_tri", "hc_econn", "hc_tree", "linkcomm", "linkc
 # at the cut of largest partition density over the threshold grid (Ahn et al.'s rule).
 NATIVE = ["leiden_g1", "leiden_cpm_dens", "linkcomm_pd"]
 RESTARTS = 3
+MAX_ITER_WEIGHTED = 100
 
 
-def _leiden(G, kind, gammas, seed):
+def _jaccard_weights(G, nodes):
+    """Closed-neighbourhood Jaccard of each edge, the similarity HyperCommon thresholds."""
+    N = {u: set(G.neighbors(u)) | {u} for u in nodes}
+    return [len(N[u] & N[v]) / len(N[u] | N[v]) for u, v in G.edges()]
+
+
+def _leiden(G, kind, gammas, seed, weighted=False):
     import igraph as ig
     import leidenalg as la
     nodes = list(G.nodes())
     idx = {u: i for i, u in enumerate(nodes)}
     g = ig.Graph(n=len(nodes), edges=[(idx[u], idx[v]) for u, v in G.edges()])
+    w = _jaccard_weights(G, nodes) if weighted else None
     P = la.RBConfigurationVertexPartition if kind == "rb" else la.CPMVertexPartition
     for gamma in gammas:
         best = None
         for r in range(RESTARTS):
-            part = la.find_partition(g, P, resolution_parameter=gamma, n_iterations=-1,
-                                     seed=(seed * RESTARTS + r) % (2**31))
+            if w is None:
+                part = la.find_partition(g, P, resolution_parameter=gamma, n_iterations=-1,
+                                         seed=(seed * RESTARTS + r) % (2**31))
+            else:
+                # find_partition(n_iterations=-1) step by step (the same optimiser and random
+                # stream), capped: with real weights on a symmetric graph (noise-free, disjoint
+                # rings) the gain can stay positive by rounding and the loop never ends
+                part = P(g, weights=w, resolution_parameter=gamma)
+                opt = la.Optimiser()
+                opt.set_rng_seed((seed * RESTARTS + r) % (2**31))
+                for _ in range(MAX_ITER_WEIGHTED):
+                    if opt.optimise_partition(part, n_iterations=1) <= 0:
+                        break
             if best is None or part.quality() > best.quality():
                 best = part
         yield gamma, [{nodes[i] for i in c} for c in best if len(c) > 0]
@@ -176,8 +203,11 @@ def run_method2(name, G, ts, seed):
         n, m = G.number_of_nodes(), G.number_of_edges()
         yield from _leiden(G, "cpm", [2 * m / (n * (n - 1))], seed)
         return
-    if name in ("leiden", "leiden_cpm"):
+    if name in ("leiden", "leiden_cpm", "leiden_cpm_lo"):
         yield from _leiden(G, "rb" if name == "leiden" else "cpm", GRIDS2[name], seed)
+        return
+    if name == "leiden_j":
+        yield from _leiden(G, "rb", GRIDS2[name], seed, weighted=True)
         return
     if name == "infomap":
         yield from _infomap(G, GRIDS2[name], seed)

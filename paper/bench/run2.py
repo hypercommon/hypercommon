@@ -10,7 +10,7 @@ and every cover scored with
   rec_small / rec_large   the same over true communities no larger / larger than the
               median true size (rec_large empty when all sizes are equal)
 
-    python run2.py <experiment> [--workers N] [--methods a,b,...] [--dry]
+    python run2.py <experiment> [--workers N] [--methods a,b,...] [--families f,g,...] [--dry]
 
 Rows go to results2/<experiment>.csv, appended as tasks finish; a rerun skips
 tasks already present. Seeds 0..9 are test graphs, 1000..1002 calibration graphs.
@@ -43,7 +43,7 @@ CAL_SEEDS = [1000, 1001, 1002]
 # DENSE_STEP (default 0.01) sets the step; 0.05 for the slow OSLOM and SBM runs, which then
 # only add p = 0.85 ... 1 to the main grid.
 DENSE = os.environ.get("DENSE_P") == "1"
-SUFFIX = "_dense" if DENSE else ""
+SUFFIX = ("_dense" if DENSE else "") + os.environ.get("RUN2_SUFFIX", "")   # "_jctrl": the Jaccard-Leiden control
 _STEP = float(os.environ.get("DENSE_STEP", "0.01"))
 P_DENSE = [round(_STEP * i, 2) for i in range(int(round(1 / _STEP)) + 1)]
 
@@ -116,6 +116,7 @@ def main():
     ap.add_argument("experiment")
     ap.add_argument("--workers", type=int, default=16)
     ap.add_argument("--methods", default="")
+    ap.add_argument("--families", default="", help="comma-separated family ids (default: all)")
     ap.add_argument("--dry", action="store_true")
     a = ap.parse_args()
 
@@ -134,14 +135,15 @@ def main():
             done = {(r["family"], f"{float(r['p']):.4f}", str(r["seed"]), r["method"])
                     for r in csv.DictReader(fh) if not (r.get("error") or "").startswith(transient)}
     tasks = []
-    for fam_id in exp["families"]:
+    fams = a.families.split(",") if a.families else list(exp["families"])
+    for fam_id in fams:
         ps, seeds = grid(exp, fam_id)
         for p in ps:
             for seed in seeds:
                 for m in methods:
                     if (fam_id, f"{float(p):.4f}", str(seed), m) not in done:
                         tasks.append((a.experiment, fam_id, p, seed, m))
-    slow = ["slpa", "demon", "angel", "walktrap", "leiden", "leiden_cpm"]
+    slow = ["slpa", "demon", "angel", "walktrap", "leiden", "leiden_cpm", "leiden_j", "leiden_cpm_lo"]
     tasks.sort(key=lambda t: slow.index(t[4]) if t[4] in slow else 99)
     print(f"{len(tasks)} tasks to run ({len(done)} already done) -> {path}", flush=True)
     if a.dry:

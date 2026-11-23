@@ -1,5 +1,5 @@
 \begin{table*}[p]
-\caption{As Table~\ref{tab:labelfree}, with each method's parameter frozen on three calibration graphs per noise level of the same family, all noise levels pooled (frozen protocol). 95\% bootstrap half-widths of these means over the ten test seeds have median 0.004 and maximum 0.084. Dashes: the level of the stochastic block model's hierarchy frozen on the calibration graphs does not exist on some test graphs of that family, whose fitted hierarchy has fewer levels; on these rows the best other method is taken over the remaining methods, which cannot change a mark, since the stochastic block model's oracle $\Omega$ there is far below that of the best other method (Table~\ref{tab:oracle}). Bold: best in row, within 0.005.}
+\caption{As Table~\ref{tab:labelfree}, with each method's parameter frozen on three calibration graphs per noise level of the same family, all noise levels pooled (frozen protocol). 95\% bootstrap half-widths of these means over the ten test seeds have median 0.004 and maximum 0.081. Dashes: the level of the stochastic block model's hierarchy frozen on the calibration graphs does not exist on some test graphs of that family, whose fitted hierarchy has fewer levels; on these rows the best other method is taken over the remaining methods, which cannot change a mark, since the stochastic block model's oracle $\Omega$ there is far below that of the best other method (Table~\ref{tab:oracle}). Bold: best in row, within 0.005.}
 \label{tab:frozen}
 \scriptsize\setlength{\tabcolsep}{1.35pt}
 \resizebox{\textwidth}{!}{%
@@ -58,7 +58,7 @@ LFR, $C_{\rm LFR}{=}0.5$ &  & 0.23$^{-}$ & 0.23 & 0.23 & 0.22 & 0.22 & 0.27 & 0.
 \end{table*}
 
 \begin{table*}[p]
-\caption{As Table~\ref{tab:labelfree}, with each method at its own default or selection rule: Leiden at $\gamma=1$, L-CPM at $\gamma$ equal to the edge density, link communities at maximum partition density, Infomap at Markov time 1, SLPA at $r=0.1$, OSLOM at $t=0.1$, SBM at the finest level of its hierarchy, and the label-free choice for the methods without one (native protocol). 95\% bootstrap half-widths of these means over the ten test seeds have median 0.006 and maximum 0.049. Bold: best in row, within 0.005.}
+\caption{As Table~\ref{tab:labelfree}, with each method at its own default or selection rule: Leiden at $\gamma=1$, L-CPM at $\gamma$ equal to the edge density, link communities at maximum partition density, Infomap at Markov time 1, SLPA at $r=0.1$, OSLOM at $t=0.1$, SBM at the finest level of its hierarchy, and the label-free choice for the methods without one (native protocol). 95\% bootstrap half-widths of these means over the ten test seeds have median 0.006 and maximum 0.050. Bold: best in row, within 0.005.}
 \label{tab:native}
 \scriptsize\setlength{\tabcolsep}{1.35pt}
 \resizebox{\textwidth}{!}{%
@@ -154,8 +154,8 @@ three big, many small & 0.00 & 0.65$^{-}$ & 0.64 & 0.58 & 0.61 & 0.61 & 0.34 & 0
  & 0.05 & 0.41$^{-}$ & 0.42 & 0.40 & 0.25 & 0.35 & 0.29 & 0.17 & \textbf{0.56} & 0.27 & 0.25 & 0.12 & 0.16 & 0.24 & 0.33 & 0.34 & 0.33 & 0.24 & 0.27 & 0.07 & 0.51 \\
  & 0.10 & 0.26$^{-}$ & 0.26 & 0.25 & 0.22 & 0.27 & 0.23 & 0.16 & 0.38 & 0.22 & 0.21 & 0.11 & 0.15 & 0.21 & 0.24 & 0.30 & 0.25 & 0.20 & 0.22 & 0.07 & \textbf{0.48} \\
 \hline
-gradient & 0.00 & \textbf{0.60$^{+}$} & 0.59 & 0.51 & 0.55 & 0.58 & 0.49 & 0.36 & 0.48 & 0.26 & 0.26 & 0.13 & 0.23 & 0.23 & 0.31 & 0.49 & 0.43 & 0.52 & 0.51 & 0.09 & 0.50 \\
- & 0.05 & \textbf{0.48$^{+}$} & \textbf{0.48} & 0.43 & 0.27 & 0.41 & 0.32 & 0.24 & 0.28 & 0.19 & 0.21 & 0.12 & 0.19 & 0.22 & 0.23 & 0.39 & 0.37 & 0.22 & 0.24 & 0.09 & 0.42 \\
+gradient & 0.00 & \textbf{0.60$^{+}$} & 0.59 & 0.51 & 0.55 & 0.58 & 0.49 & 0.36 & 0.52 & 0.26 & 0.26 & 0.13 & 0.23 & 0.23 & 0.31 & 0.49 & 0.43 & 0.52 & 0.51 & 0.09 & 0.50 \\
+ & 0.05 & \textbf{0.48$^{+}$} & \textbf{0.48} & 0.43 & 0.27 & 0.41 & 0.32 & 0.24 & 0.27 & 0.19 & 0.21 & 0.12 & 0.19 & 0.22 & 0.23 & 0.39 & 0.37 & 0.22 & 0.24 & 0.09 & 0.42 \\
  & 0.10 & 0.36$^{-}$ & 0.35 & 0.32 & 0.22 & 0.33 & 0.30 & 0.18 & 0.21 & 0.17 & 0.18 & 0.12 & 0.17 & 0.20 & 0.18 & 0.33 & 0.31 & 0.18 & 0.18 & 0.10 & \textbf{0.39} \\
 \hline
 uniform $k{=}8$, $\alpha{=}1$ & 0.05 & \textbf{0.58$^{+}$} & 0.57 & 0.50 & 0.37 & 0.57 & 0.50 & 0.57 & 0.56 & 0.34 & 0.35 & 0.14 & 0.30 & 0.37 & 0.48 & 0.48 & 0.42 & 0.33 & 0.35 & 0.26 & 0.51 \\

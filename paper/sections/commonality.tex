@@ -19,8 +19,7 @@ under the ROC curve (AUC) falling to $0.41$. We therefore call an edge \emph{inn
 its endpoints are labelled and share a recorded group and \emph{outer} when they are
 labelled and share none, and compare these two classes only. Metadata need not coincide
 with structural communities~\cite{peel2017ground,hric2014community}, so this tests a
-tendency, not a classifier. With the correction, commonality separates the classes on
-all four networks (AUC $0.82$, $0.62$, $0.60$ and $0.61$). Jaccard commonality is capped
+tendency, not a classifier. With the correction, inner edges have the higher commonality on all four networks (AUC $0.82$, $0.62$, $0.60$ and $0.61$), clearly on the karate club and weakly on the three large ones. Jaccard commonality is capped
 by the degree ratio, $J(u,v)\le(d_{\min}+1)/(d_{\max}+1)$, and degree also correlates
 with how labels were assigned, but within strata of the larger endpoint degree the
 separation persists at every degree [Fig.~\ref{fig:realcommonality}(a)].
@@ -31,7 +30,7 @@ prediction~\cite{leicht2006vertex,zhou2009predicting,lu2011link}: $I$, Jaccard $
 $I^2/U$, $I/U^{1/2}$, the cosine~\cite{salton1983introduction}, $I/\min$ (after Ravasz
 \emph{et al.}~\cite{ravasz2002hierarchical}), $I/\max$ and resource allocation; $I^2/U$
 and $I/U^{1/2}$ rank pairs alike, so seven differ for any threshold. Within strata of
-both endpoint degrees every one separates the classes and the overlap-based ones perform
+both endpoint degrees every one ranks inner edges above outer ones and the overlap-based ones perform
 alike [Fig.~\ref{fig:realcommonality}(b)], since at fixed degrees each is a monotone
 function of $I$. They differ on pairs of different degrees, which a global threshold
 must compare: pooled over all edges, $I$ leads on DBLP but falls below chance on

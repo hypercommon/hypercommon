@@ -1,0 +1,30 @@
+\begin{table*}[t]
+\caption{Robustness to noise on the ring families: mean $\Omega$ over the high-noise half ($p\in[0.4,0.8]$) and $p_{1/2}$, the rewired fraction at which the mean $\Omega$ over the ten test graphs first falls below $0.5$ (linear interpolation; $>0.8$: never), for HyperCommon (HC) and the best of the other methods by each measure, under the oracle and label-free protocols. Bold: HC ahead or within 0.005 (0.01 for $p_{1/2}$).}
+\label{tab:robust}
+\footnotesize\setlength{\tabcolsep}{3pt}
+\begin{ruledtabular}
+\begin{tabular}{lcccccccc}
+ & \multicolumn{4}{c}{oracle} & \multicolumn{4}{c}{label-free} \\
+Family & HC $\bar\Omega_{\rm hi}$ & best other & HC $p_{1/2}$ & best other & HC $\bar\Omega_{\rm hi}$ & best other & HC $p_{1/2}$ & best other \\
+\hline
+uniform, $k{=}8$, $o_n{=}0$ & 0.29 & 0.39 (SLPA) & 0.48 & 0.52 (Leiden) & 0.28 & 0.30 (SLPA) & \textbf{0.48} & 0.48 (L-CPM) \\
+uniform, $k{=}8$, $o_n{=}0.05$ & 0.25 & 0.35 (SLPA) & \textbf{0.46} & 0.45 (Link) & 0.24 & 0.27 (SLPA) & \textbf{0.45} & 0.45 (Link) \\
+uniform, $k{=}8$, $o_n{=}0.10$ & 0.22 & 0.31 (SLPA) & \textbf{0.42} & 0.42 (Link) & 0.21 & 0.24 (SLPA) & \textbf{0.41} & 0.38 (Link) \\
+uniform, $k{=}16$, $o_n{=}0$ & 0.56 & 0.72 (Leiden) & 0.61 & 0.68 (Leiden) & 0.56 & 0.69 (Leiden) & 0.61 & 0.67 (Leiden) \\
+uniform, $k{=}16$, $o_n{=}0.05$ & 0.47 & 0.59 (Leiden) & 0.58 & 0.64 (Leiden) & 0.46 & 0.56 (Leiden) & 0.58 & 0.63 (Leiden) \\
+uniform, $k{=}16$, $o_n{=}0.10$ & 0.37 & 0.44 (Leiden) & 0.54 & 0.58 (Leiden) & 0.36 & 0.40 (Leiden) & 0.53 & 0.57 (Leiden) \\
+\hline
+equal $k$, unequal $s$ ($k{=}8$) & 0.19 & 0.26 (SLPA) & \textbf{0.41} & 0.40 (Link) & \textbf{0.19} & 0.19 (SLPA) & \textbf{0.41} & 0.40 (Link) \\
+equal $k$, unequal $s$ ($k{=}16$) & 0.51 & 0.63 (Leiden) & 0.60 & 0.68 (Leiden) & 0.49 & 0.54 (Leiden) & 0.59 & 0.64 (Leiden) \\
+equal $s$, unequal $k$ & 0.53 & 0.60 (L-CPM) & 0.66 & 0.69 (L-CPM) & 0.52 & 0.55 (L-CPM) & \textbf{0.66} & 0.66 (L-CPM) \\
+two worlds & 0.61 & 0.62 (L-CPM) & \textbf{0.68} & 0.66 (Link) & \textbf{0.59} & 0.52 (Link) & \textbf{0.68} & 0.65 (Link) \\
+three big, many small & \textbf{0.63} & 0.54 (Link) & \textbf{0.67} & 0.65 (Link) & \textbf{0.60} & 0.49 (Link) & \textbf{0.66} & 0.62 (Link) \\
+gradient of ten rings & 0.23 & 0.26 (Link) & 0.47 & 0.48 (Link) & 0.14 & 0.18 (Link) & 0.17 & 0.41 (Link) \\
+\hline
+uniform $k{=}8$, pref.\ $\alpha{=}1$ & 0.25 & 0.35 (SLPA) & \textbf{0.46} & 0.46 (Leiden) & 0.24 & 0.27 (SLPA) & \textbf{0.46} & 0.45 (Link) \\
+uniform $k{=}8$, pref.\ $\alpha{=}2$ & 0.25 & 0.34 (SLPA) & \textbf{0.46} & 0.46 (Leiden) & 0.24 & 0.27 (SLPA) & \textbf{0.46} & 0.45 (Link) \\
+two worlds, pref.\ $\alpha{=}1$ & 0.60 & 0.70 (L-CPM) & 0.67 & 0.70 (L-CPM) & \textbf{0.59} & 0.50 (L-CPM) & 0.67 & 0.69 (L-CPM) \\
+two worlds, pref.\ $\alpha{=}2$ & 0.61 & 0.64 (L-CPM) & \textbf{0.67} & 0.66 (L-CPM) & \textbf{0.60} & 0.48 (L-CPM) & \textbf{0.67} & 0.62 (L-CPM) \\
+\end{tabular}
+\end{ruledtabular}
+\end{table*}

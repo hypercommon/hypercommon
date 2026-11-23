@@ -164,6 +164,12 @@ python bench/run2.py <exp> --methods hc,hc_2test,hc_tri,hc_econn,linkcomm,cpm,le
 #   bash bench/queue_more_lattice.sh    # the lattice-like real networks
 #   python bench/real_more_detection_v3.py 16    # the Netzschleuder networks (picks up the missing methods)
 #   python bench/run_more_big.py --workers 4     # SNAP Amazon, DBLP, YouTube; then score_big.py as above
+# L-CPM below its old grid floor, and the Jaccard-weighted Leiden control (added last; resumable)
+#   bash bench/queue_review.sh          # leiden_cpm_lo everywhere L-CPM runs (+ the gradient robustness sweep),
+#                                       # then leiden_j on the ring and LFR benchmarks (rows in results2/<exp>_jctrl.csv)
+#   python bench/merge_cpm_lo.py        # renames leiden_cpm_lo rows to leiden_cpm (grid 1e-4 .. 0.5)
+#   python analysis/jaccard_control.py  # Table S-jaccard-control
+#   python analysis/robust_dense.py ; python analysis/robust_table.py   # robustness curves and Table S-robust
 python bench/analysis2.py <exp> # oracle, label-free, frozen and native protocols, paired bootstrap marks
 
 # theory and implementation checks

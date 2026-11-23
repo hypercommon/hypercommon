@@ -128,7 +128,7 @@ A\cap B$ lie in an admissible triple $T_A\subseteq A$ and in an admissible tripl
 $T_B\subseteq B$. Then $T_A$ and $T_B$ lie in the same component of $L_t$, whatever the
 commonality between $A\setminus B$ and $B\setminus A$.
 \end{proposition}
-Two communities that share a pair of nearby nodes are thus read as one, much as
+(Distinct triples through one pair share two nodes and are adjacent in $L_t$, which proves this and Corollary~\ref{cor:pairdisjoint}.) Two communities that share a pair of nearby nodes are thus read as one, much as
 $k$-clique percolation reads communities sharing $k-1$ nodes as
 one~\cite{palla2005uncovering}. The random merges of our benchmarks are not isolated:
 with $o_n=0.05$, between $6\%$ and $61\%$ of the rings of a family are fused with
@@ -141,8 +141,8 @@ one component of $L_t$. In particular, an edge that lies in an admissible triple
 assigned to exactly one community, and the communities of a node are those of the
 admitted edges incident to it.
 \end{corollary}
-Each admitted edge thus lies in exactly one community, although two communities may
-share several nodes, so a node's memberships can be read off its admitted edges, as in link communities~\cite{ahn2010link,evans2009line}. This shares an
+Each admitted edge is thus assigned to exactly one community, although both its endpoints
+may also lie in another, so a node's memberships can be read off its admitted edges, as in link communities~\cite{ahn2010link,evans2009line}. This shares an
 assumption of clique percolation and link clustering that ground truth contradicts in
 many social and collaboration networks, where overlaps are more densely connected than
 the rest of the communities~\cite{yang2014structure,yang2012community}; in co-purchasing
@@ -172,8 +172,8 @@ of this kind: they join a hub to neighbours of far smaller degree. On thirty-two
 networks with up to $4\times10^6$ nodes, $W/(m\ln m)$ ranges from $0.15$ on road networks
 to $268$ on a web graph with hubs of degree $8.4\times10^4$, but after pruning at
 $t_{\min}=0.02$ it is at most $12$ on all of them (Table~\ref{tab:S-wedges}); on YouTube
-it falls from $33$ to $3.7$. The cost is therefore that of the $\gamma=3$ case even where
-$W$ itself is not. Once the triple scores are stored, every further threshold costs
+it falls from $33$ to $3.7$. On these networks the pruned cost thus stays near that of the
+$\gamma=3$ case even where $W$ itself does not, an observation rather than a bound. Once the triple scores are stored, every further threshold costs
 $O(W)$, so a whole sweep of the threshold costs one scoring, whereas a sweep of Leiden's
 resolution or Infomap's Markov time costs a full run per value. Clique percolation is the
 costly method: the number of maximal cliques can grow exponentially with
