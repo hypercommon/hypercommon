@@ -86,21 +86,15 @@ def test_predicate_raises_propagates():
             assert "predicate failed" in str(e)
 
 
-def test_non_comparable_nodes_break_sorted():
-    """Nodes that are not mutually comparable break sorted(G.nodes())."""
+def test_non_comparable_nodes_work():
+    """Nodes of mixed types (int, str, tuple) used to break sorted(); now they form one triple."""
     G = nx.Graph()
     G.add_nodes_from([1, "a", (3,)])  # int, str, tuple
-    G.add_edges_from([(1, "a"), ("a", (3,)), ((3,), 1)])  # triangle-ish
+    G.add_edges_from([(1, "a"), ("a", (3,)), ((3,), 1)])  # triangle
 
-    if HAS_PYTEST:
-        with pytest.raises(TypeError):
-            build_hypergraph(G, _always_true)
-    else:
-        try:
-            build_hypergraph(G, _always_true)
-            assert False, "expected TypeError from sorted()"
-        except TypeError:
-            pass
+    H = build_hypergraph(G, _always_true)
+    assert H.number_of_nodes() == 1
+    assert set(next(iter(H.nodes()))) == {1, "a", (3,)}
 
 
 # --- Type validation (already in code) ---

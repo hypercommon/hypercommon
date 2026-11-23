@@ -1,7 +1,7 @@
 from collections import deque
 
 import networkx as nx
-from hypercommon.hypergraph import build_hypergraph
+from hypercommon.hypergraph import build_hypergraph, _check_graph, _neighbors, _ordered
 from hypercommon.hypernode import HCNode
 
 def get_communities(
@@ -37,30 +37,48 @@ def get_communities(
     return communities
 
 
-def get_node_community(G: nx.Graph, commonality_predicate, v):
+def get_node_community(G: nx.Graph, commonality_predicate, v, triple=None):
     """
     Find one community containing node v using local hypergraph expansion.
 
-    A community is a set of nodes where every member joined via a valid triple
-    (i, j, k) where at least one node is a neighbor of the other two, and all
-    three pairs pass the commonality_predicate.
+    A community is the node union of a connected component of admissible triples
+    under shared pairs, as in get_communities: a triple {i, j, k} of distinct nodes
+    is admissible when one node is adjacent to the other two and all three pairs pass
+    the commonality_predicate (which should be symmetric). Self-loops are ignored.
+
+    A node can lie in several communities (an edge in only one). Without `triple`,
+    the search starts from the first admissible triple through v that it finds, so
+    for a node in several communities which one is returned depends on the order of
+    its neighbours in G. Pass `triple`, an admissible triple containing v, to get the
+    community of that triple.
 
     Parameters
     ----------
-    G : nx.Graph
+    G : nx.Graph (undirected)
     commonality_predicate : callable (u: HCNode, v: HCNode) -> bool
     v : node in G
+    triple : optional iterable of three distinct nodes of G, one of them v
 
     Returns
     -------
     set of nodes, or None if v is not in any community
     """
+    _check_graph(G)
+    if v not in G:
+        raise nx.NetworkXError(f"The node {v} is not in the graph.")
+
+    nbr = {}
+
+    def neighbors(u):
+        if u not in nbr:
+            nbr[u] = _neighbors(G, u)
+        return nbr[u]
 
     # HCNode cache — filled on demand from original G, never mutated, so the query reads
     # only the neighbourhoods of the nodes it examines
     class _Lazy(dict):
         def __missing__(self, u):
-            node = self[u] = HCNode(u, set(G.neighbors(u)))
+            node = self[u] = HCNode(u, set(neighbors(u)))
             return node
 
     hc = _Lazy()
@@ -69,7 +87,7 @@ def get_node_community(G: nx.Graph, commonality_predicate, v):
     predicate_cache = {}
 
     def check(a, b):
-        key = (a, b) if a < b else (b, a)
+        key = _ordered(a, b)
         if key not in predicate_cache:
             predicate_cache[key] = commonality_predicate(hc[key[0]], hc[key[1]])
         return predicate_cache[key]
@@ -94,7 +112,7 @@ def get_node_community(G: nx.Graph, commonality_predicate, v):
         return has_center(a, b, c) and check(a, b) and check(a, c) and check(b, c)
 
     def find_initial_triple(v):
-        nbrs = list(G.neighbors(v))
+        nbrs = neighbors(v)
         L = len(nbrs)
 
         # v as center: check pairs among neighbors(v)
@@ -107,7 +125,7 @@ def get_node_community(G: nx.Graph, commonality_predicate, v):
 
         # u as center: v -> u -> k
         for u in nbrs:
-            for k in G.neighbors(u):
+            for k in neighbors(u):
                 if k == v:
                     continue
                 if check(v, u) and check(u, k) and check(v, k):
@@ -128,14 +146,11 @@ def get_node_community(G: nx.Graph, commonality_predicate, v):
         community = set(initial_triple)
         a, b, c = initial_triple
 
-        def pair_key(x, y):
-            return (x, y) if x < y else (y, x)
-
-        potential = deque([pair_key(a, b), pair_key(b, c), pair_key(a, c)])
+        potential = deque([_ordered(a, b), _ordered(b, c), _ordered(a, c)])
         queued_pairs = set(potential)
 
         def push(x, y):
-            key = pair_key(x, y)
+            key = _ordered(x, y)
             if key not in queued_pairs:
                 queued_pairs.add(key)
                 potential.append(key)
@@ -145,8 +160,8 @@ def get_node_community(G: nx.Graph, commonality_predicate, v):
 
             # Candidates completing a triple with {x, y} must be adjacent to at
             # least one of them, otherwise no node of the triple can be a center.
-            candidates = set(G.neighbors(x))
-            candidates |= set(G.neighbors(y))
+            candidates = set(neighbors(x))
+            candidates.update(neighbors(y))
             candidates.discard(x)
             candidates.discard(y)
 
@@ -163,8 +178,18 @@ def get_node_community(G: nx.Graph, commonality_predicate, v):
 
         return community
 
-    triple = find_initial_triple(v)
-    if triple is None:
-        return None
+    if triple is not None:
+        triple = tuple(triple)
+        if len(triple) != 3 or len(set(triple)) != 3 or v not in triple:
+            raise ValueError("triple must be three distinct nodes, one of them v")
+        for u in triple:
+            if u not in G:
+                raise nx.NetworkXError(f"The node {u} is not in the graph.")
+        if not is_admissible(*triple):
+            raise ValueError(f"triple {triple} is not admissible")
+    else:
+        triple = find_initial_triple(v)
+        if triple is None:
+            return None
 
     return expand(triple)
