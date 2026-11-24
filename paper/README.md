@@ -77,7 +77,13 @@ environments under `~/hc/mamba`: `hc` (Python 3.12.16, numpy 2.4.1, scipy 1.17.1
 networkx 3.6.1, python-igraph 1.0.0, leidenalg 0.11.0, infomap 2.10.1, cdlib 0.4.0) for
 everything except the two below; `gt` (graph-tool 3.9) for the nested stochastic block
 model; `cpm` (numba 0.68.1) for `bench/cpm_bits.py`. OSLOM is the OSLOM2 binary built by
-`bench/build_oslom.sh`. The `seconds` columns of the result files are kept for reference
+`bench/build_oslom.sh`. Those three environments no longer exist; on 2026-11-24 the Mac was set up
+again with two environments under the same `~/hc/mamba`, `hc314` (Python 3.14.10, the pinned packages
+of `requirements-paper.txt`, numba included) and `gt314` (Python 3.14.10, graph-tool 3.9), the
+repository in `~/hc/hypercommon` and the LFR graphs copied into `bench/lfr_cache`. There
+`bench/check_reproduce.py` gives the stored scores exactly for every method, Infomap included, except
+BigClam (computed on the laptop below), whose numba gradient ascent rounds differently on the Mac's
+processor (Omega within 0.01). The `seconds` columns of the result files are kept for reference
 only (runs in parallel). The manuscript reports no running times; controlled timings
 (Running times, under Commands) are kept in the repository, not in the paper. Against an earlier run of the same
 scripts under Windows and Linux, every deterministic method gives identical scores;

@@ -2,7 +2,8 @@
 # Every run of the paper on one machine (the Mac mini, M4 Pro, 64 GB), largest first.
 # Timing steps run alone; the rest run in order. Each step leaves runs/done/<step>, so a
 # restarted queue skips finished steps. Usage, from paper/bench:
-#   PY=~/hc/mamba/envs/hc/bin/python GT_PY=~/hc/mamba/envs/gt/bin/python bash queue_mac.sh
+#   PY=~/hc/mamba/envs/hc314/bin/python GT_PY=~/hc/mamba/envs/gt314/bin/python CPM_PY=~/hc/mamba/envs/hc314/bin/python bash queue_mac.sh
+# (Python 3.14 since 2026-11-24; the paper's runs used the 3.12 environments hc, gt and cpm)
 cd "$(dirname "$0")"
 PY=${PY:-python}
 W=${WORKERS:-13}

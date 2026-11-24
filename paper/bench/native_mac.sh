@@ -1,7 +1,7 @@
 #!/bin/bash
 # The steps of queue_mac.sh that its first Mac run missed (native defaults; DEMON on the
 # swapped geometry), run beside it with the same step names. Usage, from paper/bench:
-#   PY=~/hc/mamba/envs/hc/bin/python WORKERS=4 bash native_mac.sh
+#   PY=~/hc/mamba/envs/hc314/bin/python WORKERS=4 bash native_mac.sh
 cd "$(dirname "$0")"
 PY=${PY:-python}
 W=${WORKERS:-4}
