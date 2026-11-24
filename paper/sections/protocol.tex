@@ -59,7 +59,7 @@ which splits each node into one persona per cluster of its ego-net and partition
 graph of personas, with the two clusterings as the parameter; and
 the nested degree-corrected stochastic block model (SBM)~\cite{peixoto2014hierarchical},
 fitted with \textsc{graph-tool}~\cite{peixoto_graphtool}, each level of its hierarchy
-treated as a parameter value. BigClam and ego-splitting are ports of their authors'
+treated as a parameter value. Ten of them can place a node in more than one community: link communities, CPM, SLPA, DEMON, ANGEL, OSLOM, BigClam, ego-splitting, and SCAN and SCAN-J, which keep a border node in every cluster it qualifies for; the other six (Leiden with either objective, Infomap, Walktrap, label propagation and the SBM) return partitions. BigClam and ego-splitting are ports of their authors'
 reference code (SNAP and Google Research). OSLOM and the SBM were run on the ring and LFR benchmarks,
 the random-geometric controls, the null graphs and the lattice-like real networks, and
 OSLOM also on all other real networks.

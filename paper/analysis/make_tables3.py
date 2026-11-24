@@ -62,6 +62,9 @@ OTHERS = [("linkcomm", "Link"), ("cpm", "CPM"), ("leiden", "Leiden"), ("leiden_c
           ("bigclam", "BigClam"), ("egosplit", "Ego")]
 METHODS = ABL + OTHERS
 OTHER_IDS = [m for m, _ in OTHERS]
+# the rivals whose covers can place a node in more than one community (SCAN and SCAN-J keep a
+# border node in every cluster it qualifies for, bench/methods.py); the other six return partitions
+OVERLAP_IDS = ["linkcomm", "cpm", "slpa", "oslom", "demon", "angel", "scan", "scan_j", "bigclam", "egosplit"]
 NAME = dict(METHODS)
 PROTS = [("oracle", "oracle"), ("label_free", "label-free"), ("frozen", "frozen"), ("native", "native")]
 HEAD2 = (r" & & \multicolumn{4}{c}{HC and ablations} & \multicolumn{2}{c}{relatives} &"
@@ -102,13 +105,13 @@ def get(S, exp, fam, prot, metric):
     return g.set_index("method")["mean"]
 
 
-def verdict(S, P, exp, fam, prot, metric="omega"):
+def verdict(S, P, exp, fam, prot, metric="omega", others=None):
     """HC against the best and second-best other method (ablations excluded): margins with
     paired 95% intervals (HC minus other) and the mark +, = or -."""
     g = get(S, exp, fam, prot, metric)
     if g.empty or "hc" not in g:
         return None
-    o = g.reindex(OTHER_IDS).dropna().sort_values(ascending=False)
+    o = g.reindex(others or OTHER_IDS).dropna().sort_values(ascending=False)
     out = dict(experiment=exp, family=fam, protocol=prot, hc=g["hc"])
     for rank, m in enumerate(o.index[:2], 1):
         pr = P[(P.experiment == exp) & (P.family == fam) & (P.protocol == prot) & (P.metric == metric)
@@ -181,7 +184,9 @@ def scorecard(S, P):
            r"overlapping modularity, Eq.~\eqref{eq:qov}; frozen: one parameter per family from calibration "
            r"graphs; native: each method's own default or selection rule where it has one "
            r"(Sec.~\ref{sec:protocol}), the label-free choice otherwise. Counts are not corrected for "
-           r"multiplicity. Method abbreviations as in Table~\ref{tab:labelfree}; the full tables are "
+           r"multiplicity. The last two rows count against the ten rivals that can place a node in more than one "
+           r"community (link communities, CPM, SLPA, OSLOM, DEMON, ANGEL, SCAN, SCAN-J, BigClam, ego-splitting), "
+           r"the best of them chosen in the same way. Method abbreviations as in Table~\ref{tab:labelfree}; the full tables are "
            r"Tables~\ref{tab:labelfree} and~\ref{tab:oracle} (frozen and native in the repository).}",
            r"\label{tab:scorecard}", r"\scriptsize\setlength{\tabcolsep}{3pt}", r"\begin{ruledtabular}",
            r"\begin{tabular}{llcccc}",
@@ -214,6 +219,13 @@ def scorecard(S, P):
             c, n = counts(V, prot, rs)
             cells.append(f"{c['+']}/{c['=']}/{c['-']} of {n}")
         out.append(rf"$+/{{=}}/-$, {nm} & & " + " & ".join(cells) + r" \\")
+    VO = [verdict(S, P, exp, fam, prot, others=OVERLAP_IDS) for exp, fam, *_ in ROWS for prot, _ in PROTS]
+    for nm, rs in (("rings", ring), ("LFR", lfr)):
+        cells = []
+        for prot, _ in PROTS:
+            c, n = counts(VO, prot, rs)
+            cells.append(f"{c['+']}/{c['=']}/{c['-']} of {n}")
+        out.append(rf"$+/{{=}}/-$, {nm}, overlapping rivals & & " + " & ".join(cells) + r" \\")
     out += [r"\end{tabular}", r"\end{ruledtabular}", r"\end{table*}"]
     write("table_scorecard.tex", out)
     summ = []
@@ -221,6 +233,8 @@ def scorecard(S, P):
         for prot, _ in PROTS:
             c, n = counts(V, prot, rs)
             summ.append(dict(set=nm, protocol=prot, ahead=c["+"], level=c["="], behind=c["-"], n=n))
+            c, n = counts(VO, prot, rs)
+            summ.append(dict(set=nm + "_overlapping_rivals", protocol=prot, ahead=c["+"], level=c["="], behind=c["-"], n=n))
     pd.DataFrame(summ).to_csv(os.path.join(DATA, "scorecard3_counts.csv"), index=False)
     print(pd.DataFrame(summ).to_string())
     return V

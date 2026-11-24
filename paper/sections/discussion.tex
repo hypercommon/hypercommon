@@ -8,7 +8,7 @@ community size (Lemma~\ref{lem:ringJ}), so one threshold suits rings of thirty a
 hundred nodes alike, where, once they overlap, no single resolution of either Leiden objective keeps the large rings whole and the small ones apart. The ablations support each test of the triple rule: open wedges help where triangles are scarce, and the non-adjacent pair keeps overlapping communities apart.
 
 The same property makes the method robust to random rewiring: a rewired edge joins nodes that share almost no neighbours, so it rarely passes, and a community stays connected while enough of its own wedges survive. Without labels
-HyperCommon has the largest area under the accuracy curve in 17 of the 28 ring settings, most clearly with communities of unequal size or degree-biased rewiring, and trails where rings are
+HyperCommon has the largest area under the accuracy curve in 17 of the 28 ring settings, most clearly with communities of unequal size or degree-biased rewiring, and against the ten methods that can place a node in more than one community it leads in 24 of the 28 without labels, and trails where rings are
 dense (Sec.~\ref{sec:robust}). Its reach is set by geometry: it trails where communities are random graphs internally (Sec.~\ref{sec:geometry}). That an admitted pair is assigned to one community only also means that
 communities joined by an admissible triple are read as one
 (Proposition~\ref{prop:sharedpairs}), which limits the method where overlaps are
@@ -17,7 +17,7 @@ densely connected~\cite{yang2014structure,yang2012community}.
 Three limits qualify these results. First, part of the label-free margin reflects the
 selector: modularity costs the Constant Potts Model more than HyperCommon on unequal
 rings, and with each method's best parameter HyperCommon leads on fewer settings (10 of
-28) than it trails (15). Second, on real networks it is rarely the most accurate, also where the groups are lattice-like: with its best parameter it is among the top three on four of eleven kinds and first on two, without labels fourth at best, and Leiden, with either objective, leads on most sets. One threshold
+28) than it trails (15). Second, on real networks it is rarely the most accurate, also where the groups are lattice-like and also among the overlapping methods on the smaller networks: with its best parameter it is among the top three on four of eleven kinds and first on two, without labels fourth at best, and Leiden, with either objective, leads on most sets. One threshold
 has to separate all groups at once, and in real data the commonality of edges inside
 groups and between them overlaps, so the cover jumps from one large community to many
 small ones (Sec.~\ref{sec:reallattice}). Third, like every method tested, it reports communities on clustered graphs with none planted; a test against randomised graphs with the same degrees and clustering is still needed. We did not compare with an overlapping stochastic block model, nor with LFM, too slow for the benchmark.

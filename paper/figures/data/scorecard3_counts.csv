@@ -1,9 +1,17 @@
 set,protocol,ahead,level,behind,n
 rings,oracle,10,3,15,28
+rings_overlapping_rivals,oracle,23,2,3,28
 rings,label_free,16,4,8,28
+rings_overlapping_rivals,label_free,24,0,4,28
 rings,frozen,1,3,24,28
+rings_overlapping_rivals,frozen,4,7,17,28
 rings,native,17,5,6,28
+rings_overlapping_rivals,native,25,0,3,28
 lfr,oracle,0,0,8,8
+lfr_overlapping_rivals,oracle,0,0,8,8
 lfr,label_free,0,0,8,8
+lfr_overlapping_rivals,label_free,0,0,8,8
 lfr,frozen,0,0,8,8
+lfr_overlapping_rivals,frozen,0,0,8,8
 lfr,native,0,0,8,8
+lfr_overlapping_rivals,native,0,0,8,8
