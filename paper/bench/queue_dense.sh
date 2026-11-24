@@ -4,7 +4,7 @@
 # (a rerun skips finished tasks). Then the planted-structure measures (robust_structure.py).
 # Run together with queue_dense_wsl.sh; W + 2 x (its W) should stay at or below 22.
 #   bash queue_dense.sh [--dry]
-PY=${PY:-/d/tmp/hcenv/Scripts/python}
+PY=${PY:-/d/tmp/hcenv314/Scripts/python}
 export DENSE_P=1
 W=${W:-16}
 # the main methods at step 0.01; BigClam and ego-splitting run at 0.05 (queue_more.sh), OSLOM and the SBM

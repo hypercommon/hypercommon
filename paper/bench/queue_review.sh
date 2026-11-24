@@ -6,7 +6,7 @@
 # leiden_cpm; (3) the control leiden_j (Leiden-RB on Jaccard edge weights) on the ring and LFR
 # benchmarks, rows to results2/<exp>_jctrl.csv. Resumable.
 #   bash queue_review.sh
-PY=${PY:-/d/tmp/hcenv/Scripts/python}
+PY=${PY:-/d/tmp/hcenv314/Scripts/python}
 W=${W:-20}
 cd "$(dirname "$0")"
 LOG=results2/review_queue.log

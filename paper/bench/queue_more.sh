@@ -3,7 +3,7 @@
 # experiment (rows appended to results2/<exp>.csv), then the robustness sweep at step 0.05 as
 # for OSLOM and the SBM (results2/<exp>_dense.csv). Resumable.
 #   bash queue_more.sh
-PY=${PY:-/d/tmp/hcenv/Scripts/python}
+PY=${PY:-/d/tmp/hcenv314/Scripts/python}
 W=${W:-20}
 M=bigclam,egosplit
 cd "$(dirname "$0")"

@@ -9,6 +9,11 @@ Python 3.12.10 with numpy 2.4.1, scipy 1.17.1, networkx 3.6.1, pandas 2.3.3,
 matplotlib 3.10.8, cdlib 0.4.0, python-igraph 1.0.0, leidenalg 0.11.0, infomap 2.10.1.
 The method itself is `../hypercommon/` (repository commit `bcbe7d1` plus the changes
 in this folder). LaTeX: MiKTeX 25.12, `revtex4-2`.
+The results were computed under Python 3.12. The same pinned packages
+(`requirements-paper.txt`) install under Python 3.14.0, and `bench/check_reproduce.py`, which reruns
+four benchmark graphs with eighteen methods and compares every scored cover with the stored rows,
+finds them identical (to 1e-15) under both versions, Infomap apart (its random numbers depend on
+the platform, below). Later runs use Python 3.14.
 
 ## Data
 Real networks: SNAP (https://snap.stanford.edu/data/#communities), in `analysis/snap/`:

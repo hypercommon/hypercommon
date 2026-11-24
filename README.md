@@ -32,7 +32,8 @@ command behind every table and figure.
 python -m pip install -r requirements.txt
 ```
 
-Python 3.12. The stochastic block model baseline needs graph-tool under Linux
+Python 3.12 or 3.14 (the same pinned packages; the results are identical, see
+`paper/bench/check_reproduce.py`). The stochastic block model baseline needs graph-tool under Linux
 (`paper/environment-sbm.yml`).
 
 ## Licence
