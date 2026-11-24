@@ -9,7 +9,8 @@ Python 3.12.10 with numpy 2.4.1, scipy 1.17.1, networkx 3.6.1, pandas 2.3.3,
 matplotlib 3.10.8, cdlib 0.4.0, python-igraph 1.0.0, leidenalg 0.11.0, infomap 2.10.1.
 The method itself is `../hypercommon/` (repository commit `bcbe7d1` plus the changes
 in this folder). LaTeX: MiKTeX 25.12, `revtex4-2`.
-The results were computed under Python 3.12. The same pinned packages
+The results were computed under Python 3.12. The SBM fits use graph-tool's parallel sampler, so
+a rerun gives a different fit unless `OMP_NUM_THREADS=1`, with which it repeats exactly. The same pinned packages
 (`requirements-paper.txt`) install under Python 3.14.0, and `bench/check_reproduce.py`, which reruns
 four benchmark graphs with eighteen methods and compares every scored cover with the stored rows,
 finds them identical (to 1e-15) under both versions, Infomap apart (its random numbers depend on
@@ -92,7 +93,8 @@ Two later parts (and the two methods added last, below) were computed on a secon
 185H, 22 threads, 32 GB RAM): the robustness sweep (`bench/queue_dense.sh`, Python 3.12.10
 with the versions under Software) and the lattice-like real networks
 (`bench/real_lattice_detection.py`); OSLOM and the SBM for both ran under WSL (Ubuntu
-24.04, Python 3.12.16, graph-tool 3.9, OSLOM2 built by `bench/build_oslom.sh`). The
+24.04, Python 3.12.16, graph-tool 3.9, OSLOM2 built by `bench/build_oslom.sh`; an environment `gt314`
+with Python 3.14 gives the same OSLOM rows and, on one thread, the same SBM fits). The
 robustness curves join the main runs at p = 0, 0.05, ..., 0.8 (Mac) with the dense points
 (laptop); the deterministic methods agree between the two machines (see above).
 

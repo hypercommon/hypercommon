@@ -4,7 +4,7 @@
 # resumable (a rerun skips finished tasks). W = workers per method (two methods at once).
 # OSLOM_PY and SBM_PY: the Python of each method's environment (default: PY, the graph-tool env).
 #   bash queue_dense_wsl.sh [--dry]
-PY=${PY:-~/tools/mamba/envs/gt/bin/python}
+PY=${PY:-~/tools/mamba/envs/gt314/bin/python}   # Python 3.14; the env gt (3.12) gives the same results
 OSLOM_PY=${OSLOM_PY:-$PY}
 SBM_PY=${SBM_PY:-$PY}
 export OSLOM_BIN=${OSLOM_BIN:-$HOME/tools/OSLOM2/oslom_undir}
